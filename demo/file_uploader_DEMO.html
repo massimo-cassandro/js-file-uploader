@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>File uploader demo</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" type="text/css" media="all">
+</head>
+<body>
+  <div class="container">
+  	<h1>File Uploader demo</h1>
+
+  	<form method="post" action="" enctype="multipart/form-data">
+
+      <div id="upl1" class="form-group"
+        data-file_uploader
+        data-filetype="img"
+        data-img_min_w="500"
+        data-img_min_h="500"
+        data-max_filesize="2000"
+      >
+        <label for="input_file">Uploader imgs std non multiple</label>
+        <input class="form-control" id="input_file" type="file" name="myfile">
+      </div>
+
+
+  	</form>
+  </div>
+
+  <script src="../dist/file_uploader-min.js"></script>
+  <script>
+  FileUploader.init(
+    // parametri globali
+    {
+      debug:true
+    },
+    // parametri di default delle istanze
+    {
+      uploader_url     : 'server_side_response.json',
+      upload_start_callback: function (img_minia, hidden_files) {},
+      upload_complete_callback: function (img_minia, hidden_files) {}
+    }
+  );
+  </script>
+</body>
+</html>
