@@ -1,0 +1,24 @@
+{
+  "name": "file-uploader",
+  "version": "2.0.0",
+  "description": "HTML5 Async File Uploader ",
+  "main": "js/file_uploader.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/massimo-cassandro/file-uploader2.git"
+  },
+  "author": "Massimo Cassandro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/massimo-cassandro/file-uploader2.git/issues"
+  },
+  "homepage": "https://github.com/massimo-cassandro/file-uploader2.git#readme",
+  "files": [
+    "dist/*.{css,js,map}",
+    "js/*.js",
+    "scss/*.scss"
+  ]
+}
