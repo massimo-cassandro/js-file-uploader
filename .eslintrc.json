@@ -11,13 +11,6 @@
       "globalReturn": false
     }
   },
-
-  "globals": {
-    "adajs": true,
-    "JSutils": false,
-    "swal": false,
-    "Mustache": false
-  },
   "rules": {
     "eqeqeq": "warn",
     "no-extra-semi": "error",
