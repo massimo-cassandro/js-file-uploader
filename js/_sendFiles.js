@@ -106,6 +106,10 @@ FileUploader = (function (_upl) {
           upl_options.alertErrorAPI( error_list.join('\n\n') );
           error_displayed = true;
         }
+// TODO RICONTROLLARE
+        if(submit_btn && !submit_btn_prev_disabled) {
+          submit_btn.prop('disabled', false);
+        }
       },
 
       // aggiorna l'array dei messaggi di errore, incrementa il contatore dei file elaborati
