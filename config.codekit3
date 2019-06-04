@@ -41,6 +41,14 @@
 		"oAP": "/.gitignore",
 		"oF": 0
 		},
+	"/.vscode/settings.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/.vscode/settings-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
 	"/__dev__": {
 		"ft": 65536,
 		"oA": 1,
@@ -111,13 +119,24 @@
 		"sC": 3,
 		"tS": 1
 		},
-	"/js/_uploader_class.js": {
+	"/js/_set_options.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 1,
 		"mi": 1,
 		"oA": 1,
-		"oAP": "/dist/_uploader_class-min.js",
+		"oAP": "/dist/_set_options-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
+	"/js/_uploader.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/dist/_uploader-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 1

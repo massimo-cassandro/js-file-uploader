@@ -10,10 +10,10 @@
   <div class="container">
   	<h1>File Uploader demo</h1>
 
-  	<form method="post" action="" enctype="multipart/form-data">
 
+      <p><strong>Uploader con campo file</strong></p>
       <div id="upl1" class="form-group"
-        data-file_uploader
+        data-file_uploader2
         data-filetype="img"
         data-img_min_w="500"
         data-img_min_h="500"
@@ -24,23 +24,32 @@
       </div>
 
 
-  	</form>
+      <p class="mt-5"><strong>Uploader senza campo file</strong></p>
+      <div class="upl2"
+        data-file_uploader2="{&quot;filetype&quot;:&quot;auto&quot;}"
+        data-max_filesize="4000"
+      >Contenuto del div</div>
+
   </div>
 
   <script src="../dist/file_uploader-min.js"></script>
   <script>
-  FileUploader.init(
-    // parametri globali
+    //console.log(FileUploader2); // eslint-disable-line
+
+    FileUploader2.init(
     {
-      debug:true
-    },
-    // parametri di default delle istanze
+      debug           : true,
+      css             : '../dist/file_uploader.css',
+      uploader_url    : 'server_side_response.json'
+    }
+    /*// parametri di default delle istanze
     {
-      uploader_url     : 'server_side_response.json',
+
       upload_start_callback: function (img_minia, hidden_files) {},
       upload_complete_callback: function (img_minia, hidden_files) {}
-    }
+    } */
   );
+
   </script>
 </body>
 </html>

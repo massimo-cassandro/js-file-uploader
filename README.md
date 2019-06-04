@@ -40,7 +40,7 @@ FileUploader riceve quindi dallo script lato server, le informazioni necessarie 
 
 Per ogni file selezionato, lo script riceve una chiamata *POST* alla quale è associata una variabile `file` a cui è, a sua volta, associato il file selezionato dall'utente.
 
-La variabile `$_FILES` di php dovrebbe restituire qualcosa del genere:
+La variabile PHP `$_FILES`, ad esempio, restituisce qualcosa del genere:
 
 ```php
 Array
@@ -57,7 +57,7 @@ Array
 )
 ```
 
-Lo script processa la chiamata e restituisce un json così formattato:
+Lo script deve processare la richiesta e restituire un json così formattato:
 
 ```json
 {
