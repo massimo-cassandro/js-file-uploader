@@ -10,25 +10,54 @@
   <div class="container">
   	<h1>File Uploader demo</h1>
 
-
-      <p><strong>Uploader con campo file</strong></p>
-      <div id="upl1" class="form-group"
+      <p><strong>Uploader con campo file (img singola)</strong></p>
+      <div id="upl1"
         data-file_uploader2
         data-filetype="img"
         data-img_min_w="500"
         data-img_min_h="500"
         data-max_filesize="2000"
       >
-        <label for="input_file">Uploader imgs std non multiple</label>
+        <label for="input_file">Label del campo file</label>
         <input class="form-control" id="input_file" type="file" name="myfile">
       </div>
 
-
-      <p class="mt-5"><strong>Uploader senza campo file</strong></p>
-      <div class="upl2"
-        data-file_uploader2="{&quot;filetype&quot;:&quot;auto&quot;}"
+      <p class="mt-5"><strong>Uploader senza campo file (doc singolo)</strong><br>
+        NB: il parametro <code>data-required</code> senza valore, equivale a <code>false</code>
+      </p>
+      <div id="upl2"
+        data-file_uploader2='{"filetype":"auto"}'
         data-max_filesize="4000"
+        data-required
       >Contenuto del div</div>
+
+      <p class="mt-5"><strong>Uploader senza campo file (pdf, multiple e required  da parametro)</strong></p>
+      <div id="upl3"
+        data-file_uploader2='{"filetype":"pdf"}'
+        data-max_filesize="4000"
+        data-multiple="true"
+        data-required="true"
+      >Contenuto del div</div>
+
+      <p class="mt-5"><strong>Uploader con campo file (img, multiple, required)</strong></p>
+      <div id="upl4"
+        data-file_uploader2
+        data-filetype="img"
+        data-max_filesize="8Mb"
+      >
+        <label for="input_file2">Label del campo file</label>
+        <input class="form-control" id="input_file2" type="file" name="myfile" multiple required>
+      </div>
+
+      <p class="mt-5"><strong>Uploader con campo file e parametri accept (auto, multiple)</strong></p>
+      <div id="upl5"
+        data-file_uploader2
+        data-filetype="auto"
+        data-accept=".pdf, .xlsx"
+      >
+        <label for="input_file3">Label del campo file</label>
+        <input class="form-control" id="input_file3" type="file" name="myfile" multiple accept=".doc, .docx">
+      </div>
 
   </div>
 
@@ -38,9 +67,9 @@
 
     FileUploader2.init(
     {
-      debug           : true,
-      css             : '../dist/file_uploader.css',
-      uploader_url    : 'server_side_response.json'
+      debug  : true,
+      css    : '../dist/file_uploader.css',
+      url    : 'server_side_response.json'
     }
     /*// parametri di default delle istanze
     {

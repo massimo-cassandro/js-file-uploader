@@ -4,8 +4,18 @@ FileUploader2 = ((upl) => {
 
   // VARIABILI E METODI PRIVATI
 
+  // mimetypes ed estensioni accettabili in base al parametro `filetype`.
+  // Il parametro `auto` accetta tutti i tipi di file (salvo eventuali limitazioni
+  // aggiunte tramite parametro e attributo `accept`)
+  const mimetypes = {
+    auto : null,
+    img  : ['image/png', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/webp',
+            '.png', '.jpg', '.jpeg', '.pjpg', '.pjpeg', '.gif', '.webp'],
+    pdf  : ['application/pdf', '.pdf']
+  },
+
   // nome dell'attributo data da usare come selettore degli elementi su cui applicare FileUploader.
-  const fupl_selector_data_name = 'file_uploader2',
+  fupl_selector_data_name = 'file_uploader2',
 
   /*
     isSuitableBrowser
@@ -30,7 +40,7 @@ FileUploader2 = ((upl) => {
       - `unit` è uno tra 'KB' e 'MB'
       - `feedback_size` è la rappresentazione per un eventuale feedback per l'utente
   */
-  parse_max_filesize = (filesize_value) =>  {
+  parse_max_filesize = (filesize_value, locales) =>  {
     // controllo max_filesize ed elaborazione parametro
     if( filesize_value ) {
       var maxbytes, unit, feedback_size;
@@ -68,14 +78,13 @@ FileUploader2 = ((upl) => {
         //'original_value': filesize_value,
         //'unit'         : unit,
         'maxbytes'     : maxbytes,
-        'feedback_size': feedback_size.toLocaleString(upl.options.locales) + '&nbsp;' + unit
+        'feedback_size': feedback_size.toLocaleString(locales) + '&nbsp;' + unit
       };
 
     } else {
       return null;
     }
   };
-
 
   /*
     init
@@ -114,78 +123,89 @@ FileUploader2 = ((upl) => {
         In caso di conflitto prevalgono gli ultimi
       */
 
-      let file_uploader_data = upl_element.dataset[fupl_selector_data_name];
+      let upl_element_options = upl_element.dataset[fupl_selector_data_name];
 
-      if(file_uploader_data === '') {
-        file_uploader_data = {};
+      if(upl_element_options === '') {
+        upl_element_options = {};
       } else {
-        file_uploader_data = JSON.parse(file_uploader_data);
+        upl_element_options = JSON.parse(upl_element_options);
       }
 
-      file_uploader_data = upl.setOptions(
+      upl_element_options = upl.setOptions(
         {},
         global_options,
         upl_element.dataset,
-        file_uploader_data
+        upl_element_options
       );
 
       // cancella la chiave `fupl_selector_data_name` al solo scopo di ridurre la confusione
-      delete file_uploader_data[fupl_selector_data_name];
+      delete upl_element_options[fupl_selector_data_name];
 
       // aggiunta dell'elemento stesso ad  `istance_options`:
-      file_uploader_data.element = upl_element;
+      upl_element_options.element = upl_element;
 
       // controllo parametri e avvio uploader
       try {
 
+        // eventuale campo input
+        let _input = upl_element.querySelector('input[type="file"]');
+
         //  url
-        if( !file_uploader_data.uploader_url ) {
+        if( !upl_element_options.url ) {
           throw new Error( "Parametro `url` non impostato" );
         }
 
         //  parametro filetype
-        file_uploader_data.filetype = file_uploader_data.filetype.toLowerCase();
-        if( Object.keys(file_uploader_data.mimetypes).indexOf(file_uploader_data.filetype) === -1 ) {
+        upl_element_options.filetype = upl_element_options.filetype.toLowerCase();
+        if( Object.keys(mimetypes).indexOf(upl_element_options.filetype) === -1 ) {
 
           throw new Error( "Parametro `filetype` non corretto" );
         } else {
           // implementazione eventuali parametro/attributo `accept`
-          if( file_uploader_data.filetype === 'auto' ) {
+          if( upl_element_options.filetype === 'auto' ) {
 
-            let _input = upl_element.querySelector('input[type="file"]'),
-            accept_attr = [];
-            if(_input && _input.getAttribute('accept') )
-              accept_attr.accept = _input.getAttribute('accept')
+            let accept_attr = [],
+            accept_params = [];
+
+            if( upl_element_options.accept !== null ) {
+              accept_params = upl_element_options.accept
                 .split(',').map( item => item.trim() );
             }
-            file_uploader_data.accept =
+
+            if(_input && _input.getAttribute('accept') ) {
+              accept_attr = _input.getAttribute('accept')
+                .split(',').map( item => item.trim() );
+            }
+
+            // https://www.peterbe.com/plog/merge-two-arrays-without-duplicates-in-javascript
+            upl_element_options.accept = [...new Set([...accept_params, ...accept_attr])];
 
           } else {
-            file_uploader_data.accept = upl.mimetypes[file_uploader_data.filetype];
+            upl_element_options.accept = mimetypes[upl_element_options.filetype];
           }
 
+          // elaborazione max_filesize
+          let max_filesize = parse_max_filesize(upl_element_options.max_filesize, upl_element_options.locales);
+          if( max_filesize === false ) {
+            throw new Error( '"' + upl_element_options.max_filesize + '" non è un valore corretto per `max_filesize`');
+          } else {
+            upl_element_options.max_filesize = max_filesize;
+          }
+
+          // parametro o attributo multiple
+          upl_element_options.multiple = Boolean(upl_element_options.multiple ||
+            (_input && _input.hasAttribute('multiple') ));
+
+          // parametro o attributo required
+          upl_element_options.required = Boolean(upl_element_options.required ||
+            (_input && _input.hasAttribute('required') ));
         }
-
-
-
-
-
-
-
-  //         var max_filesize = parse_max_filesize(file_uploader_data);
-  //         if( max_filesize === false ) {
-  //           throw new Error( '"' + file_uploader_data.max_filesize + '" non è un valore corretto per `max_filesize`');
-  //         } else {
-  //           file_uploader_data.max_filesize = max_filesize;
-  //         }
-
-
 
       } catch(e) {
         console.error( e );// eslint-disable-line
       }
 
-      new upl.uploader(upl_element);
+      new upl.createUploader(upl_element_options);
 
      }); // end document.querySelectorAll(fupl_selector).forEach
   }; // end upl.init

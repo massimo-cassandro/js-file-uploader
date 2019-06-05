@@ -1,2 +1,2 @@
-.file_upl input[type="file"]{width:0.1px;height:0.1px;opacity:0;overflow:hidden;position:absolute;z-index:-1}
+.file-uploader input[type="file"]{width:0.1px;height:0.1px;opacity:0;overflow:hidden;position:absolute;z-index:-1}.file-uploader-label{margin:1rem 0 .5rem}.file-uploader-label label{margin:0}.file-uploader{margin:1rem 0;padding:20px 0;outline:2px dashed #ccc;outline-offset:0;-webkit-transition:outline-offset .15s ease-in-out, background-color .15s linear;transition:outline-offset .15s ease-in-out, background-color .15s linear;background-color:#fff2aa;text-align:center}.file-uploader.has-file-uploader-label{margin-top:0}.file-uploader.is-dragover{outline-offset:-10px;outline-color:#b3b2b2;background-color:#ffea77}
 /*# sourceMappingURL=file_uploader.css.map */

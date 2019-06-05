@@ -11,7 +11,7 @@
 
 /*
 @codekit-append '_set_options.js'
-@codekit-append '_uploader.js'
+@codekit-append '_create_uploader.js'
 
 @codekit-append '_init.js'
 

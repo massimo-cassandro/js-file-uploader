@@ -1,0 +1,22 @@
+$gray: #ccc;
+$background-color: #fff2aa;
+
+.file-uploader {
+  margin:1rem 0;
+  padding:20px 0;
+  outline: 2px dashed $gray;
+  outline-offset: 0;
+  transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  background-color: $background-color;
+  text-align: center;
+
+  &.has-file-uploader-label {
+    margin-top: 0;
+  }
+
+  &.is-dragover {
+		outline-offset: -10px;
+		outline-color: darken($gray, 10);
+		background-color: darken($background-color, 10);
+  }
+}

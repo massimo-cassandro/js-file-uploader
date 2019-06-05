@@ -28,23 +28,12 @@ FileUploader2 = ( (upl) => {
     // obbligatorio
     url: null,
 
-    // mimetypes ed estensioni da utilizzare per l'attributo `accept` del
-    // tag input in corrispondenza del parametro `filetype`
-    // `auto` → tutti i tipi di file (salvo eventuali limitazioni
-    // tramite parametro e attributo `accept`)
-    mimetypes: {
-      auto : null,
-      img  : ['image/png', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/webp',
-              '.png', '.jpg', '.jpeg', '.pjpg', '.pjpeg', '.gif', '.webp'],
-      pdf  : ['application/pdf', '.pdf']
-    },
-
     // Tipologia dei file selezionabili
     // il valore deve corrispondere ad una delle chievi dell'array `mimetypes`
     filetype: 'auto',
 
     /*
-    eventuale array di estensioni o mimetypes accettabili per l'uploader
+    Stringa di estensioni o mimetypes separati da virgola accettabili per l'uploader
     corrente in aggiunta o sostituzione di quanto impostato tramite il parametro `filetype`.
 
     L'eventuale attributo `accept` del campo input contenuto
@@ -53,12 +42,27 @@ FileUploader2 = ( (upl) => {
     In entrambi i casi, i valori sono presi in considerazione solo se `filetype == 'auto'`
 
     In presenza sia del parametro che dell'attributo `accept`, viene effettuato un merge,
-    e l'attributo ha la precedenza sul parametro
+    e l'attributo ha la precedenza sul parametro.
+    Se il parametro è `null` e l'attributo `accept` non è presente,
+    con `filetype == auto` vengono accettati tutti i tipi di file.
     */
-    accept: [],
+    accept: null,
 
-    // Eventuale classe da aggiungere all'elemento contenitore di FileUploader
-    container_class: null,
+    /*
+    Parametro multiple.
+    Attiva la possibilità di acquisire più file con lo stesso uploader.
+    L'attivazione di questa opzione può essere effettuata anche tramite il parametro
+    del campo `input` /se presente)
+    */
+    multiple: false,
+
+    /*
+    Parametro required.
+    Eventuale impostazione del campo come obbligatorio.
+    L'attivazione di questa opzione può essere effettuata anche tramite il parametro
+    del campo `input` /se presente)
+    */
+    required: false,
 
     /*
     Template del markup da inserire all'interno dell'elemento contenitore,
@@ -80,8 +84,9 @@ FileUploader2 = ( (upl) => {
         '<div class="card-footer text-muted small font-italic file_upl__info_text"></div>' +
       '</div>',
 
-    // Funzione richiamata ogni volta che un elemento FileUploader viene inizializzato.
-    // La funzione viene invocata con l'elemento in esame come argomento
+
+    // Funzione richiamata dopo l'inizializzazione di ogni elemento FileUploader.
+    // La funzione viene invocata con l'oggetto di tutte le opzioni come argomento
     init_callback: null,
 
     /*
@@ -111,16 +116,24 @@ FileUploader2 = ( (upl) => {
     */
     upload_complete_callback: null,
 
-    // Eventuale classe da aggiungere all'elemento contenitore quando un file
-    // vi è trascinato sopra
-    container_dragover_class: null,
+    // Eventuale classe da aggiungere all'elemento FileUploader al
+    // momento dell'inizializzazione
+    element_class: null,
 
-    // Eventuale testo da sostituire a quello contenuto nel tag label
-    // (null = nessuna sostituzione).
+    // Eventuale classe da aggiungere all'elemento FileUploader quando un file
+    // vi è trascinato sopra
+    element_dragover_class: null,
+
+    // Label da applicare da applicare all'elemento FileUploader.
+    // Se `null` e se esiste un elemento `label` all'interno dell'uploader,
+    // viene preso il testo dell'elemento
     label_text: null,
 
-    // Eventuale classe da applicare al tag label
-    label_class: 'btn btn-primary btn-lg',
+    // Opzione per l'aggiunta di un tag label prima dell'elemento uploader
+    add_label: true,
+
+    // classi da applicare al tag label utilizzato come pulsante per la selezione dei file
+    label_btn_class: 'btn btn-primary btn-lg',
 
     // Testo di istruzioni per il drag and drop con input senza attributo `multiple`
     dd_text_single: 'oppure trascina qui un file',
@@ -175,7 +188,18 @@ FileUploader2 = ( (upl) => {
     // Prefisso della variabile utilizzata per inviare al server i dati
     // di ogni singolo file caricato. Il valore indicato è il nome base dell'array
     // costruito per inviare i valori al server.
-    varname: 'file'
+    varname: 'file',
+
+    /*
+    Array degli eventuali elementi preregistrati, nella forma:
+      [
+        {
+
+        }
+        [...]
+      ]
+    */
+    values: []
   };
 
   upl.setOptions = (...custom_options) => {

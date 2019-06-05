@@ -41,6 +41,14 @@
 		"oAP": "/.gitignore",
 		"oF": 0
 		},
+	"/.vscode/bookmarks.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/.vscode/bookmarks-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
 	"/.vscode/settings.json": {
 		"ft": 524288,
 		"oA": 1,
@@ -108,6 +116,25 @@
 		"oAP": "/dist/file_uploader.css.map",
 		"oF": 0
 		},
+	"/fileuploader.code-workspace": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/fileuploader.code-workspace",
+		"oF": 0
+		},
+	"/js/_create_uploader.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/dist/_create_uploader-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
 	"/js/_init.js": {
 		"bF": 0,
 		"ft": 64,
@@ -126,17 +153,6 @@
 		"mi": 1,
 		"oA": 1,
 		"oAP": "/dist/_set_options-min.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 1
-		},
-	"/js/_uploader.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 1,
-		"mi": 1,
-		"oA": 1,
-		"oAP": "/dist/_uploader-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 1
@@ -186,6 +202,45 @@
 		"pME": 1,
 		"rFN": 0,
 		"uCM": 0
+		},
+	"/scss/_file-uploader-label.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 1,
+		"oA": 1,
+		"oAP": "/dist/_file-uploader-label.css",
+		"oF": 0,
+		"oS": 3,
+		"uL": 1
+		},
+	"/scss/_input.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 1,
+		"oA": 1,
+		"oAP": "/dist/_input.css",
+		"oF": 0,
+		"oS": 3,
+		"uL": 1
+		},
+	"/scss/_uploader_element.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 1,
+		"oA": 1,
+		"oAP": "/dist/_uploader_element.css",
+		"oF": 0,
+		"oS": 3,
+		"uL": 1
 		},
 	"/scss/file_uploader.scss": {
 		"aP": 1,

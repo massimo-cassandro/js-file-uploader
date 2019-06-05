@@ -1,0 +1,92 @@
+[
+	{
+		"path": "$ROOTPATH$/js/_init.js",
+		"bookmarks": [
+			{
+				"line": 89,
+				"column": 4,
+				"label": "Avvio procedura"
+			},
+			{
+				"line": 96,
+				"column": 4,
+				"label": ""
+			},
+			{
+				"line": 102,
+				"column": 4,
+				"label": ""
+			},
+			{
+				"line": 109,
+				"column": 4,
+				"label": ""
+			},
+			{
+				"line": 140,
+				"column": 6,
+				"label": ""
+			},
+			{
+				"line": 143,
+				"column": 6,
+				"label": ""
+			},
+			{
+				"line": 146,
+				"column": 6,
+				"label": ""
+			},
+			{
+				"line": 149,
+				"column": 8,
+				"label": ""
+			},
+			{
+				"line": 152,
+				"column": 8,
+				"label": ""
+			},
+			{
+				"line": 157,
+				"column": 7,
+				"label": ""
+			},
+			{
+				"line": 163,
+				"column": 10,
+				"label": ""
+			},
+			{
+				"line": 186,
+				"column": 10,
+				"label": ""
+			},
+			{
+				"line": 194,
+				"column": 10,
+				"label": ""
+			},
+			{
+				"line": 198,
+				"column": 10,
+				"label": ""
+			}
+		]
+	},
+	{
+		"path": "$ROOTPATH$/js/_set_options.js",
+		"bookmarks": [
+			{
+				"line": 6,
+				"column": 2,
+				"label": ""
+			},
+			{
+				"line": 204,
+				"column": 2,
+				"label": ""
+			}
+		]
+	}
+]
