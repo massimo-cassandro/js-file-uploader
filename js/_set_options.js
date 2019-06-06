@@ -127,12 +127,16 @@ FileUploader2 = ( (upl) => {
     // Label da applicare da applicare all'elemento FileUploader.
     // Se `null` e se esiste un elemento `label` all'interno dell'uploader,
     // viene preso il testo dell'elemento
-    label_text: null,
+    uploader_label_text: null,
 
     // Opzione per l'aggiunta di un tag label prima dell'elemento uploader
-    add_label: true,
+    uploader_add_label: true,
 
-    // classi da applicare al tag label utilizzato come pulsante per la selezione dei file
+    // Eventuale classe da aggiungere ad uploader_label
+    uploader_label_class: null,
+
+    // classi da applicare al tag label dell'input[file] utilizzato
+    // come pulsante per la selezione dei file
     label_btn_class: 'btn btn-primary btn-lg',
 
     // Testo di istruzioni per il drag and drop con input senza attributo `multiple`

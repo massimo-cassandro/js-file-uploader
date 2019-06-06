@@ -29,20 +29,31 @@ FileUploader2 = ((upl) => {
     let _label = fupl_options.element.querySelector('label'),
     _input = fupl_options.element.querySelector('input[type="file"]');
 
-    // testo label (da tag o parametro label_text)
-    if( !fupl_options.label_text && _label) {
-      fupl_options.label_text = _label.innerHTML;
+    // testo label (da tag o parametro uploader_label_text)
+    if( !fupl_options.uploader_label_text && _label) {
+      fupl_options.uploader_label_text = _label.innerHTML;
     }
     // caso in cui sia presente nessun valore
-    if (!fupl_options.label_text) {
-      fupl_options.label_text = '__label non presente__';
+    if (!fupl_options.uploader_label_text) {
+      fupl_options.uploader_label_text = '__label non presente__';
     }
 
     // eliminazione di tutti gli elementi contenuti nell'elemento uplaoder
     fupl_options.element.innerHTML = '';
 
     // aggiunta della classe principale
-    fupl_options.element.classList.add("file-uploader");
+    fupl_options.element.classList.add("fupl");
+
+    // aggiunta wrapper
+    let wrapper = document.createElement('div');
+    fupl_options.element.parentNode.insertBefore(wrapper, fupl_options.element);
+    wrapper.appendChild(fupl_options.element);
+    wrapper.classList.add("fupl-wrapper");
+    wrapper.classList.add("fupl-type-" + (fupl_options.filetype === 'img'? 'img' : 'doc') );
+    if(fupl_options.multiple) {
+      wrapper.classList.add("fupl-multiple");
+    }
+
 
     // aggiunta eventuale classe personale
     if( fupl_options.element_class ) {
@@ -50,15 +61,22 @@ FileUploader2 = ((upl) => {
     }
 
     // aggiunta label
-    if( fupl_options.add_label ) {
+    if( fupl_options.uploader_add_label ) {
+      let _class = [];
+      if( fupl_options.uploader_label_class ) {
+        _class.push(fupl_options.uploader_label_class);
+      }
+      if( fupl_options.required ) {
+        _class.push('required');
+      }
       fupl_options.element.insertAdjacentHTML('beforebegin',
-        '<div class="file-uploader-label">' +
-          '<label' + (fupl_options.required? ' class="required"' : '') + '>' +
-            fupl_options.label_text +
+        '<div class="fupl-label">' +
+          '<label' + (_class.length? ` class="#{_class.join(' ')}"` : '') + '>' +
+            fupl_options.uploader_label_text +
           '</label>' +
         '</div>'
       );
-      fupl_options.element.classList.add( 'has-file-uploader-label' );
+      wrapper.classList.add( 'fupl-has-label' );
     }
 
     // aggiunta template uploader

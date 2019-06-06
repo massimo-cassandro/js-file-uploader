@@ -4,12 +4,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>File uploader demo</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" type="text/css" media="all">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css" media="all">
 </head>
 <body>
   <div class="container">
   	<h1>File Uploader demo</h1>
-
+    <form id="form1" action="" method="post">
       <p><strong>Uploader con campo file (img singola)</strong></p>
       <div id="upl1"
         data-file_uploader2
@@ -58,7 +58,7 @@
         <label for="input_file3">Label del campo file</label>
         <input class="form-control" id="input_file3" type="file" name="myfile" multiple accept=".doc, .docx">
       </div>
-
+    </form>
   </div>
 
   <script src="../dist/file_uploader-min.js"></script>
@@ -80,5 +80,7 @@
   );
 
   </script>
+  <script src="../node_modules/layout-tools/dist/layout_tools-min.js"></script>
+
 </body>
 </html>

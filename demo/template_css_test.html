@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="it">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>File uploader template test</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../dist/file_uploader.css" type="text/css" media="all">
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>File Uploader - template test</h1>
+
+      <div id="base_upl" class="fupl-wrapper fupl-type-img fupl-has-label">
+        <label class="fupl-label">Immagine singola (vuota)</label>
+        <div data-file_uploader2 class="fupl has-fupl-label">
+          <div class="fupl-result">
+
+            <!--  nessuna immagine -->
+            <div class="fupl-result-empty text-muted small font-italic">
+              Nessuna immagine presente
+            </div>
+            <!--  /nessuna immagine -->
+
+          </div>
+          <div class="fupl-panel">
+            <div class="fupl-button">
+              <label class="btn btn-outline-primary btn-sm">
+                Seleziona una o più immagini
+                <input type="file">
+              </label>
+              <div class="fupl-dd-text">
+                ...oppure trascinale qui
+              </div>
+            </div>
+            <div class="fupl-info-text">
+              (Immagini in formato JPEG, <strong>PNG</strong>, GIF o <strong>WEBP</strong>,
+              larghezza non superiore a 500px, max <strong>200KB</strong>)
+            </div>
+          </div><!--  /.fupl-panel -->
+        </div><!--  /.fupl -->
+      </div><!--  /.fupl-wrapper -->
+
+
+
+      <div class="fupl-wrapper fupl-type-img fupl-has-label">
+        <label class="fupl-label">Immagine singola</label>
+        <div data-file_uploader2 class="fupl has-fupl-label">
+          <div class="fupl-result">
+
+            <!--  immagine  -->
+            <div class="fupl-item">
+              <!--  pulsante elimina -->
+              <div class="fupl-elimina">
+                <button type="button" class="close" aria-label="Elimina" title="Elimina questo file" data-file-id="123">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <!--  /pulsante elimina -->
+              <img src="./test-files/gigi-1508584-unsplash.jpg" alt="Immagine caricata" class="img-fluid">
+              <div class="fupl-file-info">
+                <div class="text-truncate">gigi-1508584-unsplash.jpg</div>
+                <div>1199&times;1600 px - 175 KB</div>
+              </div>
+            </div>
+            <!--  /immagine  -->
+
+          </div>
+          <div class="fupl-panel">
+            <div class="fupl-button">
+              <label class="btn btn-outline-primary btn-sm">
+                Seleziona una o più immagini
+                <input type="file">
+              </label>
+              <span class="fupl-dd-text">
+                ...oppure trascinale qui
+              </span>
+            </div>
+            <div class="fupl-info-text">
+              (Immagini in formato JPEG, <strong>PNG</strong>, GIF o <strong>WEBP</strong>,
+              larghezza non superiore a 500px, max <strong>200KB</strong>)
+            </div>
+          </div><!--  /.fupl-panel -->
+        </div><!--  /.fupl -->
+      </div><!--  /.fupl-wrapper -->
+
+
+
+      <div class="fupl-wrapper fupl-type-img fupl-multiple fupl-has-label">
+        <label class="fupl-label">Immagini multiple</label>
+        <div data-file_uploader2 class="fupl has-fupl-label">
+          <div class="fupl-result">
+
+            <div class="fupl-item">
+              <div class="fupl-elimina">
+                <button type="button" class="close" aria-label="Elimina" title="Elimina questo file" data-file-id="123">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="fupl-img">
+                <img src="./test-files/gigi-1508584-unsplash.jpg" alt="Immagine caricata" class="img-fluid">
+              </div>
+              <div class="fupl-file-info">
+                <div class="text-truncate">gigi-1508584-unsplash.jpg</div>
+                <div>1199&times;1600 px - 175 KB</div>
+              </div>
+            </div>
+
+            <div class="fupl-item">
+              <div class="fupl-elimina">
+                <button type="button" class="close" aria-label="Elimina" title="Elimina questo file" data-file-id="124">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="fupl-img">
+                <img src="./test-files/ibrahim-rifath-787485-unsplash.jpg" alt="Immagine caricata" class="img-fluid">
+              </div>
+              <div class="fupl-file-info">
+                <div class="text-truncate">ibrahim-rifath-787485-unsplash.jpg</div>
+                <div>1199&times;1600 px - 175 KB</div>
+              </div>
+            </div>
+
+            <div class="fupl-item">
+              <div class="fupl-elimina">
+                <button type="button" class="close" aria-label="Elimina" title="Elimina questo file" data-file-id="123">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="fupl-img">
+                <img src="./test-files/gigi-1508584-unsplash.jpg" alt="Immagine caricata" class="img-fluid">
+              </div>
+              <div class="fupl-file-info">
+                <div class="text-truncate">gigi-1508584-unsplash.jpg</div>
+                <div>1199&times;1600 px - 175 KB</div>
+              </div>
+            </div>
+
+            <div class="fupl-item">
+              <div class="fupl-elimina">
+                <button type="button" class="close" aria-label="Elimina" title="Elimina questo file" data-file-id="124">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="fupl-img">
+                <img src="./test-files/ibrahim-rifath-787485-unsplash.jpg" alt="Immagine caricata" class="img-fluid">
+              </div>
+              <div class="fupl-file-info">
+                <div class="text-truncate">ibrahim-rifath-787485-unsplash.jpg</div>
+                <div>1199&times;1600 px - 175 KB</div>
+              </div>
+            </div>
+
+            <div class="fupl-item">
+              <div class="fupl-elimina">
+                <button type="button" class="close" aria-label="Elimina" title="Elimina questo file" data-file-id="123">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="fupl-img">
+                <img src="./test-files/gigi-1508584-unsplash.jpg" alt="Immagine caricata" class="img-fluid">
+              </div>
+              <div class="fupl-file-info">
+                <div class="text-truncate">gigi-1508584-unsplash.jpg</div>
+                <div>1199&times;1600 px - 175 KB</div>
+              </div>
+            </div>
+
+            <div class="fupl-item">
+              <div class="fupl-elimina">
+                <button type="button" class="close" aria-label="Elimina" title="Elimina questo file" data-file-id="124">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="fupl-img">
+                <img src="./test-files/ibrahim-rifath-787485-unsplash.jpg" alt="Immagine caricata" class="img-fluid">
+              </div>
+              <div class="fupl-file-info">
+                <div class="text-truncate">ibrahim-rifath-787485-unsplash.jpg</div>
+                <div>1199&times;1600 px - 175 KB</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="fupl-panel">
+            <div class="fupl-button">
+              <label class="btn btn-outline-primary btn-sm">
+                Seleziona una o più immagini
+                <input type="file">
+              </label>
+              <span class="fupl-dd-text">
+                ...oppure trascinale qui
+              </span>
+            </div>
+            <div class="fupl-info-text">
+              (Immagini in formato JPEG, <strong>PNG</strong>, GIF o <strong>WEBP</strong>,
+              larghezza non superiore a 500px, max <strong>200KB</strong>)
+            </div>
+          </div><!--  /.fupl-panel -->
+        </div><!--  /.fupl -->
+      </div><!--  /.fupl-wrapper -->
+
+
+
+
+      <div class="fupl-wrapper fupl-type-doc fupl-has-label">
+        <label class="fupl-label">Documento singolo</label>
+        <div data-file_uploader2 class="fupl has-fupl-label">
+          <div class="fupl-result">
+
+            <!--  doc  -->
+            <div class="fupl-item">
+              <div class="fupl-elimina">
+                <button type="button" class="close" aria-label="Elimina" title="Elimina questo file" data-file-id="123">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="fupl-doc text-truncate">
+                <a href="#" class="text-truncate">nome_file_molto_molto_molto_lungo.pdf</a>
+              </div>
+              <span class="small ml-1 text-nowrap">175 KB</span>
+            </div>
+            <!--  /doc  -->
+
+          </div>
+          <div class="fupl-panel">
+            <div class="fupl-button">
+              <label class="btn btn-outline-primary btn-sm">
+                Seleziona un documento
+                <input type="file">
+              </label>
+              <span class="fupl-dd-text">
+                ...oppure trascinalo qui
+              </span>
+            </div>
+            <div class="fupl-info-text">
+              (File in formato <strong>PDF</strong>, max <strong>200KB</strong>)
+            </div>
+          </div><!--  /.fupl-panel -->
+        </div><!--  /.fupl -->
+      </div><!--  /.fupl-wrapper -->
+
+
+
+      <div class="fupl-wrapper fupl-type-doc fupl-multiple fupl-has-label">
+        <label class="fupl-label">Documenti multipli</label>
+        <div data-file_uploader2 class="fupl has-fupl-label">
+          <div class="fupl-result">
+
+            <div class="fupl-item">
+              <div class="fupl-elimina">
+                <button type="button" class="close" aria-label="Elimina" title="Elimina questo file" data-file-id="123">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="fupl-doc text-truncate">
+                <a href="#" class="text-truncate">nome_file_molto_molto_molto_lungo.pdf</a>
+              </div>
+              <span class="small ml-1 text-nowrap">175 KB</span>
+            </div>
+
+            <div class="fupl-item">
+              <div class="fupl-elimina">
+                <button type="button" class="close" aria-label="Elimina" title="Elimina questo file" data-file-id="123">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="fupl-doc text-truncate">
+                <a href="#" class="text-truncate">nome_file_molto_molto_molto_lungo.pdf</a>
+              </div>
+              <span class="small ml-1 text-nowrap">175 KB</span>
+            </div>
+
+            <div class="fupl-item">
+              <div class="fupl-elimina">
+                <button type="button" class="close" aria-label="Elimina" title="Elimina questo file" data-file-id="123">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="fupl-doc text-truncate">
+                <a href="#" class="text-truncate">nome_file_molto_molto_molto_lungo.pdf</a>
+              </div>
+              <span class="small ml-1 text-nowrap">175 KB</span>
+            </div>
+
+            <div class="fupl-item">
+              <div class="fupl-elimina">
+                <button type="button" class="close" aria-label="Elimina" title="Elimina questo file" data-file-id="123">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="fupl-doc text-truncate">
+                <a href="#" class="text-truncate">nome_file_molto_molto_molto_lungo.pdf</a>
+              </div>
+              <span class="small ml-1 text-nowrap">175 KB</span>
+            </div>
+
+            <div class="fupl-item">
+              <div class="fupl-elimina">
+                <button type="button" class="close" aria-label="Elimina" title="Elimina questo file" data-file-id="123">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="fupl-doc text-truncate">
+                <a href="#" class="text-truncate">nome_file_molto_molto_molto_lungo.pdf</a>
+              </div>
+              <span class="small ml-1 text-nowrap">175 KB</span>
+            </div>
+
+            <div class="fupl-item">
+              <div class="fupl-elimina">
+                <button type="button" class="close" aria-label="Elimina" title="Elimina questo file" data-file-id="123">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="fupl-doc text-truncate">
+                <a href="#" class="text-truncate">nome_file_molto_molto_molto_lungo.pdf</a>
+              </div>
+              <span class="small ml-1 text-nowrap">175 KB</span>
+            </div>
+
+          </div>
+          <div class="fupl-panel">
+            <div class="fupl-button">
+              <label class="btn btn-outline-primary btn-sm">
+                Seleziona un documento
+                <input type="file">
+              </label>
+              <span class="fupl-dd-text">
+                ...oppure trascinalo qui
+              </span>
+            </div>
+            <div class="fupl-info-text">
+              (File in formato <strong>PDF</strong>, max <strong>200KB</strong>)
+            </div>
+          </div><!--  /.fupl-panel -->
+        </div><!--  /.fupl -->
+      </div><!--  /.fupl-wrapper -->
+
+
+
+    </div><!--  /.container -->
+
+    <script>
+      const base_upl = document.getElementById('base_upl');
+      let _cloned = base_upl.cloneNode(true);
+      base_upl.insertAdjacentElement('afterend', _cloned);
+      _cloned.querySelector('.fupl').classList.add('fupl-is-dragover');
+      /*
+      document.querySelectorAll('.fupl-wrapper').forEach( element => {
+        let _cloned = element.cloneNode(true);
+        element.insertAdjacentElement('afterend', _cloned);
+        fupl = _cloned.querySelector('.fupl').classList.add('fupl-is-dragover');
+      });
+      */
+
+    </script>
+    <script src="../node_modules/layout-tools/dist/layout_tools-min.js"></script>
+  </body>
+
+</html>

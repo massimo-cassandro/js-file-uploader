@@ -20,5 +20,9 @@
     "dist/*.{css,js,map}",
     "js/*.js",
     "scss/*.scss"
-  ]
+  ],
+  "devDependencies": {
+    "bootstrap": "^4.3.1",
+    "layout-tools": "git+https://github.com/massimo-cassandro/layout-tools.git#master"
+  }
 }

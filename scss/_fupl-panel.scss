@@ -1,0 +1,32 @@
+.fupl-panel {
+  margin:1rem 0 0;
+  padding: .5rem 0 0;
+  border-top:1px dotted $fupl-panel-border-color;
+  text-align: center;
+
+  .fupl-button {
+    label {
+      margin:0;
+    }
+  }
+
+  .fupl-dd-text {
+    font-size:85%;
+    margin:.5rem 0 0;
+    font-weight: $font-weight-bold;
+    display: block;
+
+    @include media-breakpoint-up(md) {
+      margin:0 0 0 .5rem;
+      display: inline;
+      white-space: nowrap;
+    }
+  }
+  .fupl-info-text {
+    font-size:75%;
+    font-style: italic;
+    color: $text-muted;
+    margin-top:.5rem;
+  }
+
+}

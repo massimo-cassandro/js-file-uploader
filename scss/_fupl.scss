@@ -1,0 +1,20 @@
+.fupl-wrapper {
+  margin:1rem 0;
+}
+.fupl {
+  padding:1rem;
+  outline: 2px dashed $fupl-outline-color;
+  outline-offset: 0;
+  transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  background-color: $fupl-background-color;
+
+  &.fupl-is-dragover {
+		outline-offset: -.5rem;
+		outline-color: $fupl-outline-color-dragover;
+    background-color: $fupl-background-color-dragover;
+
+    .fupl-panel {
+      border: none;
+    }
+  }
+}

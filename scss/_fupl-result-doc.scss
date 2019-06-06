@@ -1,0 +1,36 @@
+.fupl-type-doc {
+
+  .fupl-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:flex-start;
+    align-items:center;
+    margin-bottom:.5rem;
+    max-width: 100%;
+  }
+
+  .fupl-elimina {
+    margin-right:.3rem;
+  }
+
+  &.fupl-multiple {
+    .fupl-result {
+
+      @include media-breakpoint-up(sm) {
+        display: grid;
+        grid-gap: 1.5rem;
+        grid-template-columns: repeat(2, minmax(50%, 1fr));
+      }
+      @include media-breakpoint-up(md) {
+        grid-template-columns: repeat(3, minmax(percentage(1/3), 1fr));
+      }
+      @include media-breakpoint-up(lg) {
+        grid-template-columns: repeat(4, minmax(25%, 1fr));
+      }
+      @include media-breakpoint-up(xl) {
+        grid-template-columns: repeat(5, minmax(20%, 1fr));
+      }
+    }
+  }
+}

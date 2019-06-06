@@ -1,4 +1,4 @@
-/*!
+/*!@preserve
  *
  * FileUploader 2.0
  * HTML5 / JS Async Uploader
