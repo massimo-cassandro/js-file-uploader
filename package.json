@@ -19,7 +19,9 @@
   "files": [
     "dist/*.{css,js,map}",
     "js/*.js",
-    "scss/*.scss"
+    "scss/*.scss",
+    "demo/**/*",
+    "readme_files/*.{png,jpg}"
   ],
   "devDependencies": {
     "bootstrap": "^4.3.1",

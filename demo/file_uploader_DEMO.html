@@ -5,6 +5,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>File uploader demo</title>
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css" media="all">
+  <style type="text/css" media="screen">
+    /* this is tipically managed in your project layout */
+    .fupl-label.required:not(.disabled)::before {
+      color: #c00;
+      margin-right:.1em;
+      line-height: 1;
+      content: '*';
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -17,6 +26,7 @@
         data-img_min_w="500"
         data-img_min_h="500"
         data-max_filesize="2000"
+        data-uploader_add_label="true"
       >
         <label for="input_file">Label del campo file</label>
         <input class="form-control" id="input_file" type="file" name="myfile">
@@ -29,6 +39,7 @@
         data-file_uploader2='{"filetype":"auto"}'
         data-max_filesize="4000"
         data-required
+        data-uploader_add_label="true"
       >Contenuto del div</div>
 
       <p class="mt-5"><strong>Uploader senza campo file (pdf, multiple e required  da parametro)</strong></p>
@@ -37,6 +48,8 @@
         data-max_filesize="4000"
         data-multiple="true"
         data-required="true"
+        data-uploader_add_label="true"
+        data-uploader_label_text="Label da `uploader_label_text`"
       >Contenuto del div</div>
 
       <p class="mt-5"><strong>Uploader con campo file (img, multiple, required)</strong></p>
@@ -44,6 +57,7 @@
         data-file_uploader2
         data-filetype="img"
         data-max_filesize="8Mb"
+        data-uploader_add_label="true"
       >
         <label for="input_file2">Label del campo file</label>
         <input class="form-control" id="input_file2" type="file" name="myfile" multiple required>
@@ -54,6 +68,7 @@
         data-file_uploader2
         data-filetype="auto"
         data-accept=".pdf, .xlsx"
+        data-uploader_add_label="true"
       >
         <label for="input_file3">Label del campo file</label>
         <input class="form-control" id="input_file3" type="file" name="myfile" multiple accept=".doc, .docx">

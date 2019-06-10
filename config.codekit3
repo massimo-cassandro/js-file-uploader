@@ -71,6 +71,14 @@
 		"oAP": "/demo/file_uploader_DEMO.html",
 		"oF": 0
 		},
+	"/demo/layout_test.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/layout_test.html",
+		"oF": 0
+		},
 	"/demo/server_side_response.json": {
 		"ft": 524288,
 		"oA": 1,
@@ -78,14 +86,6 @@
 		"oF": 0,
 		"oO": 0,
 		"oS": 1
-		},
-	"/demo/template_css_test.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/demo/template_css_test.html",
-		"oF": 0
 		},
 	"/demo/test-files/gigi-1508584-unsplash.jpg": {
 		"ft": 16384,
@@ -701,6 +701,25 @@
 		"pME": 1,
 		"rFN": 0,
 		"uCM": 0
+		},
+	"/readme_files/markup_schema.png": {
+		"ft": 32768,
+		"iS": 55290,
+		"oA": 1,
+		"oAP": "/readme_files/markup_schema.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"/readme_files/readme_files.sketch": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/readme_files/readme_files.sketch",
+		"oF": 0
 		},
 	"/scss/_fupl-label.scss": {
 		"aP": 1,

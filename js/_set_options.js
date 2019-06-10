@@ -65,64 +65,98 @@ FileUploader2 = ( (upl) => {
     required: false,
 
     /*
-    Template del markup da inserire all'interno dell'elemento contenitore,
-    così strutturato:
+      Template dei markup utilizzati
+      - `main`         : markup principale inserito dentro l'elemento indicato da
+                         `upl.global_options.selector`. L'elemento, a cui viene inoltre
+                         aggiunta la classe `flup`, viene inoltre racchiuso in un elemento
+                         `div.flup-wrapper`
 
-    * Il markup originale viene inserito all'interno dell'elemento .file_upl__button
-    * Il testo info per drag&drop viene inserito all'interno dell'elemento .file_upl__dd_text
-    * Il testo di info viene inserito all'interno dell'elemento .file_upl__info_text.
-      Se show_info_text = false, questo elemento può essere omesso.
+      - `single_img`   : template aggiuntivo per immagini singole
+      - `multiple_imgs`: template aggiuntivo per immagini multiple
+      - `single_doc`   : template aggiuntivo per documenti singoli
+      - `multiple_docs`: template aggiuntivo per documenti multipli
+      - `no_file`      : template per indicare l'assenza di file
 
-    NB: È possibile variare il markup secondo necessità,
-    ma è necessario che le classi .file_upl__* siano mantenute.
+      Consulta il readme per ulteriori dettagli.
+
+      Il markup di default utilizza classi di Boostrap 4.
+
+      L'eventuale contenuto dell'elemento originale viene eliminato (può contenere
+      un elemento type[file] per eventuale procedura di fallback)
+
+      I template possono essere alterati a piacimento, purché si mantengano le classi
+      `fupl-*` utilizzate nella procedura.
+
+      `multiple_docs` e `multple_imgs` possono essere null, in questo caso vengono utilizzati
+      gli stessi markup per singolo file
     */
-    template: '<div class="card text-center" style="background-color: transparent">' +
-        '<div class="card-body">' +
-          '<div class="file_upl__button"></div>' +
-          '<div class="file_upl__dd_text"></div>' +
+    templates: {
+      // wrapped in <div class="fupl-wrapper"><div class="fupl"></div></div>
+      main: '<div class="fupl-result"></div>' +
+        '<div class="fupl-panel">' +
+          '<div class="fupl-button">' +
+            '<label><input type="file"></label>' +
+            '<div class="fupl-dd-text">{</div>' +
+          '</div>' +
+          '<div class="fupl-info-text"></div>' +
+        '</div>',
+
+      // contenuto di fupl-result quando non sono presenti files
+      no_file: '<div class="fupl-result-empty text-muted small font-italic"></div>',
+
+      // trigger per la rimozione di un elemento da .fupl_results
+      // è aggiunto all'interno dell'elemento `.fupl-elimina`, presente in ognuno
+      // degli elementi successivi
+      // Deve essere un elemento button
+      remove_btn: '<button type="button" class="close" aria-label="Elimina" title="Elimina questo file">' +
+            '<span aria-hidden="true">&times;</span>' +
+          '</button>',
+
+      single_img: '<div class="fupl-item">' +
+        '<div class="fupl-elimina"></div>' +
+        '<img alt="Immagine caricata" class="img-fluid">' +
+        '<div class="fupl-file-info">' +
+          '<div class="text-truncate fupl-file-name"></div>' +
+          '<div class="fupl-file-size"></div>' +
         '</div>' +
-        '<div class="card-footer text-muted small font-italic file_upl__info_text"></div>' +
       '</div>',
 
+      multiple_imgs: '<div class="fupl-item">' +
+          '<div class="fupl-elimina"></div>' +
+          '<div class="fupl-img">' +
+            '<img alt="Immagine caricata" class="img-fluid">' +
+          '</div>' +
+          '<div class="fupl-file-info">' +
+            '<div class="text-truncate fupl-file-name"></div>' +
+            '<div class="fupl-file-size"></div>' +
+          '</div>' +
+        '</div>',
 
-    // Funzione richiamata dopo l'inizializzazione di ogni elemento FileUploader.
-    // La funzione viene invocata con l'oggetto di tutte le opzioni come argomento
-    init_callback: null,
+      single_doc: '<div class="fupl-item">' +
+          '<div class="fupl-elimina"></div>' +
+          '<div class="fupl-doc text-truncate">' +
+            '<a href="#" class="text-truncate fupl-file-name"></a>' +
+          '</div>' +
+          '<span class="small ml-1 text-nowrap fupl-file-size"></span>' +
+        '</div>',
 
-    /*
-    Funzione richiamata ogni volta che un file viene inviato al server.
-    La funzione viene invocata passandole un oggetto contenente:
-      * `item_id`: id univoco del documento in elaborazione
-      * `filelist_item`: oggetto filelist corrente,
-      * `img_preview` : miniatura dell'immagine in forma di stringa Base64
-        (null se si tratta di altre tipologie)
-      * `uploader_options`: oggetto `options` corrente
-      * `img_wi` e `img_he`: dimensioni in pixel dell'immagine.
-        null se non si tratta di immagini
-    */
-    upload_start_callback: null,
+      multiple_docs: null // usa single_doc
+    },
 
-    /*
-    Funzione richiamata ogni volta che un file viene caricato.
-    La funzione viene invocata passandole un oggetto contenente:
-      * `item_id`: id univoco del documento in elaborazione,
-      * `server_error`: null, se l'upload è stato completato correttamente oppure,
-        in caso contrario, stringa con il messaggio di errore restituito
-      * `filelist_item`: oggetto filelist corrente,
-      * `hidden_fields`: stringa con i campi hidden da inviare al server
-      * `uploader_options`: oggetto `options` corrente
-      * `img_wi` e img_he: dimensioni in pixel dell'immagine.
-        null se non si tratta di immagini
-    */
-    upload_complete_callback: null,
+    // testo da inserire in `fupl-result-empty` per immagine non presente (`{{nofile_text}}`)
+    no_img_text: 'Nessuna immagine presente',
+
+    // testo da inserire in `fupl-result-empty` per documento (pdf o altro) non presente
+    // (`{{nofile_text}}`)
+    no_doc_text: 'Nessun file presente',
 
     // Eventuale classe da aggiungere all'elemento FileUploader al
     // momento dell'inizializzazione
     element_class: null,
 
-    // Eventuale classe da aggiungere all'elemento FileUploader quando un file
+    // Classe da aggiungere all'elemento FileUploader quando un file
     // vi è trascinato sopra
-    element_dragover_class: null,
+    element_dragover_class: 'fupl-is-dragover',
 
     // Label da applicare da applicare all'elemento FileUploader.
     // Se `null` e se esiste un elemento `label` all'interno dell'uploader,
@@ -135,27 +169,43 @@ FileUploader2 = ( (upl) => {
     // Eventuale classe da aggiungere ad uploader_label
     uploader_label_class: null,
 
-    // classi da applicare al tag label dell'input[file] utilizzato
+    /*
+    Testi del label del tag input (il primo elemento dell'array) e del testo
+    informativo per il drag &drop da inserire in `.fupl-dd-text` (il secondo elemento)
+    nelle varie combinazioni (img singola e multiple, doc singole e multipli)
+    segnaposti: ['{{input_label}}', '{{dd_text}}']
+    */
+    input_text: {
+      img: {
+        single:   ["Seleziona un'immagine", "\u2026oppure trascinala qui"],
+        multiple: ["Seleziona una o più immagini", "\u2026oppure trascinale qui"]
+      },
+      doc: {
+        single: ["Seleziona un documento", "\u2026oppure trascinalo qui"],
+        multiple: ["Seleziona uno o più documenti", "\u2026oppure trascinali qui"]
+      }
+    },
+
+    // classi da applicare al tag label dell'input[file] generato, utilizzato
     // come pulsante per la selezione dei file
-    label_btn_class: 'btn btn-primary btn-lg',
-
-    // Testo di istruzioni per il drag and drop con input senza attributo `multiple`
-    dd_text_single: 'oppure trascina qui un file',
-
-    // Testo di istruzioni per il drag and drop  con input `multiple`
-    dd_text_multiple: 'oppure trascina qui uno o più file',
+    input_label_class: 'btn btn-outline-primary btn-sm',
 
     // indica se mostrare o no il testo informativo su formati accettati,
-    // dimensioni immagini, ecc. Se si decide di non mostralo, potrebbe essere
-    // necessario rimuovere dal template l'elemento .file_upl__info_text
+    // dimensioni immagini, ecc. Se si decide di non mostrarlo, potrebbe essere
+    // necessario rimuovere dal template l'elemento `.fupl-info-text`
     show_info_text: true,
+
+    // stringhe aggiunte all'inizio e alla fine del testo informativo generato
+    // utilizzate solo se `custom_info_text` non è impostato
+    info_text_wrap_string: ['(', ')'],
+
+    // Stringa utilizzata per concatenare tra loro le varie parti del testo informativo generato
+    // utilizzata solo se `custom_info_text` non è impostato
+    info_text_join_string: ', ',
 
     // Eventuale testo informativo personalizzato. se presente,
     // sostituisce il testo generato in base ai formati, ai limiti di dimensioni, ecc.
     custom_info_text: null,
-
-    // Stringa utilizzata per concatenare tra loro le varie parti del testo informativo
-    info_text_join_string: '<br>',
 
     /*
     impostazioni per le immagini.
@@ -193,6 +243,37 @@ FileUploader2 = ( (upl) => {
     // di ogni singolo file caricato. Il valore indicato è il nome base dell'array
     // costruito per inviare i valori al server.
     varname: 'file',
+
+    // Funzione richiamata dopo l'inizializzazione di ogni elemento FileUploader.
+    // La funzione viene invocata con l'oggetto di tutte le opzioni come argomento
+    init_callback: null,
+
+    /*
+    Funzione richiamata ogni volta che un file viene inviato al server.
+    La funzione viene invocata passandole un oggetto contenente:
+      * `item_id`: id univoco del documento in elaborazione
+      * `filelist_item`: oggetto filelist corrente,
+      * `img_preview` : miniatura dell'immagine in forma di stringa Base64
+        (null se si tratta di altre tipologie)
+      * `uploader_options`: oggetto `options` corrente
+      * `img_wi` e `img_he`: dimensioni in pixel dell'immagine.
+        null se non si tratta di immagini
+    */
+    upload_start_callback: null,
+
+    /*
+    Funzione richiamata ogni volta che un file viene caricato.
+    La funzione viene invocata passandole un oggetto contenente:
+      * `item_id`: id univoco del documento in elaborazione,
+      * `server_error`: null, se l'upload è stato completato correttamente oppure,
+        in caso contrario, stringa con il messaggio di errore restituito
+      * `filelist_item`: oggetto filelist corrente,
+      * `hidden_fields`: stringa con i campi hidden da inviare al server
+      * `uploader_options`: oggetto `options` corrente
+      * `img_wi` e img_he: dimensioni in pixel dell'immagine.
+        null se non si tratta di immagini
+    */
+    upload_complete_callback: null,
 
     /*
     Array degli eventuali elementi preregistrati, nella forma:
