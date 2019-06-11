@@ -67,15 +67,13 @@ FileUploader2 = ((upl) => {
     fupl_options.element.classList.add("fupl");
 
     // aggiunta wrapper
-    // Questo elemento non viene usato nella procedura ed è necessario
-    // solo per il css
-    let wrapper = document.createElement('div');
-    fupl_options.element.parentNode.insertBefore(wrapper, fupl_options.element);
-    wrapper.appendChild(fupl_options.element);
-    wrapper.classList.add("fupl-wrapper");
-    wrapper.classList.add("fupl-type-" + fupl_options._type );
+    fupl_options.wrapper = document.createElement('div');
+    fupl_options.element.parentNode.insertBefore(fupl_options.wrapper, fupl_options.element);
+    fupl_options.wrapper.appendChild(fupl_options.element);
+    fupl_options.wrapper.classList.add("fupl-wrapper");
+    fupl_options.wrapper.classList.add("fupl-type-" + fupl_options._type );
     if(fupl_options.multiple) {
-      wrapper.classList.add("fupl-multiple");
+      fupl_options.wrapper.classList.add("fupl-multiple");
     }
     // aggiunta eventuali class' personale
     if( fupl_options.element_class ) {
@@ -98,7 +96,7 @@ FileUploader2 = ((upl) => {
           '</label>' +
         '</div>'
       );
-      wrapper.classList.add( 'fupl-has-label' );
+      fupl_options.wrapper.classList.add( 'fupl-has-label' );
     }
 
     // aggiunta template uploader
@@ -141,10 +139,16 @@ FileUploader2 = ((upl) => {
     }
 
     // aggiunta valori
-    if( fupl_options.values ) {
+    if( !fupl_options.values || !fupl_options.values.length ) {
+      fupl_options.istance_result_wrapper.innerHTML = fupl_options.templates.no_file[fupl_options._type];
+
+    } else {
       fupl_options.values.forEach( item => {
-        fupl_options.createItem(item);
+        upl.createItem(item, fupl_options);
       });
+
+      // aggiunta parametro data per segnalare che sono presenti valori
+      fupl_options.wrapper.dataset.hasValues = 'true';
     }
 
 

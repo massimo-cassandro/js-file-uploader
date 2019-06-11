@@ -58,15 +58,13 @@ FileUploader2 = ((upl) => {
         maxbytes = maxbytes * 1024 * 1024;
       }
 
-      if(!Number.isInteger(feedback_size)) {
-        feedback_size = feedback_size.toFixed(1);
-      }
-
       return {
         //'original_value': filesize_value,
         //'unit'         : unit,
         'maxbytes'     : maxbytes,
-        'feedback_size': feedback_size.toLocaleString(locales) + '&nbsp;' + unit
+        'feedback_size': feedback_size.toLocaleString(
+          locales, {maximumFractionDigits: (unit === 'KB'? 0 : 1)}
+        ) + '<span class="fupl-unit">' + unit + '</span>'
       };
 
     } else {

@@ -23,7 +23,7 @@ FileUploader2 = ((upl) => {
     init
     Seleziona gli elementi con l'attributo `fupl_selector` e avvia FileUploader
     `user_global_options` è l'oggetto istanziato al momento di avviare FileUploader2,
-    ha la stessa struttiura di `default_options` (definito in _set_options.js)
+    ha la stessa struttura di `default_options` (definito in _set_options.js)
     e può sovrascrivere ogni suo elemento
   */
   upl.init = (user_global_options) => {
@@ -98,25 +98,30 @@ FileUploader2 = ((upl) => {
         if( Object.keys(upl.mimetypes).indexOf(fupl_options.filetype) === -1 ) {
           throw new Error( "Parametro `filetype` non corretto" );
         }
-
-        // parametri che devono essere array e che potrebbero essere presenti
-        // come attributi data (stringa)
-        const json_params = [
-          'input_text',
-          'templates',
-          'info_text_wrap_string',
-          'values'
-        ];
-        json_params.forEach(item => {
-          if(typeof fupl_options[item] === 'string' ) {
-            fupl_options[item] = JSON.parse(fupl_options[item]);
-          }
-        });
-
-
       } catch(e) {
         console.error( e );// eslint-disable-line
       }
+
+      // parametri che devono essere array e che potrebbero essere presenti
+      // come attributi data (stringa)
+      const json_params = [
+        'input_text',
+        'templates',
+        'info_text_wrap_string',
+        'values'
+      ];
+      json_params.forEach(item => {
+        try {
+          if(typeof fupl_options[item] === 'string' ) {
+            fupl_options[item] = JSON.parse(fupl_options[item]);
+          }
+        } catch(e) {
+          console.error(`L'elemento “${item}” non è un json valido`); // eslint-disable-line
+          console.log(fupl_options.element); // eslint-disable-line
+          console.error( e );// eslint-disable-line
+        }
+      });
+
 
       new upl.createUploader(fupl_options);
 

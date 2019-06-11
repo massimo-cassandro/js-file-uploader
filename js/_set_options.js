@@ -102,7 +102,10 @@ FileUploader2 = ( (upl) => {
         '</div>',
 
       // contenuto di fupl-result quando non sono presenti files
-      no_file: '<div class="fupl-result-empty text-muted small font-italic"></div>',
+      no_file: {
+        img: '<div class="fupl-result-empty text-muted small font-italic">Nessuna immagine presente</div>',
+        doc: '<div class="fupl-result-empty text-muted small font-italic">Nessun file presente</div>'
+      },
 
       // trigger per la rimozione di un elemento da .fupl_results
       // è aggiunto all'interno dell'elemento `.fupl-elimina`, presente in ognuno
@@ -112,43 +115,40 @@ FileUploader2 = ( (upl) => {
             '<span aria-hidden="true">&times;</span>' +
           '</button>',
 
-      single_img: '<div class="fupl-item">' +
-        '<div class="fupl-elimina"></div>' +
-        '<img alt="Immagine caricata" class="img-fluid">' +
-        '<div class="fupl-file-info">' +
-          '<div class="text-truncate fupl-file-name"></div>' +
-          '<div class="fupl-file-size"></div>' +
-        '</div>' +
-      '</div>',
-
-      multiple_imgs: '<div class="fupl-item">' +
+      img: {
+        single: '<div class="fupl-item">' +
           '<div class="fupl-elimina"></div>' +
-          '<div class="fupl-img">' +
-            '<img alt="Immagine caricata" class="img-fluid">' +
-          '</div>' +
+          '<img alt="Immagine caricata" class="img-fluid">' +
           '<div class="fupl-file-info">' +
             '<div class="text-truncate fupl-file-name"></div>' +
             '<div class="fupl-file-size"></div>' +
           '</div>' +
         '</div>',
 
-      single_doc: '<div class="fupl-item">' +
-          '<div class="fupl-elimina"></div>' +
-          '<div class="fupl-doc text-truncate">' +
-            '<a href="#" class="text-truncate fupl-file-name"></a>' +
-          '</div>' +
-          '<span class="small ml-1 text-nowrap fupl-file-size"></span>' +
-        '</div>',
+        multiple: '<div class="fupl-item">' +
+            '<div class="fupl-elimina"></div>' +
+            '<div class="fupl-img">' +
+              '<img alt="Immagine caricata" class="img-fluid">' +
+            '</div>' +
+            '<div class="fupl-file-info">' +
+              '<div class="text-truncate fupl-file-name"></div>' +
+              '<div class="fupl-file-size"></div>' +
+            '</div>' +
+          '</div>'
+      },
 
-      multiple_docs: null // usa single_doc
+      doc : {
+        single: '<div class="fupl-item">' +
+            '<div class="fupl-elimina"></div>' +
+            '<div class="fupl-doc text-truncate">' +
+              '<a href="#" class="text-truncate fupl-file-name"></a>' +
+            '</div>' +
+            '<span class="small ml-1 text-nowrap fupl-file-size"></span>' +
+          '</div>',
+
+        multiple: null // usa single_doc
+      }
     },
-
-    // testo da inserire in `fupl-result-empty` per immagine non presente (`{{nofile_text}}`)
-    no_img_text: 'Nessuna immagine presente',
-
-    // testo da inserire in `fupl-result-empty` per documento (pdf o altro) non presente
-    // (`{{nofile_text}}`)
-    no_doc_text: 'Nessun file presente',
 
     // Eventuale classe da aggiungere all'elemento FileUploader al
     // momento dell'inizializzazione
@@ -279,11 +279,12 @@ FileUploader2 = ( (upl) => {
     Array json degli eventuali elementi preregistrati, nella forma:
       [
         {
-          id →  identificativo univoco del file (può essere anche il percorso sul server)
-          n  → nome del file
-          w  → larghezza in px (se immagine) oppure assente o null
-          h  →  altezza in px (se immagine) oppure assente o null
-          s  → dimensione in bytes
+          id    → identificativo univoco del file (può essere anche il percorso sul server)
+          name  → nome del file
+          url   → url per la visualizzazione/download del file
+          wi    → larghezza in px (se immagine) oppure assente o null
+          he    → altezza in px (se immagine) oppure assente o null
+          size  → dimensione in bytes
         }
         [...]
       ]
@@ -298,6 +299,8 @@ FileUploader2 = ( (upl) => {
 
 // TODO
     // attiva la possibilità di riordinare gli elementi trascinandoli
+    // se true, i valori degli eventuali elementi preregistrati devono essere
+    // elencati nel josn `values` nell'ordine correttp
     reorder: false,
 
     // name della variabile hidden usata per registrare l'ordinamento
