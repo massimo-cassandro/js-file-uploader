@@ -4,13 +4,55 @@ FileUploader2 = ((upl) => {
 
   upl.createUploader = (fupl_options) => {
 
-    // tipologia generale dell'uploader (img o doc)
-    let upl_istance = {
-      _type: fupl_options.filetype === 'img'? 'img' : 'doc',
-      _mode: fupl_options.multiple? 'single' : 'multiple'
-    },
-    // rilevamento eventuali elemento label
-    original_label = fupl_options.element.querySelector('label');
+    // eventuale campo input e relativo tag label
+    let _input = fupl_options.element.querySelector('input[type="file"]'),
+      original_label = fupl_options.element.querySelector('label');
+
+
+    // implementazione eventuali parametro/attributo `accept`
+    if( fupl_options.filetype === 'auto' ) {
+
+      let accept_attr = [],
+      accept_params = [];
+
+      if( fupl_options.accept !== null ) {
+        accept_params = fupl_options.accept
+          .split(',').map( item => item.trim() );
+      }
+
+      if(_input && _input.getAttribute('accept') ) {
+        accept_attr = _input.getAttribute('accept')
+          .split(',').map( item => item.trim() );
+      }
+
+      // https://www.peterbe.com/plog/merge-two-arrays-without-duplicates-in-javascript
+      fupl_options.accept = [...new Set([...accept_params, ...accept_attr])];
+
+    } else {
+      fupl_options.accept = upl.mimetypes[fupl_options.filetype];
+    }
+
+    // elaborazione max_filesize
+    let max_filesize = upl.parse_max_filesize(fupl_options.max_filesize, fupl_options.locales);
+    if( max_filesize === false ) {
+      throw new Error( '"' + fupl_options.max_filesize + '" non è un valore corretto per `max_filesize`');
+    } else {
+      fupl_options.max_filesize = max_filesize;
+    }
+
+    // parametro o attributo multiple
+    fupl_options.multiple = Boolean(fupl_options.multiple ||
+      (_input && _input.hasAttribute('multiple') ));
+
+    // parametro o attributo required
+    fupl_options.required = Boolean(fupl_options.required ||
+      (_input && _input.hasAttribute('required') ));
+
+
+    // tipologia generale dell'uploader (img o doc) e modalità
+    // selezione file
+    fupl_options._type = fupl_options.filetype === 'img'? 'img' : 'doc';
+    fupl_options._mode = fupl_options.multiple? 'single' : 'multiple';
 
     // testo label (da tag o parametro uploader_label_text)
     if( !fupl_options.uploader_label_text && original_label) {
@@ -25,11 +67,13 @@ FileUploader2 = ((upl) => {
     fupl_options.element.classList.add("fupl");
 
     // aggiunta wrapper
+    // Questo elemento non viene usato nella procedura ed è necessario
+    // solo per il css
     let wrapper = document.createElement('div');
     fupl_options.element.parentNode.insertBefore(wrapper, fupl_options.element);
     wrapper.appendChild(fupl_options.element);
     wrapper.classList.add("fupl-wrapper");
-    wrapper.classList.add("fupl-type-" + upl_istance._type );
+    wrapper.classList.add("fupl-type-" + fupl_options._type );
     if(fupl_options.multiple) {
       wrapper.classList.add("fupl-multiple");
     }
@@ -38,7 +82,7 @@ FileUploader2 = ((upl) => {
       fupl_options.element.classList.add( ...fupl_options.element_class.split(' ') );
     }
 
-    // aggiunta label uplaoder
+    // aggiunta label uploader
     if( fupl_options.uploader_add_label ) {
       let _class = ['fupl-label'];
       if( fupl_options.uploader_label_class ) {
@@ -60,33 +104,48 @@ FileUploader2 = ((upl) => {
     // aggiunta template uploader
     fupl_options.element.innerHTML = fupl_options.templates.main;
 
-    upl_istance = Object.assign(upl_istance, {
-      input: fupl_options.element.querySelector('.fupl-panel input[type="file"]'),
-      label: fupl_options.element.querySelector('.fupl-panel label'),
-      dd_text: fupl_options.element.querySelector('.fupl-panel .fupl-dd-text'),
-      info_text: fupl_options.element.querySelector('.fupl-panel .fupl-info-text'),
-      result_wrapper: fupl_options.element.querySelector('.fupl-result')
-    });
+    fupl_options.istance_input = fupl_options.element.querySelector('.fupl-panel input[type="file"]');
+    fupl_options.istance_label = fupl_options.element.querySelector('.fupl-panel label');
+    fupl_options.istance_dd_text = fupl_options.element.querySelector('.fupl-panel .fupl-dd-text');
+    fupl_options.istance_info_text = fupl_options.element.querySelector('.fupl-panel .fupl-info-text');
+    fupl_options.istance_result_wrapper = fupl_options.element.querySelector('.fupl-result');
+
 
     // inserimento testi e attributi
-    if( fupl_options.required ) {
-      upl_istance.input.setAttribute('required', '');
-    }
+    // if( fupl_options.required ) {
+    //   fupl_options.istance_input.setAttribute('required', '');
+    // }
     if( fupl_options.multiple ) {
-      upl_istance.input.setAttribute('multiple', '');
+      fupl_options.istance_input.setAttribute('multiple', '');
     }
-    upl_istance.label.insertAdjacentHTML('beforeend',
-      fupl_options.input_text[upl_istance._type][upl_istance._mode][0]
+    if( fupl_options.accept !== null ) {
+      fupl_options.istance_input.setAttribute('accept', fupl_options.accept.join(','));
+    }
+
+    fupl_options.istance_label.insertAdjacentHTML('beforeend',
+      fupl_options.input_text[fupl_options._type][fupl_options._mode][0]
     );
     if(fupl_options.input_label_class) {
-      upl_istance.label.classList.add(...fupl_options.input_label_class.split(' '));
+      fupl_options.istance_label.classList.add(...fupl_options.input_label_class.split(' '));
     }
-    upl_istance.dd_text.innerHTML = fupl_options.input_text[upl_istance._type][upl_istance._mode][1];
+    fupl_options.istance_dd_text.innerHTML = fupl_options.input_text[fupl_options._type][fupl_options._mode][1];
 
     // info text
-    upl_istance.info_text.innerHTML = 'xxx';
+    fupl_options.istance_info_text.innerHTML = 'xxx';
+    if( fupl_options.show_info_text ) {
+      if(fupl_options.custom_info_text) {
+        fupl_options.istance_info_text.innerHTML = fupl_options.custom_info_text;
+      } else {
+        fupl_options.istance_info_text.innerHTML = upl.create_info_text(fupl_options);
+      }
+    }
 
     // aggiunta valori
+    if( fupl_options.values ) {
+      fupl_options.values.forEach( item => {
+        fupl_options.createItem(item);
+      });
+    }
 
 
     // esecuzione init_callback, se presente
@@ -110,15 +169,9 @@ FileUploader2 = ((upl) => {
           item !== 'element';
         c_options[item] = _toStringify ? JSON.stringify(fupl_options[item], null, ' ') : fupl_options[item];
       });
-      console.log('fupl_options');
       console.table(c_options);
-      console.log('upl_istance');
-      console.table(upl_istance);
       console.groupCollapsed('fupl_options');
         console.log(fupl_options);
-      console.groupEnd();
-      console.groupCollapsed('upl_istance');
-        console.log(upl_istance);
       console.groupEnd();
       console.groupEnd();
       /* eslint-enable */
@@ -131,29 +184,6 @@ FileUploader2 = ((upl) => {
 
 })(FileUploader2 || {});
 
-
-
-  // //         // aggiunta template
-  // //         var original_html = fupl_options.element.html();
-  // //         fupl_options.element.html( fupl_options.template );
-
-  // //         fupl_options.element.find('.fileupl__button').html( original_html ); //ripristino markup originale
-
-  // //         // se esiste fupl_options.label_class, la classe viene aggiunta
-  // //         if( fupl_options.label_class ) {
-  // //           original_label.addClass( fupl_options.label_class  );
-  // //         }
-
-  // //         // aggiunta del testo info per il drag & drop
-  // //         fupl_options.element.find('.fileupl__dd_text').html( fupl_options.is_multiple ? fupl_options.dd_text_multiple : fupl_options.dd_text_single );
-
-  // //         // aggiunta testo info file
-  // //         fupl_options.element.find('.fileupl__info_text')
-  // //         .html(
-  // //           (fupl_options.show_info_text ? upl.create_info_text(fupl_options) : '') +
-  // //           ((fupl_options.show_info_text && fupl_options.custom_info_text)? '<br>' : '') +
-  // //           (fupl_options.custom_info_text ? fupl_options.custom_info_text : '')
-  // //         );
 
 
   // //         // !DRAG&DROP

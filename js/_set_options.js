@@ -170,7 +170,7 @@ FileUploader2 = ( (upl) => {
     uploader_label_class: null,
 
     /*
-    Testi del label del tag input (il primo elemento dell'array) e del testo
+    Array (o stringa json) dei testi del label del tag input (il primo elemento dell'array) e del testo
     informativo per il drag &drop da inserire in `.fupl-dd-text` (il secondo elemento)
     nelle varie combinazioni (img singola e multiple, doc singole e multipli)
     segnaposti: ['{{input_label}}', '{{dd_text}}']
@@ -276,15 +276,32 @@ FileUploader2 = ( (upl) => {
     upload_complete_callback: null,
 
     /*
-    Array degli eventuali elementi preregistrati, nella forma:
+    Array json degli eventuali elementi preregistrati, nella forma:
       [
         {
-
+          id →  identificativo univoco del file (può essere anche il percorso sul server)
+          n  → nome del file
+          w  → larghezza in px (se immagine) oppure assente o null
+          h  →  altezza in px (se immagine) oppure assente o null
+          s  → dimensione in bytes
         }
         [...]
       ]
+
+      l'id viene aggiunto come attributo `data` al pulsante di eliminazione del file
+      (genera un hidden con l'id del file da eliminare dal server)
     */
-    values: []
+    values: [],
+
+    // varname degli hidden con gli id dei file già registrati  da eliminare
+    delete_varname: 'name="elimina_file[]',
+
+// TODO
+    // attiva la possibilità di riordinare gli elementi trascinandoli
+    reorder: false,
+
+    // name della variabile hidden usata per registrare l'ordinamento
+    reorder_varname: 'order'
   };
 
   upl.setOptions = (...custom_options) => {

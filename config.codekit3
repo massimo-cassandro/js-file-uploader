@@ -109,6 +109,22 @@
 		"opt": 0,
 		"q": 100
 		},
+	"/demo/test-files/pdf1.pdf": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/test-files/pdf1.pdf",
+		"oF": 0
+		},
+	"/demo/test-files/pdf2.pdf": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/test-files/pdf2.pdf",
+		"oF": 0
+		},
 	"/dist/file_uploader-min.js": {
 		"bF": 0,
 		"ft": 64,
@@ -154,6 +170,28 @@
 		"oAP": "/fileuploader.code-workspace",
 		"oF": 0
 		},
+	"/js/_create_info_text.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/dist/_create_info_text-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
+	"/js/_create_item.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/dist/_create_item-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
 	"/js/_create_uploader.js": {
 		"bF": 0,
 		"ft": 64,
@@ -183,6 +221,17 @@
 		"mi": 1,
 		"oA": 1,
 		"oAP": "/dist/_set_options-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
+	"/js/_utility_funcs.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/dist/_utility_funcs-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 1
