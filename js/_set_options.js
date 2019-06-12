@@ -87,7 +87,9 @@ FileUploader2 = ( (upl) => {
       I template possono essere alterati a piacimento, purché si mantengano le classi
       `fupl-*` utilizzate nella procedura.
 
-      `multiple_docs` e `multple_imgs` possono essere null, in questo caso vengono utilizzati
+      I template delle immagini, devono contenere il tag img
+
+      doc e img multipli possono essere null, in questo caso vengono utilizzati
       gli stessi markup per singolo file
     */
     templates: {
@@ -108,17 +110,17 @@ FileUploader2 = ( (upl) => {
       },
 
       // trigger per la rimozione di un elemento da .fupl_results
-      // è aggiunto all'interno dell'elemento `.fupl-elimina`, presente in ognuno
+      // è aggiunto all'interno dell'elemento `.fupl-remove`, presente in ognuno
       // degli elementi successivi
       // Deve essere un elemento button
-      remove_btn: '<button type="button" class="close" aria-label="Elimina" title="Elimina questo file">' +
+      remove_btn: '<button type="button" class="close fupl-remove-trigger" aria-label="Elimina" title="Elimina questo file">' +
             '<span aria-hidden="true">&times;</span>' +
           '</button>',
 
       img: {
         single: '<div class="fupl-item">' +
-          '<div class="fupl-elimina"></div>' +
-          '<img alt="Immagine caricata" class="img-fluid">' +
+          '<div class="fupl-remove"></div>' +
+          '<img alt="Immagine caricata" class="img-fluid fupl-img">' +
           '<div class="fupl-file-info">' +
             '<div class="text-truncate fupl-file-name"></div>' +
             '<div class="fupl-file-size"></div>' +
@@ -126,9 +128,9 @@ FileUploader2 = ( (upl) => {
         '</div>',
 
         multiple: '<div class="fupl-item">' +
-            '<div class="fupl-elimina"></div>' +
-            '<div class="fupl-img">' +
-              '<img alt="Immagine caricata" class="img-fluid">' +
+            '<div class="fupl-remove"></div>' +
+            '<div class="fupl-img-wrapper">' +
+              '<img alt="Immagine caricata" class="img-fluid fupl-img">' +
             '</div>' +
             '<div class="fupl-file-info">' +
               '<div class="text-truncate fupl-file-name"></div>' +
@@ -139,9 +141,9 @@ FileUploader2 = ( (upl) => {
 
       doc : {
         single: '<div class="fupl-item">' +
-            '<div class="fupl-elimina"></div>' +
+            '<div class="fupl-remove"></div>' +
             '<div class="fupl-doc text-truncate">' +
-              '<a href="#" class="text-truncate fupl-file-name"></a>' +
+              '<a href="#" class="text-truncate fupl-file-name fupl-url"></a>' +
             '</div>' +
             '<span class="small ml-1 text-nowrap fupl-file-size"></span>' +
           '</div>',
@@ -279,12 +281,14 @@ FileUploader2 = ( (upl) => {
     Array json degli eventuali elementi preregistrati, nella forma:
       [
         {
-          id    → identificativo univoco del file (può essere anche il percorso sul server)
+          id    → identificativo univoco del file (può essere anche il percorso sul server) OBBL
           name  → nome del file
-          url   → url per la visualizzazione/download del file
-          wi    → larghezza in px (se immagine) oppure assente o null
-          he    → altezza in px (se immagine) oppure assente o null
+          url   → url per eventuale tag <a> presente nell'elemento (se immagine può essere assente o null)
+          src   → attributo `src` obbligatorio se immagine, oppure assente o null
+          wi    → larghezza in px se immagine oppure assente o null
+          he    → altezza in px se immagine oppure assente o null
           size  → dimensione in bytes
+          [...] → eventuali campi aggiuntivi specifici dell'istanza
         }
         [...]
       ]
@@ -295,7 +299,7 @@ FileUploader2 = ( (upl) => {
     values: [],
 
     // varname degli hidden con gli id dei file già registrati  da eliminare
-    delete_varname: 'name="elimina_file[]',
+    delete_varname: 'elimina_file[]',
 
 // TODO
     // attiva la possibilità di riordinare gli elementi trascinandoli
@@ -305,6 +309,8 @@ FileUploader2 = ( (upl) => {
 
     // name della variabile hidden usata per registrare l'ordinamento
     reorder_varname: 'order'
+
+// TODO gestione campi aggiuntivi
   };
 
   upl.setOptions = (...custom_options) => {

@@ -52,7 +52,7 @@ FileUploader2 = ((upl) => {
     // tipologia generale dell'uploader (img o doc) e modalità
     // selezione file
     fupl_options._type = fupl_options.filetype === 'img'? 'img' : 'doc';
-    fupl_options._mode = fupl_options.multiple? 'single' : 'multiple';
+    fupl_options._mode = fupl_options.multiple? 'multiple' : 'single';
 
     // testo label (da tag o parametro uploader_label_text)
     if( !fupl_options.uploader_label_text && original_label) {
@@ -120,6 +120,11 @@ FileUploader2 = ((upl) => {
       fupl_options.istance_input.setAttribute('accept', fupl_options.accept.join(','));
     }
 
+    // aggiunta attributo data al wrapper per segnalare il required
+    if( fupl_options.required ) {
+      fupl_options.wrapper.dataset.required = 'true';
+    }
+
     fupl_options.istance_label.insertAdjacentHTML('beforeend',
       fupl_options.input_text[fupl_options._type][fupl_options._mode][0]
     );
@@ -147,9 +152,12 @@ FileUploader2 = ((upl) => {
         upl.createItem(item, fupl_options);
       });
 
-      // aggiunta parametro data per segnalare che sono presenti valori
+      // aggiunta attributo data per segnalare che sono presenti valori
       fupl_options.wrapper.dataset.hasValues = 'true';
     }
+
+    // gestione aggiunta nuovi elementi
+    upl.addNewItemHandlers(fupl_options);
 
 
     // esecuzione init_callback, se presente
@@ -187,51 +195,3 @@ FileUploader2 = ((upl) => {
   return upl;
 
 })(FileUploader2 || {});
-
-
-
-  // //         // !DRAG&DROP
-  // //         fupl_options.element
-  // //         .on( 'drag dragstart dragend dragover dragenter dragleave drop', function( e ) {
-  // //           e.preventDefault();
-  // //           e.stopPropagation();
-  // //         })
-  // //         .on( 'dragover dragenter', function() {
-  // //           fupl_options.element.addClass( fupl_options.element_dragover_class );
-  // //         })
-  // //         .on( 'dragleave dragend drop', function() {
-  // //           fupl_options.element.removeClass( fupl_options.element_dragover_class );
-  // //         })
-  // //         .on( 'drop', function( e ) {
-  // //           var err = false;
-  // //           if( !fupl_options.is_multiple && e.originalEvent.dataTransfer.files.length > 1 ) {
-
-  // //             fupl_options.alertErrorAPI('Puoi selezionare un solo file!');
-  // //             err = true;
-  // //           }
-
-  // //           if(!err) {
-  // //             upl.sendFiles( e.originalEvent.dataTransfer.files, fupl_options ); // filelist
-  // //           }
-  // //         });
-
-  // // //TODO fumoso, da riscrivere
-  // // //TODO correggere selector, possibilità non abbia id
-  // //         // !selezione tramite input
-  // //         var input_selector = '#' + _input.attr('id');
-  // //         $(document).on('change', input_selector, function () {
-  // //           upl.sendFiles( document.querySelector(input_selector).files, fupl_options ); // filelist
-  // //         });
-
-
-  //       } catch(e) { //throw "error"
-  //         console.error( e );// eslint-disable-line
-  //       } // finally {}
-
-  //     }); // end document.querySelectorAll(upl.global_options.selector).forEach
-
-  //   }; // end init
-
-  //   return upl;
-
-  // })(FileUploader2 || {});
