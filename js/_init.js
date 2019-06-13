@@ -3,15 +3,12 @@
 FileUploader2 = ((upl) => {
 
   // VARIABILI E METODI PRIVATI
-  // nome dell'attributo data da usare come selettore degli elementi su cui applicare FileUploader.
-  const fupl_selector_data_name = 'file_uploader2',
-
   /*
     isSuitableBrowser
     Verifica che il browser sia in grado di gestire le funzionalità richieste.
     Restituisce `true` o `false`
   */
-  isSuitableBrowser = () => {
+  const isSuitableBrowser = () => {
     var div = document.createElement( 'div' );
     return ( ( 'draggable' in div ) || ( 'ondragstart' in div && 'ondrop' in div ) )
       && 'FormData' in window
@@ -44,7 +41,7 @@ FileUploader2 = ((upl) => {
     }
 
     // istanze uploader
-    document.querySelectorAll('[data-' + fupl_selector_data_name + ']').forEach( upl_element => {
+    document.querySelectorAll('[data-' + upl.data_attributes.fupl_selector + ']').forEach( upl_element => {
 
       /*
         merge dei parametri inseriti tramite attributi `data`, in cui:
@@ -52,15 +49,15 @@ FileUploader2 = ((upl) => {
         * `upl_element.dataset`:
             tutti gli attributi inseriti singolarmente (es. data-filetype="img")
 
-        * `upl_element.dataset[fupl_selector_data_name]`:
-            attributi inseriti tramite json assegnato a `data- + 'fupl_selector_data_name'`
+        * `upl_element.dataset[upl.data_attributes.fupl_selector]`:
+            attributi inseriti tramite json assegnato a `data- + 'upl.data_attributes.fupl_selector'`
             (es data-file_uploader2='{"filetype":"img"}')
 
         In caso di conflitto prevalgono gli ultimi
       */
 
       let element_all_dataset = upl_element.dataset,
-      fupl_dataset = upl_element.dataset[fupl_selector_data_name],
+      fupl_dataset = upl_element.dataset[upl.data_attributes.fupl_selector],
       fupl_options = {};
 
       if(element_all_dataset === '') {
@@ -79,9 +76,9 @@ FileUploader2 = ((upl) => {
         element_all_dataset
       );
 
-      // cancella la chiave `fupl_selector_data_name`
+      // cancella la chiave `upl.data_attributes.fupl_selector`
       // (al solo scopo di ridurre la confusione)
-      delete fupl_options[fupl_selector_data_name];
+      delete fupl_options[upl.data_attributes.fupl_selector];
 
       // aggiunta dell'elemento stesso ad  `fupl_options`:
       fupl_options.element = upl_element;
@@ -89,8 +86,8 @@ FileUploader2 = ((upl) => {
       // controllo parametri e avvio uploader
       try {
         //  controllo url
-        if( !fupl_options.url ) {
-          throw new Error( "Parametro `url` non impostato" );
+        if( !fupl_options.uploader_url ) {
+          throw new Error( "Parametro `uploader_url` non impostato" );
         }
 
         //  controllo parametro filetype

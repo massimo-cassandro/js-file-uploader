@@ -4,16 +4,6 @@ FileUploader2 = ((upl) => {
 
   upl.createItem = (item_data, fupl_options) => {
 
-    const stampaBytes = bytes => {
-      bytes = +bytes;
-      let mega = 1024*1024;
-      if(bytes >= mega ) {
-        return (bytes/mega).toLocaleString(fupl_options.locales, {maximumFractionDigits: 1}) + '<span class="fupl-unit">MB</span>';
-      } else {
-        return Math.round(bytes/1024).toLocaleString(fupl_options.locales, {maximumFractionDigits: 0}) + '<span class="fupl-unit">KB</span>';
-      }
-    };
-
     try {
 
       // verifica se il template è una stringa o no
@@ -80,7 +70,7 @@ FileUploader2 = ((upl) => {
           }
         }
         if(item_data.size) {
-          size_string += stampaBytes(item_data.size);
+          size_string += upl.parse_filesize(item_data.size, fupl_options.locales);
         }
 
         fupl_file_size.innerHTML = size_string;
@@ -100,7 +90,7 @@ FileUploader2 = ((upl) => {
 
       // id elemento per eventuale cancellazione
       if(item_data.id) {
-        item.querySelector('.fupl-item').dataset.id = item_data.id;
+        item.querySelector('.fupl-item').dataset[upl.data_attributes.item_id] = item_data.id;
       }
 
       fupl_options.istance_result_wrapper.insertAdjacentHTML('beforeend',
@@ -112,7 +102,7 @@ FileUploader2 = ((upl) => {
       item.querySelector('.fupl-remove-trigger').addEventListener('click', () => {
         // se l'id non è impostato si tratta di un nuovo elemento,
         // e non va eseguita la cancellazione sul server
-        let id = item.dataset.id;
+        let id = item.dataset[upl.data_attributes.item_id];
         item.remove();
         if(id) {
           fupl_options.wrapper.insertAdjacentHTML('beforeend',
@@ -121,11 +111,11 @@ FileUploader2 = ((upl) => {
         }
 
         // controllo se istance_result_wrapper è vuoto
-        // in caso positivo aggiunta testo `no_file` ed eliminazione
-        // fupl_options.wrapper.dataset.hasValues
+        // in caso positivo aggiunta testo `no_file` ed impostazione su false
+        // di fupl_options.wrapper.dataset[upl.data_attributes.hasValues]
         if( !fupl_options.istance_result_wrapper.querySelectorAll('.fupl-item').length ) {
           fupl_options.istance_result_wrapper.innerHTML = fupl_options.templates.no_file[fupl_options._type];
-          delete fupl_options.wrapper.dataset.hasValues;
+          fupl_options.wrapper.dataset[upl.data_attributes.hasValues] = 'false';
         }
 
       });

@@ -30,7 +30,7 @@ FileUploader2 = ((upl) => {
       let files = e.dataTransfer.files;
 
       if( !fupl_options.multiple && files.length > 1 ) {
-        fupl_options.alert_api('tooMuchFiles', 'error', fupl_options);
+        fupl_options.alert_api(fupl_options.alert_messages.tooMuchFiles, fupl_options);
       } else {
         upl.sendFiles( files, fupl_options );
       }
@@ -40,7 +40,6 @@ FileUploader2 = ((upl) => {
     fupl_options.istance_input.addEventListener('change', () => {
       upl.sendFiles( fupl_options.istance_input.files, fupl_options );
     });
-
 
   }; // end upl.createItem
 

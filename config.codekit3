@@ -242,6 +242,17 @@
 		"sC": 3,
 		"tS": 1
 		},
+	"/js/_build_hidden_fields.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/dist/_build_hidden_fields-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
 	"/js/_create_info_text.js": {
 		"bF": 0,
 		"ft": 64,

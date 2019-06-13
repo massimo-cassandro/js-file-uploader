@@ -2,175 +2,138 @@
 
 FileUploader2 = ((upl) => {
 
-  upl.sendFiles = (filelist/* , upl_options, _form */) => {
+  /*
+	sendFiles
+	Esegue i controlli impostati, quindi la chiamata ajax e produce
+	il feedback per l'utente
+	*/
+  upl.sendFiles = (filelist, fupl_options) => {
 
-    console.log(filelist); // eslint-disable-line
+    // sendAjaxRequest
+    // esegue l'upload Ajax - versione compatibile per IE
+    // https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
 
-  }; // end upl.sendFiles
+// TODO utilizzo `fetch` (però non compatibile IE)
+// https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch
 
-  return upl;
+    const sendAjaxRequest = ( current_item, callback ) => {
+      const ajax = new XMLHttpRequest(),
+      show_error = (error_message) => {
+        fupl_options.alert_api( error_message, fupl_options );
+        /* eslint-disable */
+        if(fupl_options.debug) {
+          console.error( ajax.status, ajax.statusText );
+          console.error( ajax.responseText );
+        }
+        /* eslint-enable */
+      };
 
-})(FileUploader2 || {});
+      ajax.open( 'POST', fupl_options.uploader_url, true );
 
+      ajax.onload = function() {
 
-// //TODO rivedere meccanismo visualizzazione errori usando meglio le promesse
-// //TODO verificare che al server vengano inviati tutti i parametri richiesti
-// // (dim massima, formati ammessi ecc.)
+        if( ajax.status >= 200 && ajax.status < 400 ) {
 
-// //TODO rivedere e sistemare meccanismo per cui si blocca il submit se upload non terminato
-// //     in special modo se ci sono diversi file da caricare
+          let response = JSON.parse( ajax.responseText ),
+          hidden_fields = upl.buildHiddenFields(current_item, fupl_options, response.tmp_file);
 
-// FileUploader = (function (_upl) {
-//   "use strict";
+          fupl_options.upload_complete_callback({
+            'item'          : current_item,
+            'server_error'  : response.error,
+            'hidden_fields' : hidden_fields,
+            'fupl_options'  : fupl_options
+          });
 
-//   /**
-// 	 * ### sendAjaxRequest
-// 	 * (funzione privata) esegue l'upload Ajax
-// 	 */
-//   var sendAjaxRequest = function ( upl_options, current_item, item_id, image_width, image_height, callback ) {
-//     var ajax = new XMLHttpRequest();
-//       ajax.open( 'post', upl_options.uploader_url, true );
+        } else {
+          show_error(fupl_options.alert_messages.xhrError);
+        }
+        if( callback && typeof callback === "function") {
+          callback();
+        }
+      };
 
-//       ajax.onload = function() {
+      ajax.onerror = function() {
+        show_error(fupl_options.alert_messages.xhrError);
 
-//         if( ajax.status >= 200 && ajax.status < 400 ) {
+        if( callback && typeof callback === "function") {
+          callback();
+        }
+      };
 
-//           var response = JSON.parse( ajax.responseText ),
-//             hidden_fields = _upl.build_hidden_fields(item_id, upl_options, current_item, response.tmp_file, image_width, image_height);
-//           upl_options.upload_complete_callback({
-//             'item_id'          : item_id,
-//             'server_error'     : response.error,
-//             'filelist_item'    : current_item,
-//             'hidden_fields'    : hidden_fields,
-//             'uploader_options' : upl_options,
-//             'img_wi'           : image_width ? image_width : null,
-//             'img_he'           : image_height ? image_height : null
-//           });
-
-
-
-//         } else {
-//           upl_options.alertErrorAPI( 'Si è verificato un errore nell\'invio dei dati.' );
-//           /* eslint-disable */
-//           console.error( ajax.status, ajax.statusText );
-//           console.error( ajax.responseText );
-//           /* eslint-enable */
-//         }
-
-//         if( callback && typeof callback === "function") {
-//           callback();
-//         }
-
-//       };
-
-//       ajax.onerror = function() {
-//         upl_options.alertErrorAPI( 'Si è verificato un errore nell\'invio dei dati. (onerror)' );
-//         /* eslint-disable */
-//         console.error( ajax.status,  ajax.statusText );
-//         console.error( ajax.responseText );
-//         /* eslint-enable */
-
-//         if( callback && typeof callback === "function") {
-//           callback();
-//         }
-//       };
-
-//       var fileData = new FormData();
-//       fileData.append('file', current_item);
-//       ajax.send( fileData );
-//   };
+      let fileData = new FormData();
+      fileData.append('file', current_item.file);
+      ajax.send( fileData );
+    },
 
 
+    disable_submit = (modo) => {
+      // modo === true → disable, false → enable
+      const _form = fupl_options.element.closest('form');
+      if(fupl_options.disable_submit && _form) {
+        const submit_btns = _form.querySelectorAll('[type="submit"');
+        submit_btns.forEach( btn => {
+          btn.disabled = modo;
+        });
 
-//   /**
-// 	 * ### sendFiles
-// 	 * (funzione) Esegue i controlli impostati, quindi la chiamata ajax e produce
-// 	 * il feedback per l'utente
-// 	 */
-// 	_upl.sendFiles = function (filelist, upl_options, _form) {
+        const submitHandler = (e) => {
+          e.preventDefault();
+          console.log('submit'); // eslint-disable-line
+          return false;
+        };
+        if(modo === true) {
+          _form.addEventListener('submit', submitHandler, false);
+        } else {
+          _form.removeEventListener('submit', submitHandler, false);
+        }
 
-//     var submit_btn = null, submit_btn_prev_disabled;
+      }
+    };
 
-//     if(_form === undefined) {
-//       _form = upl_options.container.parents('form').eq(0);
-//       if(_form.length ) {
-//         _form = _form.eq(0);
-//         submit_btn = $(':submit', _form);
-//         submit_btn_prev_disabled = submit_btn.prop('disabled');
-//       } else {
-//         _form = null;
-//       }
-//     }
+    // disabilitazione form
+    disable_submit(true);
 
-//     if( filelist.length ) {
-
-//       var error_list = [],
-
-//       // contatore dei file elaborati, sia con esito positivo che negativo
-//       parsedFilesCount = 0,
-//       // flag per mostrare una sola volta i messaggi di errore
-//       error_displayed = false,
-
-//       // mostra il messaggio di errore se tutti i file sono stati elaborati
-//       display_error = function () {
-//         if(parsedFilesCount === filelist.length && !error_displayed && error_list.length ) {
-//           upl_options.alertErrorAPI( error_list.join('\n\n') );
-//           error_displayed = true;
-//         }
-// // TODO RICONTROLLARE
-//         if(submit_btn && !submit_btn_prev_disabled) {
-//           submit_btn.prop('disabled', false);
-//         }
-//       },
-
-//       // aggiorna l'array dei messaggi di errore, incrementa il contatore dei file elaborati
-//       send_error = function (mes) {
-//         error_list.push(mes);
-//         parsedFilesCount++;
-//         display_error();
-//       };
-
-//       // verifica se è presente pulsante submit e se necessario lo disattiva
-//       if(submit_btn && !submit_btn_prev_disabled) {
-//         submit_btn.prop('disabled', true);
-//       }
-
-//       // https://stackoverflow.com/questions/38362231/how-to-use-promise-in-foreach-loop-of-array-to-populate-an-object
-//       Array.from(filelist).forEach(function (item, idx) {
-
-//         // generazione id unico
-//         var item_id = 'fupl' + new Date().getTime() + '_' + idx,
-//           is_error = false;
-
-// //BUG i valori da attributo accept inseriti come estensioni non vengono accettati
+    if( filelist.length ) {
 
 
-//           // controllo filetype (per drag&drop e browser che non supportano accept)
-//           if( upl_options.accept.length ) {
-//             var ext = item.name.split('.').pop().toLowerCase();
-//             if( upl_options.accept.indexOf( item.type ) === -1 &&  upl_options.accept.indexOf( ext ) === -1) {
-//               is_error = true;
-//               send_error('Il file “' + item.name + '” è di un formato non consentito');
-//             }
-//           } // end filetype
+    // https://stackoverflow.com/questions/38362231/how-to-use-promise-in-foreach-loop-of-array-to-populate-an-object
+    [...filelist].forEach(function (item, idx) {
+      try {
 
-//           // maxfilesize
-//           if(!is_error && upl_options.max_filesize !== null ) {
-//             if( item.size > upl_options.max_filesize.maxbytes ) {
-//               var feedback_size;
-//               // conversione di items.size nell'unità di misura indicata per il feedback all'utente
-//               if ( upl_options.max_filesize.unit === 'KB' ) {
-//                 feedback_size = Math.round(item.size / 1024);
-//               } else {
-//                 feedback_size = Math.round(item.size / (1024 * 1024));
-//               }
-//               is_error = true;
-//               send_error(
-//                 'Le dimensioni di “' + item.name + '” (' + feedback_size + upl_options.max_filesize.unit + ') '+
-//                 'superano il valore massimo consentito (' + upl_options.max_filesize.feedback_size + ')'
-//               );
-//             }
-//           } // end maxfilesize
+        let current_item = {file: item};
+
+        // generazione id unico
+        current_item.id = 'fupl_item_' + (+new Date()) + '_' + idx;
+
+        //BUG i valori da attributo accept inseriti come estensioni non vengono accettati
+        // controllo filetype (per drag&drop e browser che non supportano accept)
+        if( fupl_options.accept.length ) {
+          let ext = item.name.split('.').pop().toLowerCase();
+          if( fupl_options.accept.indexOf( item.type ) === -1 && fupl_options.accept.indexOf( ext ) === -1) {
+
+            throw fupl_options.alert_messages.fileFormatError
+              .replace(/{{file_name}}/, item.name );
+          }
+        } // end controllo filetype
+
+        // controllo maxfilesize
+        if( fupl_options.max_filesize !== null ) {
+          if( item.size > fupl_options.max_filesize.maxbytes ) {
+            let item_parsed_size = upl.parse_filesize(item.size, fupl_options.locales);
+
+            throw fupl_options.alert_messages.fileSizeError
+              .replace(/{{file_name}}/, item.name )
+              .replace(/{{file_size}}/, item_parsed_size )
+              .replace(/{{allowed_size}}/, fupl_options.max_filesize.feedback_size );
+
+          }
+        } // end controllo maxfilesize
+
+      } catch (errormessage) {
+        console.log(errormessage); // eslint-disable-line
+        fupl_options.alert_api( errormessage, fupl_options );
+      }
+
+
 
 //           if(!is_error ) {
 
@@ -254,14 +217,12 @@ FileUploader2 = ((upl) => {
 //               }
 //             });
 //           } // end if(!is_error )
-//       }); // end foreach
+       }); // end foreach
 
-//       // a fine ciclo mostra eventuali errori non legati alla promessa
-//       display_error();
+    } // end if( filelist.length )
 
-//     } // end if( filelist.length )
-//   }; // end sendFiles
+  }; // end upl.sendFiles
 
-//   return _upl;
+  return upl;
 
-// })(FileUploader || {});
+})(FileUploader2 || {});

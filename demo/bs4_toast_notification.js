@@ -1,6 +1,6 @@
 /* exported showToastNotification */
 
-function showToastNotification (message_key, error_type, fupl_options) {
+function showToastNotification (message, fupl_options, error_type='error') {
   let alert_class= error_type === 'error' ? 'danger' : error_type, // per allineamento alle classi di bs4
 
   toast_notification = `<div class="toast fupl-alert" role="alert" aria-live="assertive" aria-atomic="true">
@@ -10,7 +10,7 @@ function showToastNotification (message_key, error_type, fupl_options) {
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div class="toast-body">${fupl_options.alert_messages[message_key]}</div>
+    <div class="toast-body">${message}</div>
   </div>`,
 
   alert_wrapper = '<div class="fupl-alert-wrapper"></div>';

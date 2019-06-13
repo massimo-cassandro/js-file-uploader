@@ -122,7 +122,7 @@ FileUploader2 = ((upl) => {
 
     // aggiunta attributo data al wrapper per segnalare il required
     if( fupl_options.required ) {
-      fupl_options.wrapper.dataset.required = 'true';
+      fupl_options.wrapper.dataset[upl.data_attributes.required] = 'true';
     }
 
     fupl_options.istance_label.insertAdjacentHTML('beforeend',
@@ -146,6 +146,7 @@ FileUploader2 = ((upl) => {
     // aggiunta valori
     if( !fupl_options.values || !fupl_options.values.length ) {
       fupl_options.istance_result_wrapper.innerHTML = fupl_options.templates.no_file[fupl_options._type];
+      fupl_options.wrapper.dataset[upl.data_attributes.hasValues] = 'false';
 
     } else {
       fupl_options.values.forEach( item => {
@@ -153,7 +154,7 @@ FileUploader2 = ((upl) => {
       });
 
       // aggiunta attributo data per segnalare che sono presenti valori
-      fupl_options.wrapper.dataset.hasValues = 'true';
+      fupl_options.wrapper.dataset[upl.data_attributes.hasValues] = 'true';
     }
 
     // gestione aggiunta nuovi elementi

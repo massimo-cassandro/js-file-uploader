@@ -1,7 +1,6 @@
 /* globals FileUploader2:true */
 
 FileUploader2 = ( (upl) => {
-  "use strict";
 
   // parametri di default condivisi da tutte le istanze
   const default_options = {
@@ -9,7 +8,7 @@ FileUploader2 = ( (upl) => {
     // percorso del css FileUploader
     css: null,
 
-    // Attiva la modalità debug che mostra in console le informazioni
+    // Attiva la modalit&agrave; debug che mostra in console le informazioni
     // sulla configurazione corrente
     debug: false,
 
@@ -18,23 +17,28 @@ FileUploader2 = ( (upl) => {
     locales: 'it-IT',
 
     // messaggio browser non compatibile
-    unsuitableBrowserMessage: 'Il tuo browser non ha tutte le funzionalità richieste da FileUploader',
+    unsuitableBrowserMessage: 'Il tuo browser non ha tutte le funzionalit&agrave; richieste da FileUploader',
 
     // Interfaccia per l'invio di messaggi di errore
     // mes  →  chiave dell'oggetto `alert_messages` con il testo del messaggio di errore
     // type →  uno tra info, error, warning
     // opts →  l'oggetto file uploader options corrente
-    alert_api: (mes, type, opts) => { window.alert(opts.alert_messages.mes);},
+    alert_api: (mes, opts, type = error) => { window.alert(opts.alert_messages.mes);}, // eslint-disable-line
 
     // testo dei messaggi errore
+    // eventyali segnaposti sono sotituiti nell'applicazione
     alert_messages: {
-      tooMuchFiles: 'Puoi selezionare un solo file!' // tentativo di trascinare più file con uploader singolo
+      tooMuchFiles: 'Puoi selezionare un solo file!', // tentativo di trascinare più file con uploader singolo
+      xhrError: 'Si &egrave; verificato un errore nell&rsquo;invio dei dati.', // errore ajax
+      fileFormatError: 'Il file &ldquo;<strong>{{file_name}}</strong>&rdquo; &egrave; di un formato non consentito',
+      fileSizeError: 'Le dimensioni di &ldquo;<strong>{{file_name}}</strong>&rdquo; ({{file_size}}) '+
+        'superano il valore massimo consentito ({{allowed_size}})'
     },
 
     // Url dello script lato server che esegue il caricamento del file
     // per l'istanza in esame. Ha la precedenza sull'impostazione globale
     // obbligatorio
-    url: null,
+    uploader_url: null,
 
     // Tipologia dei file selezionabili
     // il valore deve corrispondere ad una delle chievi dell'array `mimetypes`
@@ -51,15 +55,15 @@ FileUploader2 = ( (upl) => {
 
     In presenza sia del parametro che dell'attributo `accept`, viene effettuato un merge,
     e l'attributo ha la precedenza sul parametro.
-    Se il parametro è `null` e l'attributo `accept` non è presente,
+    Se il parametro &egrave; `null` e l'attributo `accept` non &egrave; presente,
     con `filetype == auto` vengono accettati tutti i tipi di file.
     */
     accept: null,
 
     /*
     Parametro multiple.
-    Attiva la possibilità di acquisire più file con lo stesso uploader.
-    L'attivazione di questa opzione può essere effettuata anche tramite il parametro
+    Attiva la possibilit&agrave; di acquisire pi&ugrave; file con lo stesso uploader.
+    L'attivazione di questa opzione pu&ograve; essere effettuata anche tramite il parametro
     del campo `input` /se presente)
     */
     multiple: false,
@@ -67,10 +71,17 @@ FileUploader2 = ( (upl) => {
     /*
     Parametro required.
     Eventuale impostazione del campo come obbligatorio.
-    L'attivazione di questa opzione può essere effettuata anche tramite il parametro
+    L'attivazione di questa opzione pu&ograve; essere effettuata anche tramite il parametro
     del campo `input` /se presente)
     */
     required: false,
+
+    /*
+    Disabilita (se presente) il form in cui &egrave; incluso l'uploader (disabilita anche iul pulsante submit)
+    da usare solo se nel form non sono presenti altri interazioni che potrebbero
+    entrare in collisione con questa opzione
+    */
+    disable_submit: false,
 
     /*
       Template dei markup utilizzati
@@ -89,10 +100,10 @@ FileUploader2 = ( (upl) => {
 
       Il markup di default utilizza classi di Boostrap 4.
 
-      L'eventuale contenuto dell'elemento originale viene eliminato (può contenere
+      L'eventuale contenuto dell'elemento originale viene eliminato (pu&ograve; contenere
       un elemento type[file] per eventuale procedura di fallback)
 
-      I template possono essere alterati a piacimento, purché si mantengano le classi
+      I template possono essere alterati a piacimento, purch&eacute; si mantengano le classi
       `fupl-*` utilizzate nella procedura.
 
       I template delle immagini, devono contenere il tag img
@@ -118,7 +129,7 @@ FileUploader2 = ( (upl) => {
       },
 
       // trigger per la rimozione di un elemento da .fupl_results
-      // è aggiunto all'interno dell'elemento `.fupl-remove`, presente in ognuno
+      // &egrave; aggiunto all'interno dell'elemento `.fupl-remove`, presente in ognuno
       // degli elementi successivi
       // Deve essere un elemento button
       remove_btn: '<button type="button" class="close fupl-remove-trigger" aria-label="Elimina" title="Elimina questo file">' +
@@ -165,7 +176,7 @@ FileUploader2 = ( (upl) => {
     element_class: null,
 
     // Classe da aggiungere all'elemento FileUploader quando un file
-    // vi è trascinato sopra
+    // vi &egrave; trascinato sopra
     element_dragover_class: 'fupl-is-dragover',
 
     // Label da applicare da applicare all'elemento FileUploader.
@@ -188,11 +199,11 @@ FileUploader2 = ( (upl) => {
     input_text: {
       img: {
         single:   ["Seleziona un'immagine", "\u2026oppure trascinala qui"],
-        multiple: ["Seleziona una o più immagini", "\u2026oppure trascinale qui"]
+        multiple: ["Seleziona una o pi&ugrave; immagini", "\u2026oppure trascinale qui"]
       },
       doc: {
         single: ["Seleziona un documento", "\u2026oppure trascinalo qui"],
-        multiple: ["Seleziona uno o più documenti", "\u2026oppure trascinali qui"]
+        multiple: ["Seleziona uno o pi&ugrave; documenti", "\u2026oppure trascinali qui"]
       }
     },
 
@@ -206,11 +217,11 @@ FileUploader2 = ( (upl) => {
     show_info_text: true,
 
     // stringhe aggiunte all'inizio e alla fine del testo informativo generato
-    // utilizzate solo se `custom_info_text` non è impostato
+    // utilizzate solo se `custom_info_text` non &egrave; impostato
     info_text_wrap_string: ['(', ')'],
 
     // Stringa utilizzata per concatenare tra loro le varie parti del testo informativo generato
-    // utilizzata solo se `custom_info_text` non è impostato
+    // utilizzata solo se `custom_info_text` non &egrave; impostato
     info_text_join_string: ', ',
 
     // Eventuale testo informativo personalizzato. se presente,
@@ -223,8 +234,8 @@ FileUploader2 = ( (upl) => {
     Valori numerici che corrispondono alle dimensioni in pixel richieste per l'immagine.
     I parametri img_min_* e img_max_* possono essere assegnati simultaneamente,
     ma sono ignorati se esistono i corrispondenti parametri esatti (ad esempio,
-    se è presente img_w, i parametri img_min_w e img_max_w non vengono presi in considerazione).
-    Il valore di default di tutti i parametri è null, che significa che non vengono applicati.
+    se &egrave; presente img_w, i parametri img_min_w e img_max_w non vengono presi in considerazione).
+    Il valore di default di tutti i parametri &egrave; null, che significa che non vengono applicati.
 
       * `img_min_w`: larghezza minima dell'immagine
       * `img_max_w`: larghezza massima dell'immagine
@@ -241,16 +252,16 @@ FileUploader2 = ( (upl) => {
     img_h       : null,
 
     /*
-    Dimensione (peso) massima dell'immagine. Può essere un numero,
+    Dimensione (peso) massima dell'immagine. Pu&ograve; essere un numero,
     e in questo caso corrisponde ad una dimensione in KB, o una stringa
     composta da un valore numerico e da un suffisso tra ‘KB’ e ‘MB’ (anche minuscoli).
-    Se il valore è null o se la stringa non viene riconosciuta,
-    non è applicato nessun limite.
+    Se il valore &egrave; null o se la stringa non viene riconosciuta,
+    non &egrave; applicato nessun limite.
     */
     max_filesize: null,
 
     // Prefisso della variabile utilizzata per inviare al server i dati
-    // di ogni singolo file caricato. Il valore indicato è il nome base dell'array
+    // di ogni singolo file caricato. Il valore indicato &egrave; il nome base dell'array
     // costruito per inviare i valori al server.
     varname: 'file',
 
@@ -261,27 +272,31 @@ FileUploader2 = ( (upl) => {
     /*
     Funzione richiamata ogni volta che un file viene inviato al server.
     La funzione viene invocata passandole un oggetto contenente:
-      * `item_id`: id univoco del documento in elaborazione
+      * `item`: oggetto con i dati dell'elemento in esame:
+        - id: id univoco dell'elemento
+        - file: oggetto filelist
+        -
       * `filelist_item`: oggetto filelist corrente,
       * `img_preview` : miniatura dell'immagine in forma di stringa Base64
         (null se si tratta di altre tipologie)
-      * `uploader_options`: oggetto `options` corrente
+      * `fupl_options`: oggetto `options` corrente
       * `img_wi` e `img_he`: dimensioni in pixel dell'immagine.
-        null se non si tratta di immagini
+         null se non si tratta di immagini
     */
     upload_start_callback: null,
 
     /*
     Funzione richiamata ogni volta che un file viene caricato.
     La funzione viene invocata passandole un oggetto contenente:
-      * `item_id`: id univoco del documento in elaborazione,
-      * `server_error`: null, se l'upload è stato completato correttamente oppure,
-        in caso contrario, stringa con il messaggio di errore restituito
-      * `filelist_item`: oggetto filelist corrente,
+      * `item`: oggetto con i dati dell'elemento in esame:
+          - `id`: id univoco dell'elemento
+          - `file`: oggetto filelist
+          - `img_wi` e img_he: dimensioni in pixel dell'immagine.
+                     null se non si tratta di immagini
+      * `server_error`: null, se l'upload &egrave; stato completato correttamente. oppure
+          stringa con il messaggio di errore restituito
       * `hidden_fields`: stringa con i campi hidden da inviare al server
-      * `uploader_options`: oggetto `options` corrente
-      * `img_wi` e img_he: dimensioni in pixel dell'immagine.
-        null se non si tratta di immagini
+      * `fupl_options`: oggetto `options` corrente
     */
     upload_complete_callback: null,
 
@@ -289,9 +304,9 @@ FileUploader2 = ( (upl) => {
     Array json degli eventuali elementi preregistrati, nella forma:
       [
         {
-          id    → identificativo univoco del file (può essere anche il percorso sul server) OBBL
+          id    → identificativo univoco del file (pu&ograve; essere anche il percorso sul server) OBBL
           name  → nome del file
-          url   → url per eventuale tag <a> presente nell'elemento (se immagine può essere assente o null)
+          url   → url per eventuale tag <a> presente nell'elemento (se immagine pu&ograve; essere assente o null)
           src   → attributo `src` obbligatorio se immagine, oppure assente o null
           wi    → larghezza in px se immagine oppure assente o null
           he    → altezza in px se immagine oppure assente o null
@@ -306,11 +321,11 @@ FileUploader2 = ( (upl) => {
     */
     values: [],
 
-    // varname degli hidden con gli id dei file già registrati  da eliminare
+    // varname degli hidden con gli id dei file gi&agrave; registrati  da eliminare
     delete_varname: 'elimina_file[]',
 
 // TODO
-    // attiva la possibilità di riordinare gli elementi trascinandoli
+    // attiva la possibilit&agrave; di riordinare gli elementi trascinandoli
     // se true, i valori degli eventuali elementi preregistrati devono essere
     // elencati nel josn `values` nell'ordine correttp
     reorder: false,
