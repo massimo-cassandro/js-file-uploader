@@ -63,6 +63,67 @@
 		"oAP": "/build/__dev__",
 		"oF": 0
 		},
+	"/demo/bs4_toast_notification-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/dist/bs4_toast_notification-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
+	"/demo/bs4_toast_notification-min.js.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/bs4_toast_notification-min.js.map",
+		"oF": 0
+		},
+	"/demo/bs4_toast_notification.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/demo/bs4_toast_notification-min.js",
+		"oF": 2,
+		"sC": 3,
+		"tS": 1
+		},
+	"/demo/bs4_toast_notificaton.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/demo/bs4_toast_notificaton-min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"/demo/bs4_toast_notificaton.css.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/bs4_toast_notificaton.css.map",
+		"oF": 0
+		},
+	"/demo/bs4_toast_notificaton.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 1,
+		"oA": 0,
+		"oAP": "/demo/bs4_toast_notificaton.css",
+		"oF": 2,
+		"oS": 3,
+		"uL": 1
+		},
 	"/demo/file_uploader_DEMO.html": {
 		"cB": 0,
 		"ft": 8192,
@@ -170,13 +231,13 @@
 		"oAP": "/fileuploader.code-workspace",
 		"oF": 0
 		},
-	"/js/_add_new_items.js": {
+	"/js/_add_new_file_events.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 1,
 		"mi": 1,
 		"oA": 1,
-		"oAP": "/dist/_add_new_items-min.js",
+		"oAP": "/dist/_add_new_file_events-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 1
@@ -232,6 +293,17 @@
 		"mi": 1,
 		"oA": 1,
 		"oAP": "/dist/_reorder-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
+	"/js/_send_files.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/dist/_send_files-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 1

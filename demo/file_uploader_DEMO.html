@@ -5,6 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>File uploader demo</title>
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css" media="all">
+  <!--  solo per notifiche con bootsrap toast -->
+  <link rel="stylesheet" href="./bs4_toast_notificaton.css" type="text/css" media="all">
+  <!--  / -->
   <style type="text/css" media="screen">
     /* this is tipically managed in your project layout */
     .fupl-label.required:not(.disabled)::before {
@@ -131,6 +134,15 @@
     </form>
   </div>
 
+
+
+  <!--  solo per le notifiche con bootstrap toast -->
+  <script src="../node_modules/jquery/dist/jquery.slim.min.js"></script>
+  <script src="../node_modules/bootstrap/js/dist/util.js"></script>
+  <script src="../node_modules/bootstrap/js/dist/toast.js"></script>
+  <script src="./bs4_toast_notification-min.js"></script>
+  <!--  / -->
+
   <script src="../dist/file_uploader-min.js"></script>
   <script>
     //console.log(FileUploader2); // eslint-disable-line
@@ -139,14 +151,9 @@
     {
       debug  : true,
       css    : '../dist/file_uploader.css',
-      url    : 'server_side_response.json'
+      url    : 'server_side_response.json',
+      alert_api : showToastNotification
     }
-    /*// parametri di default delle istanze
-    {
-
-      upload_start_callback: function (img_minia, hidden_files) {},
-      upload_complete_callback: function (img_minia, hidden_files) {}
-    } */
   );
 
   </script>

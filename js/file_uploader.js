@@ -14,7 +14,8 @@
 @codekit-append '_set_options.js'
 @codekit-append '_create_info_text.js'
 @codekit-append '_create_item.js'
-@codekit-append '_add_new_items.js'
+@codekit-append '_send_files.js'
+@codekit-append '_add_new_file_events.js'
 @codekit-append '_create_uploader.js'
 
 @codekit-append '_init.js'

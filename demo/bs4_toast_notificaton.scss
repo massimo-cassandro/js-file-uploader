@@ -1,0 +1,17 @@
+/* solo per utilizzo boostrap toast */
+.fupl-wrapper {
+  position: relative;
+}
+.fupl-alert-wrapper {
+  position: absolute;
+  top:0;
+  left:50%;
+  transform: translateX(-50%);
+  z-index:900;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}

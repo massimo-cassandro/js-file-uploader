@@ -21,7 +21,15 @@ FileUploader2 = ( (upl) => {
     unsuitableBrowserMessage: 'Il tuo browser non ha tutte le funzionalità richieste da FileUploader',
 
     // Interfaccia per l'invio di messaggi di errore
-    alert_api: (mes) => { window.alert(mes);},
+    // mes  →  chiave dell'oggetto `alert_messages` con il testo del messaggio di errore
+    // type →  uno tra info, error, warning
+    // opts →  l'oggetto file uploader options corrente
+    alert_api: (mes, type, opts) => { window.alert(opts.alert_messages.mes);},
+
+    // testo dei messaggi errore
+    alert_messages: {
+      tooMuchFiles: 'Puoi selezionare un solo file!' // tentativo di trascinare più file con uploader singolo
+    },
 
     // Url dello script lato server che esegue il caricamento del file
     // per l'istanza in esame. Ha la precedenza sull'impostazione globale
