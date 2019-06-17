@@ -45,7 +45,9 @@
         <input class="form-control" id="input_file" type="file" name="myfile">
       </div>
       <p><button type="submit" class="btn btn-primary">Submit</button></p>
+    </form>
 
+    <form id="form2" action="" method="post">
       <h2 class="mt-5">2. Uploader senza campo file (doc singolo)</h2>
       <p>
         <small>NB: il parametro <code>data-required</code> senza valore, equivale a <code>false</code></small>
@@ -67,7 +69,9 @@
         ]'
       >Contenuto del div</div>
       <p><button type="submit" class="btn btn-primary">Submit</button></p>
+    </form>
 
+    <form id="form3" action="" method="post">
       <h2 class="mt-5">3. Uploader senza campo file (pdf, multiple e required  da parametro)</h2>
       <div id="upl3"
         data-file_uploader2='{"filetype":"pdf"}'
@@ -78,7 +82,9 @@
         data-uploader_label_text="Label da `uploader_label_text`"
       >Contenuto del div</div>
       <p><button type="submit" class="btn btn-primary">Submit</button></p>
+    </form>
 
+    <form id="form4" action="" method="post">
       <h2 class="mt-5">4. Uploader con campo file (img, multiple, required) + valori preregistrati</h2>
       <div id="upl4"
         data-file_uploader2
@@ -108,13 +114,15 @@
         <input class="form-control" id="input_file2" type="file" name="myfile" multiple required>
       </div>
       <p><button type="submit" class="btn btn-primary">Submit</button></p>
+    </form>
 
+    <form id="form5" action="" method="post">
       <h2 class="mt-5">5. Uploader con campo file e parametri accept (auto, multiple) + valori preregistrati</h2>
       <div id="upl5"
         data-file_uploader2
         data-filetype="auto"
-        data-accept=".pdf, .xlsx"
         data-uploader_add_label="true"
+        data-custom_info_text="Carica documenti Pdf, Word o Excel"
         data-values='[
           {
             "id": "125",
@@ -133,7 +141,7 @@
         ]'
       >
         <label for="input_file3">Label del campo file</label>
-        <input class="form-control" id="input_file3" type="file" name="myfile" multiple accept=".doc, .docx">
+        <input class="form-control" id="input_file3" type="file" name="myfile" multiple accept=".doc, .docx, .pdf, .xlsx, .xls"">
       </div>
       <p><button type="submit" class="btn btn-primary">Submit</button></p>
     </form>
@@ -158,12 +166,14 @@
       css            : '../dist/file_uploader.css',
       uploader_url   : 'server_side_response.json',
       alert_api      : showToastNotification,
-      disable_submit : true
+      disable_submit : true,
+      upload_start_callback: function () {console.log('upload_start_callback');},
+      upload_complete_callback: function () {console.log('upload_complete_callback');}
     }
   );
 
   </script>
-  <script src="../node_modules/layout-tools/dist/layout_tools-min.js"></script>
+  <!--  <script src="../node_modules/layout-tools/dist/layout_tools-min.js"></script> -->
 
 </body>
 </html>

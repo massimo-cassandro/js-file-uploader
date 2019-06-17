@@ -17,7 +17,8 @@ FileUploader2 = ((upl) => {
     fupl_selector : 'file_uploader2', // nome dell'attributo data usato come selector (e acui si possonoa ssociare delle opzioni json)
     required      : 'required', // true se il caricamento del file è obbligatorio
     hasValues     : 'hasValues', // true se l'uploader congtiene dei file (prergistrati o meno)
-    item_id       : 'id' // id dell'elemento aggiunto all'uploader (se preregistrato)
+    item_id       : 'id', // id dell'elemento aggiunto all'uploader (se preregistrato)
+    loading       : 'loading'
   };
 
   upl.parse_filesize = (bytes, locales) => {

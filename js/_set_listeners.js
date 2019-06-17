@@ -3,7 +3,7 @@
 FileUploader2 = ((upl) => {
 
   // https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
-  upl.addNewItemHandlers = (fupl_options) => {
+  upl.setListeners = (fupl_options) => {
 
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
       fupl_options.element.addEventListener(eventName, (e) => {

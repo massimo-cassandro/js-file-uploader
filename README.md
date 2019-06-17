@@ -17,7 +17,7 @@ FileUploader richiede un browser di ultima generazione
 - <https://css-tricks.com/drag-and-drop-file-uploading/>
 - <https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/>
 - <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation#Limiting_the_size_of_a_file_before_its_upload>
-- <https://stackoverflow.com/questions/5392344/sending-multipart-formdata-with-jquery-ajax>
+- <https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/>
 
 ## Markup
 Perché FileUploader sia attivato è necessario che sia presente questo markup:

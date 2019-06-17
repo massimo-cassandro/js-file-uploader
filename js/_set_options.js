@@ -17,7 +17,12 @@ FileUploader2 = ( (upl) => {
     locales: 'it-IT',
 
     // messaggio browser non compatibile
-    unsuitableBrowserMessage: 'Il tuo browser non ha tutte le funzionalit&agrave; richieste da FileUploader',
+    unsuitableBrowserMessage: 'Il tuo browser non ha tutte le funzionalità richieste ' +
+      'da questa applicazione. Utilizza un browser più aggiornato',
+
+    // messaggio IE
+    IE_alert: "Stai utilizzando un browser non compatibile con questa applicazione.\n" +
+      "Utilizza la versione più recente di Firefox, Edge, Safari, Opera o Chrome",
 
     // Interfaccia per l'invio di messaggi di errore
     // mes  →  chiave dell'oggetto `alert_messages` con il testo del messaggio di errore
@@ -26,13 +31,22 @@ FileUploader2 = ( (upl) => {
     alert_api: (mes, opts, type = error) => { window.alert(opts.alert_messages.mes);}, // eslint-disable-line
 
     // testo dei messaggi errore
-    // eventyali segnaposti sono sotituiti nell'applicazione
+    // eventuali segnaposti sono sotituiti nell'applicazione
     alert_messages: {
       tooMuchFiles: 'Puoi selezionare un solo file!', // tentativo di trascinare più file con uploader singolo
       xhrError: 'Si &egrave; verificato un errore nell&rsquo;invio dei dati.', // errore ajax
       fileFormatError: 'Il file &ldquo;<strong>{{file_name}}</strong>&rdquo; &egrave; di un formato non consentito',
       fileSizeError: 'Le dimensioni di &ldquo;<strong>{{file_name}}</strong>&rdquo; ({{file_size}}) '+
-        'superano il valore massimo consentito ({{allowed_size}})'
+        'superano il valore massimo consentito ({{allowed_size}})',
+
+      // immagini
+      img_err_start_string: "L'immagine &ldquo;<strong>{{file_name}}</strong>&rdquo; non è corretta:",
+      img_exact_width_err: "Larghezza non corrispondente ({{image_dimension}}px invece di {{allowed_dimension}}px)",
+      img_min_width_err: "Larghezza inferiore a quella minima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)",
+      img_max_width_err: "Larghezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)",
+      img_exact_height_err: "Altezza non corrispondente ({{image_dimension}}px invece di {{allowed_dimension}}px)",
+      img_min_height_err: "Altezza inferiore a quella minima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)",
+      img_max_height_err: "Altezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)"
     },
 
     // Url dello script lato server che esegue il caricamento del file
@@ -129,12 +143,15 @@ FileUploader2 = ( (upl) => {
       },
 
       // trigger per la rimozione di un elemento da .fupl_results
-      // &egrave; aggiunto all'interno dell'elemento `.fupl-remove`, presente in ognuno
+      // è aggiunto all'interno dell'elemento `.fupl-remove`, presente in ognuno
       // degli elementi successivi
       // Deve essere un elemento button
       remove_btn: '<button type="button" class="close fupl-remove-trigger" aria-label="Elimina" title="Elimina questo file">' +
             '<span aria-hidden="true">&times;</span>' +
           '</button>',
+
+      // markup aggiunto agli elementi in fase di caricamento
+      loading_markup: '<div class="fupl-loading"><progress class="fupl-progress" max=100 value=0></progress></div>',
 
       img: {
         single: '<div class="fupl-item">' +
@@ -251,6 +268,7 @@ FileUploader2 = ( (upl) => {
     img_max_h   : null,
     img_h       : null,
 
+
     /*
     Dimensione (peso) massima dell'immagine. Pu&ograve; essere un numero,
     e in questo caso corrisponde ad una dimensione in KB, o una stringa
@@ -274,14 +292,12 @@ FileUploader2 = ( (upl) => {
     La funzione viene invocata passandole un oggetto contenente:
       * `item`: oggetto con i dati dell'elemento in esame:
         - id: id univoco dell'elemento
-        - file: oggetto filelist
-        -
-      * `filelist_item`: oggetto filelist corrente,
+        - file: oggetto filelist corrente
+        - `width` e `height`: null o dimensioni in pixel dell'immagine
+        - `tmp_file`: nel caso di nuovi elementi: nome del file temporaneo
       * `img_preview` : miniatura dell'immagine in forma di stringa Base64
         (null se si tratta di altre tipologie)
       * `fupl_options`: oggetto `options` corrente
-      * `img_wi` e `img_he`: dimensioni in pixel dell'immagine.
-         null se non si tratta di immagini
     */
     upload_start_callback: null,
 
@@ -289,13 +305,12 @@ FileUploader2 = ( (upl) => {
     Funzione richiamata ogni volta che un file viene caricato.
     La funzione viene invocata passandole un oggetto contenente:
       * `item`: oggetto con i dati dell'elemento in esame:
-          - `id`: id univoco dell'elemento
-          - `file`: oggetto filelist
-          - `img_wi` e img_he: dimensioni in pixel dell'immagine.
-                     null se non si tratta di immagini
+        - `id`: id univoco dell'elemento
+        - `file`: oggetto filelist
+        - `width` e `height`: null o dimensioni in pixel dell'immagine
+        - `tmp_file`: nel caso di nuovi elementi: nome del file temporaneo
       * `server_error`: null, se l'upload &egrave; stato completato correttamente. oppure
           stringa con il messaggio di errore restituito
-      * `hidden_fields`: stringa con i campi hidden da inviare al server
       * `fupl_options`: oggetto `options` corrente
     */
     upload_complete_callback: null,
@@ -304,9 +319,9 @@ FileUploader2 = ( (upl) => {
     Array json degli eventuali elementi preregistrati, nella forma:
       [
         {
-          id    → identificativo univoco del file (pu&ograve; essere anche il percorso sul server) OBBL
+          id    → identificativo univoco del file (può essere anche il percorso sul server)
           name  → nome del file
-          url   → url per eventuale tag <a> presente nell'elemento (se immagine pu&ograve; essere assente o null)
+          url   → url per eventuale tag <a> presente nell'elemento (se immagine può essere assente o null)
           src   → attributo `src` obbligatorio se immagine, oppure assente o null
           wi    → larghezza in px se immagine oppure assente o null
           he    → altezza in px se immagine oppure assente o null
@@ -338,7 +353,7 @@ FileUploader2 = ( (upl) => {
 
   upl.setOptions = (...custom_options) => {
 
-    if( typeof Object.assign === "function") {
+    if( Object.assign && typeof Object.assign === "function") {
       return Object.assign(
         {},
         default_options,

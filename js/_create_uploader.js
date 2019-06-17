@@ -134,7 +134,6 @@ FileUploader2 = ((upl) => {
     fupl_options.istance_dd_text.innerHTML = fupl_options.input_text[fupl_options._type][fupl_options._mode][1];
 
     // info text
-    fupl_options.istance_info_text.innerHTML = 'xxx';
     if( fupl_options.show_info_text ) {
       if(fupl_options.custom_info_text) {
         fupl_options.istance_info_text.innerHTML = fupl_options.custom_info_text;
@@ -158,7 +157,7 @@ FileUploader2 = ((upl) => {
     }
 
     // gestione aggiunta nuovi elementi
-    upl.addNewItemHandlers(fupl_options);
+    upl.setListeners(fupl_options);
 
 
     // esecuzione init_callback, se presente

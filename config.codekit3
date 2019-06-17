@@ -57,11 +57,95 @@
 		"oO": 0,
 		"oS": 1
 		},
-	"/__dev__": {
-		"ft": 65536,
+	"/_old_vers/_OLD_ada_fileuploader.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
 		"oA": 1,
-		"oAP": "/build/__dev__",
-		"oF": 0
+		"oAP": "/dist/_OLD_ada_fileuploader-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
+	"/_old_vers/_OLD_file_uploader.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/dist/_OLD_file_uploader-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
+	"/_old_vers/_OLD_file_uploader.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 1,
+		"oA": 1,
+		"oAP": "/dist/_OLD_file_uploader.css",
+		"oF": 0,
+		"oS": 3,
+		"uL": 1
+		},
+	"/_old_vers/src/_OLD__fupl_init.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/_old_vers/dist/_OLD__fupl_init-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
+	"/_old_vers/src/_OLD_fupl_build_hidden_fields.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/_old_vers/dist/_OLD_fupl_build_hidden_fields-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
+	"/_old_vers/src/_OLD_fupl_create_info_text.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/_old_vers/dist/_OLD_fupl_create_info_text-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
+	"/_old_vers/src/_OLD_fupl_sendFiles.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/_old_vers/dist/_OLD_fupl_sendFiles-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
+	"/_old_vers/src/_OLD_fupl_setDefault.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/_old_vers/dist/_OLD_fupl_setDefault-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
 		},
 	"/demo/bs4_toast_notification-min.js": {
 		"bF": 0,
@@ -186,6 +270,17 @@
 		"oAP": "/demo/test-files/pdf2.pdf",
 		"oF": 0
 		},
+	"/demo/test-files/small_img.png": {
+		"ft": 32768,
+		"iS": 7429,
+		"oA": 1,
+		"oAP": "/demo/test-files/small_img.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"/dist/file_uploader-min.js": {
 		"bF": 0,
 		"ft": 64,
@@ -231,17 +326,6 @@
 		"oAP": "/fileuploader.code-workspace",
 		"oF": 0
 		},
-	"/js/_add_new_file_events.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 1,
-		"mi": 1,
-		"oA": 1,
-		"oAP": "/dist/_add_new_file_events-min.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 1
-		},
 	"/js/_build_hidden_fields.js": {
 		"bF": 0,
 		"ft": 64,
@@ -286,6 +370,17 @@
 		"sC": 3,
 		"tS": 1
 		},
+	"/js/_funcs_and_params.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/dist/_funcs_and_params-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
 	"/js/_init.js": {
 		"bF": 0,
 		"ft": 64,
@@ -319,6 +414,17 @@
 		"sC": 3,
 		"tS": 1
 		},
+	"/js/_set_listeners.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/dist/_set_listeners-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
 	"/js/_set_options.js": {
 		"bF": 0,
 		"ft": 64,
@@ -326,17 +432,6 @@
 		"mi": 1,
 		"oA": 1,
 		"oAP": "/dist/_set_options-min.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 1
-		},
-	"/js/_utility_funcs.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 1,
-		"mi": 1,
-		"oA": 1,
-		"oAP": "/dist/_utility_funcs-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 1
@@ -888,6 +983,19 @@
 		"oS": 3,
 		"uL": 1
 		},
+	"/scss/_fupl-loading.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 1,
+		"oA": 1,
+		"oAP": "/dist/_fupl-loading.css",
+		"oF": 0,
+		"oS": 3,
+		"uL": 1
+		},
 	"/scss/_fupl-panel.scss": {
 		"aP": 1,
 		"bl": 0,
@@ -1022,7 +1130,7 @@
 	"babelNoComments": 0,
 	"babelPlugins": {
 		"arrow-functions": {
-			"active": 0
+			"active": 1
 			},
 		"async-generator-functions": {
 			"active": 0
@@ -1031,25 +1139,25 @@
 			"active": 0
 			},
 		"block-scoped-functions": {
-			"active": 0
+			"active": 1
 			},
 		"block-scoping": {
-			"active": 0
+			"active": 1
 			},
 		"class-properties": {
 			"active": 0
 			},
 		"classes": {
-			"active": 0
+			"active": 1
 			},
 		"computed-properties": {
-			"active": 0
+			"active": 1
 			},
 		"decorators": {
 			"active": 0
 			},
 		"destructuring": {
-			"active": 0
+			"active": 1
 			},
 		"do-expressions": {
 			"active": 0
@@ -1058,7 +1166,7 @@
 			"active": 0
 			},
 		"duplicate-keys": {
-			"active": 0
+			"active": 1
 			},
 		"exponentiation-operator": {
 			"active": 0
@@ -1076,13 +1184,13 @@
 			"active": 0
 			},
 		"for-of": {
-			"active": 0
+			"active": 1
 			},
 		"function-bind": {
 			"active": 0
 			},
 		"function-name": {
-			"active": 0
+			"active": 1
 			},
 		"function-sent": {
 			"active": 0
@@ -1094,13 +1202,13 @@
 			"active": 0
 			},
 		"instanceof": {
-			"active": 0
+			"active": 1
 			},
 		"jscript": {
 			"active": 0
 			},
 		"literals": {
-			"active": 0
+			"active": 1
 			},
 		"logical-assignment-operators": {
 			"active": 0
@@ -1253,7 +1361,7 @@
 			"active": 0
 			},
 		"spread": {
-			"active": 0
+			"active": 1
 			},
 		"sticky-regex": {
 			"active": 0
@@ -1268,7 +1376,7 @@
 			"active": 0
 			},
 		"typeof-symbol": {
-			"active": 0
+			"active": 1
 			},
 		"undefined-to-void": {
 			"active": 0
