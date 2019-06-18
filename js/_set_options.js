@@ -151,7 +151,13 @@ FileUploader2 = ( (upl) => {
           '</button>',
 
       // markup aggiunto agli elementi in fase di caricamento
-      loading_markup: '<div class="fupl-loading"><progress class="fupl-progress" max=100 value=0></progress></div>',
+      loading_element: '<div class="fupl-loading"><progress class="fupl-progress" max=100 value=0></progress></div>',
+
+      // feedback di caricamento alternativo se progress.lengthComputable == false
+      // se necessario e se la funzione `alternate_loading_func` non è presente,
+      // sostituisce l'elemento `.fupl-progress`
+      alternate_loading_progress: '<div class="spinner-grow text-primary" role="status">' +
+          '<span class="sr-only">Loading...</span></div',
 
       img: {
         single: '<div class="fupl-item">' +
@@ -314,6 +320,15 @@ FileUploader2 = ( (upl) => {
       * `fupl_options`: oggetto `options` corrente
     */
     upload_complete_callback: null,
+
+    /*
+      Funzione di visulizzazione alternativa del progresso di caricamento
+      Se presente, viene sostituita a quella standard.
+      Viene invocata con due parametri:
+        - `progress_event`: evento progress del caricamento
+        - `fupl_options`: oggetto `options` corrente
+    */
+    alternate_loading_func: null,
 
     /*
     Array json degli eventuali elementi preregistrati, nella forma:

@@ -31,7 +31,9 @@ FileUploader2 = ((upl) => {
         if(modo === true) {
           _form.addEventListener('submit', submitHandler, false);
         } else {
-          _form.removeEventListener('submit', submitHandler, false);
+          if( !fupl_options.istance_result_wrapper.querySelector('.fupl-item.fupl-is-loading')) {
+            _form.removeEventListener('submit', submitHandler, false);
+          }
         }
 
       }
@@ -52,6 +54,9 @@ FileUploader2 = ((upl) => {
     */
     uploadFile = function ( current_item, img_preview ) {
 
+      // disabilitazione form
+      disable_submit(true);
+
       // aggiunta elemento all'uploader
       let this_item = upl.createItem({
           id   : null,
@@ -63,6 +68,9 @@ FileUploader2 = ((upl) => {
           size : current_item.file.size,
           loading:true
       }, fupl_options),
+
+      fupl_progress= this_item.querySelector('.fupl-progress'),
+      fupl_loading_wrapper = this_item.querySelector('.fupl-loading'),
 
       xhr_error_message = fupl_options.alert_messages.xhrError.replace(/{{filename}}/, current_item.file.name);
 
@@ -151,13 +159,26 @@ FileUploader2 = ((upl) => {
           reject();
         };
 
-        ajax.onprogress = function (e) {
-          let perc_loaded = Math.round(e.loaded * 100.0 / e.total) || 0;
-          //console.log(e.loaded ,e.total, perc_loaded); // eslint-disable-line
-          perc_loaded = perc_loaded === Infinity? 100 : perc_loaded;
-          this_item.querySelector('.fupl-progress').value = perc_loaded;
+        ajax.upload.addEventListener('progress', function (e) {
+          if( fupl_options.alternate_loading_func &&
+            typeof fupl_options.alternate_loading_func === 'function') {
+              fupl_options.alternate_loading_func(e, fupl_options);
 
-        };
+          } else {
+            let perc_loaded = Math.round(e.loaded / e.total * 100.0) || 0;
+
+            //console.log(e.loaded ,e.total, perc_loaded); // eslint-disable-line
+            if(fupl_progress) {
+              if(e.lengthComputable) {
+                perc_loaded = perc_loaded === Infinity? 100 : perc_loaded;
+                this_item.querySelector('.fupl-progress').value = perc_loaded;
+              } else {
+                fupl_loading_wrapper.innerHTML = fupl_options.templates.alternate_loading_progress;
+                fupl_progress = null;
+              }
+            }
+          }
+        }, false);
 
 
         let fileData = new FormData();
@@ -179,9 +200,8 @@ FileUploader2 = ((upl) => {
           fupl_options.wrapper.dataset[upl.data_attributes.hasValues] = 'true';
 
           //Se non ci sono altri elemento in caricamento, disable_submit viene annullato
-          if( !fupl_options.istance_result_wrapper.querySelector('.fupl-item.fupl-is-loading')) {
-            disable_submit(false);
-          }
+          disable_submit(false);
+
         },
         //reject
         function (  ) {
@@ -191,9 +211,6 @@ FileUploader2 = ((upl) => {
       );
 
     };
-
-    // disabilitazione form
-    disable_submit(true);
 
     if( filelist.length ) {
 
@@ -300,6 +317,7 @@ FileUploader2 = ((upl) => {
                     .replace(/{{file_name}}/, filelist_item.name ) + '<br>' +
                     '<ul><li>' + err_mes.join('</li><li>') + '</li></ul>',
                   fupl_options );
+
                 } else {
                   uploadFile( current_item, reader.result );
                 }
