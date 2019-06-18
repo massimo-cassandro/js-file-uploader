@@ -1,5 +1,5 @@
 //<div class="fupl-loading"><progress class="fupl-progress" max=100 value=0></progress></div>
-.fupl-item[data-loading] {
+.fupl-item.fupl-is-loading {
   position: relative;
 
   .fupl-loading {

@@ -62,7 +62,9 @@ FileUploader2 = ((upl) => {
           he   : current_item.height,
           size : current_item.file.size,
           loading:true
-      }, fupl_options);
+      }, fupl_options),
+
+      xhr_error_message = fupl_options.alert_messages.xhrError.replace(/{{filename}}/, current_item.file.name);
 
       //console.log(this_item); // eslint-disable-line
 
@@ -101,7 +103,7 @@ FileUploader2 = ((upl) => {
             */
             if(response.error) {
 
-              fupl_options.alert_api( fupl_options.alert_messages.xhrError, fupl_options );
+              fupl_options.alert_api( xhr_error_message, fupl_options );
               /* eslint-disable */
               console.error( response.error );
               /* eslint-enable */
@@ -127,7 +129,7 @@ FileUploader2 = ((upl) => {
 
 
           } else {
-            fupl_options.alert_api( fupl_options.alert_messages.xhrError, fupl_options );
+            fupl_options.alert_api( xhr_error_message, fupl_options );
             /* eslint-disable */
             console.error( ajax.status, ajax.statusText );
             console.error( ajax.responseText );
@@ -138,7 +140,7 @@ FileUploader2 = ((upl) => {
         };
 
         ajax.onerror = function() {
-          fupl_options.alert_api( fupl_options.alert_messages.xhrError, fupl_options );
+          fupl_options.alert_api( xhr_error_message, fupl_options );
           /* eslint-disable */
           if(fupl_options.debug) {
             console.error( ajax.status,  ajax.statusText );
@@ -149,6 +151,15 @@ FileUploader2 = ((upl) => {
           reject();
         };
 
+        ajax.onprogress = function (e) {
+          let perc_loaded = Math.round(e.loaded * 100.0 / e.total) || 0;
+          //console.log(e.loaded ,e.total, perc_loaded); // eslint-disable-line
+          perc_loaded = perc_loaded === Infinity? 100 : perc_loaded;
+          this_item.querySelector('.fupl-progress').value = perc_loaded;
+
+        };
+
+
         let fileData = new FormData();
         fileData.append('file', current_item.file);
         ajax.send( fileData );
@@ -157,7 +168,7 @@ FileUploader2 = ((upl) => {
         // resolve
         function (  ) {
           //console.log('resolve'); // eslint-disable-line
-          delete this_item.dataset.loading;
+          this_item.classList.remove('fupl-is-loading');
           this_item.querySelector('.fupl-loading').remove();
 
           this_item.insertAdjacentHTML('beforeend',
@@ -168,7 +179,7 @@ FileUploader2 = ((upl) => {
           fupl_options.wrapper.dataset[upl.data_attributes.hasValues] = 'true';
 
           //Se non ci sono altri elemento in caricamento, disable_submit viene annullato
-          if( !fupl_options.istance_result_wrapper.querySelector('.fupl-item[data-loading]')) {
+          if( !fupl_options.istance_result_wrapper.querySelector('.fupl-item.fupl-is-loading')) {
             disable_submit(false);
           }
         },

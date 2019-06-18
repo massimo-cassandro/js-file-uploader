@@ -34,7 +34,7 @@ FileUploader2 = ( (upl) => {
     // eventuali segnaposti sono sotituiti nell'applicazione
     alert_messages: {
       tooMuchFiles: 'Puoi selezionare un solo file!', // tentativo di trascinare più file con uploader singolo
-      xhrError: 'Si &egrave; verificato un errore nell&rsquo;invio dei dati.', // errore ajax
+      xhrError: 'Si &egrave; verificato un errore nel caricamento del file &ldquo;<strong>{{file_name}}</strong>&rdquo;.', // errore ajax
       fileFormatError: 'Il file &ldquo;<strong>{{file_name}}</strong>&rdquo; &egrave; di un formato non consentito',
       fileSizeError: 'Le dimensioni di &ldquo;<strong>{{file_name}}</strong>&rdquo; ({{file_size}}) '+
         'superano il valore massimo consentito ({{allowed_size}})',
