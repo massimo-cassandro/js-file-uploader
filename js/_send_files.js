@@ -73,7 +73,7 @@ FileUploader2 = ((upl) => {
       fupl_progress= this_item.querySelector('.fupl-progress'),
       fupl_loading_wrapper = this_item.querySelector('.fupl-loading'),
 
-      xhr_error_message = fupl_options.alert_messages.xhrError.replace(/{{filename}}/, current_item.file.name);
+      xhr_error_message = fupl_options.alert_messages.xhr_error.replace(/{{filename}}/, current_item.file.name);
 
       //console.log(this_item); // eslint-disable-line
 
@@ -236,7 +236,7 @@ FileUploader2 = ((upl) => {
             if( fupl_options.accept.indexOf( filelist_item.type ) === -1 &&
               fupl_options.accept.indexOf( '.' + ext ) === -1) {
 
-              throw fupl_options.alert_messages.fileFormatError
+              throw fupl_options.alert_messages.file_format_error
                 .replace(/{{file_name}}/, filelist_item.name );
             }
           } // end controllo filetype
@@ -246,7 +246,7 @@ FileUploader2 = ((upl) => {
             if( filelist_item.size > fupl_options.max_filesize.maxbytes ) {
               let item_parsed_size = upl.parse_filesize(filelist_item.size, fupl_options.locales);
 
-              throw fupl_options.alert_messages.fileSizeError
+              throw fupl_options.alert_messages.file_size_error
                 .replace(/{{file_name}}/, filelist_item.name )
                 .replace(/{{file_size}}/, item_parsed_size )
                 .replace(/{{allowed_size}}/, fupl_options.max_filesize.feedback_size );

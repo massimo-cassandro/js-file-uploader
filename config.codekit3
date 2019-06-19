@@ -142,6 +142,14 @@
 		"oO": 0,
 		"oS": 1
 		},
+	"/demo/silent_degration_sample.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/silent_degration_sample.html",
+		"oF": 0
+		},
 	"/demo/test-files/gigi-1508584-unsplash.jpg": {
 		"ft": 16384,
 		"iS": 175418,

@@ -5,6 +5,16 @@ FileUploader2 = ( (upl) => {
   // parametri di default condivisi da tutte le istanze
   const default_options = {
 
+    /*
+    silent_degradation
+    se true e il browser non ha le funzionalità richieste, fileuploader
+    non dà nessun messaggio di errore ed è possibile gestire l'upload dei file con
+    un classico input file. È però necessario che sia presente nel markup
+    (all'interno dell'elemento a cui si istanzia l'uploader) e che la cosa sia
+    gestita anche lato server
+    */
+   silent_degradation: false,
+
     // percorso del css FileUploader
     css: null,
 
@@ -16,14 +26,6 @@ FileUploader2 = ( (upl) => {
     // mostrata all'utente ricavata da `max_filesize`
     locales: 'it-IT',
 
-    // messaggio browser non compatibile
-    unsuitableBrowserMessage: 'Il tuo browser non ha tutte le funzionalità richieste ' +
-      'da questa applicazione. Utilizza un browser più aggiornato',
-
-    // messaggio IE
-    IE_alert: "Stai utilizzando un browser non compatibile con questa applicazione.\n" +
-      "Utilizza la versione più recente di Firefox, Edge, Safari, Opera o Chrome",
-
     // Interfaccia per l'invio di messaggi di errore
     // mes  →  chiave dell'oggetto `alert_messages` con il testo del messaggio di errore
     // type →  uno tra info, error, warning
@@ -33,10 +35,15 @@ FileUploader2 = ( (upl) => {
     // testo dei messaggi errore
     // eventuali segnaposti sono sotituiti nell'applicazione
     alert_messages: {
-      tooMuchFiles: 'Puoi selezionare un solo file!', // tentativo di trascinare più file con uploader singolo
-      xhrError: 'Si &egrave; verificato un errore nel caricamento del file &ldquo;<strong>{{file_name}}</strong>&rdquo;.', // errore ajax
-      fileFormatError: 'Il file &ldquo;<strong>{{file_name}}</strong>&rdquo; &egrave; di un formato non consentito',
-      fileSizeError: 'Le dimensioni di &ldquo;<strong>{{file_name}}</strong>&rdquo; ({{file_size}}) '+
+      // messaggio browser non compatibile
+      unsuitable_browser: 'Il tuo browser non ha tutte le funzionalità richieste ' +
+      'da questa applicazione.\n' +
+      'Utilizza la versione più recente di Firefox, Edge, Safari, Opera o Chrome',
+
+      too_much_files: 'Puoi selezionare un solo file!', // tentativo di trascinare più file con uploader singolo
+      xhr_error: 'Si &egrave; verificato un errore nel caricamento del file &ldquo;<strong>{{file_name}}</strong>&rdquo;.', // errore ajax
+      file_format_error: 'Il file &ldquo;<strong>{{file_name}}</strong>&rdquo; &egrave; di un formato non consentito',
+      file_size_error: 'Le dimensioni di &ldquo;<strong>{{file_name}}</strong>&rdquo; ({{file_size}}) '+
         'superano il valore massimo consentito ({{allowed_size}})',
 
       // immagini
@@ -377,7 +384,7 @@ FileUploader2 = ( (upl) => {
         ...custom_options
       );
 
-    } else { // IE 11
+    } else { // IE 11, necessario anche se non c'è il supporto IE
       let opts = {};
       for(let i in default_options) {
         opts[i] = default_options[i];

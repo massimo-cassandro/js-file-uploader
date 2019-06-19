@@ -28,17 +28,5 @@ var FileUploader2 = (function () {
 
   let upl = {};
 
-  // Eliminazione IE 11
-  if( navigator.userAgent.indexOf('MSIE') !== -1 ||
-      navigator.appVersion.indexOf('Trident/') > -1 ||
-      navigator.userAgent.indexOf('Trident/') > -1 ){
-
-    alert("Stai utilizzando un browser non compatibile con questa applicazione.\n" +
-      "Utilizza la versione più recente di Firefox, Edge, Safari, Opera o Chrome");
-
-    upl.browser_is_not_compatible = true;
-  }
-
-
   return upl;
 })();

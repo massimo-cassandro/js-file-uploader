@@ -30,7 +30,7 @@ FileUploader2 = ((upl) => {
       let files = e.dataTransfer.files;
 
       if( !fupl_options.multiple && files.length > 1 ) {
-        fupl_options.alert_api(fupl_options.alert_messages.tooMuchFiles, fupl_options);
+        fupl_options.alert_api(fupl_options.alert_messages.too_much_files, fupl_options);
       } else {
         upl.sendFiles( files, fupl_options );
       }
