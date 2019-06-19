@@ -88,8 +88,9 @@ FileUploader2 = ((upl) => {
 
       let fupl_item = fupl_item_wrapper.querySelector('.fupl-item');
       // id elemento per eventuale cancellazione
-      if(item_data.id) {
-        fupl_item.dataset[upl.data_attributes.item_id] = item_data.id;
+      // se esiste rel_id, viene utilizzato quello
+      if(item_data.id || item_data.rel_id) {
+        fupl_item.dataset[upl.data_attributes.item_id] = item_data.rel_id? item_data.rel_id : item_data.id;
       }
 
       if(item_data.loading) {

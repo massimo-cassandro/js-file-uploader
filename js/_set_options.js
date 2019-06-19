@@ -334,14 +334,16 @@ FileUploader2 = ( (upl) => {
     Array json degli eventuali elementi preregistrati, nella forma:
       [
         {
-          id    → identificativo univoco del file (può essere anche il percorso sul server)
-          name  → nome del file
-          url   → url per eventuale tag <a> presente nell'elemento (se immagine può essere assente o null)
-          src   → attributo `src` obbligatorio se immagine, oppure assente o null
-          wi    → larghezza in px se immagine oppure assente o null
-          he    → altezza in px se immagine oppure assente o null
-          size  → dimensione in bytes
-          [...] → eventuali campi aggiuntivi specifici dell'istanza
+          rel_id → eventuale id del record relazionato al file (può essere null o assente)
+                   se esiste, viene utilizzato al posto di `id` per indicare il record da cancellare
+          id     → identificativo univoco del file (può essere anche il percorso sul server)
+          name   → nome del file
+          url    → url per eventuale tag <a> presente nell'elemento (se immagine può essere assente o null)
+          src    → attributo `src` obbligatorio se immagine, oppure assente o null
+          wi     → larghezza in px se immagine oppure assente o null
+          he     → altezza in px se immagine oppure assente o null
+          size   → dimensione in bytes
+          [...]  → eventuali campi aggiuntivi specifici dell'istanza
         }
         [...]
       ]
