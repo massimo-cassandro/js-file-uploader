@@ -1,6 +1,6 @@
-.fupl-label {
+.fupl-label-wrapper {
   margin:1rem 0 .5rem;
-  label {
+  .fupl-label { // tag label
     margin:0;
 
     // &.required:not(.disabled) {

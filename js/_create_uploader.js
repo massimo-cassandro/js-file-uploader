@@ -90,7 +90,7 @@ FileUploader2 = ((upl) => {
         _class.push('required');
       }
       fupl_options.element.insertAdjacentHTML('beforebegin',
-        '<div class="fupl-label">' +
+        '<div class="fupl-label-wrapper">' +
           '<label' + (_class.length? ' class="' + _class.join(' ') + '"' : '') + '>' +
             fupl_options.uploader_label_text +
           '</label>' +
