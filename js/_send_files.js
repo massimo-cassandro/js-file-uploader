@@ -191,14 +191,13 @@ FileUploader2 = ((upl) => {
         function (  ) {
           //console.log('resolve'); // eslint-disable-line
           this_item.classList.remove('fupl-is-uploading');
-          this_item.querySelector('.fupl-loading').remove();
+          this_item.querySelector('.fupl-loading').remove(); // elemento loading
 
           this_item.insertAdjacentHTML('beforeend',
             upl.buildHiddenFields(current_item, fupl_options)
           );
 
-          // il contenitore viene indicato "con valori"
-          fupl_options.wrapper.dataset[upl.data_attributes.hasValues] = 'true';
+          upl.set_has_values(fupl_options);
 
           //Se non ci sono altri elemento in caricamento, disable_submit viene annullato
           disable_submit(false);
@@ -208,6 +207,7 @@ FileUploader2 = ((upl) => {
         function (  ) {
           //console.log('reject'); // eslint-disable-line
           remove_item_on_error();
+          upl.set_has_values(fupl_options);
         }
       );
 

@@ -155,18 +155,14 @@ FileUploader2 = ((upl) => {
       }
     }
 
-    if( !fupl_options.values || !fupl_options.values.length ) {
-      fupl_options.istance_result_wrapper.innerHTML = fupl_options.templates.no_file[fupl_options._type];
-      fupl_options.wrapper.dataset[upl.data_attributes.hasValues] = 'false';
+    if( fupl_options.values && fupl_options.values.length ) {
 
-    } else {
       fupl_options.values.forEach( item => {
         upl.createItem(item, fupl_options);
       });
 
-      // aggiunta attributo data per segnalare che sono presenti valori
-      fupl_options.wrapper.dataset[upl.data_attributes.hasValues] = 'true';
     }
+    upl.set_has_values(fupl_options);
 
     // gestione aggiunta nuovi elementi
     upl.setListeners(fupl_options);

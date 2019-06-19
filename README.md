@@ -2,22 +2,17 @@
 
 Upload asincrono tramite HTML5 e Javascript
 
-v. 2.0.0 - Massimo Cassandro - 2018/2019
-
-[TOC]
+v. 2.0 - Massimo Cassandro - 2018/2019
 
 ## Panoramica
 File Uploader è uno script JS per automatizzare e semplificare l'upload di file attraverso una pagina HTML.
 
 L'upload dei file è effettuato in modo asincrono tramite una chiamata Ajax ad uno script lato server che provvede alla registrazione del file, restituendo un JSON di informazioni.
 
-FileUploader richiede un browser di ultima generazione
+## Compatibilità
+FileUploader richiede un browser di ultima generazione, non è compatibile con Explorer
 
-## Riferimenti (e ispirazioni)
-- <https://css-tricks.com/drag-and-drop-file-uploading/>
-- <https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/>
-- <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation#Limiting_the_size_of_a_file_before_its_upload>
-- <https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/>
+
 
 ## Markup
 Perché FileUploader sia attivato è necessario che sia presente questo markup:
@@ -580,3 +575,9 @@ Oppure, per effettuare un controllo generale su tutto il form:
 ```javascript
 document.querySelectorAll('.fupl-wrapper[data-required="true"][data-has-values="false"]').length === 0
 ```
+
+## Riferimenti (e ispirazioni)
+- <https://css-tricks.com/drag-and-drop-file-uploading/>
+- <https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/>
+- <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation#Limiting_the_size_of_a_file_before_its_upload>
+- <https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/>

@@ -102,6 +102,13 @@ FileUploader2 = ((upl) => {
       if(fupl_options._mode === 'single') {
         fupl_options.istance_result_wrapper.innerHTML = fupl_item_wrapper.innerHTML;
       } else {
+
+        // se non esistono elementi caricati predentemente, si svuota il div per
+        // eliminare la scritta no file
+        if( !fupl_options.istance_result_wrapper.querySelector('.fupl-item')) {
+          fupl_options.istance_result_wrapper.innerHTML = '';
+        }
+
         fupl_options.istance_result_wrapper.insertAdjacentHTML('beforeend',
           fupl_item_wrapper.innerHTML
         );
@@ -121,12 +128,8 @@ FileUploader2 = ((upl) => {
         }
 
         // controllo se istance_result_wrapper è vuoto
-        // in caso positivo aggiunta testo `no_file` ed impostazione su false
-        // di fupl_options.wrapper.dataset[upl.data_attributes.hasValues]
-        if( !fupl_options.istance_result_wrapper.querySelectorAll('.fupl-item').length ) {
-          fupl_options.istance_result_wrapper.innerHTML = fupl_options.templates.no_file[fupl_options._type];
-          fupl_options.wrapper.dataset[upl.data_attributes.hasValues] = 'false';
-        }
+        // e impostazione di attributo e contenuti
+        upl.set_has_values(fupl_options);
 
       });
 

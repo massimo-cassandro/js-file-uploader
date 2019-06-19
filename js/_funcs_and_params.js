@@ -20,6 +20,15 @@ FileUploader2 = ((upl) => {
     item_id       : 'id' // id dell'elemento aggiunto all'uploader (se preregistrato)
   };
 
+  upl.set_has_values = fupl_options => {
+    let items = fupl_options.istance_result_wrapper.querySelectorAll('.fupl-item').length;
+    fupl_options.wrapper.dataset[upl.data_attributes.hasValues] = items? 'true' : 'false';
+    if(!items) {
+      fupl_options.istance_result_wrapper.innerHTML = fupl_options.templates.no_file[fupl_options._type];
+    }
+  };
+
+
   upl.parse_filesize = (bytes, locales) => {
     bytes = +bytes;
     let mega = 1024*1024;
