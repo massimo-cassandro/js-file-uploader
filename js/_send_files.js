@@ -25,18 +25,18 @@ FileUploader2 = ((upl) => {
           btn.disabled = modo;
         });
 
-        const submitHandler = (e) => {
-          e.preventDefault();
-          return false;
-        };
-        if(modo === true) {
-          _form.addEventListener('submit', submitHandler, false);
-        } else {
-          if( !fupl_options.istance_result_wrapper.querySelector('.fupl-item.fupl-is-loading')) {
-            _form.removeEventListener('submit', submitHandler, false);
-          }
-        }
-
+        //BUG il listener non viene rimosso con modo == false
+        // const submitHandler = (e) => {
+        //   e.preventDefault();
+        //   //return false;
+        // };
+        // if(modo === true) {
+        //   _form.addEventListener('submit', submitHandler);
+        // } else {
+        //   if( !fupl_options.istance_result_wrapper.querySelector('.fupl-item.fupl-is-uploading')) {
+        //     _form.removeEventListener('submit', submitHandler);
+        //   }
+        // }
       }
     },
 
@@ -190,7 +190,7 @@ FileUploader2 = ((upl) => {
         // resolve
         function (  ) {
           //console.log('resolve'); // eslint-disable-line
-          this_item.classList.remove('fupl-is-loading');
+          this_item.classList.remove('fupl-is-uploading');
           this_item.querySelector('.fupl-loading').remove();
 
           this_item.insertAdjacentHTML('beforeend',

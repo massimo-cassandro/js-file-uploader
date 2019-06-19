@@ -514,7 +514,53 @@ Interfaccia per l'invio di messaggi di errore
 
 ### Controllo caricamento completato
 
-xxxx
+Appena un elemento viene aggiunta all'uploader, viene inviata la richiesta Ajax al server per la registrazione del file. A operazione completata, il server restituisce il json con i dati del file registrati, come indicato nei punti precedenti.
+
+Dal momento in cui la richiesta viene inviata e fino a quando il server non risponde, l'utente può comunque effettuare il submit del form, ma in questo caso non saranno presenti tutti gli elementi hidden relativi al file che non verrà quindi registrato.
+
+Per evitare questo problema, si puàò attivare l'opzione `disable_aubmit` che disabilita il pulsante *Submit* del form finché il server non ha inviato la sua risposta.
+
+Questa opzione non è comunque sufficiente a garantire che siano evitati problemi di questo tipo (in alcuni casi, l'utente potrebbe effettuare il submit con il tasto Invio), ed è inoltre possibile che altre impostazioni riabilitino il pulsante indipendemente dall'esito dell'upload.
+
+La soluzione più sicura è quindi bloccare il submit se sono presenti elementi con classe `fupl-is-uploading`, classe assegnato ad ogni nuovo elemento aggiunto all'uploader ed eliminata a caricamento completato:
+
+```javascript
+let myForm = document.getElementById('myForm');
+myForm.addEventListener('submit', () => {
+    if(myForm.querySelectorAll('.fupl-is-uploading').length) {
+        alert('Caricamento non completato');
+        return false;
+    }
+});
+```
+
+Se FileUploader è usato in più pagine, possibile impostare un controllo centralizzato su tutti gli elementi form:
+
+```javascript
+document.querySelectorAll('form').forEach( this_form => {
+    this_form.addEventListener('submit', () => {
+        if(this_form.querySelectorAll('.fupl-is-uploading').length) {
+            alert('Devi attendere che il caricamento delle immagini sia completato');
+            return false;
+        }
+    });
+});
+```
+
+Utilizzando jQuery:
+
+```javascript
+$('form').each(function() {
+    $(this).submit(function() {
+        if($('.fupl-is-uploading', this).length) {
+            alert('Devi attendere che il caricamento delle immagini sia completato');
+            return false;
+        }
+    });
+});
+
+```
+
 
 ### Controllo contenuti `required`
 

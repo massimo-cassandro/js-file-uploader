@@ -93,7 +93,7 @@ FileUploader2 = ((upl) => {
       }
 
       if(item_data.loading) {
-        fupl_item.classList.add('fupl-is-loading');
+        fupl_item.classList.add('fupl-is-uploading');
         fupl_item.insertAdjacentHTML('beforeend',
           fupl_options.templates.loading_element
         );
