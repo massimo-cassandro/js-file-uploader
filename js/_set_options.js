@@ -194,12 +194,12 @@ FileUploader2 = ( (upl) => {
       }
     },
 
-    // Eventuale classe da aggiungere all'elemento FileUploader al
-    // momento dell'inizializzazione
-    element_class: null,
+    // Eventuale classi da aggiungere all'elemento wrapper di FileUploader
+    // (stringa separata da spazi)
+    wrapper_extra_class: null,
 
     // Classe da aggiungere all'elemento FileUploader quando un file
-    // vi &egrave; trascinato sopra
+    // vi è trascinato sopra
     element_dragover_class: 'fupl-is-dragover',
 
     // Label da applicare da applicare all'elemento FileUploader.

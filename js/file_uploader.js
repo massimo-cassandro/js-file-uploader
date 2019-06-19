@@ -6,7 +6,7 @@
  *
  */
 
-/* eslint no-console: 0, no-unused-vars: 0, no-empty:  0 */
+//* eslint no-console: 0, no-unused-vars: 0, no-empty:  0 */
 /* exported FileUploader2 */
 
 /*

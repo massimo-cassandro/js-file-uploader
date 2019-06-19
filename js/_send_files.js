@@ -19,7 +19,8 @@ FileUploader2 = ((upl) => {
       const _form = fupl_options.element.closest('form');
 
       if(fupl_options.disable_submit && _form) {
-        const submit_btns = _form.querySelectorAll('[type="submit"');
+        const submit_btns = _form.querySelectorAll('[type="submit"]');
+
         submit_btns.forEach( btn => {
           btn.disabled = modo;
         });

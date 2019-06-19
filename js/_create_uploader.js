@@ -75,9 +75,9 @@ FileUploader2 = ((upl) => {
     if(fupl_options.multiple) {
       fupl_options.wrapper.classList.add("fupl-multiple");
     }
-    // aggiunta eventuali class' personale
-    if( fupl_options.element_class ) {
-      fupl_options.element.classList.add( ...fupl_options.element_class.split(' ') );
+    // aggiunta eventuali classi personalizzate
+    if( fupl_options.wrapper_extra_class ) {
+      fupl_options.wrapper.classList.add( ...fupl_options.wrapper_extra_class.split(' ') );
     }
 
     // aggiunta label uploader
@@ -143,6 +143,18 @@ FileUploader2 = ((upl) => {
     }
 
     // aggiunta valori
+    // se values esiste ma è un oggetto, viene inserito in un array (non è garanzia di funzionamento)
+    // se è un altro tipo di variabile viene generato un errore
+    if(fupl_options.values) {
+      if(typeof fupl_options.values === 'object') {
+        if(!Array.isArray(fupl_options.values)) {
+          fupl_options.values = [fupl_options.values];
+        }
+      } else {
+        console.error("Il parametro `values` non è corretto"); // eslint-disable-line
+      }
+    }
+
     if( !fupl_options.values || !fupl_options.values.length ) {
       fupl_options.istance_result_wrapper.innerHTML = fupl_options.templates.no_file[fupl_options._type];
       fupl_options.wrapper.dataset[upl.data_attributes.hasValues] = 'false';

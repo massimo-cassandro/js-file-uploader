@@ -508,3 +508,29 @@ configurazione corrente
 #### `alertErrorAPI`
 Interfaccia per l'invio di messaggi di errore
 - *Default: `function (mes) { window.alert(mes);}`*
+
+
+## Utilizzo
+
+### Controllo caricamento completato
+
+xxxx
+
+### Controllo contenuti `required`
+
+Dato che è possibile caricare contenuti tramite *Drag&Drop*, non è possibile utilizzare il controllo nativo del browser che utilizza l'attributo `required` del campo file.
+
+Il controllo può però essere effettuato utilizzando gli attributi `data` aggiunti dinamicamente all'elemento `.fupl-wrapper` dell'uploader: `data-required="true"` e `data-has-values="true|false"`.
+
+Quindi, se per controllare la presenza di un contenuto per l'elemento `#mio-uploader` sarebbe sufficiente verificare questa condizione:
+
+```javascript
+document.getElementById('mio-uploader')
+    .closest('.fupl-wrapper[data-required="true"][data-has-values="true"]') !== null
+```
+
+Oppure, per effettuare un controllo generale su tutto il form:
+
+```javascript
+document.querySelectorAll('.fupl-wrapper[data-required="true"][data-has-values="false"]').length === 0
+```
