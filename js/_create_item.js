@@ -56,6 +56,7 @@ FileUploader2 = ((upl) => {
       let fupl_file_name = fupl_item_wrapper.querySelector('.fupl-file-name');
       if(fupl_file_name && item_data.name ) {
         fupl_file_name.innerHTML = item_data.name;
+        fupl_file_name.title = item_data.name;
       }
 
       // info dimensioni
