@@ -53,7 +53,9 @@ FileUploader2.init({
 });
 ```
 
-L'elenco dei parametri configurabili è descritto nelle sezioni successive e nel file [\_set\_options.js](https://github.com/massimo-cassandro/file-uploader2/blob/master/js/_set_options.js)
+L'elenco dei parametri configurabili è descritto nelle sezioni successive e nel file [\_set\_options.js](https://github.com/massimo-cassandro/file-uploader2/blob/master/js/_set_options.js).
+
+Una volta inizializzato, l'uploader viene applicatao automaticamente agli elementi che abbiano l'attributo `data-file_uploader2`
 
 
 
@@ -61,7 +63,7 @@ L'elenco dei parametri configurabili è descritto nelle sezioni successive e nel
 Perché FileUploader sia attivato è necessario che sia presente questo markup:
 
 ```html
-<div data-file_uploader>
+<div data-file_uploader2>
   <label for="input_file">Seleziona un file</label>
   <input id="input_file" type="file" name="myfile">
 </div>
