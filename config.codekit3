@@ -888,6 +888,17 @@
 		"oAP": "/readme_files/readme_files.sketch",
 		"oF": 0
 		},
+	"/readme_files/uploader_std.png": {
+		"ft": 32768,
+		"iS": 27148,
+		"oA": 1,
+		"oAP": "/readme_files/uploader_std.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"/scss/_bootstrap.scss": {
 		"aP": 1,
 		"bl": 0,
