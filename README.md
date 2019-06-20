@@ -2,15 +2,20 @@
 
 Upload asincrono tramite HTML5 e Javascript
 
-v. 2.0 - Massimo Cassandro - 2018/2019
+v. 2 - Massimo Cassandro - 2018/2019
 
-## Panoramica
-File Uploader è uno script JS per automatizzare e semplificare l'upload di file attraverso una pagina HTML.
+
+
+File Uploader è uno script per automatizzare e semplificare l'upload di file attraverso una pagina HTML.
 
 L'upload dei file è effettuato in modo asincrono tramite una chiamata Ajax ad uno script lato server che provvede alla registrazione del file, restituendo un JSON di informazioni.
 
+Benché le impostazioni di default del markup siano basate su Bootstrap 4m FileUploader è interamente e facilmente configurabile da zero, e può essere adattato a ogni esigenza.
+
+
 ## Compatibilità
 FileUploader richiede un browser di ultima generazione, e non è compatibile con nessuna versione Explorer.
+Richiede inoltre la versione 16 o successiva di Edge.
 
 In caso di browser non compatibile viene mostrato un *alert* con il messaggio di errore indicato nel parametro `alert_messages.unsuitable_browser` delle opzioni e la procedura viene bloccata.
 
@@ -23,8 +28,55 @@ Per utiizzare questa opzione è necessario:
 * aggiungere al form il necessario attributo `enctype` (non richiesto da FileUploader)
 * gestire questo eventualità lato server. È molto probabile che lo script da usare in questa situazione differisca da quello usato per la procedura Ajax.
 
+## Download
+
+FileUploader può essere installato tramite `npm`:
+
+```bash
+npm i --save git+https://github.com/massimo-cassandro/file-uploader2.git#master
+```
+
+## Utilizzo di FileUploader
+
+Una volta aggiunto lo script JS alla pagina HTMl, FileUploader va istanziato impostando i parametri necessari tramite la funzione `init`;
+
+Setup minimo:
+
+```html
+<script src="file_uploader-min.js"></script>
+```
+
+```javascript
+FileUploader2.init({
+  css            : 'path/to/file_uploader.css',
+  uploader_url   : 'server_side_response.json',
+});
+```
+
+L'elenco dei parametri configurabili è descritto nelle sezioni successive e nel file [\_set\_options.js](https://github.com/massimo-cassandro/file-uploader2/blob/master/js/_set_options.js)
 
 
+
+### Markup
+Perché FileUploader sia attivato è necessario che sia presente questo markup:
+
+```html
+<div data-file_uploader>
+  <label for="input_file">Seleziona un file</label>
+  <input id="input_file" type="file" name="myfile">
+</div>
+```
+
+### CSS
+FileUploder non fornisce volutamente nessuna impostazione grafica predefinita se non quella elementare ottenuta applicando le classi di Bootstrap 4.
+
+Il css `file_uploader.css` contiene solo poche inpostazioni essenziali al funzionamento del plugin, ed è quindi necessario creare volta per volta la veste grafica più coerente al proprio progetto.
+
+Per lo stesso motivo, non viene fornito un callback predefinito per il trattamento dei file selezionati.
+
+Al momento dell'attivazione al container FileUploader viene assegnata la classe `file_upl` (e volendo si può aggiungere un'ulteriore classe personalizzata), ed è quindi possibile agire su questa classe per effettuare tutte le personalizzazioni del caso.
+
+Non è necessario includere il file css nel progetto: verrà caricato da FileUploader dove necessario.
 
 
 
@@ -96,46 +148,9 @@ Esempio (con parametro `varname='custom_file'`:
 
 Vedi anche il paragrafo **Parametri di default → varname**
 
-## CSS
-FileUploder non fornisce volutamente nessuna impostazione grafica predefinita se non quella elementare ottenuta applicando le classi di Bootstrap 4.
 
-Il css `file_uploader.css` contiene solo poche inpostazioni essenziali al funzionamento del plugin, ed è quindi necessario creare volta per volta la veste grafica più coerente al proprio progetto.
 
-Per lo stesso motivo, non viene fornito un callback predefinito per il trattamento dei file selezionati.
 
-Al momento dell'attivazione al container FileUploader viene assegnata la classe `file_upl` (e volendo si può aggiungere un'ulteriore classe personalizzata), ed è quindi possibile agire su questa classe per effettuare tutte le personalizzazioni del caso.
-
-Non è necessario includere il file css nel progetto: verrà caricato da FileUploader dove necessario.
-
-## Utilizzo di FileUploader
-
-FileUploader va istanziato impostando i parametri necessari tramite la funzione ``init`;
-
-Setup minimo:
-
-```html
-<script src="file_uploader-min.js"></script>
-```
-
-```javascript
-FileUploader.init({
-  fileUploader_css         : '/path/to/FileUploader.css'
-},{
-  uploader_url             : '/path/to/uploader',
-  upload_start_callback    : function () { ... },
-  upload_complete_callback : function () { ... }
-});
-```
-
-### Markup
-Perché FileUploader sia attivato è necessario che sia presente questo markup:
-
-```html
-<div data-file_uploader>
-  <label for="input_file">Seleziona un file</label>
-  <input id="input_file" type="file" name="myfile">
-</div>
-```
 
 ### Esempio di applicazione
 

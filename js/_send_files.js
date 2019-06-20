@@ -73,7 +73,7 @@ FileUploader2 = ((upl) => {
       fupl_progress= this_item.querySelector('.fupl-progress'),
       fupl_loading_wrapper = this_item.querySelector('.fupl-loading'),
 
-      xhr_error_message = fupl_options.alert_messages.xhr_error.replace(/{{filename}}/, current_item.file.name);
+      xhr_error_message = fupl_options.alert_messages.xhr_error.replace(/{{file_name}}/, current_item.file.name);
 
       //console.log(this_item); // eslint-disable-line
 
