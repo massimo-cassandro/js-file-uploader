@@ -215,8 +215,6 @@ FileUploader2 = ((upl) => {
 
     if( filelist.length ) {
 
-      let upload_promises = [];
-
       // https://stackoverflow.com/questions/38362231/
       //how-to-use-promise-in-foreach-loop-of-array-to-populate-an-object
       [...filelist].forEach(function (filelist_item, idx) {
@@ -330,7 +328,7 @@ FileUploader2 = ((upl) => {
             reader.readAsDataURL( filelist_item );
 
           } else { // non immagine
-            upload_promises.push(uploadFile( current_item ));
+            uploadFile( current_item );
 
           } // end if image
 
