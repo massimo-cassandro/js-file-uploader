@@ -25,6 +25,7 @@ Per utilizzare questa opzione è necessario:
 
 * impostare su *true* l'opzione `silent_degradation` (default *false*)
 * inserire all'interno dell'elemento uploader l'elemento input di fallback
+* imposta se necessario la funzione `unsuitable_browser_callback` per attivare comportamenti specifici validi solo in queste situazioni
 * aggiungere al form il necessario attributo `enctype` (non richiesto da FileUploader)
 * gestire questo eventualità lato server. È molto probabile che lo script da usare in questa situazione differisca da quello usato per la procedura Ajax.
 
@@ -298,6 +299,35 @@ Oppure, per effettuare un controllo generale su tutto il form:
 
 ```javascript
 document.querySelectorAll('.fupl-wrapper[data-required="true"][data-has-values="false"]').length === 0
+```
+
+Per evitare submit incompleti da parte di browser non compatibili e in assenza di una procedura di fallback specifica, è inoltre possibile utilizzare la funzione `unsuitable_browser_callback`.
+
+Ad esempio (utilizzando jQuery):
+
+```javascript
+FileUploader2.init({
+  [.. altri parametri ..],
+
+  unsuitable_browser_callback: function () {
+    $('[data-file_uploader2]')
+      .closest('form')
+        .addClass('unsuitable_browser')
+        .find(':submit').each( function() {
+          $(this).replaceWith( '<div class="alert alert-icon alert-danger my-4">Stai usando un browser non compatibile</div>' );
+        });
+  }
+});
+
+$('form').each(function() {
+  $(this).submit(function() {
+
+    if($(this).hasClass('unsuitable_browser')) {
+      alert("Stai utilizzando un browser non compatibile con questa procedura");
+      return false;
+    }
+});
+
 ```
 
 ## Riferimenti (e ispirazioni)
