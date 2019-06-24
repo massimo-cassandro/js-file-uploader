@@ -201,6 +201,8 @@ Qualora fossero richiesti comportamenti aggiuntivi, è possibile definire alcuni
 
 * `init_callback` (default null): Funzione richiamata dopo l'inizializzazione di ogni elemento FileUploader. La funzione viene invocata con l'oggetto di tutte le opzioni come argomento
 
+* `unsuitable_browser_callback` (default null): funzione richiamata se vieme rilevato un browser non adatto
+
 * `upload_start_callback` (default null): Funzione richiamata ogni volta che un file viene inviato al server.  La funzione viene invocata passandole un oggetto contenente:
     * `item`: oggetto con i dati dell'elemento in esame:
         - id: id univoco dell'elemento

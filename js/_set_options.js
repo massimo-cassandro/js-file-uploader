@@ -13,7 +13,10 @@ FileUploader2 = ( (upl) => {
     (all'interno dell'elemento a cui si istanzia l'uploader) e che la cosa sia
     gestita anche lato server
     */
-   silent_degradation: false,
+    silent_degradation: false,
+
+    // callback da richiamere se viene rilevato un browser non adatto
+    unsuitable_browser_callback: null,
 
     // percorso del css FileUploader
     css: null,

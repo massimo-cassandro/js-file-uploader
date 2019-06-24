@@ -26,7 +26,8 @@
           debug: true,
           css: '../dist/file_uploader.css',
           uploader_url: 'server_side_response.json',
-          silent_degradation: true
+          silent_degradation: true,
+          unsuitable_browser_callback: function() {console.log('unsuitable_browser_callback');}
         });
 
       </script>
