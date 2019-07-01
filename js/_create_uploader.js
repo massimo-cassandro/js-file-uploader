@@ -81,7 +81,7 @@ FileUploader2 = ((upl) => {
     }
 
     // aggiunta legend uploader
-    if( fupl_options.uploader_add_legend ) {
+    if( fupl_options.uploader_legend ) {
       let _class = ['fupl-legend'];
       if( fupl_options.uploader_legend_class ) {
         _class.push(fupl_options.uploader_legend_class);

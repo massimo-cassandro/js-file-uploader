@@ -222,7 +222,7 @@ FileUploader2 = ( (upl) => {
     element_dragover_class: 'fupl-is-dragover',
 
     // Opzione per l'aggiunta di un tag legend prima dell'elemento uploader
-    uploader_add_legend: true,
+    uploader_legend: true,
 
     // tetso dell'elemento legend da applicare da applicare all'elemento FileUploader.
     // Se `null` e se esiste un elemento `label` all'interno dell'uploader,
