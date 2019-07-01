@@ -292,13 +292,13 @@ Quindi, se per controllare la presenza di un contenuto per l'elemento `#my-uploa
 
 ```javascript
 document.getElementById('mio-uploader')
-    .closest('.fupl-wrapper[data-required="true"][data-has-values="true"]') !== null
+    .closest('.fupl-wrapper:not([disabled])[data-required="true"][data-has-values="true"]') !== null
 ```
 
 Oppure, per effettuare un controllo generale su tutto il form:
 
 ```javascript
-document.querySelectorAll('.fupl-wrapper[data-required="true"][data-has-values="false"]').length === 0
+document.querySelectorAll('.fupl-wrapper:not([disabled])[data-required="true"][data-has-values="false"]').length === 0
 ```
 
 Per evitare submit incompleti da parte di browser non compatibili e in assenza di una procedura di fallback specifica, è inoltre possibile utilizzare la funzione `unsuitable_browser_callback`.
