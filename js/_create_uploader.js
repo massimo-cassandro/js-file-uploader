@@ -67,7 +67,7 @@ FileUploader2 = ((upl) => {
     fupl_options.element.classList.add("fupl");
 
     // aggiunta wrapper
-    fupl_options.wrapper = document.createElement('div');
+    fupl_options.wrapper = document.createElement('fieldset');
     fupl_options.element.parentNode.insertBefore(fupl_options.wrapper, fupl_options.element);
     fupl_options.wrapper.appendChild(fupl_options.element);
     fupl_options.wrapper.classList.add("fupl-wrapper");
