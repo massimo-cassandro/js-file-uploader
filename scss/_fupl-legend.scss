@@ -2,6 +2,7 @@
   margin:0 0 .5rem;
   font-size:1rem;
 
+  // da gestire all'interno del progetto
   // &.required:not(.disabled) {
   //   &::before {
   //     color: #c00;
@@ -11,4 +12,10 @@
   //     content: '\2733'; //'*';
   //   }
   // }
+
+  [disabled] & {
+    font-style: italic;
+    color: $fupl-disabled-color;
+  }
 }
+

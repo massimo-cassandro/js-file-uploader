@@ -32,9 +32,13 @@ FileUploader2 = ( (upl) => {
     /*
     Se true impedisce il caricamento di elementi
     NB: in questa versione di FileUploader non eiste una vera gestione dello stato disabled,
-    la modifica di questa parametro influisce solo sull'evento drag&drop e imposta lo stato disabled
-    del fieldset che racchiude l'uploader.
-    Eventuali modifiche dello stato disabled vanno gestite dalle singole applicazioni
+    la modifica di questa parametro influisce solo inizialmente sull'evento drag&drop
+    e sull'impostazione dello stato disabled del fieldset che racchiude l'uploader (.fupl-wrapper).
+    Eventuali modifiche "in corsa" dello stato disabled vanno gestite dalle singole applicazioni agendo sull'attributo
+    disabled dell'elemento fieldset.fupl-wrapper
+
+    La presenza dell'attributo disabled nell'elemento .fupl-wrapper disabilita l'elemento
+    input[type=file] generato da FileUploader (comportamento std di HTML 5) e impedisce il drag&drop
     */
     disabled: false,
 

@@ -124,6 +124,13 @@ FileUploader2 = ((upl) => {
       fupl_options.wrapper.dataset[upl.data_attributes.required] = 'true';
     }
 
+    // aggiunta attributo disabled al wrapper
+    if( fupl_options.disabled ) {
+      fupl_options.wrapper.setAttribute('disabled', true);
+      fupl_options.wrapper.setAttribute('aria-disabled', true);
+    }
+
+
     fupl_options.istance_label.insertAdjacentHTML('beforeend',
       fupl_options.input_text[fupl_options._type][fupl_options._mode][0]
     );

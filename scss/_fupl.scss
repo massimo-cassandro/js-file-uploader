@@ -13,5 +13,34 @@
     .fupl-panel {
       border: none;
     }
+    [disabled] & {
+      outline-offset: 0;
+      outline-color: $fupl-disabled-color;
+      background-color: transparent;
+
+      position: relative;
+      &::before {
+        content:'Non è possibile caricare file';
+        position: absolute;
+        display: block;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        color: $fupl-disabled-color;
+        font-size: 2rem;
+
+      }
+
+      .fupl-result, .fupl-panel {
+        opacity:0;
+      }
+    }
   }
+
+  [disabled] & {
+    cursor: no-drop;
+    font-style: italic!important;
+    color: $fupl-disabled-color!important;
+  }
+
 }

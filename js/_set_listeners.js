@@ -27,12 +27,14 @@ FileUploader2 = ((upl) => {
     fupl_options.element.addEventListener('drop', (e) => {
       fupl_options.element.classList.remove( fupl_options.element_dragover_class );
 
-      let files = e.dataTransfer.files;
+      if(!fupl_options.wrapper.hasAttribute('disabled')) {
+        let files = e.dataTransfer.files;
 
-      if( !fupl_options.multiple && files.length > 1 ) {
-        fupl_options.alert_api(fupl_options.alert_messages.too_much_files, fupl_options);
-      } else {
-        upl.sendFiles( files, fupl_options );
+        if( !fupl_options.multiple && files.length > 1 ) {
+          fupl_options.alert_api(fupl_options.alert_messages.too_much_files, fupl_options);
+        } else {
+          upl.sendFiles( files, fupl_options );
+        }
       }
     }, false);
 

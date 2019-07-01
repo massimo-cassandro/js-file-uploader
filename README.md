@@ -335,8 +335,3 @@ $('form').each(function() {
 - <https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/>
 - <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation#Limiting_the_size_of_a_file_before_its_upload>
 - <https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/>
-
-
-## TODO
-
-* metodo pubblico per la gestione dello stato disabled
