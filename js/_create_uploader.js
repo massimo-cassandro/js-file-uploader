@@ -54,13 +54,13 @@ FileUploader2 = ((upl) => {
     fupl_options._type = fupl_options.filetype === 'img'? 'img' : 'doc';
     fupl_options._mode = fupl_options.multiple? 'multiple' : 'single';
 
-    // testo label (da tag o parametro uploader_label_text)
-    if( !fupl_options.uploader_label_text && original_label) {
-      fupl_options.uploader_label_text = original_label.innerHTML;
+    // testo label (da tag o parametro uploader_legend_text)
+    if( !fupl_options.uploader_legend_text && original_label) {
+      fupl_options.uploader_legend_text = original_label.innerHTML;
     }
     // caso in cui sia presente nessun valore
-    if ( !fupl_options.uploader_label_text ) {
-      fupl_options.uploader_label_text = '__label non presente__';
+    if ( !fupl_options.uploader_legend_text ) {
+      fupl_options.uploader_legend_text = '__label non presente__';
     }
 
     // aggiunta della classe principale
@@ -80,23 +80,22 @@ FileUploader2 = ((upl) => {
       fupl_options.wrapper.classList.add( ...fupl_options.wrapper_extra_class.split(' ') );
     }
 
-    // aggiunta label uploader
-    if( fupl_options.uploader_add_label ) {
-      let _class = ['fupl-label'];
-      if( fupl_options.uploader_label_class ) {
-        _class.push(fupl_options.uploader_label_class);
+    // aggiunta legend uploader
+    if( fupl_options.uploader_add_legend ) {
+      let _class = ['fupl-legend'];
+      if( fupl_options.uploader_legend_class ) {
+        _class.push(fupl_options.uploader_legend_class);
       }
       if( fupl_options.required ) {
         _class.push('required');
       }
+
       fupl_options.element.insertAdjacentHTML('beforebegin',
-        '<div class="fupl-label-wrapper">' +
-          '<label' + (_class.length? ' class="' + _class.join(' ') + '"' : '') + '>' +
-            fupl_options.uploader_label_text +
-          '</label>' +
-        '</div>'
+        '<legend' + (_class.length? ' class="' + _class.join(' ') + '"' : '') + '>' +
+          fupl_options.uploader_legend_text +
+        '</legend>'
       );
-      fupl_options.wrapper.classList.add( 'fupl-has-label' );
+      fupl_options.wrapper.classList.add( 'fupl-has-legend' );
     }
 
     // aggiunta template uploader

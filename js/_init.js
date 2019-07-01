@@ -142,7 +142,6 @@ FileUploader2 = ((upl) => {
 
 
       new upl.createUploader(fupl_options);
-
     }); // end document.querySelectorAll(fupl_selector).forEach
   }; // end upl.init
 

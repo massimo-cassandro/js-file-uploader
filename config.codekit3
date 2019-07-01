@@ -912,7 +912,7 @@
 		"oS": 3,
 		"uL": 1
 		},
-	"/scss/_fupl-label.scss": {
+	"/scss/_fupl-legend.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
@@ -920,7 +920,7 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 1,
-		"oAP": "/dist/_fupl-label.css",
+		"oAP": "/dist/_fupl-legend.css",
 		"oF": 0,
 		"oS": 3,
 		"uL": 1
@@ -986,6 +986,19 @@
 		"ma": 1,
 		"oA": 1,
 		"oAP": "/dist/_fupl-result.css",
+		"oF": 0,
+		"oS": 3,
+		"uL": 1
+		},
+	"/scss/_fupl-wrapper.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 1,
+		"oA": 1,
+		"oAP": "/dist/_fupl-wrapper.css",
 		"oF": 0,
 		"oS": 3,
 		"uL": 1

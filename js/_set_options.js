@@ -21,13 +21,22 @@ FileUploader2 = ( (upl) => {
     // percorso del css FileUploader
     css: null,
 
-    // Attiva la modalit&agrave; debug che mostra in console le informazioni
+    // Attiva la modalità debug che mostra in console le informazioni
     // sulla configurazione corrente
     debug: false,
 
     // locales string, usata per la formattazione della stringa numerica
     // mostrata all'utente ricavata da `max_filesize`
     locales: 'it-IT',
+
+    /*
+    Se true impedisce il caricamento di elementi
+    NB: in questa versione di FileUploader non eiste una vera gestione dello stato disabled,
+    la modifica di questa parametro influisce solo sull'evento drag&drop e imposta lo stato disabled
+    del fieldset che racchiude l'uploader.
+    Eventuali modifiche dello stato disabled vanno gestite dalle singole applicazioni
+    */
+    disabled: false,
 
     // Interfaccia per l'invio di messaggi di errore
     // mes  →  chiave dell'oggetto `alert_messages` con il testo del messaggio di errore
@@ -212,16 +221,16 @@ FileUploader2 = ( (upl) => {
     // vi è trascinato sopra
     element_dragover_class: 'fupl-is-dragover',
 
-    // Label da applicare da applicare all'elemento FileUploader.
+    // Opzione per l'aggiunta di un tag legend prima dell'elemento uploader
+    uploader_add_legend: true,
+
+    // tetso dell'elemento legend da applicare da applicare all'elemento FileUploader.
     // Se `null` e se esiste un elemento `label` all'interno dell'uploader,
     // viene preso il testo dell'elemento
-    uploader_label_text: null,
+    uploader_legend_text: null,
 
-    // Opzione per l'aggiunta di un tag label prima dell'elemento uploader
-    uploader_add_label: true,
-
-    // Eventuale classe da aggiungere ad uploader_label
-    uploader_label_class: null,
+    // Eventuale classe da aggiungere ad uploader_legend
+    uploader_legend_class: null,
 
     /*
     Array (o stringa json) dei testi del label del tag input (il primo elemento dell'array) e del testo
