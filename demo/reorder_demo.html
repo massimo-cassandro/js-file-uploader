@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <title>File uploader reorder demo</title>
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css">
+
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>File Uploader Reorder demo</h1>
+
+      <form action="" id="form1" method="post">
+        <div data-file_uploader2
+          data-filetype="img"
+          data-max_filesize="12Mb"
+          data-uploader_legend="true"
+          data-values='[
+            {
+              "id": "123",
+              "name": "gigi-1508584-unsplash.jpg",
+              "src": "test-files/gigi-1508584-unsplash.jpg",
+              "wi": 1199,
+              "he": 1600,
+              "size": 175418
+            },
+            {
+              "id": "124",
+              "name": "ibrahim-rifath-787485-unsplash.jpg",
+              "src": "test-files/ibrahim-rifath-787485-unsplash.jpg",
+              "wi": 1920,
+              "he": 1280,
+              "size": 193345
+            }
+          ]'></div>
+        <p><button class="btn btn-primary" type="submit">Submit</button></p>
+      </form>
+
+    </div>
+
+    <script src="../dist/file_uploader-min.js"></script>
+    <script>
+
+      FileUploader2.init({
+        debug: true,
+        css: '../dist/file_uploader.css',
+        uploader_url: 'server_side_response.json',
+        disable_submit: true
+
+      });
+
+    </script>
+    <script src="../node_modules/layout-tools/dist/layout_tools-min.js"></script>
+  </body>
+
+</html>

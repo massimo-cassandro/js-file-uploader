@@ -48,6 +48,10 @@ FileUploader2 = ((upl) => {
     fupl_options.required = Boolean(fupl_options.required ||
       (_input && _input.hasAttribute('required') ));
 
+    // parametro o attributo disabled
+    fupl_options.disabled = Boolean(fupl_options.disabled ||
+      (_input && _input.hasAttribute('disabled') ));
+
 
     // tipologia generale dell'uploader (img o doc) e modalità
     // selezione file
@@ -60,7 +64,7 @@ FileUploader2 = ((upl) => {
     }
     // caso in cui sia presente nessun valore
     if ( !fupl_options.uploader_legend_text ) {
-      fupl_options.uploader_legend_text = '__label non presente__';
+      fupl_options.uploader_legend_text = '__legend non presente__';
     }
 
     // aggiunta della classe principale

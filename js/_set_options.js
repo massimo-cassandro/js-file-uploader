@@ -34,8 +34,11 @@ FileUploader2 = ( (upl) => {
     NB: in questa versione di FileUploader non eiste una vera gestione dello stato disabled,
     la modifica di questa parametro influisce solo inizialmente sull'evento drag&drop
     e sull'impostazione dello stato disabled del fieldset che racchiude l'uploader (.fupl-wrapper).
-    Eventuali modifiche "in corsa" dello stato disabled vanno gestite dalle singole applicazioni agendo sull'attributo
-    disabled dell'elemento fieldset.fupl-wrapper
+    Eventuali modifiche "in corsa" dello stato disabled vanno gestite dalle singole applicazioni
+    agendo sull'attributo disabled dell'elemento fieldset.fupl-wrapper
+
+    Il parametro disabled può essere impostato anche tramite attributo dell'elemento
+    input[type=file] di fallback, se presente
 
     La presenza dell'attributo disabled nell'elemento .fupl-wrapper disabilita l'elemento
     input[type=file] generato da FileUploader (comportamento std di HTML 5) e impedisce il drag&drop
@@ -92,15 +95,15 @@ FileUploader2 = ( (upl) => {
 
     In presenza sia del parametro che dell'attributo `accept`, viene effettuato un merge,
     e l'attributo ha la precedenza sul parametro.
-    Se il parametro &egrave; `null` e l'attributo `accept` non &egrave; presente,
+    Se il parametro è `null` e l'attributo `accept` non è presente,
     con `filetype == auto` vengono accettati tutti i tipi di file.
     */
     accept: null,
 
     /*
     Parametro multiple.
-    Attiva la possibilit&agrave; di acquisire pi&ugrave; file con lo stesso uploader.
-    L'attivazione di questa opzione pu&ograve; essere effettuata anche tramite il parametro
+    Attiva la possibilità di acquisire più file con lo stesso uploader.
+    L'attivazione di questa opzione può essere effettuata anche tramite il parametro
     del campo `input` /se presente)
     */
     multiple: false,
@@ -108,13 +111,13 @@ FileUploader2 = ( (upl) => {
     /*
     Parametro required.
     Eventuale impostazione del campo come obbligatorio.
-    L'attivazione di questa opzione pu&ograve; essere effettuata anche tramite il parametro
+    L'attivazione di questa opzione può essere effettuata anche tramite il parametro
     del campo `input` /se presente)
     */
     required: false,
 
     /*
-    Disabilita (se presente) il form in cui &egrave; incluso l'uploader (disabilita anche iul pulsante submit)
+    Disabilita (se presente) il form in cui è incluso l'uploader (disabilita anche il pulsante submit)
     da usare solo se nel form non sono presenti altri interazioni che potrebbero
     entrare in collisione con questa opzione
     */
@@ -137,10 +140,10 @@ FileUploader2 = ( (upl) => {
 
       Il markup di default utilizza classi di Boostrap 4.
 
-      L'eventuale contenuto dell'elemento originale viene eliminato (pu&ograve; contenere
-      un elemento type[file] per eventuale procedura di fallback)
+      L'eventuale contenuto dell'elemento originale viene eliminato (può contenere
+      un elemento input[type=file] per eventuale procedura di fallback)
 
-      I template possono essere alterati a piacimento, purch&eacute; si mantengano le classi
+      I template possono essere alterati a piacimento, purché si mantengano le classi
       `fupl-*` utilizzate nella procedura.
 
       I template delle immagini, devono contenere il tag img
@@ -238,7 +241,7 @@ FileUploader2 = ( (upl) => {
 
     /*
     Array (o stringa json) dei testi del label del tag input (il primo elemento dell'array) e del testo
-    informativo per il drag &drop da inserire in `.fupl-dd-text` (il secondo elemento)
+    informativo per il drag&drop da inserire in `.fupl-dd-text` (il secondo elemento)
     nelle varie combinazioni (img singola e multiple, doc singole e multipli)
     segnaposti: ['{{input_label}}', '{{dd_text}}']
     */
@@ -263,11 +266,11 @@ FileUploader2 = ( (upl) => {
     show_info_text: true,
 
     // stringhe aggiunte all'inizio e alla fine del testo informativo generato
-    // utilizzate solo se `custom_info_text` non &egrave; impostato
+    // utilizzate solo se `custom_info_text` non è impostato
     info_text_wrap_string: ['(', ')'],
 
     // Stringa utilizzata per concatenare tra loro le varie parti del testo informativo generato
-    // utilizzata solo se `custom_info_text` non &egrave; impostato
+    // utilizzata solo se `custom_info_text` non è impostato
     info_text_join_string: ', ',
 
     // Eventuale testo informativo personalizzato. se presente,
@@ -280,8 +283,8 @@ FileUploader2 = ( (upl) => {
     Valori numerici che corrispondono alle dimensioni in pixel richieste per l'immagine.
     I parametri img_min_* e img_max_* possono essere assegnati simultaneamente,
     ma sono ignorati se esistono i corrispondenti parametri esatti (ad esempio,
-    se &egrave; presente img_w, i parametri img_min_w e img_max_w non vengono presi in considerazione).
-    Il valore di default di tutti i parametri &egrave; null, che significa che non vengono applicati.
+    se è presente img_w, i parametri img_min_w e img_max_w non vengono presi in considerazione).
+    Il valore di default di tutti i parametri è null, che significa che non vengono applicati.
 
       * `img_min_w`: larghezza minima dell'immagine
       * `img_max_w`: larghezza massima dell'immagine
@@ -299,16 +302,16 @@ FileUploader2 = ( (upl) => {
 
 
     /*
-    Dimensione (peso) massima dell'immagine. Pu&ograve; essere un numero,
+    Dimensione (peso) massima dell'immagine. Può essere un numero,
     e in questo caso corrisponde ad una dimensione in KB, o una stringa
     composta da un valore numerico e da un suffisso tra ‘KB’ e ‘MB’ (anche minuscoli).
-    Se il valore &egrave; null o se la stringa non viene riconosciuta,
-    non &egrave; applicato nessun limite.
+    Se il valore è null o se la stringa non viene riconosciuta,
+    non è applicato nessun limite.
     */
     max_filesize: null,
 
     // Prefisso della variabile utilizzata per inviare al server i dati
-    // di ogni singolo file caricato. Il valore indicato &egrave; il nome base dell'array
+    // di ogni singolo file caricato. Il valore indicato è il nome base dell'array
     // costruito per inviare i valori al server.
     varname: 'file',
 
@@ -338,7 +341,7 @@ FileUploader2 = ( (upl) => {
         - `file`: oggetto filelist
         - `width` e `height`: null o dimensioni in pixel dell'immagine
         - `tmp_file`: nel caso di nuovi elementi: nome del file temporaneo
-      * `server_error`: null, se l'upload &egrave; stato completato correttamente. oppure
+      * `server_error`: null, se l'upload è stato completato correttamente. oppure
           stringa con il messaggio di errore restituito
       * `fupl_options`: oggetto `options` corrente
     */
@@ -376,19 +379,46 @@ FileUploader2 = ( (upl) => {
     */
     values: [],
 
-    // varname degli hidden con gli id dei file gi&agrave; registrati  da eliminare
+    // varname degli hidden con gli id dei file già registrati  da eliminare
     delete_varname: 'elimina_file[]',
 
-// TODO
-    // attiva la possibilit&agrave; di riordinare gli elementi trascinandoli
-    // se true, i valori degli eventuali elementi preregistrati devono essere
-    // elencati nel josn `values` nell'ordine correttp
+    // ========================================
+    // OPZIONE DI RIORDINO DEGLI ELEMENTI
+    // ========================================
+    /*
+      Attiva la possibilità di riordinare gli elementi trascinandoli.
+      - La funzione aggiunge una la variabile definita in `reorder_varname` a
+        quelle inviate con le altre procedure.
+      - L'opzione di reorder si attiva se il parametro reorder è true e solo se
+        il parametro multiple è true e tutti gli altri parametri necessari
+        sono presenti
+      - Se l'opzione è attiva, i valori degli eventuali elementi preregistrati
+        devono essere forniti nel json `values` nell'ordine corretto
+      - la funzione indicata nel parametro `reorder_init_function` viene chiamata
+        alla creazione dell'uploader (il default utilizza grabbable2,
+        https://github.com/massimo-cassandro/grabbable2), gli script necessari
+        vanno caricati autonomanente. `reorder_function` viene invocata passando
+        come argomento l'oggetto options corrente.
+        Vedi `demo/reorder_demo.html` per un esempio di utilizzo
+    */
     reorder: false,
 
     // name della variabile hidden usata per registrare l'ordinamento
-    reorder_varname: 'order'
+    reorder_varname: 'order',
 
-// TODO gestione campi aggiuntivi
+    /*
+      Funzione richiamata all'avvio di uploader se l'opzione di reorder è attiva.
+      La funzione viene invocata passandole come argomento
+      `fupl_options`: oggetto `options` corrente
+    */
+    reorder_init_function: function(fupl_options) {
+      fupl_options.istance_result_wrapper.grabbable();
+    }
+
+    // ========================================
+    // GESTIONE CAMPI AGGIUNTIVI
+    // ========================================
+// TODO
   };
 
   upl.setOptions = (...custom_options) => {

@@ -113,11 +113,11 @@ I parametri possono essere sovrascritti a cascata secondo questa sequenza:
 * I parametri assegnati in `FileUploader2.init` sovrascrivono quelli di default e valgono per tutti gli elementi FileUploader2 interessati
 * I parametri assegnati ad ogni istanza FileUploader prevalgono e sovrascrivono i precedenti: in questo modo è possibile avere comportamenti differenziati anche nella stessa pagina.
 
-Infine, se è presente un campo `input[type="file"]` all'interno dell'elemento FileUploader, gli eventuali attributi `required` o `multiple` presenti vengono presi in considerazione nella configurazione.
+Infine, se è presente un campo `input[type="file"]` all'interno dell'elemento FileUploader, gli eventuali attributi `required`, `multiple` o `disabled` presenti vengono presi in considerazione nella configurazione.
 
 Ad esempio è possibile impostare un Uploader come *required* sia impostando il parametro `required = true` sia utilizzando l'attributo `required` del campo file.
 
->NB: se i parametri `required` o `multiple` sono impostati come `true` nell'istanza FileUploader, non è possibile impostarli su `false` tramite gli attributi del campo input.
+>NB: se i parametri `required`, `multiple` o `disabled` sono impostati come `true` nell'istanza FileUploader, non è possibile impostarli su `false` tramite gli attributi del campo input.
 
 
 ## Script lato server

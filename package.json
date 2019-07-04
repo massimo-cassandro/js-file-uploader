@@ -25,6 +25,7 @@
   ],
   "devDependencies": {
     "bootstrap": "^4.3.1",
+    "grabbable2": "git+https://github.com/massimo-cassandro/grabbable2.git#master",
     "jquery": "^3.4.1",
     "layout-tools": "git+https://github.com/massimo-cassandro/layout-tools.git#master"
   }
