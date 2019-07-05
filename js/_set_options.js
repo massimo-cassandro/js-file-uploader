@@ -49,7 +49,7 @@ FileUploader2 = ( (upl) => {
     // mes  →  chiave dell'oggetto `alert_messages` con il testo del messaggio di errore
     // type →  uno tra info, error, warning
     // opts →  l'oggetto file uploader options corrente
-    alert_api: (mes, opts, type = error) => { window.alert(opts.alert_messages.mes);}, // eslint-disable-line
+    alert_api: (mes, opts, type = 'error') => { window.alert(mes.replace(/(<([^>]+)>)/ig,""));}, // eslint-disable-line
 
     // testo dei messaggi errore
     // eventuali segnaposti sono sotituiti nell'applicazione
@@ -60,13 +60,13 @@ FileUploader2 = ( (upl) => {
       'Utilizza la versione più recente di Firefox, Edge, Safari, Opera o Chrome',
 
       too_much_files: 'Puoi selezionare un solo file!', // tentativo di trascinare più file con uploader singolo
-      xhr_error: 'Si &egrave; verificato un errore nel caricamento del file &ldquo;<strong>{{file_name}}</strong>&rdquo;.', // errore ajax
-      file_format_error: 'Il file &ldquo;<strong>{{file_name}}</strong>&rdquo; &egrave; di un formato non consentito',
-      file_size_error: 'Le dimensioni di &ldquo;<strong>{{file_name}}</strong>&rdquo; ({{file_size}}) '+
+      xhr_error: 'Si &egrave; verificato un errore nel caricamento del file “<strong>{{file_name}}</strong>”.', // errore ajax
+      file_format_error: 'Il file “<strong>{{file_name}}</strong>” è di un formato non consentito',
+      file_size_error: 'Le dimensioni di “<strong>{{file_name}}</strong>” ({{file_size}}) '+
         'superano il valore massimo consentito ({{allowed_size}})',
 
       // immagini
-      img_err_start_string: "L'immagine &ldquo;<strong>{{file_name}}</strong>&rdquo; non è corretta:",
+      img_err_start_string: "L'immagine “<strong>{{file_name}}</strong>” non è corretta:",
       img_exact_width_err: "Larghezza non corrispondente ({{image_dimension}}px invece di {{allowed_dimension}}px)",
       img_min_width_err: "Larghezza inferiore a quella minima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)",
       img_max_width_err: "Larghezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)",
@@ -387,33 +387,19 @@ FileUploader2 = ( (upl) => {
     // ========================================
     /*
       Attiva la possibilità di riordinare gli elementi trascinandoli.
-      - La funzione aggiunge una la variabile definita in `reorder_varname` a
+      - La funzione aggiunge la variabile definita in `reorder_varname` a
         quelle inviate con le altre procedure.
       - L'opzione di reorder si attiva se il parametro reorder è true e solo se
-        il parametro multiple è true e tutti gli altri parametri necessari
-        sono presenti
+        il parametro multiple è true e il parametro sortable_varname è presente
       - Se l'opzione è attiva, i valori degli eventuali elementi preregistrati
         devono essere forniti nel json `values` nell'ordine corretto
-      - la funzione indicata nel parametro `reorder_init_function` viene chiamata
-        alla creazione dell'uploader (il default utilizza grabbable2,
-        https://github.com/massimo-cassandro/grabbable2), gli script necessari
-        vanno caricati autonomanente. `reorder_function` viene invocata passando
-        come argomento l'oggetto options corrente.
+
         Vedi `demo/reorder_demo.html` per un esempio di utilizzo
     */
-    reorder: false,
+    sortable: false,
 
     // name della variabile hidden usata per registrare l'ordinamento
-    reorder_varname: 'order',
-
-    /*
-      Funzione richiamata all'avvio di uploader se l'opzione di reorder è attiva.
-      La funzione viene invocata passandole come argomento
-      `fupl_options`: oggetto `options` corrente
-    */
-    reorder_init_function: function(fupl_options) {
-      fupl_options.istance_result_wrapper.grabbable();
-    }
+    sortable_varname: 'order'
 
     // ========================================
     // GESTIONE CAMPI AGGIUNTIVI

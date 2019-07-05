@@ -13,7 +13,7 @@
 @codekit-append '_funcs_and_params.js'
 @codekit-append '_set_options.js'
 @codekit-append '_create_info_text.js'
-@codekit-append '_reorder.js'
+@codekit-append '_sortable.js'
 @codekit-append '_build_hidden_fields.js'
 @codekit-append '_send_files.js'
 @codekit-append '_set_listeners.js'

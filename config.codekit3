@@ -153,14 +153,6 @@
 		"oAP": "/demo/layout_test.html",
 		"oF": 0
 		},
-	"/demo/reorder_demo.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/demo/reorder_demo.html",
-		"oF": 0
-		},
 	"/demo/server_side_response.json": {
 		"ft": 524288,
 		"oA": 1,
@@ -175,6 +167,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/demo/silent_degration_sample.html",
+		"oF": 0
+		},
+	"/demo/sortable_demo.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/sortable_demo.html",
 		"oF": 0
 		},
 	"/demo/test-files/gigi-1508584-unsplash.jpg": {
@@ -337,17 +337,6 @@
 		"sC": 3,
 		"tS": 1
 		},
-	"/js/_reorder.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 1,
-		"mi": 1,
-		"oA": 1,
-		"oAP": "/dist/_reorder-min.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 1
-		},
 	"/js/_send_files.js": {
 		"bF": 0,
 		"ft": 64,
@@ -377,6 +366,17 @@
 		"mi": 1,
 		"oA": 1,
 		"oAP": "/dist/_set_options-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
+	"/js/_sortable.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/dist/_sortable-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 1
@@ -1039,6 +1039,19 @@
 		"ma": 1,
 		"oA": 1,
 		"oAP": "/dist/_fupl.css",
+		"oF": 0,
+		"oS": 3,
+		"uL": 1
+		},
+	"/scss/_fupl_sortable.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 1,
+		"oA": 1,
+		"oAP": "/dist/_fupl_sortable.css",
 		"oF": 0,
 		"oS": 3,
 		"uL": 1

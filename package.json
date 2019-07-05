@@ -1,6 +1,6 @@
 {
   "name": "file-uploader",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "description": "HTML5 Async File Uploader ",
   "main": "js/file_uploader.js",
   "scripts": {
@@ -25,7 +25,6 @@
   ],
   "devDependencies": {
     "bootstrap": "^4.3.1",
-    "grabbable2": "git+https://github.com/massimo-cassandro/grabbable2.git#master",
     "jquery": "^3.4.1",
     "layout-tools": "git+https://github.com/massimo-cassandro/layout-tools.git#master"
   }

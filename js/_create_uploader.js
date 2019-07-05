@@ -184,6 +184,19 @@ FileUploader2 = ((upl) => {
     }
 
 
+    // Sortable
+    if( fupl_options.sortable) {
+      if( fupl_options.multiple && fupl_options.sortable_varname ) {
+
+        upl.activateSortable(fupl_options);
+
+      } else {
+        console.error('"sortable" option incorrectly set'); // eslint-disable-line
+      }
+
+    }
+
+
     //debug
     if( fupl_options.debug ) {
       /* eslint-disable */

@@ -4,20 +4,23 @@
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-    <title>File uploader reorder demo</title>
+    <title>File uploader sortable demo</title>
     <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css">
 
   </head>
 
   <body>
     <div class="container">
-      <h1>File Uploader Reorder demo</h1>
+      <h1>File Uploader sortable demo</h1>
 
       <form action="" id="form1" method="post">
         <div data-file_uploader2
           data-filetype="img"
           data-max_filesize="12Mb"
           data-uploader_legend="true"
+          data-uploader_legend_text="Test sortable"
+          data-multiple="true"
+          data-sortable="true"
           data-values='[
             {
               "id": "123",
@@ -40,7 +43,6 @@
       </form>
 
     </div>
-
     <script src="../dist/file_uploader-min.js"></script>
     <script>
 
@@ -49,7 +51,6 @@
         css: '../dist/file_uploader.css',
         uploader_url: 'server_side_response.json',
         disable_submit: true
-
       });
 
     </script>

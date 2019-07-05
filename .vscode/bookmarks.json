@@ -58,5 +58,15 @@
 				"label": ""
 			}
 		]
+	},
+	{
+		"path": "$ROOTPATH$/js/_create_uploader.js",
+		"bookmarks": [
+			{
+				"line": 186,
+				"column": 15,
+				"label": "sortable"
+			}
+		]
 	}
 ]

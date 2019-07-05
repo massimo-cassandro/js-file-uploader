@@ -333,7 +333,7 @@ FileUploader2 = ((upl) => {
           } // end if image
 
         } catch (errormessage) {
-          fupl_options.alert_api( errormessage, fupl_options );
+          fupl_options.alert_api( errormessage, fupl_options ,'error');
         }
       }); // end foreach
 
