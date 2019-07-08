@@ -1,12 +1,22 @@
 .fupl-sortable {
+  position: relative;
   .fupl-item[draggable] {
     user-select: none;
     cursor: grab;
   }
+}
+// hidden wrapper for ghosts
+.fupl-sortable-ghost {
+  position: absolute;
 
-  .fupl-sortable-ghost {
-    // border: 1px solid #d4d4d4;
-    // background: repeating-linear-gradient( -45deg, #fff, #fff 4px, #d4d4d4 4px, #d4d4d4 5px );
-    position: relative;
-  }
+}
+
+// clòass attached to an element when begin dragged
+.fupl-dragstart {
+  opacity: .7;
+  position: relative;
+  transform: scale(.8);
+  outline:2px dashed #000;
+  outline-offset: 6px;
+  border-radius:4px;
 }

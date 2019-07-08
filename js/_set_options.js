@@ -182,6 +182,8 @@ FileUploader2 = ( (upl) => {
       // feedback di caricamento alternativo se progress.lengthComputable == false
       // se necessario e se la funzione `alternate_loading_func` non è presente,
       // sostituisce l'elemento `.fupl-progress`
+      // l'attributo `draggable="false"` risolve potenziali conflitti se si attiva
+      // l'opzione `sortable`
       alternate_loading_progress: '<div class="spinner-grow text-primary" role="status">' +
           '<span class="sr-only">Loading...</span></div',
 
@@ -198,7 +200,7 @@ FileUploader2 = ( (upl) => {
         multiple: '<div class="fupl-item">' +
             '<div class="fupl-remove"></div>' +
             '<div class="fupl-img-wrapper">' +
-              '<img alt="Immagine caricata" class="img-fluid fupl-img">' +
+              '<img alt="Immagine caricata" class="img-fluid fupl-img" draggable="false">' +
             '</div>' +
             '<div class="fupl-file-info">' +
               '<div class="text-truncate fupl-file-name"></div>' +
@@ -211,7 +213,7 @@ FileUploader2 = ( (upl) => {
         single: '<div class="fupl-item">' +
             '<div class="fupl-remove"></div>' +
             '<div class="fupl-doc text-truncate">' +
-              '<a href="#" class="text-truncate fupl-file-name fupl-url"></a>' +
+              '<a href="#" class="text-truncate fupl-file-name fupl-url" draggable="false"></a>' +
             '</div>' +
             '<span class="small ml-1 text-nowrap fupl-file-size"></span>' +
           '</div>',

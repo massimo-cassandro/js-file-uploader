@@ -138,8 +138,8 @@ FileUploader2 = ((upl) => {
       // sortable
       if( fupl_options.sortable ) {
         fupl_item_dom.setAttribute('draggable', true);
-        console.log(1); // eslint-disable-line
-        upl.addSortableEvents(fupl_item_dom);
+
+        upl.addSortableEvents(fupl_item_dom, fupl_options);
       }
 
       return fupl_options.istance_result_wrapper.querySelector('.fupl-item:last-child');

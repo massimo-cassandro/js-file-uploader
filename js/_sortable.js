@@ -12,13 +12,30 @@ FileUploader2 = ((upl) => {
     - https://github.com/gridstack/gridstack.js
     - https://developer.mozilla.org/it/docs/Web/API/HTML_Drag_and_Drop_API
     - https://www.html5rocks.com/en/tutorials/dnd/basics/
+    - https://kryogenix.org/code/browser/custom-drag-image.html
   */
 
-  upl.addSortableEvents = (fupl_item) => {
-    console.log(fupl_item); // eslint-disable-line
-    fupl_item.addEventListener('dragstart', function() {
-      this.style.opacity = '0.4';
-    }, false);
+  upl.addSortableEvents = (fupl_item, fupl_options) => {
+
+    //TODO creazione ghost corrispondente all'elemento
+    // attualmente l'immagine ghost cambia in base al punto in cui si fa click
+    // per il trasxcinamento
+
+    fupl_item.addEventListener('dragstart', function(e) {
+      // dimesnioni dell'elemento
+      this.dataset.wi = this.offsetWidth + 'px';
+      this.dataset.he = this.offsetHeight + 'px';
+
+
+      // aggiunta classe `.fupl-sorting` all'elemento fupl per disattivare il feedback
+      // del drag&drop esterno al browser (vedi scss/_fupl.scss)
+      fupl_options.element.classList.add('fupl-sorting');
+
+      this.classList.add('fupl-dragstart');
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/html', this.innerHTML);
+
+    }, true);
   };
 
   upl.activateSortable = (fupl_options) => {
@@ -26,36 +43,12 @@ FileUploader2 = ((upl) => {
     // add classes
     fupl_options.istance_result_wrapper.classList.add('fupl-sortable');
 
-    let ghost = null;
 
-    // ghost creation
-    const createGhost = function(){
 
-      ghost = document.createElement("div");
-      ghost.classList.add("fupl-sortable-ghost");
-
-      ghost.addEventListener("drop", function(e){
-        var data = e.dataTransfer.getData("text");
-        if(data!=="draggable") { return; }
-
-        e.preventDefault();
-        e.stopPropagation();
-
-        //this.parentNode.insertBefore(elem, this);
-        ghost.style.display = "none";
-
-        //callCallback(dummy.parentNode);
-      });
-
-      fupl_options.istance_result_wrapper.appendChild(ghost);
-    };
-
-    if(ghost === null ) {
-      createGhost();
-    }
 
     //TODO ondrop aggiungere a fupl .fupl-sorting
     //TODO stato disabled
+    //TODO drag icon
 
   }; // end upl.activateSortable
 
