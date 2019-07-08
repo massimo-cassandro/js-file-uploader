@@ -5,13 +5,9 @@
     cursor: grab;
   }
 }
-// hidden wrapper for ghosts
-.fupl-sortable-ghost {
-  position: absolute;
 
-}
 
-// clòass attached to an element when begin dragged
+// class attached to an element when begin dragged
 .fupl-dragstart {
   opacity: .7;
   position: relative;
