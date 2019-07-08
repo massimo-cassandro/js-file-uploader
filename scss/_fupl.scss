@@ -5,7 +5,7 @@
   transition: outline-offset .15s ease-in-out, background-color .15s linear;
   background-color: $fupl-background-color;
 
-  &.fupl-is-dragover {
+  &.fupl-is-dragover:not(.fupl-sorting) {
 		outline-offset: -.5rem;
 		outline-color: $fupl-outline-color-dragover;
     background-color: $fupl-background-color-dragover;

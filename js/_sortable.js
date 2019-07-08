@@ -14,6 +14,13 @@ FileUploader2 = ((upl) => {
     - https://www.html5rocks.com/en/tutorials/dnd/basics/
   */
 
+  upl.addSortableEvents = (fupl_item) => {
+    console.log(fupl_item); // eslint-disable-line
+    fupl_item.addEventListener('dragstart', function() {
+      this.style.opacity = '0.4';
+    }, false);
+  };
+
   upl.activateSortable = (fupl_options) => {
 
     // add classes
@@ -25,27 +32,30 @@ FileUploader2 = ((upl) => {
     const createGhost = function(){
 
       ghost = document.createElement("div");
-      ghost.className = "grabbable-dummy";
-      ghost.style.position = "relative";
+      ghost.classList.add("fupl-sortable-ghost");
+
       ghost.addEventListener("drop", function(e){
         var data = e.dataTransfer.getData("text");
-        if(data!=="draggable") return;
+        if(data!=="draggable") { return; }
 
         e.preventDefault();
         e.stopPropagation();
 
-        while(bg.children.length>0){
-          var elem = bg.children[0];
-          this.parentNode.insertBefore(elem, this);
-        }
-
+        //this.parentNode.insertBefore(elem, this);
         ghost.style.display = "none";
-        callCallback(dummy.parentNode);
+
+        //callCallback(dummy.parentNode);
       });
 
-      var x = document.querySelector("body");
-      x.appendChild(ghost);
+      fupl_options.istance_result_wrapper.appendChild(ghost);
     };
+
+    if(ghost === null ) {
+      createGhost();
+    }
+
+    //TODO ondrop aggiungere a fupl .fupl-sorting
+    //TODO stato disabled
 
   }; // end upl.activateSortable
 

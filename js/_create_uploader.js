@@ -152,6 +152,20 @@ FileUploader2 = ((upl) => {
       }
     }
 
+
+    // Sortable
+    if( fupl_options.sortable) {
+      if( fupl_options.multiple && fupl_options.sortable_varname ) {
+
+        upl.activateSortable(fupl_options);
+
+      } else {
+        console.error('"sortable" option incorrectly set'); // eslint-disable-line
+        fupl_options.sortable = false;
+      }
+
+    }
+
     // aggiunta valori
     // se values esiste ma è un oggetto, viene inserito in un array (non è garanzia di funzionamento)
     // se è un altro tipo di variabile viene generato un errore
@@ -182,20 +196,6 @@ FileUploader2 = ((upl) => {
     if( fupl_options.init_callback !== null ) {
       fupl_options.init_callback( fupl_options );
     }
-
-
-    // Sortable
-    if( fupl_options.sortable) {
-      if( fupl_options.multiple && fupl_options.sortable_varname ) {
-
-        upl.activateSortable(fupl_options);
-
-      } else {
-        console.error('"sortable" option incorrectly set'); // eslint-disable-line
-      }
-
-    }
-
 
     //debug
     if( fupl_options.debug ) {

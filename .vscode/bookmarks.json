@@ -60,12 +60,12 @@
 		]
 	},
 	{
-		"path": "$ROOTPATH$/js/_create_uploader.js",
+		"path": "$ROOTPATH$/js/_create_item.js",
 		"bookmarks": [
 			{
-				"line": 186,
-				"column": 15,
-				"label": "sortable"
+				"line": 137,
+				"column": 6,
+				"label": ""
 			}
 		]
 	}

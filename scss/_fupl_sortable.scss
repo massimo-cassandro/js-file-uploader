@@ -1,5 +1,5 @@
 .fupl-sortable {
-  .fupl-item {
+  .fupl-item[draggable] {
     user-select: none;
     cursor: grab;
   }
@@ -7,5 +7,6 @@
   .fupl-sortable-ghost {
     // border: 1px solid #d4d4d4;
     // background: repeating-linear-gradient( -45deg, #fff, #fff 4px, #d4d4d4 4px, #d4d4d4 5px );
+    position: relative;
   }
 }

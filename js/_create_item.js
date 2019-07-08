@@ -117,12 +117,12 @@ FileUploader2 = ((upl) => {
       }
 
       // aggiunta evento trigger eliminazione elemento
-      fupl_item_wrapper = fupl_options.istance_result_wrapper.querySelector('.fupl-item:last-child');
-      fupl_item_wrapper.querySelector('.fupl-remove-trigger').addEventListener('click', () => {
+      let fupl_item_dom = fupl_options.istance_result_wrapper.querySelector('.fupl-item:last-child');
+      fupl_item_dom.querySelector('.fupl-remove-trigger').addEventListener('click', () => {
         // se l'id non è impostato si tratta di un nuovo elemento,
         // e non va eseguita la cancellazione sul server
-        let id = fupl_item_wrapper.dataset[upl.data_attributes.item_id];
-        fupl_item_wrapper.remove();
+        let id = fupl_item_dom.dataset[upl.data_attributes.item_id];
+        fupl_item_dom.remove();
         if(id) {
           fupl_options.wrapper.insertAdjacentHTML('beforeend',
             `<input type="hidden" name="${fupl_options.delete_varname}" value="${id}">`
@@ -134,6 +134,13 @@ FileUploader2 = ((upl) => {
         upl.set_has_values(fupl_options);
 
       });
+
+      // sortable
+      if( fupl_options.sortable ) {
+        fupl_item_dom.setAttribute('draggable', true);
+        console.log(1); // eslint-disable-line
+        upl.addSortableEvents(fupl_item_dom);
+      }
 
       return fupl_options.istance_result_wrapper.querySelector('.fupl-item:last-child');
 
