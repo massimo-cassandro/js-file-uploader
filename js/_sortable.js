@@ -15,6 +15,20 @@ FileUploader2 = ((upl) => {
     - https://kryogenix.org/code/browser/custom-drag-image.html
   */
 
+  const classes = {
+    // classe aggiunt all'elemento fupl_options.istance_result_wrapper se l'opzione
+    // sortable è attiva
+    wrapper_class: 'fupl-sortable',
+
+    // classe aggiunta all'alemento principale (fupl_options.element) quando
+    // si trascina un elemento. Viene eliminata al dragleave
+    sorting_class: 'fupl-sorting',
+
+    // stesso criterio, ma classe aggiunta all'elemento trascinato
+    sorting_item_class: 'fupl-item-sorting'
+
+  };
+
   upl.addSortableEvents = (fupl_item, fupl_options) => {
 
     //TODO creazione ghost corrispondente all'elemento
@@ -22,18 +36,26 @@ FileUploader2 = ((upl) => {
     // per il trasxcinamento
 
     fupl_item.addEventListener('dragstart', function(e) {
-      // dimesnioni dell'elemento
+      // dimensioni dell'elemento
       this.dataset.wi = this.offsetWidth + 'px';
       this.dataset.he = this.offsetHeight + 'px';
 
 
       // aggiunta classe `.fupl-sorting` all'elemento fupl per disattivare il feedback
       // del drag&drop esterno al browser (vedi scss/_fupl.scss)
-      fupl_options.element.classList.add('fupl-sorting');
+      fupl_options.element.classList.add(classes.sorting_class);
 
-      this.classList.add('fupl-dragstart');
+      this.classList.add(classes.sorting_item_class);
       e.dataTransfer.effectAllowed = 'move';
       e.dataTransfer.setData('text/html', this.innerHTML);
+
+    }, true);
+
+    fupl_item.addEventListener('dragleave', function() {
+
+      //fupl_options.element.classList.remove(classes.sorting_class);
+
+      //this.classList.remove(classes.sorting_item_class);
 
     }, true);
   };
@@ -41,12 +63,12 @@ FileUploader2 = ((upl) => {
   upl.activateSortable = (fupl_options) => {
 
     // add classes
-    fupl_options.istance_result_wrapper.classList.add('fupl-sortable');
+    fupl_options.istance_result_wrapper.classList.add(classes.wrapper_class);
 
 
 
 
-    //TODO ondrop aggiungere a fupl .fupl-sorting
+    //TODO ondrop rimuovere da fupl .fupl-sorting
     //TODO stato disabled
     //TODO drag icon
 

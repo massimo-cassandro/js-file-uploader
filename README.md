@@ -10,11 +10,11 @@ FileUploader è uno script per automatizzare e semplificare l'upload di file att
 
 L'upload dei file è effettuato in modo asincrono tramite una chiamata Ajax ad uno script lato server che provvede alla registrazione del file, restituendo un JSON di informazioni.
 
-Benché le impostazioni di default del markup siano basate su Bootstrap 4m FileUploader è interamente e facilmente configurabile da zero, e può essere adattato a ogni esigenza.
+Benché le impostazioni di default del markup siano basate su Bootstrap 4, FileUploader è interamente e facilmente configurabile da zero, e può essere adattato a qualsiasi layout.
 
 
 ## Compatibilità
-FileUploader richiede un browser di ultima generazione, e non è compatibile con nessuna versione Explorer.
+FileUploader richiede un browser di ultima generazione, e non è compatibile con nessuna versione di Explorer.
 Richiede inoltre la versione 16 o successiva di Edge.
 
 In caso di browser non compatibile viene mostrato un *alert* con il messaggio di errore indicato nel parametro `alert_messages.unsuitable_browser` delle opzioni e la procedura viene bloccata.
@@ -27,9 +27,9 @@ Per utilizzare questa opzione è necessario:
 * inserire all'interno dell'elemento uploader l'elemento input di fallback
 * imposta se necessario la funzione `unsuitable_browser_callback` per attivare comportamenti specifici validi solo in queste situazioni
 * aggiungere al form il necessario attributo `enctype` (non richiesto da FileUploader)
-* gestire questo eventualità lato server. È molto probabile che lo script da usare in questa situazione differisca da quello usato per la procedura Ajax.
+* gestire questa eventualità lato server. È molto probabile che lo script da usare in questa situazione differisca da quello usato per la procedura Ajax.
 
-## Download
+## Installazione
 
 FileUploader può essere installato tramite `npm`:
 
@@ -144,7 +144,6 @@ Array
             [error] => 0
             [size] => 8772
         )
-
 )
 ```
 
@@ -335,3 +334,8 @@ $('form').each(function() {
 - <https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/>
 - <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation#Limiting_the_size_of_a_file_before_its_upload>
 - <https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/>
+- <https://codepen.io/therealDaze/pen/ZaoErp>
+- <https://github.com/gridstack/gridstack.js>
+- <https://developer.mozilla.org/it/docs/Web/API/HTML_Drag_and_Drop_API>
+- <https://www.html5rocks.com/en/tutorials/dnd/basics/>
+- <https://kryogenix.org/code/browser/custom-drag-image.html>
