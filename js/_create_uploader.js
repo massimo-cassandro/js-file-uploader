@@ -201,21 +201,21 @@ FileUploader2 = ((upl) => {
     if( fupl_options.debug ) {
       /* eslint-disable */
       console.groupCollapsed('FileUploader options');
-      // creazione di un oggetto bidimensinale per
-      // semplificare la rappresentazione in tabella
-      let c_options = {},
-      c_keys = Object.keys(fupl_options);
-      c_keys.sort();
-      c_keys.forEach(item => {
-        let _toStringify = typeof fupl_options[item] === 'object' &&
-        fupl_options[item] !== null &&
-          item !== 'element';
-        c_options[item] = _toStringify ? JSON.stringify(fupl_options[item], null, ' ') : fupl_options[item];
-      });
-      console.table(c_options);
-      console.groupCollapsed('fupl_options');
-        console.log(fupl_options);
-      console.groupEnd();
+        // creazione di un oggetto bidimensinale per
+        // semplificare la rappresentazione in tabella
+        let c_options = {},
+        c_keys = Object.keys(fupl_options);
+        c_keys.sort();
+        c_keys.forEach(item => {
+          let _toStringify = typeof fupl_options[item] === 'object' &&
+          fupl_options[item] !== null &&
+            item !== 'element';
+          c_options[item] = _toStringify ? JSON.stringify(fupl_options[item], null, ' ') : fupl_options[item];
+        });
+        console.table(c_options);
+        console.groupCollapsed('fupl_options');
+          console.log(fupl_options);
+        console.groupEnd();
       console.groupEnd();
       /* eslint-enable */
     } // end if debug

@@ -139,6 +139,13 @@ FileUploader2 = ((upl) => {
       if( fupl_options.sortable ) {
         fupl_item_dom.setAttribute('draggable', true);
 
+        // il valore ordine comincia da zero
+        let order_value = fupl_options.istance_result_wrapper.querySelectorAll('.fupl-item').length -1;
+
+        fupl_item_dom.insertAdjacentHTML('beforeend',
+        '<input type="hidden" class="fupl-sortable-order" ' +
+          `name="${fupl_options.sortable_varname}[${item_data.id}]" value="${order_value}">`
+      );
         upl.addSortableEvents(fupl_item_dom, fupl_options);
       }
 

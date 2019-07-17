@@ -60,7 +60,7 @@ FileUploader2 = ((upl) => {
 
       // aggiunta elemento all'uploader
       let this_item = upl.createItem({
-          id   : null,
+          id   : current_item.id,
           name : current_item.file.name,
           url  : null,
           src  : img_preview,
@@ -221,7 +221,7 @@ FileUploader2 = ((upl) => {
         try {
 
           let current_item = {
-            id: 'fupl_item_' + (+new Date()) + '_' + idx, // id unico
+            id: 'fupl_item_' + Date.now() + '_' + idx, // id unico
             file: filelist_item,
             width: null,
             height: null,

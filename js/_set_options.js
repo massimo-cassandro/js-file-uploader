@@ -401,7 +401,8 @@ FileUploader2 = ( (upl) => {
     sortable: false,
 
     // name della variabile hidden usata per registrare l'ordinamento
-    sortable_varname: 'order'
+    sortable_varname: 'uploader_order'
+
 
     // ========================================
     // GESTIONE CAMPI AGGIUNTIVI
