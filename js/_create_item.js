@@ -143,9 +143,12 @@ FileUploader2 = ((upl) => {
         let order_value = fupl_options.istance_result_wrapper.querySelectorAll('.fupl-item').length -1;
 
         fupl_item_dom.insertAdjacentHTML('beforeend',
-        '<input type="hidden" class="fupl-sortable-order" ' +
-          `name="${fupl_options.sortable_varname}[${item_data.id}]" value="${order_value}">`
-      );
+          '<input type="hidden" class="fupl-sortable-order" ' +
+            `name="${fupl_options.sortable_varname}[${item_data.id}]" value="${order_value}">`
+        );
+        if(fupl_options.sortable_icon) {
+          fupl_item_dom.querySelector('.fupl-sortable-icon').innerHTML = fupl_options.sortable_icon;
+        }
         upl.addSortableEvents(fupl_item_dom, fupl_options);
       }
 

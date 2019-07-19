@@ -16,10 +16,6 @@ FileUploader2 = ((upl) => {
     - http://jsfiddle.net/zfnj5rv4/
   */
 
-
-  //TODO stato disabled
-  //TODO drag icon
-
   const classes = {
     // classe aggiunta all'elemento fupl_options.istance_result_wrapper se l'opzione
     // sortable è attiva
@@ -36,7 +32,8 @@ FileUploader2 = ((upl) => {
     over_item_class: 'fupl-item-dragover'
   };
 
-  let dragged_element = null;
+  let dragged_element = null,
+    uploader_is_disabled = false;
 
   // pulisce eventuali eventi non conclusi correttamente
   const resetAll = () => {
@@ -58,26 +55,29 @@ FileUploader2 = ((upl) => {
     // trascinamento avviato
     fupl_item.addEventListener('dragstart', function(e) {
 
+      uploader_is_disabled = fupl_options.wrapper.disabled;
       resetAll();
+      if(!uploader_is_disabled) {
 
-      dragged_element = this;
+        dragged_element = this;
 
-      // aggiunta classe `.fupl-sorting` all'elemento fupl per disattivare il feedback
-      // del drag&drop esterno al browser (vedi scss/_fupl.scss)
-      fupl_options.element.classList.add(classes.sorting_class);
+        // aggiunta classe `.fupl-sorting` all'elemento fupl per disattivare il feedback
+        // del drag&drop esterno al browser (vedi scss/_fupl.scss)
+        fupl_options.element.classList.add(classes.sorting_class);
 
-      e.dataTransfer.effectAllowed = 'move';
-      e.dataTransfer.setData('text/html', this.outerHTML);
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text', 'fupl-sorting');
 
-      this.classList.add(classes.sorting_item_class);
+        this.classList.add(classes.sorting_item_class);
+      }
     }, false);
 
     // inizio posizionamento sopra un altro elemento
     // e.target (this) è l'elemento
     fupl_item.addEventListener('dragenter', function(e) {
 
-      // non si attiva per file dall'esterno
-      if( e.dataTransfer.getData('text/html') ) {
+      // non si attiva per file dall'esterno e per uplaoder disbilitato
+      if( e.dataTransfer.getData('text') === 'fupl-sorting' && !uploader_is_disabled) {
         if (e.stopPropagation) {
           e.stopPropagation(); // stops the browser from redirecting.
         }
@@ -91,7 +91,7 @@ FileUploader2 = ((upl) => {
     // e.target è l'elemento
     fupl_item.addEventListener('dragover', function(e) {
 
-      if( e.dataTransfer.getData('text/html') ) {
+      if( e.dataTransfer.getData('text') === 'fupl-sorting' && !uploader_is_disabled ) {
 
         if (e.preventDefault) {
           e.preventDefault();
@@ -114,10 +114,12 @@ FileUploader2 = ((upl) => {
     // drop e.target è l'elemento
     fupl_item.addEventListener('drop', function(e) {
 
-      if( e.dataTransfer.getData('text/html') ) {
+      if( e.dataTransfer.getData('text') === 'fupl-sorting' && !uploader_is_disabled) {
         if (e.stopPropagation) {
           e.stopPropagation(); // stops the browser from redirecting.
         }
+
+        e.preventDefault();
 
         if(dragged_element) {
           if(this.previousElementSibling === dragged_element && this.nextElementSibling ) {
@@ -141,7 +143,7 @@ FileUploader2 = ((upl) => {
     // trascinamento terminato
     fupl_item.addEventListener('dragend', function(e) {
 
-      if( e.dataTransfer.getData('text/html') ) {
+      if( e.dataTransfer.getData('text') === 'fupl-sorting' && !uploader_is_disabled) {
         fupl_options.element.classList.remove(classes.sorting_class);
         resetAll();
 

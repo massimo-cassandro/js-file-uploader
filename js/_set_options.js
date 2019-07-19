@@ -206,6 +206,7 @@ FileUploader2 = ( (upl) => {
               '<div class="text-truncate fupl-file-name"></div>' +
               '<div class="fupl-file-size"></div>' +
             '</div>' +
+            '<div class="fupl-sortable-icon"></div>' +
           '</div>'
       },
 
@@ -216,6 +217,7 @@ FileUploader2 = ( (upl) => {
               '<a href="#" class="text-truncate fupl-file-name fupl-url" draggable="false"></a>' +
             '</div>' +
             '<span class="small ml-1 text-nowrap fupl-file-size"></span>' +
+            '<div class="fupl-sortable-icon"></div>' +
           '</div>',
 
         multiple: null // usa single_doc
@@ -401,7 +403,13 @@ FileUploader2 = ( (upl) => {
     sortable: false,
 
     // name della variabile hidden usata per registrare l'ordinamento
-    sortable_varname: 'uploader_order'
+    sortable_varname: 'uploader_order',
+
+    // markup dell'icona di trascinamento aggiunta agli elementi
+    // quando l'opzione sortable è attiva
+    // il markup viene inserito all'interno dell'elemento '.fupl-sortable-icon'
+    // che deve essere presente nei template `img` e `doc` (versione `multiple`)
+    sortable_icon: '<div title="Trascina per cambiare l\'ordinamento"></div>'
 
 
     // ========================================

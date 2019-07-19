@@ -25,3 +25,68 @@
 .fupl-item-dragover {
   transform: scale(.8);
 }
+
+.fupl-wrapper:not([disabled]) {
+
+  $sortable-icon-dot-size: 5px;
+  $sortable-icon-dot-color: #333;
+  $sortable-icon-hover-dot-color: #c00;
+
+  &.fupl-type-img {
+    .fupl-sortable-icon {
+      display:block;
+      width:100%;
+      margin:1rem 0;
+    }
+  }
+  &.fupl-type-doc {
+    .fupl-sortable-icon {
+      display:inline-block;
+      width:auto;
+      margin:0 .5rem;
+    }
+  }
+
+  .fupl-sortable-icon {
+
+    > div {
+      display: block;
+      height: $sortable-icon-dot-size * 3;
+      width: $sortable-icon-dot-size * 5;
+      margin: 0 auto;
+      cursor: grab;
+      position: relative;
+
+      &:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          height: $sortable-icon-dot-size;
+          width: $sortable-icon-dot-size;
+          border-radius:50%;
+          background-color: $sortable-icon-dot-color;
+          color: $sortable-icon-dot-color; // inherit from box shadow
+
+          box-shadow: ($sortable-icon-dot-size * -2) ($sortable-icon-dot-size * 0) 0 0,       // Top left
+                      ($sortable-icon-dot-size * 2) ($sortable-icon-dot-size * 0) 0 0,        // Top right
+                      ($sortable-icon-dot-size * -2) ($sortable-icon-dot-size * 2) 0 0,        // Bottom left
+                      ($sortable-icon-dot-size * 0) ($sortable-icon-dot-size * 2) 0 0,          // Bottom middle
+                      ($sortable-icon-dot-size * 2) ($sortable-icon-dot-size * 2) 0 0          // Bottom right
+      }
+    }
+  }
+
+
+  .fupl-sortable {
+    .fupl-item:hover {
+      .fupl-sortable-icon {
+        > div::after {
+          background-color: $sortable-icon-hover-dot-color;
+          color: $sortable-icon-hover-dot-color;
+        }
+      }
+    }
+  }
+}

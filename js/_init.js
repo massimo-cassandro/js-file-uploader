@@ -17,7 +17,7 @@ FileUploader2 = ((upl) => {
     }
 
     var div = document.createElement( 'div' );
-    return ( ( 'draggable' in div ) || ( 'ondragstart' in div && 'ondrop' in div ) )
+    return ( ( 'draggable' in div ) || ( 'ondragstart' in div && 'ondrop' in div ) ) //TODO rimuovere ondragstart/ondrop (IE)?
       && 'FormData' in window
       && 'FileReader' in window
       && 'fetch' in window;
