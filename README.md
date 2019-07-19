@@ -280,6 +280,41 @@ $('form').each(function() {
 
 ```
 
+### Blocco browser non compatibili
+
+Per impedire il submit dei form nei browser non compatibili (jQuery):
+
+```js
+
+FileUploader2.init({
+  
+  [...]
+
+  // aggiunge la classe 'unsuitable_browser' 
+  // e rimuove il pulsante submit, ma non impedisce il submit del form
+  unsuitable_browser_callback: function () {
+    $('[data-file_uploader2]')
+      .closest('form')
+        .addClass('unsuitable_browser')
+        .find(':submit').each( function() {
+          $(this).replaceWith( '<div class="alert alert-danger my-4">Stai usando un browser non compatibile</div>' );
+        });
+  }
+
+});
+
+// impedisce il submit del form
+$('form').each(function() {
+    
+  $(this).submit(function() {
+
+    if($(this).hasClass('unsuitable_browser')) {
+      alert("Stai utilizzando un browser non compatibile. Impossibile caricare le immagini");
+      return false;
+    }
+  });
+});
+```
 
 ### Controllo contenuti `required`
 
@@ -300,34 +335,6 @@ Oppure, per effettuare un controllo generale su tutto il form:
 document.querySelectorAll('.fupl-wrapper:not([disabled])[data-required="true"][data-has-values="false"]').length === 0
 ```
 
-Per evitare submit incompleti da parte di browser non compatibili e in assenza di una procedura di fallback specifica, è inoltre possibile utilizzare la funzione `unsuitable_browser_callback`.
-
-Ad esempio (utilizzando jQuery):
-
-```javascript
-FileUploader2.init({
-  [.. altri parametri ..],
-
-  unsuitable_browser_callback: function () {
-    $('[data-file_uploader2]')
-      .closest('form')
-        .addClass('unsuitable_browser')
-        .find(':submit').each( function() {
-          $(this).replaceWith( '<div class="alert alert-icon alert-danger my-4">Stai usando un browser non compatibile</div>' );
-        });
-  }
-});
-
-$('form').each(function() {
-  $(this).submit(function() {
-
-    if($(this).hasClass('unsuitable_browser')) {
-      alert("Stai utilizzando un browser non compatibile con questa procedura");
-      return false;
-    }
-});
-
-```
 
 ## Riferimenti (e ispirazioni)
 - <https://css-tricks.com/drag-and-drop-file-uploading/>
