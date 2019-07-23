@@ -386,6 +386,10 @@ FileUploader2 = ( (upl) => {
     // varname degli hidden con gli id dei file già registrati  da eliminare
     delete_varname: 'elimina_file[]',
 
+    // se true viene attuvata l'integrazione con fancybox per le immagini
+    // fancybox deve essere caricato autonomamente
+    fancybox: false,
+
     // ========================================
     // OPZIONE DI RIORDINO DEGLI ELEMENTI
     // ========================================
