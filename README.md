@@ -1,17 +1,14 @@
-# FileUploader
+# JS FileUploader
 
 HTML5 + Javascript asyncronous file upload
 
-v. 2 - Massimo Cassandro - 2017/2019
+*v. 2 - Massimo Cassandro - 2017/2019*
 
---
+Fileuploader automates and simplifies uploading files to HTML pages.
 
+Uploads are performed asynchronously via an Ajax call to a server-side script that must register the file and return a JSON string.
 
-FileUploader è uno script per automatizzare e semplificare l'upload di file attraverso una pagina HTML.
-
-L'upload dei file è effettuato in modo asincrono tramite una chiamata Ajax ad uno script lato server che provvede alla registrazione del file, restituendo un JSON di informazioni.
-
-Benché le impostazioni di default del markup siano basate su Bootstrap 4, FileUploader è interamente e facilmente configurabile da zero, e può essere adattato a qualsiasi layout.
+Although the default settings are based on Bootstrap 4, FileUploader is entirely and easily configurable from scratch and can be adapted to any layout.
 
 
 ## Compatibilità
