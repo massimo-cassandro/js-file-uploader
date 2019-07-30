@@ -35,7 +35,7 @@ Per utilizzare questa opzione è necessario:
 FileUploader può essere installato tramite `npm`:
 
 ```bash
-npm i --save git+https://github.com/massimo-cassandro/file-uploader2.git#master
+npm i --save js-file-uploader
 ```
 
 ## Utilizzo di FileUploader
