@@ -191,6 +191,8 @@ FileUploader2 = ( (upl) => {
       alternate_loading_progress: '<div class="spinner-grow text-primary" role="status">' +
           '<span class="sr-only">Loading...</span></div',
 
+      // template immagini e documenti
+      // Se si aggiunge il tag <a>, evitare l'attributo `href`
       img: {
         single: '<div class="fupl-item">' +
           '<div class="fupl-remove"></div>' +
@@ -218,7 +220,7 @@ FileUploader2 = ( (upl) => {
         single: '<div class="fupl-item">' +
             '<div class="fupl-remove"></div>' +
             '<div class="fupl-doc text-truncate">' +
-              '<a href="#" class="text-truncate fupl-file-name fupl-url" draggable="false"></a>' +
+              '<a class="text-truncate fupl-file-name fupl-url" draggable="false"></a>' +
             '</div>' +
             '<span class="small ml-1 text-nowrap fupl-file-size"></span>' +
             '<div class="fupl-sortable-icon"></div>' +
@@ -390,9 +392,25 @@ FileUploader2 = ( (upl) => {
     // varname degli hidden con gli id dei file già registrati  da eliminare
     delete_varname: 'elimina_file[]',
 
-    // se true viene attuvata l'integrazione con fancybox per le immagini
-    // fancybox deve essere caricato autonomamente
+    /*
+      if true fancybox integration is activated for images
+      fancybox is not present in FileUploader, and must be loaded in the page
+      Furthermore, to activate this option, an `url` parameter must be provided
+      (see `values` option)
+    */
     fancybox: false,
+
+    // markup of <a> tag to wrap image tags when fancybox option is active
+    // if a `a.fupl-url` element is present in img templates string, this options
+    // will not be used
+    fancybox_anchor_markup: '<a class="fupl-url" data-fancybox="fupl-gallery"></a>',
+
+    /*
+      optional function to be called after fancybox markup is applied
+      to all elements and after `init_callback`.
+      Function is invoked passing the complete `fupl_options` obj as argument
+    */
+    fancybox_callback_func: null,
 
     // ========================================
     // OPZIONE DI RIORDINO DEGLI ELEMENTI

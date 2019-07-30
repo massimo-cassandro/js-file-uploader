@@ -133,6 +133,24 @@ FileUploader2 = ((upl) => {
 
       });
 
+      //fancybox
+      if( fupl_options.fancybox && fupl_options._type === 'img' && item_data.url && fupl_options.fancybox_anchor_markup) {
+        // controllo esistenza tag `a.fupl-url` e aggiunta se necessario
+        if( !fupl_item_dom.querySelector('a.fupl-url') ) {
+
+          let img_element = fupl_item_dom.querySelector('.fupl-img'),
+            fancybox_wrapper = document.createElement('div');
+          fancybox_wrapper.innerHTML = fupl_options.fancybox_anchor_markup;
+
+          fancybox_wrapper = fancybox_wrapper.firstChild;
+          img_element.parentNode.insertBefore(fancybox_wrapper, img_element);
+          fancybox_wrapper.appendChild(img_element);
+        }
+
+        fupl_item_dom.querySelector('a.fupl-url').setAttribute('href', item_data.url);
+
+      }
+
       // sortable
       if( fupl_options.sortable ) {
         fupl_item_dom.setAttribute('draggable', true);

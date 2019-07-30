@@ -1,10 +1,11 @@
 # FileUploader
 
-Upload asincrono tramite HTML5 e Javascript
+HTML5 + Javascript asyncronous file upload
 
 v. 2 - Massimo Cassandro - 2017/2019
 
 --
+
 
 FileUploader è uno script per automatizzare e semplificare l'upload di file attraverso una pagina HTML.
 
@@ -238,11 +239,21 @@ Viene invocata con due parametri:
     - `fupl_options`: oggetto `options` corrente
 
 
+## Fancybox integration
+
+FileUploader can be integrated with [Fancybox (v. 3)](https://www.fancyapps.com/fancybox/3/), simply setting
+the `fancybox` option to `true`.
+
+Fancybox application files are not loaded by FileUploader and have to be present in the HTML page before FileUploader loads.
+
+Fancybox is applied only to previously registered images.
+
+
 ## Ricette
 
 ### Controllo caricamento completato
 
-Appena un elemento viene aggiunta all'uploader, viene inviata la richiesta Ajax al server per la registrazione del file. A operazione completata, il server restituisce il json con i dati del file registrati, come indicato nei punti precedenti.
+Appena un elemento viene aggiunto all'uploader, viene inviata la richiesta Ajax al server per la registrazione del file. A operazione completata, il server restituisce il json con i dati del file registrati, come indicato nei punti precedenti.
 
 Dal momento in cui la richiesta viene inviata e fino a quando il server non risponde, l'utente può comunque effettuare il submit del form, ma in questo caso non saranno presenti tutti gli elementi hidden relativi al file che non verrà quindi registrato.
 

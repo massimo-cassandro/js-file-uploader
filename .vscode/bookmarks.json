@@ -64,6 +64,11 @@
 		"bookmarks": [
 			{
 				"line": 135,
+				"column": 16,
+				"label": "fancybox"
+			},
+			{
+				"line": 153,
 				"column": 6,
 				"label": ""
 			}

@@ -190,9 +190,14 @@ FileUploader2 = ((upl) => {
     upl.setListeners(fupl_options);
 
 
-    // esecuzione init_callback, se presente
+    // calling init_callback, if present
     if( fupl_options.init_callback !== null ) {
       fupl_options.init_callback( fupl_options );
+    }
+
+    // calling fancybox_callback_func, if present
+    if( fupl_options.fancybox && fupl_options.fancybox_callback_func !== null ) {
+      fupl_options.fancybox_callback_func( fupl_options );
     }
 
     //debug
