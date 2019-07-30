@@ -27,7 +27,7 @@
       <h1>File Uploader demo</h1>
       <form action="" id="form1" method="post" name="form1">
         <h2>1. Uploader con campo file (img singola)</h2>
-        <div data-file_uploader2="" data-filetype="img" data-img_min_h="500" data-img_min_w="500"
+        <div data-file-uploader="" data-filetype="img" data-img_min_h="500" data-img_min_w="500"
           data-max_filesize="2500" data-uploader_legend="true"
           data-values='[ { "id": "124", "name": "ibrahim-rifath-787485-unsplash.jpg", "src": "test-files/ibrahim-rifath-787485-unsplash.jpg", "wi": 1920, "he": 1280, "size": 193345 } ]'
           id="upl1">
@@ -39,7 +39,7 @@
       <form action="" id="form2" method="post" name="form2">
         <h2 class="mt-5">2. Uploader senza campo file (doc singolo)</h2>
         <p><small>NB: il parametro <code>data-required</code> senza valore, equivale a <code>false</code></small></p>
-        <div data-file_uploader2='{"filetype":"auto"}' data-max_filesize="500KB" data-required=""
+        <div data-file-uploader='{"filetype":"auto"}' data-max_filesize="500KB" data-required=""
           data-uploader_legend="false"
           data-values='[ { "id": "125", "name": "pdf1.pdf", "url": "test-files/pdf1.pdf", "wi": null, "he": null, "size": 6157 } ]'
           id="upl2">
@@ -49,7 +49,7 @@
       </form>
       <form action="" id="form3" method="post" name="form3">
         <h2 class="mt-5">3. Uploader senza campo file (pdf, multiple e required da parametro)</h2>
-        <div data-file_uploader2='{"filetype":"pdf"}' data-max_filesize="400" data-multiple="true" data-required="true"
+        <div data-file-uploader='{"filetype":"pdf"}' data-max_filesize="400" data-multiple="true" data-required="true"
           data-uploader_legend="true" data-uploader_legend_text="Label da `uploader_legend_text`" id="upl3">
           Contenuto del div
         </div>
@@ -57,7 +57,7 @@
       </form>
       <form action="" id="form4" method="post" name="form4">
         <h2 class="mt-5">4. Uploader con campo file (img, multiple, required) + valori preregistrati</h2>
-        <div data-file_uploader2="" data-filetype="img" data-max_filesize="8Mb" data-uploader_legend="true"
+        <div data-file-uploader="" data-filetype="img" data-max_filesize="8Mb" data-uploader_legend="true"
           data-values='[ { "id": "123", "name": "gigi-1508584-unsplash.jpg", "src": "test-files/gigi-1508584-unsplash.jpg", "wi": 1199, "he": 1600, "size": 175418 }, { "id": "124", "name": "ibrahim-rifath-787485-unsplash.jpg", "src": "test-files/ibrahim-rifath-787485-unsplash.jpg", "wi": 1920, "he": 1280, "size": 193345 } ]'
           id="upl4">
           <label for="input_file2">Label del campo file</label> <input class="form-control" id="input_file2" multiple
@@ -68,7 +68,7 @@
 
       <form action="" id="form5" method="post" name="form5">
         <h2 class="mt-5">5. Uploader con campo file e parametri accept (auto, multiple) + valori preregistrati</h2>
-        <div data-custom_info_text="Carica documenti Pdf, Word o Excel" data-file_uploader2="" data-filetype="auto"
+        <div data-custom_info_text="Carica documenti Pdf, Word o Excel" data-file-uploader="" data-filetype="auto"
           data-uploader_legend="true"
           data-values='[ { "id": "125", "name": "pdf1.pdf", "url": "test-files/pdf1.pdf", "wi": null, "he": null, "size": 6157 }, { "id": "126", "name": "pdf2.pdf", "url": "test-files/pdf1.pdf", "size": 6300 } ]'
           id="upl5">
@@ -82,7 +82,7 @@
       <form action="" id="form6" method="post" name="form6">
         <h2 class="mt-5">6. Disabled</h2>
         <div data-custom_info_text="Carica documenti Pdf"
-          data-file_uploader2
+          data-file-uploader
           data-filetype="auto"
           data-uploader_legend="true"
           data-disabled="true"

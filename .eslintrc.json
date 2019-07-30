@@ -12,6 +12,9 @@
       "globalReturn": false
     }
   },
+  "globals": {
+    "FileUploader2": true
+  },
   "rules": {
     "eqeqeq": "warn",
     "no-extra-semi": "error",

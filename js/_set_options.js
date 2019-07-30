@@ -1,9 +1,13 @@
-/* globals FileUploader2:true */
-
 FileUploader2 = ( (upl) => {
 
   // parametri di default condivisi da tutte le istanze
   const default_options = {
+
+    /*
+    nome dell'attributo data usato come selector
+    (e a cui si possono associare delle opzioni json)
+    */
+    fupl_selector : 'file-uploader',
 
     /*
     silent_degradation

@@ -1,5 +1,3 @@
-/* globals FileUploader2:true */
-
 FileUploader2 = ((upl) => {
 
   // VARIABILI E METODI PRIVATI
@@ -26,14 +24,14 @@ FileUploader2 = ((upl) => {
 
   /*
     init
-    Seleziona gli elementi con l'attributo `fupl_selector` e avvia FileUploader
-    `user_global_options` è l'oggetto istanziato al momento di avviare FileUploader2,
+    Seleziona gli elementi con l'attributo `global_options.fupl_selector` e avvia FileUploader
+    `global_options` è l'oggetto istanziato al momento di avviare FileUploader2,
     ha la stessa struttura di `default_options` (definito in _set_options.js)
     e può sovrascrivere ogni suo elemento
   */
-  upl.init = (user_global_options) => {
+  upl.init = (init_options) => {
 
-    const global_options = upl.setOptions(user_global_options);
+    const global_options = upl.setOptions(init_options);
 
     // verifica che il browser sia compatibile
     if( !isSuitableBrowser() ) {
@@ -55,22 +53,24 @@ FileUploader2 = ((upl) => {
 
     // istanze uploader
     //---------------------------------------------------
-    document.querySelectorAll('[data-' + upl.data_attributes.fupl_selector + ']').forEach( upl_element => {
+    document.querySelectorAll('[data-' + global_options.fupl_selector + ']').forEach( upl_element => {
       /*
         merge dei parametri inseriti tramite attributi `data`, in cui:
 
         * `upl_element.dataset`:
             tutti gli attributi inseriti singolarmente (es. data-filetype="img")
 
-        * `upl_element.dataset[upl.data_attributes.fupl_selector]`:
-            attributi inseriti tramite json assegnato a `data- + 'upl.data_attributes.fupl_selector'`
-            (es data-file_uploader2='{"filetype":"img"}')
+        * `upl_element.dataset[global_options.fupl_selector]`:
+            attributi inseriti tramite json assegnato a `data- + 'global_options.fupl_selector'`
+            (es data-file-uploader='{"filetype":"img"}')
 
         In caso di conflitto prevalgono gli ultimi
       */
 
       let element_all_dataset = upl_element.dataset,
-      fupl_dataset = upl_element.dataset[upl.data_attributes.fupl_selector],
+      fupl_selector_camel_case = global_options
+        .fupl_selector.replace(/-([a-z])/g, m => m[1].toUpperCase() ),
+      fupl_dataset = upl_element.dataset[fupl_selector_camel_case],
       fupl_options = {};
 
       if(element_all_dataset === '') {
@@ -89,9 +89,9 @@ FileUploader2 = ((upl) => {
         element_all_dataset
       );
 
-      // cancella la chiave `upl.data_attributes.fupl_selector`
-      // (al solo scopo di ridurre la confusione)
-      delete fupl_options[upl.data_attributes.fupl_selector];
+      // cancella la chiave `global_options.fupl_selector`
+      // (al solo scopo di semplificare)
+      delete fupl_options[fupl_selector_camel_case];
 
       // aggiunta dell'elemento stesso ad  `fupl_options`:
       fupl_options.element = upl_element;

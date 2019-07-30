@@ -1,5 +1,3 @@
-/* globals FileUploader2:true */
-
 FileUploader2 = ((upl) => {
 
   upl.createUploader = (fupl_options) => {

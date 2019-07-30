@@ -1,5 +1,3 @@
-/* globals FileUploader2:true */
-
 FileUploader2 = ((upl) => {
 
   // https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/

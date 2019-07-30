@@ -56,7 +56,7 @@ L'argomento di `init` è un oggetto di parametri specifici dell'inizializzazione
 
 L'elenco dei parametri configurabili è descritto nelle sezioni successive e nel file [\_set\_options.js](https://github.com/massimo-cassandro/file-uploader2/blob/master/js/_set_options.js).
 
-Una volta inizializzato, l'uploader viene applicato automaticamente agli elementi che abbiano l'attributo `data-file_uploader2`:
+Una volta inizializzato, l'uploader viene applicato automaticamente agli elementi che abbiano l'attributo `data-file-uploader`:
 
 --
 ![](readme_files/uploader_std.png)
@@ -64,13 +64,22 @@ Una volta inizializzato, l'uploader viene applicato automaticamente agli element
 
 Nella cartella `demo` sono presenti diversi esempi di applicazione di FileUploader.
 
+> NB: Il selettore predefinito è `data-file-uploader`, ma, se necessario, la parte `file-uploader` può essere
+sostituita con qualsiasi stringa (con sintassi compatibile, vedi <https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset>) da indicare usando l'opzione `fupl_selector`:
+
+```javascript
+FileUploader2.init({
+  uploader_url   : 'path/to/server/script',
+  fupl_selector  : 'my-uploader'
+});
+```
 
 
 ### Markup
 Perché FileUploader sia attivato è necessario che sia presente questo markup minimo:
 
 ```html
-<div data-file_uploader2></div>
+<div data-file-uploader></div>
 ```
 
 In questo modo, FileUploader verrà attivato con i parametri globali definiti in [\_set\_options.js](https://github.com/massimo-cassandro/file-uploader2/blob/master/js/_set_options.js) e in `FileUploader2.init`.
@@ -80,18 +89,18 @@ In questo modo, FileUploader verrà attivato con i parametri globali definiti in
 Se ad esempio si vuole utilizzare uno script lato server specifico, è possibile indicarlo in questo modo:
 
 ```html
-<div data-file_uploader2 data-uploader_url="path/to/alternate/server/script"></div>
+<div data-file-uploader data-uploader_url="path/to/alternate/server/script"></div>
 ```
 
-È anche possibile assegnare i parametri direttamente all'attributo `data-file_uploader2` come valori json:
+È anche possibile assegnare i parametri direttamente all'attributo `data-file-uploader` come valori json:
 
 ```html
-<div data-file_uploader2='{"uploader_url": "path/to/alternate/server/script"}'></div>
+<div data-file-uploader='{"uploader_url": "path/to/alternate/server/script"}'></div>
 ```
 
 Si tenga presente però che alcuni parametri, come ad esempio `css` hanno senso solo se definiti globalmente.
 
-Infine, è possibile inserire all'interno dell'elemento `data-file_uploader2` un campo `input[type="file"]` come fallback per browser più vecchi (vedi il precedente paragrafo **Compatibilità**). Se FileUploader viene avviato correttamente, il campo input viene rimosso, in caso contrario può essere utilizzato in modo tradizionale.
+Infine, è possibile inserire all'interno dell'elemento `data-file-uploader` un campo `input[type="file"]` come fallback per browser più vecchi (vedi il precedente paragrafo **Compatibilità**). Se FileUploader viene avviato correttamente, il campo input viene rimosso, in caso contrario può essere utilizzato in modo tradizionale.
 
 
 ### CSS
@@ -293,7 +302,7 @@ FileUploader2.init({
   // aggiunge la classe 'unsuitable_browser' 
   // e rimuove il pulsante submit, ma non impedisce il submit del form
   unsuitable_browser_callback: function () {
-    $('[data-file_uploader2]')
+    $('[data-file-uploader]')
       .closest('form')
         .addClass('unsuitable_browser')
         .find(':submit').each( function() {

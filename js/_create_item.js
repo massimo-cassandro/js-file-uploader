@@ -1,5 +1,3 @@
-/* globals FileUploader2:true */
-
 FileUploader2 = ((upl) => {
 
 

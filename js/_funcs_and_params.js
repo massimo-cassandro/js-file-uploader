@@ -1,5 +1,3 @@
-/* globals FileUploader2:true */
-
 FileUploader2 = ((upl) => {
 
   // mimetypes ed estensioni accettabili in base al parametro `filetype`.
@@ -14,7 +12,6 @@ FileUploader2 = ((upl) => {
 
   // nomi degli attributi data utilizzati per controllare alcuni stati o eventi dell'uploader
   upl.data_attributes = {
-    fupl_selector : 'file_uploader2', // nome dell'attributo data usato come selector (e acui si possonoa ssociare delle opzioni json)
     required      : 'required', // true se il caricamento del file è obbligatorio
     hasValues     : 'hasValues', // true se l'uploader congtiene dei file (prergistrati o meno)
     item_id       : 'id' // id dell'elemento aggiunto all'uploader (se preregistrato)
