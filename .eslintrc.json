@@ -1,26 +1,51 @@
 {
   "env": {
     "browser": true,
-    "jquery": true,
     "es6": true
   },
   "extends": "eslint:recommended",
-  "parserOptions": {
-    "ecmaVersion": 2017,
-    "sourceType": "script",
-    "ecmaFeatures": {
-      "globalReturn": false
-    }
-  },
   "globals": {
-    "FileUploader2": true
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly",
+    "FileUploader2": "writable"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
   },
   "rules": {
+    "indent": [
+      "error",
+      4
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
     "eqeqeq": "warn",
     "no-extra-semi": "error",
-    "semi-spacing": ["error", {"before": false, "after": true}],
-    "semi": ["error", "always"],
+    "semi-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
     "no-console": "warn",
-    "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "after-used",
+        "ignoreRestSiblings": false
+      }
+    ]
   }
 }

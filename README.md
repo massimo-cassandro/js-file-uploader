@@ -1,7 +1,6 @@
 # JS FileUploader
 
-HTML5 + Javascript asyncronous file upload
-
+**HTML5 + Javascript asyncronous file upload.**
 *v. 2 - Massimo Cassandro - 2017/2019*
 
 Fileuploader automates and simplifies uploading files to HTML pages.

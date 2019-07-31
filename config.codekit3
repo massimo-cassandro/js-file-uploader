@@ -1580,7 +1580,7 @@
 		},
 	"esLintConfigFileHandlingType": 1,
 	"esLintECMAVersion": 7,
-	"esLintEnvironmentsMask": 8211,
+	"esLintEnvironmentsMask": 17,
 	"esLintRules": {
 		"accessor-pairs": {
 			"active": 0,
