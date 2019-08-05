@@ -10,9 +10,9 @@ Uploads are performed asynchronously via an Ajax call to a server-side script th
 Although the default settings are based on Bootstrap 4, FileUploader is entirely and easily configurable from scratch and can be adapted to any layout.
 
 
-## Compatibilità
-FileUploader richiede un browser di ultima generazione, e non è compatibile con nessuna versione di Explorer.
-Richiede inoltre la versione 16 o successiva di Edge.
+## Browser compatibility
+FileUploader needs a modern browser and is not compatible with Internet Explorer.
+Also requires Edge 16 or higher.
 
 In caso di browser non compatibile viene mostrato un *alert* con il messaggio di errore indicato nel parametro `alert_messages.unsuitable_browser` delle opzioni e la procedura viene bloccata.
 

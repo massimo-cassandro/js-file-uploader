@@ -1,8 +1,7 @@
 #TODO
 
 * campi extra
-* integrazione fancybox
-
+* mix svg + imgs type
 
 ## versione 3
 * eliminazione selettore predefinito → attivazione esplicita dell'uploader (??)
