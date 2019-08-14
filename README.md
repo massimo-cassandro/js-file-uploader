@@ -9,36 +9,39 @@ Uploads are performed asynchronously via an Ajax call to a server-side script th
 
 Although the default settings are based on Bootstrap 4, FileUploader is entirely and easily configurable from scratch and can be adapted to any layout.
 
+Similarly, all the string messages can be customized using the desired language. Look at the [_set_options.js](js/_set_options.js) file for a complete list of all available parameters.
+
 
 ## Browser compatibility
 FileUploader needs a modern browser and is not compatible with Internet Explorer.
 Also requires Edge 16 or higher.
 
-In caso di browser non compatibile viene mostrato un *alert* con il messaggio di errore indicato nel parametro `alert_messages.unsuitable_browser` delle opzioni e la procedura viene bloccata.
+If the browser is not compatible, an *alert* window is showed and FileUploader stops. The message shown is the one indicated in the `alert_messages.unsuitable_browser`parameter
 
-È però possibile far degradare in modo silenzioso l'uploader e utilizzare il tag `input[type="file"]` in modo nativo.
+However, it is possible to silently degrade FileUploader and use the browser standard `input[type="file"]` tag.
 
-Per utilizzare questa opzione è necessario:
+To perform this option, you need to:
 
-* impostare su *true* l'opzione `silent_degradation` (default *false*)
-* inserire all'interno dell'elemento uploader l'elemento input di fallback
-* imposta se necessario la funzione `unsuitable_browser_callback` per attivare comportamenti specifici validi solo in queste situazioni
-* aggiungere al form il necessario attributo `enctype` (non richiesto da FileUploader)
-* gestire questa eventualità lato server. È molto probabile che lo script da usare in questa situazione differisca da quello usato per la procedura Ajax.
+* set `silent_degradation` option to *true* (default is *false*);
+* provide a fallback input tag inside the FileUploader element;
+* set a fallback init function if necessary (`unsuitable_browser_callback` parameter). This can be useuful to activate specific fallback  behaviours;
+* add the `enctype` attribute to your form (FileUploader doesn't need it)
+* provide the necessary server side scripting. Very likely, the script to be used in this situation differs from the one used in the Ajax procedure.
 
-## Installazione
 
-FileUploader può essere installato tramite `npm`:
+## Installation
+
+FileUploader can be installed thru npm:
 
 ```bash
 npm i --save js-file-uploader
 ```
 
-## Utilizzo di FileUploader
+## Using FileUploader
 
 Una volta aggiunto lo script JS alla pagina HTMl, FileUploader va istanziato impostando i parametri necessari tramite la funzione `init`;
 
-Setup minimo:
+Minimal setup:
 
 ```html
 <script src="file_uploader-min.js"></script>
@@ -53,7 +56,7 @@ L'argomento di `init` è un oggetto di parametri specifici dell'inizializzazione
 
 L'elenco dei parametri configurabili è descritto nelle sezioni successive e nel file [\_set\_options.js](https://github.com/massimo-cassandro/file-uploader2/blob/master/js/_set_options.js).
 
-Una volta inizializzato, l'uploader viene applicato automaticamente agli elementi che abbiano l'attributo `data-file-uploader`:
+Una volta inizializzato, l'uploader viene applicato automaticamente a tutti gli elementi che abbiano l'attributo `data-file-uploader`:
 
 --
 ![](readme_files/uploader_std.png)
@@ -188,7 +191,7 @@ Esempio (con parametro `varname='custom_file'` e id unico = `__unique_id__`):
 ```
 
 
-## Personalizzazione
+## Customization
 
 Tra i vari parametri disponibili per personalizzare FileUploader, ce ne sono alcuni che permettono di modificare radicalmente l'aspetto proposto dalle impostazioni di default.
 
@@ -245,7 +248,7 @@ Fancybox application files are not loaded by FileUploader and have to be present
 Fancybox is applied only to previously registered images.
 
 
-## Ricette
+## Recipes
 
 ### Controllo caricamento completato
 
@@ -352,7 +355,7 @@ document.querySelectorAll('.fupl-wrapper:not([disabled])[data-required="true"][d
 ```
 
 
-## Riferimenti (e ispirazioni)
+## References (and inspirations)
 - <https://css-tricks.com/drag-and-drop-file-uploading/>
 - <https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/>
 - <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation#Limiting_the_size_of_a_file_before_its_upload>
