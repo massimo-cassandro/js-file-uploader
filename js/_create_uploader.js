@@ -11,7 +11,7 @@ FileUploader2 = ((upl) => {
     if( fupl_options.filetype === 'auto' ) {
 
       let accept_attr = [],
-      accept_params = [];
+        accept_params = [];
 
       if( fupl_options.accept !== null ) {
         accept_params = fupl_options.accept
@@ -66,16 +66,16 @@ FileUploader2 = ((upl) => {
     }
 
     // aggiunta della classe principale
-    fupl_options.element.classList.add("fupl");
+    fupl_options.element.classList.add('fupl');
 
     // aggiunta wrapper
     fupl_options.wrapper = document.createElement('fieldset');
     fupl_options.element.parentNode.insertBefore(fupl_options.wrapper, fupl_options.element);
     fupl_options.wrapper.appendChild(fupl_options.element);
-    fupl_options.wrapper.classList.add("fupl-wrapper");
-    fupl_options.wrapper.classList.add("fupl-type-" + fupl_options._type );
+    fupl_options.wrapper.classList.add('fupl-wrapper');
+    fupl_options.wrapper.classList.add('fupl-type-' + fupl_options._type );
     if(fupl_options.multiple) {
-      fupl_options.wrapper.classList.add("fupl-multiple");
+      fupl_options.wrapper.classList.add('fupl-multiple');
     }
     // aggiunta eventuali classi personalizzate
     if( fupl_options.wrapper_extra_class ) {

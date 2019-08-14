@@ -70,13 +70,13 @@ FileUploader2 = ( (upl) => {
         'superano il valore massimo consentito ({{allowed_size}})',
 
       // immagini
-      img_err_start_string: "L'immagine “<strong>{{file_name}}</strong>” non è corretta:",
-      img_exact_width_err: "Larghezza non corrispondente ({{image_dimension}}px invece di {{allowed_dimension}}px)",
-      img_min_width_err: "Larghezza inferiore a quella minima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)",
-      img_max_width_err: "Larghezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)",
-      img_exact_height_err: "Altezza non corrispondente ({{image_dimension}}px invece di {{allowed_dimension}}px)",
-      img_min_height_err: "Altezza inferiore a quella minima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)",
-      img_max_height_err: "Altezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)"
+      img_err_start_string: 'L\'immagine “<strong>{{file_name}}</strong>” non è corretta:',
+      img_exact_width_err: 'Larghezza non corrispondente ({{image_dimension}}px invece di {{allowed_dimension}}px)',
+      img_min_width_err: 'Larghezza inferiore a quella minima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
+      img_max_width_err: 'Larghezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
+      img_exact_height_err: 'Altezza non corrispondente ({{image_dimension}}px invece di {{allowed_dimension}}px)',
+      img_min_height_err: 'Altezza inferiore a quella minima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
+      img_max_height_err: 'Altezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)'
     },
 
     // Url dello script lato server che esegue il caricamento del file
@@ -108,7 +108,7 @@ FileUploader2 = ( (upl) => {
     Parametro multiple.
     Attiva la possibilità di acquisire più file con lo stesso uploader.
     L'attivazione di questa opzione può essere effettuata anche tramite il parametro
-    del campo `input` /se presente)
+    del campo `input` (se presente)
     */
     multiple: false,
 
@@ -257,12 +257,12 @@ FileUploader2 = ( (upl) => {
     */
     input_text: {
       img: {
-        single:   ["Seleziona un'immagine", "\u2026oppure trascinala qui"],
-        multiple: ["Seleziona una o pi&ugrave; immagini", "\u2026oppure trascinale qui"]
+        single:   ['Seleziona un\'immagine', '\u2026oppure trascinala qui'],
+        multiple: ['Seleziona una o pi&ugrave; immagini', '\u2026oppure trascinale qui']
       },
       doc: {
-        single: ["Seleziona un documento", "\u2026oppure trascinalo qui"],
-        multiple: ["Seleziona uno o pi&ugrave; documenti", "\u2026oppure trascinali qui"]
+        single: ['Seleziona un documento', '\u2026oppure trascinalo qui'],
+        multiple: ['Seleziona uno o pi&ugrave; documenti', '\u2026oppure trascinali qui']
       }
     },
 
@@ -441,12 +441,12 @@ FileUploader2 = ( (upl) => {
     // ========================================
     // GESTIONE CAMPI AGGIUNTIVI
     // ========================================
-// TODO
+    // TODO
   };
 
   upl.setOptions = (...custom_options) => {
 
-    if( Object.assign && typeof Object.assign === "function") {
+    if( Object.assign && typeof Object.assign === 'function') {
       return Object.assign(
         {},
         default_options,

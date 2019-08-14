@@ -9,7 +9,7 @@ Uploads are performed asynchronously via an Ajax call to a server-side script th
 
 Although the default settings are based on Bootstrap 4, FileUploader is entirely and easily configurable from scratch and can be adapted to any layout.
 
-Similarly, all the string messages can be customized using the desired language. Look at the [_set_options.js](js/_set_options.js) file for a complete list of all available parameters.
+Similarly, all the string messages can be customized using the desired language. Look at the [\_set\_options.js](js/_set_options.js) file for a complete list of all available parameters.
 
 
 ## Browser compatibility
@@ -28,6 +28,8 @@ To perform this option, you need to:
 * add the `enctype` attribute to your form (FileUploader doesn't need it)
 * provide the necessary server side scripting. Very likely, the script to be used in this situation differs from the one used in the Ajax procedure.
 
+Take a look at the [silent degradation demo](demo/silent_degradation_sample.html).
+
 
 ## Installation
 
@@ -39,7 +41,7 @@ npm i --save js-file-uploader
 
 ## Using FileUploader
 
-Una volta aggiunto lo script JS alla pagina HTMl, FileUploader va istanziato impostando i parametri necessari tramite la funzione `init`;
+Once `file_uploader-min.js` has been added to your HTML page, FileUploader must be started setting up some parameters using the `init` function.
 
 Minimal setup:
 
@@ -52,20 +54,17 @@ FileUploader2.init({
   uploader_url   : 'path/to/server/script'
 });
 ```
-L'argomento di `init` è un oggetto di parametri specifici dell'inizializzazione.
+The argument of`init is an object that sets some parameters. A complete list of them is described in [\_set\_options.js](js/_set_options.js) file.
 
-L'elenco dei parametri configurabili è descritto nelle sezioni successive e nel file [\_set\_options.js](https://github.com/massimo-cassandro/file-uploader2/blob/master/js/_set_options.js).
-
-Una volta inizializzato, l'uploader viene applicato automaticamente a tutti gli elementi che abbiano l'attributo `data-file-uploader`:
+Once initialized, FileUploader is applied to all element with the `data-file-uploader` attribute:
 
 --
 ![](readme_files/uploader_std.png)
 --
 
-Nella cartella `demo` sono presenti diversi esempi di applicazione di FileUploader.
+The `demo` folder contains several FileUploader examples.
 
-> NB: Il selettore predefinito è `data-file-uploader`, ma, se necessario, la parte `file-uploader` può essere
-sostituita con qualsiasi stringa (con sintassi compatibile, vedi <https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset>) da indicare usando l'opzione `fupl_selector`:
+> NB: The default selector is `data-file-uploader`, but, if necessary, the` file-uploader` part can be replaced with any string (with *dataset* compatible syntax, see <https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset>) using the `fupl_selector` option:
 
 ```javascript
 FileUploader2.init({
@@ -76,57 +75,70 @@ FileUploader2.init({
 
 
 ### Markup
-Perché FileUploader sia attivato è necessario che sia presente questo markup minimo:
+To activate FileUploader, this minimum markup is required:
 
 ```html
 <div data-file-uploader></div>
 ```
 
-In questo modo, FileUploader verrà attivato con i parametri globali definiti in [\_set\_options.js](https://github.com/massimo-cassandro/file-uploader2/blob/master/js/_set_options.js) e in `FileUploader2.init`.
+FileUploader will be activated with the global parameters defined in [\_set\_options.js](js/_set_options.js) and in `FileUploader2.init` argument.
 
-È però possibile personalizzare ogni singola istanza utilizzando degli attributi data che corrispondono gli stessi parametri.
+However, it is possible to customize each individual instance using data attributes matching the same global parameters.
 
-Se ad esempio si vuole utilizzare uno script lato server specifico, è possibile indicarlo in questo modo:
+For example, if you want to use a specific server-side script (different from the globally defined one) for a specific instance, you can indicate it this way:
 
 ```html
 <div data-file-uploader data-uploader_url="path/to/alternate/server/script"></div>
 ```
-
-È anche possibile assegnare i parametri direttamente all'attributo `data-file-uploader` come valori json:
+You can also define parameters using a json string to be assigned directly to `data-file-uploader` attribute:
 
 ```html
 <div data-file-uploader='{"uploader_url": "path/to/alternate/server/script"}'></div>
 ```
 
-Si tenga presente però che alcuni parametri, come ad esempio `css` hanno senso solo se definiti globalmente.
+> Note that some parameters, such as `css`, make sense only if defined globally.
 
-Infine, è possibile inserire all'interno dell'elemento `data-file-uploader` un campo `input[type="file"]` come fallback per browser più vecchi (vedi il precedente paragrafo **Compatibilità**). Se FileUploader viene avviato correttamente, il campo input viene rimosso, in caso contrario può essere utilizzato in modo tradizionale.
+Finally, it is possible to insert a `input type="file"]` field inside the `data-file-uploader` element, as a fallback for older browsers (see the **Browser compatibility** paragraph). 
+
+If FileUploader starts correctly, the input field is removed, otherwise it can be used as a standard HTML field.
+
+To simplify configuration, all attributes of input file (multiple, required, accept, disabled) are passed to FileUploader, so you haven't to set it twice.
+
+For example, to activate the `multiple` option, you can define it using the `data-multiple="true"` attribute in the FileUploader element, or adding the `multiple` attribute to the `input type="file"]` element (if present).
+
+In case of conflict, generally, the last element prevails (see **Parameters setting** paragraph).
+
+```html
+<div data-file-uploader>
+    <input type="file" name="fallback">
+</div>
+```
 
 
 ### CSS
-Il file css fornito è basato sul Framework Bootstrap 4 (non incluso), è però possibile modificarlo come desiderato, agendo se necessario anche sul markup generato, ridefinendo il parametro `templates` (vedi [\_set\_options.js](https://github.com/massimo-cassandro/file-uploader2/blob/master/js/_set_options.js)).
 
-Non è necessario includere il file css nel progetto: verrà caricato da FileUploader al momento dell'inizializzazione.
+The default css file is based on Bootstrap 4 (not included), but you can change it, even changing, if necessary, the generated markup, through the `templates` parameter (see [\_set\_options.js](js/_set_options js)).
 
-È anche possibile includere il css di FileUploader nei fogli stile dell'intero progetto, in questo caso è sufficiente impostare il parametro `css = null` (default) in modo che il file non venga caricato nuovamente.
+It is also possible to include the FileUploader css in your project style sheets; in this case it is sufficient to set the `css` parameter to `null` (the default value).
 
->**Qualsiasi modifica effettuata, deve aver cura di mantenere i nomi delle classi con prefisso `fupl-`, utilizzate dalla procedura per identificare i vari elementi.**
+> **All changes must take care to preserve the class names prefixed with `fupl-`.**
 
 
-### Impostazione dei parametri
-La configurazione di FileUploader è basata sui parametri definiti in [\_set\_options.js](https://github.com/massimo-cassandro/file-uploader2/blob/master/js/_set_options.js).
+### Parameters setting
 
-I parametri possono essere sovrascritti a cascata secondo questa sequenza:
+FileUploader configuration is based on parameters defined in [\_set\_options.js](js/_set_options.js).
 
-* I valori inseriti nel file `_set_options.js` sono i valori di default.
-* I parametri assegnati in `FileUploader2.init` sovrascrivono quelli di default e valgono per tutti gli elementi FileUploader2 interessati
-* I parametri assegnati ad ogni istanza FileUploader prevalgono e sovrascrivono i precedenti: in questo modo è possibile avere comportamenti differenziati anche nella stessa pagina.
+The parameters can be overridden according to this cascading sequence:
 
-Infine, se è presente un campo `input[type="file"]` all'interno dell'elemento FileUploader, gli eventuali attributi `required`, `multiple` o `disabled` presenti vengono presi in considerazione nella configurazione.
+* Values of `_set_options.js` file are the default ones
+* Parameters assigned in `FileUploader2.init` override the default ones, and are valid for all the FileUploader2 elements involved
+* Parameters assigned to each FileUploader instance prevail and override the previous ones: in this way it is possible to have different behaviors also on the same page.
+
+Infine, se è presente un campo `input[type="file"]` all'interno dell'elemento FileUploader, gli eventuali attributi `accept`, `required`, `multiple` o `disabled` presenti vengono presi in considerazione nella configurazione.
 
 Ad esempio è possibile impostare un Uploader come *required* sia impostando il parametro `required = true` sia utilizzando l'attributo `required` del campo file.
 
->NB: se i parametri `required`, `multiple` o `disabled` sono impostati come `true` nell'istanza FileUploader, non è possibile impostarli su `false` tramite gli attributi del campo input.
+>NB: if the `required`,` multiple` or `disabled` parameters are set to `true` in the FileUploader instance, it is not possible to set them to `false` via the input field attributes.
 
 
 ## Script lato server

@@ -23,7 +23,7 @@
 @codekit-append '_init.js'
 
 */
-"use strict";
+'use strict';
 var FileUploader2 = (function () {
 
   let upl = {};

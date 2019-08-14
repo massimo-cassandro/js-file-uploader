@@ -1,5 +1,5 @@
 FileUploader2 = ((upl) => {
-  "use strict";
+  'use strict';
 
 
   /**
@@ -9,7 +9,7 @@ FileUploader2 = ((upl) => {
 	 *
    * - Restituisce la stringa informativa
 	 */
-	upl.create_info_text = fupl_options => {
+  upl.create_info_text = fupl_options => {
     let info_text = [];
 
     if( fupl_options.filetype === 'img' ) {
@@ -74,7 +74,7 @@ FileUploader2 = ((upl) => {
       str = fupl_options.info_text_wrap_string[0] + str + fupl_options.info_text_wrap_string[1];
     }
     return str;
-	};
+  };
 
   return upl;
 

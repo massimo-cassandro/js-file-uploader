@@ -1,5 +1,5 @@
 FileUploader2 = ((upl) => {
-  "use strict";
+  'use strict';
 
   /*
     basato su

@@ -14,14 +14,14 @@ FileUploader2 = ((upl) => {
     */
     const disable_submit = (modo) => {
       // modo === true → disable, false → enable
-      const _form = fupl_options.element.closest('form');
+        const _form = fupl_options.element.closest('form');
 
-      if(fupl_options.disable_submit && _form) {
-        const submit_btns = _form.querySelectorAll('[type="submit"]');
+        if(fupl_options.disable_submit && _form) {
+          const submit_btns = _form.querySelectorAll('[type="submit"]');
 
-        submit_btns.forEach( btn => {
-          btn.disabled = modo;
-        });
+          submit_btns.forEach( btn => {
+            btn.disabled = modo;
+          });
 
         //BUG il listener non viene rimosso con modo == false
         // const submitHandler = (e) => {
@@ -35,181 +35,181 @@ FileUploader2 = ((upl) => {
         //     _form.removeEventListener('submit', submitHandler);
         //   }
         // }
-      }
-    },
-
-    /*
-    uploadFile
-    esegue l'upload Ajax
-    https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
-
-    current_item contiene:
-      - `id`: id univoco dell'elemento
-      - `file`: oggetto filelist
-      - `width` e height: dimensioni in pixel dell'immagine.
-                  null se non si tratta di immagini
-      - `tmp_file`: nel caso di nuovi elementi: nome del file temporaneo
-
-    */
-    uploadFile = function ( current_item, img_preview ) {
-
-      // disabilitazione form
-      disable_submit(true);
-
-      // aggiunta elemento all'uploader
-      let this_item = upl.createItem({
-          id   : current_item.id,
-          name : current_item.file.name,
-          url  : null,
-          src  : img_preview,
-          wi   : current_item.width,
-          he   : current_item.height,
-          size : current_item.file.size,
-          loading:true
-      }, fupl_options),
-
-      fupl_progress= this_item.querySelector('.fupl-progress'),
-      fupl_loading_wrapper = this_item.querySelector('.fupl-loading'),
-
-      xhr_error_message = fupl_options.alert_messages.xhr_error.replace(/{{file_name}}/, current_item.file.name);
-
-      //console.log(this_item); // eslint-disable-line
-
-      const remove_item_on_error = () => {
-        this_item.querySelector('.fupl-remove-trigger').click();
-      };
+        }
+      },
 
       /*
+      uploadFile
+      esegue l'upload Ajax
+      https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
+
+      current_item contiene:
+        - `id`: id univoco dell'elemento
+        - `file`: oggetto filelist
+        - `width` e height: dimensioni in pixel dell'immagine.
+                    null se non si tratta di immagini
+        - `tmp_file`: nel caso di nuovi elementi: nome del file temporaneo
+
+      */
+      uploadFile = function ( current_item, img_preview ) {
+
+        // disabilitazione form
+        disable_submit(true);
+
+        // aggiunta elemento all'uploader
+        let this_item = upl.createItem({
+            id   : current_item.id,
+            name : current_item.file.name,
+            url  : null,
+            src  : img_preview,
+            wi   : current_item.width,
+            he   : current_item.height,
+            size : current_item.file.size,
+            loading:true
+          }, fupl_options),
+
+          fupl_progress= this_item.querySelector('.fupl-progress'),
+          fupl_loading_wrapper = this_item.querySelector('.fupl-loading'),
+
+          xhr_error_message = fupl_options.alert_messages.xhr_error.replace(/{{file_name}}/, current_item.file.name);
+
+        //console.log(this_item); // eslint-disable-line
+
+        const remove_item_on_error = () => {
+          this_item.querySelector('.fupl-remove-trigger').click();
+        };
+
+        /*
       Funzione callback personalizzata
       Vedi `_set_options.js` per tutti i parametri
       */
-      if( fupl_options.upload_start_callback && typeof fupl_options.upload_start_callback === 'function') {
-        fupl_options.upload_start_callback({
-          'item'              : current_item,
-          'img_preview'       : img_preview,
-          'uploader_options'  : fupl_options
-        });
-      }
+        if( fupl_options.upload_start_callback && typeof fupl_options.upload_start_callback === 'function') {
+          fupl_options.upload_start_callback({
+            'item'              : current_item,
+            'img_preview'       : img_preview,
+            'uploader_options'  : fupl_options
+          });
+        }
 
-      new Promise(function(resolve, reject) {
-        let ajax = new XMLHttpRequest();
-        ajax.open( 'POST', fupl_options.uploader_url, true );
+        new Promise(function(resolve, reject) {
+          let ajax = new XMLHttpRequest();
+          ajax.open( 'POST', fupl_options.uploader_url, true );
 
-        ajax.onload = function() {
+          ajax.onload = function() {
 
-          if( ajax.status >= 200 && ajax.status < 400 ) {
+            if( ajax.status >= 200 && ajax.status < 400 ) {
 
-            const response = JSON.parse( ajax.responseText );
+              const response = JSON.parse( ajax.responseText );
 
-            /*
+              /*
               jsonResponse:
               {
                 "tmp_file": "file_temporaneo",
                 "error": null
               }
             */
-            if(response.error) {
+              if(response.error) {
 
-              fupl_options.alert_api( xhr_error_message, fupl_options );
-              /* eslint-disable */
+                fupl_options.alert_api( xhr_error_message, fupl_options );
+                /* eslint-disable */
               console.error( response.error );
               /* eslint-enable */
 
-              reject();
+                reject();
 
-            } else {
-              current_item.tmp_file = response.tmp_file;
-              resolve();
-            }
+              } else {
+                current_item.tmp_file = response.tmp_file;
+                resolve();
+              }
 
-            /*
+              /*
             Funzione callback personalizzata
             Vedi `_set_options.js` per tutti i parametri
             */
-            if( fupl_options.upload_complete_callback && typeof fupl_options.upload_complete_callback === 'function') {
-              fupl_options.upload_complete_callback({
-                'item'          : current_item,
-                'server_error'  : response.error,
-                'fupl_options'  : fupl_options
-              });
-            }
+              if( fupl_options.upload_complete_callback && typeof fupl_options.upload_complete_callback === 'function') {
+                fupl_options.upload_complete_callback({
+                  'item'          : current_item,
+                  'server_error'  : response.error,
+                  'fupl_options'  : fupl_options
+                });
+              }
 
 
-          } else {
-            fupl_options.alert_api( xhr_error_message, fupl_options );
-            /* eslint-disable */
+            } else {
+              fupl_options.alert_api( xhr_error_message, fupl_options );
+              /* eslint-disable */
             console.error( ajax.status, ajax.statusText );
             console.error( ajax.responseText );
             /* eslint-enable */
-          }
+            }
 
-          reject();
-        };
+            reject();
+          };
 
-        ajax.onerror = function() {
-          fupl_options.alert_api( xhr_error_message, fupl_options );
-          /* eslint-disable */
+          ajax.onerror = function() {
+            fupl_options.alert_api( xhr_error_message, fupl_options );
+            /* eslint-disable */
           if(fupl_options.debug) {
             console.error( ajax.status,  ajax.statusText );
             console.error( ajax.responseText );
           }
           /* eslint-enable */
 
-          reject();
-        };
+            reject();
+          };
 
-        ajax.upload.addEventListener('progress', function (e) {
-          if( fupl_options.alternate_loading_func &&
+          ajax.upload.addEventListener('progress', function (e) {
+            if( fupl_options.alternate_loading_func &&
             typeof fupl_options.alternate_loading_func === 'function') {
               fupl_options.alternate_loading_func(e, fupl_options);
 
-          } else {
-            let perc_loaded = Math.round(e.loaded / e.total * 100.0) || 0;
+            } else {
+              let perc_loaded = Math.round(e.loaded / e.total * 100.0) || 0;
 
-            //console.log(e.loaded ,e.total, perc_loaded); // eslint-disable-line
-            if(fupl_progress) {
-              if(e.lengthComputable) {
-                perc_loaded = perc_loaded === Infinity? 100 : perc_loaded;
-                this_item.querySelector('.fupl-progress').value = perc_loaded;
-              } else {
-                fupl_loading_wrapper.innerHTML = fupl_options.templates.alternate_loading_progress;
-                fupl_progress = null;
+              //console.log(e.loaded ,e.total, perc_loaded); // eslint-disable-line
+              if(fupl_progress) {
+                if(e.lengthComputable) {
+                  perc_loaded = perc_loaded === Infinity? 100 : perc_loaded;
+                  this_item.querySelector('.fupl-progress').value = perc_loaded;
+                } else {
+                  fupl_loading_wrapper.innerHTML = fupl_options.templates.alternate_loading_progress;
+                  fupl_progress = null;
+                }
               }
             }
-          }
-        }, false);
+          }, false);
 
 
-        let fileData = new FormData();
-        fileData.append('file', current_item.file);
-        ajax.send( fileData );
-      }) // end promise
-      .then(
-        // resolve
-        function (  ) {
-          //console.log('resolve'); // eslint-disable-line
-          this_item.classList.remove('fupl-is-uploading');
-          this_item.querySelector('.fupl-loading').remove(); // elemento loading
+          let fileData = new FormData();
+          fileData.append('file', current_item.file);
+          ajax.send( fileData );
+        }) // end promise
+          .then(
+            // resolve
+            function (  ) {
+              //console.log('resolve'); // eslint-disable-line
+              this_item.classList.remove('fupl-is-uploading');
+              this_item.querySelector('.fupl-loading').remove(); // elemento loading
 
-          this_item.insertAdjacentHTML('beforeend',
-            upl.buildHiddenFields(current_item, fupl_options)
+              this_item.insertAdjacentHTML('beforeend',
+                upl.buildHiddenFields(current_item, fupl_options)
+              );
+
+              upl.set_has_values(fupl_options);
+
+              //Se non ci sono altri elemento in caricamento, disable_submit viene annullato
+              disable_submit(false);
+
+            },
+            //reject
+            function (  ) {
+              //console.log('reject'); // eslint-disable-line
+              remove_item_on_error();
+              upl.set_has_values(fupl_options);
+            }
           );
 
-          upl.set_has_values(fupl_options);
-
-          //Se non ci sono altri elemento in caricamento, disable_submit viene annullato
-          disable_submit(false);
-
-        },
-        //reject
-        function (  ) {
-          //console.log('reject'); // eslint-disable-line
-          remove_item_on_error();
-          upl.set_has_values(fupl_options);
-        }
-      );
-
-    };
+      };
 
     if( filelist.length ) {
 
@@ -254,11 +254,11 @@ FileUploader2 = ((upl) => {
           if(fupl_options.filetype === 'img') {
 
             let reader  = new FileReader();
-            reader.addEventListener("load", function () {
+            reader.addEventListener('load', function () {
 
               let image = new Image();
               image.src = reader.result;
-              image.addEventListener("load", function () {
+              image.addEventListener('load', function () {
 
                 let err_mes = [];
                 current_item.width=image.width;
@@ -311,9 +311,9 @@ FileUploader2 = ((upl) => {
                 if( err_mes.length ) {
                   fupl_options.alert_api(
                     fupl_options.alert_messages.img_err_start_string
-                    .replace(/{{file_name}}/, filelist_item.name ) + '<br>' +
+                      .replace(/{{file_name}}/, filelist_item.name ) + '<br>' +
                     '<ul><li>' + err_mes.join('</li><li>') + '</li></ul>',
-                  fupl_options );
+                    fupl_options );
 
                 } else {
                   uploadFile( current_item, reader.result );

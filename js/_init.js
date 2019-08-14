@@ -68,10 +68,10 @@ FileUploader2 = ((upl) => {
       */
 
       let element_all_dataset = upl_element.dataset,
-      fupl_selector_camel_case = global_options
-        .fupl_selector.replace(/-([a-z])/g, m => m[1].toUpperCase() ),
-      fupl_dataset = upl_element.dataset[fupl_selector_camel_case],
-      fupl_options = {};
+        fupl_selector_camel_case = global_options
+          .fupl_selector.replace(/-([a-z])/g, m => m[1].toUpperCase() ),
+        fupl_dataset = upl_element.dataset[fupl_selector_camel_case],
+        fupl_options = {};
 
       if(element_all_dataset === '') {
         element_all_dataset = {};
@@ -100,13 +100,13 @@ FileUploader2 = ((upl) => {
       try {
         //  controllo url
         if( !fupl_options.uploader_url ) {
-          throw new Error( "Parametro `uploader_url` non impostato" );
+          throw new Error( 'Parametro `uploader_url` non impostato' );
         }
 
         //  controllo parametro filetype
         fupl_options.filetype = fupl_options.filetype.toLowerCase();
         if( Object.keys(upl.mimetypes).indexOf(fupl_options.filetype) === -1 ) {
-          throw new Error( "Parametro `filetype` non corretto" );
+          throw new Error( 'Parametro `filetype` non corretto' );
         }
       } catch(e) {
         console.error( e );// eslint-disable-line

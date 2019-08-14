@@ -1,7 +1,8 @@
 #TODO
 
 * campi extra
-* mix svg + imgs type
+* mix svg + imgs type (??)
+* use es6 modules
 
-## versione 3
+## vers 3
 * eliminazione selettore predefinito → attivazione esplicita dell'uploader (??)

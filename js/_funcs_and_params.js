@@ -6,7 +6,7 @@ FileUploader2 = ((upl) => {
   upl.mimetypes = {
     auto : null,
     img  : ['image/png', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/webp',
-            '.png', '.jpg', '.jpeg', '.pjpg', '.pjpeg', '.gif', '.webp'],
+      '.png', '.jpg', '.jpeg', '.pjpg', '.pjpeg', '.gif', '.webp'],
     pdf  : ['application/pdf', '.pdf']
   };
 

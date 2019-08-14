@@ -5,7 +5,7 @@ FileUploader2 = ((upl) => {
     Restituisce la stringa normalizzata
   */
   const normalize_file_name = function (filename) {
-    let converted = "";
+    let converted = '';
     const conversionTable = { // Reference table Unicode vs ASCII
       'à' : 'a', // 224
       'è' : 'e', // 232
@@ -19,7 +19,7 @@ FileUploader2 = ((upl) => {
       'Ì' : 'I', // 204
       'Ò' : 'O', // 210
       'Ù' : 'U', // 217
-      "'" : '_', // 39
+      '\'' : '_', // 39
       '|' : '_', // 124
       '!' : '_', // 33
       '"' : '_', // 34
@@ -75,12 +75,12 @@ FileUploader2 = ((upl) => {
   upl.buildHiddenFields = (current_item, fupl_options) => {
 
     let hidden_fields = '',
-    field_values = {
-      'tmp_file'  : current_item.tmp_file,
-      'file_name' : normalize_file_name(current_item.file.name),
-      'size'      : current_item.file.size,
-      'type'      : current_item.file.type
-    };
+      field_values = {
+        'tmp_file'  : current_item.tmp_file,
+        'file_name' : normalize_file_name(current_item.file.name),
+        'size'      : current_item.file.size,
+        'type'      : current_item.file.type
+      };
 
     if(fupl_options._type === 'img') {
       field_values.width = current_item.width;
