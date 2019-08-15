@@ -1,4 +1,4 @@
-FileUploader2 = ((upl) => {
+FileUploader = ((upl) => {
 
   // https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
   upl.setListeners = (fupl_options) => {
@@ -46,4 +46,4 @@ FileUploader2 = ((upl) => {
 
   return upl;
 
-})(FileUploader2 || {});
+})(FileUploader || {});

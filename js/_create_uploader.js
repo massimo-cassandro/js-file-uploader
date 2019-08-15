@@ -1,4 +1,4 @@
-FileUploader2 = ((upl) => {
+FileUploader = ((upl) => {
 
   upl.createUploader = (fupl_options) => {
 
@@ -228,4 +228,4 @@ FileUploader2 = ((upl) => {
 
   return upl;
 
-})(FileUploader2 || {});
+})(FileUploader || {});

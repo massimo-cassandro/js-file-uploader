@@ -1,4 +1,4 @@
-FileUploader2 = ((upl) => {
+FileUploader = ((upl) => {
 
 
   /*
@@ -178,4 +178,4 @@ FileUploader2 = ((upl) => {
 
   return upl;
 
-})(FileUploader2 || {});
+})(FileUploader || {});

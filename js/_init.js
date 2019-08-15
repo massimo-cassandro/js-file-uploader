@@ -1,4 +1,4 @@
-FileUploader2 = ((upl) => {
+FileUploader = ((upl) => {
 
   // VARIABILI E METODI PRIVATI
   /*
@@ -25,7 +25,7 @@ FileUploader2 = ((upl) => {
   /*
     init
     Seleziona gli elementi con l'attributo `global_options.fupl_selector` e avvia FileUploader
-    `global_options` è l'oggetto istanziato al momento di avviare FileUploader2,
+    `global_options` è l'oggetto istanziato al momento di avviare FileUploader,
     ha la stessa struttura di `default_options` (definito in _set_options.js)
     e può sovrascrivere ogni suo elemento
   */
@@ -147,5 +147,5 @@ FileUploader2 = ((upl) => {
 
   return upl;
 
-})(FileUploader2 || {});
+})(FileUploader || {});
 

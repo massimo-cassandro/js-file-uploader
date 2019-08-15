@@ -1,4 +1,4 @@
-FileUploader2 = ((upl) => {
+FileUploader = ((upl) => {
 
   // mimetypes ed estensioni accettabili in base al parametro `filetype`.
   // Il parametro `auto` accetta tutti i tipi di file (salvo eventuali limitazioni
@@ -98,4 +98,4 @@ FileUploader2 = ((upl) => {
 
   return upl;
 
-})(FileUploader2 || {});
+})(FileUploader || {});

@@ -1,7 +1,7 @@
 # JS FileUploader
 
 **HTML5 + Javascript asyncronous file upload.**
-*v. 2 - Massimo Cassandro - 2017/2019*
+*v. 1 - Massimo Cassandro - (c) 2017/2019*
 
 Fileuploader automates and simplifies uploading files to HTML pages.
 
@@ -50,7 +50,7 @@ Minimal setup:
 ```
 
 ```javascript
-FileUploader2.init({
+FileUploader.init({
   uploader_url   : 'path/to/server/script'
 });
 ```
@@ -67,7 +67,7 @@ The `demo` folder contains several FileUploader examples.
 > NB: The default selector is `data-file-uploader`, but, if necessary, the` file-uploader` part can be replaced with any string (with *dataset* compatible syntax, see <https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset>) using the `fupl_selector` option:
 
 ```javascript
-FileUploader2.init({
+FileUploader.init({
   uploader_url   : 'path/to/server/script',
   fupl_selector  : 'my-uploader'
 });
@@ -81,7 +81,7 @@ To activate FileUploader, this minimum markup is required:
 <div data-file-uploader></div>
 ```
 
-FileUploader will be activated with the global parameters defined in [\_set\_options.js](js/_set_options.js) and in `FileUploader2.init` argument.
+FileUploader will be activated with the global parameters defined in [\_set\_options.js](js/_set_options.js) and in `FileUploader.init` argument.
 
 However, it is possible to customize each individual instance using data attributes matching the same global parameters.
 
@@ -131,7 +131,7 @@ FileUploader configuration is based on parameters defined in [\_set\_options.js]
 The parameters can be overridden according to this cascading sequence:
 
 * Values of `_set_options.js` file are the default ones
-* Parameters assigned in `FileUploader2.init` override the default ones, and are valid for all the FileUploader2 elements involved
+* Parameters assigned in `FileUploader.init` override the default ones, and are valid for all the FileUploader elements involved
 * Parameters assigned to each FileUploader instance prevail and override the previous ones: in this way it is possible to have different behaviors also on the same page.
 
 Infine, se è presente un campo `input[type="file"]` all'interno dell'elemento FileUploader, gli eventuali attributi `accept`, `required`, `multiple` o `disabled` presenti vengono presi in considerazione nella configurazione.
@@ -317,7 +317,7 @@ Per impedire il submit dei form nei browser non compatibili (jQuery):
 
 ```js
 
-FileUploader2.init({
+FileUploader.init({
   
   [...]
 

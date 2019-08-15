@@ -7,7 +7,7 @@
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly",
-    "FileUploader2": "writable"
+    "FileUploader": "writable"
   },
   "parserOptions": {
     "ecmaVersion": 2018

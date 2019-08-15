@@ -1,4 +1,4 @@
-FileUploader2 = ( (upl) => {
+FileUploader = ( (upl) => {
 
   // parametri di default condivisi da tutte le istanze
   const default_options = {
@@ -469,4 +469,4 @@ FileUploader2 = ( (upl) => {
 
   return upl;
 
-})(FileUploader2 || {});
+})(FileUploader || {});

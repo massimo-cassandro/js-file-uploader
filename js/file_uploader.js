@@ -1,13 +1,13 @@
 /*!@preserve
  *
- * FileUploader 2.0
+ * FileUploader 1
  * HTML5 / JS Async Uploader
  * Massimo Cassandro 2017-2019
  *
  */
 
 //* eslint no-console: 0, no-unused-vars: 0, no-empty:  0 */
-/* exported FileUploader2 */
+/* exported FileUploader */
 
 /*
 @codekit-append '_funcs_and_params.js'
@@ -24,7 +24,7 @@
 
 */
 'use strict';
-var FileUploader2 = (function () {
+var FileUploader = (function () {
 
   let upl = {};
 
