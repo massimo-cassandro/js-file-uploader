@@ -59,6 +59,7 @@ The argument of`init is an object that sets some parameters. A complete list of 
 Once initialized, FileUploader is applied to all element with the `data-file-uploader` attribute:
 
 --
+
 ![](readme_files/uploader_std.png)
 --
 
@@ -81,7 +82,7 @@ To activate FileUploader, this minimum markup is required:
 <div data-file-uploader></div>
 ```
 
-FileUploader will be activated with the global parameters defined in [\_set\_options.js](js/_set_options.js) and in `FileUploader.init` argument.
+FileUploader will be activated with the global parameters defined in [\_set\_options.js](js/_set_options.js) and in `FileUploader.init()` argument.
 
 However, it is possible to customize each individual instance using data attributes matching the same global parameters.
 
@@ -131,28 +132,28 @@ FileUploader configuration is based on parameters defined in [\_set\_options.js]
 The parameters can be overridden according to this cascading sequence:
 
 * Values of `_set_options.js` file are the default ones
-* Parameters assigned in `FileUploader.init` override the default ones, and are valid for all the FileUploader elements involved
+* Parameters assigned in `FileUploader.init()` override the default ones, and are valid for all the FileUploader elements involved
 * Parameters assigned to each FileUploader instance prevail and override the previous ones: in this way it is possible to have different behaviors also on the same page.
 
-Infine, se è presente un campo `input[type="file"]` all'interno dell'elemento FileUploader, gli eventuali attributi `accept`, `required`, `multiple` o `disabled` presenti vengono presi in considerazione nella configurazione.
+Finally, if an `input [type="file"]` field is present inside the FileUploader element, any `accept`,` required`, `multiple` or` disabled` attributes are taken into account in the configuration .
 
-Ad esempio è possibile impostare un Uploader come *required* sia impostando il parametro `required = true` sia utilizzando l'attributo `required` del campo file.
+For example, you can set a FileUploader as *required* either by setting the `data-required="true"` attribute of the FileUploader element, or by using the` required` attribute of the file field.
 
 >NB: if the `required`,` multiple` or `disabled` parameters are set to `true` in the FileUploader instance, it is not possible to set them to `false` via the input field attributes.
 
 
-## Script lato server
-È necessario impostare uno script lato server che esegua l'upload dei file.
+## Server-side script
 
-Lo scopo di FileUploader è di permettere la registrazione asincrona dei file solo dopo l'invio del form che contiene l'input file. Quindi lo script deve collocare il file in una directory temporanea (ad esempio `tmp`), assegnandogli un nome provvisorio.
+FileUploader requires a server-side script to manage file uploading.
 
-Solo dopo la registrazione del form, il file può essere spostato nella sua destinazione definitiva; in questo modo eventuali form non completati non lasceranno file *orfani*, visto che la directory `tmp` viene periodicamente svuotata.
+The goal of FileUploader is to allow asynchronous uploading of files, saving them definitively on server only after the form containing the input file has been submitted. The script must place the file in a temporary directory (eg `tmp`), giving it a temporary name.
 
-A caricamento completato, FileUploader riceve dallo script lato server, le informazioni necessarie a completare la registrazione, le inserisce in una serie di input hidden, e le restituisce al server al momento del submit del form.
+After form submit, uploaded files have to be be moved to their final destination: this way any unsubmitted form will not leave any *orphaned* file, since the files left in the `tmp` directory should be periodically deleted.
 
-Per ogni file selezionato, lo script riceve una chiamata *POST* alla quale è associata una variabile `file` a cui è, a sua volta, associato il file selezionato dall'utente.
 
-La variabile PHP `$_FILES`, ad esempio, restituisce qualcosa del genere:
+When a file is uploaded, FileUploader receives from the server side script, the information necessary to complete the registration, inserts it in a series of hidden inputs, and returns it to the server when the form is submitted.
+
+For each file selected, FileUploader send to server-side script a *POST* call with file data. PHP `$ _FILES` variable, for example, returns to the script something like this:
 
 ```php
 Array
@@ -167,8 +168,8 @@ Array
         )
 )
 ```
+The script must process the request (save the file in `tmp` directory), and return a json formatted as follows:
 
-Lo script deve processare la richiesta e restituire un json così formattato:
 
 ```json
 {
@@ -176,44 +177,48 @@ Lo script deve processare la richiesta e restituire un json così formattato:
   "error": null
 }
 ```
-In cui:
 
-* `tmp_file` è il percorso al file temporanea registrato sul server
-* `error` è `null` in caso di successo, oppure contiene il messaggio di errore prodotto dal server.
+where:
 
-Dopo la registrazione, FileUploader restituirà per ogni file caricato i seguenti valori:
+* `tmp_file` is the path to the temporary file registered on the server
+* `error` is` null` on success, or a string of the error message produced by the server.
 
-* `tmp_file`: nome del file temporaneo ricevuto dallo script
-* `file_name`: nome del file originale normalizzato per il web
-* `size`: dimensione in bytes del file
-* `type`: mimetype del file
+Then FileUploader will build a hidden field for each of these parameters:
 
-Nel caso di immagini, saranno anche presenti i valori `width` e `height` dell'immagine stessa.
+* `tmp_file`: name of temporary file (as returned by the json response)
+* `file_name`: name of the original file (web normalized)
+* `size`: file size (bytes)
+* `type`: file mimetype
 
-Tutti i valori saranno inseriti in una serie di campi *hidden* il cui attributo `name` sarà composto da:
+In case of images, the `width` and` height` values ​​of the image itself will also be present.
 
-* il valore indicato nel parametro `varname` + 
-* id unico dell'elemento in esame + 
-* il nome della variabile in oggetto.
+All values will be used to create some *hidden* fields whose `name` attribute will consist of:
 
-Esempio (con parametro `varname='custom_file'` e id unico = `__unique_id__`):
+* the value of the `varname` parameter
+* an unique id corresponding to the file
+* the variable name
+
+Example (with `varname='custom_file'` and unique id equal to `__unique_id__`):
 
 ```html
 <input type="hidden" name="custom_file[__unique_id__][tmp_file]" value="...">
+<input type="hidden" name="custom_file[__unique_id__][file_name]" value="...">
+[...]
 ```
 
 
 ## Customization
 
-Tra i vari parametri disponibili per personalizzare FileUploader, ce ne sono alcuni che permettono di modificare radicalmente l'aspetto proposto dalle impostazioni di default.
+FileUploader configuration parameter allow you to radical change the generated layout.
 
-Per una personalizzazione profonda, oltre ad agire sul css, si può intervenire sul markup generato dalla procedura e si possono impostare alcuni callback per effettuare operazioni aggiuntive.
+To perform a complete customization of the layout, you can modify both the css and much of the markup (mostly the items inside the `templates` parameter).
+furthermore, some callbacks can be set to perform additional operations.
 
-Quando un elemento FileUploader viene generato, all'elemento originale (in nero nello schema seguente) viene aggiunta la classe `fupl`. Viene quindi generato del markup aggiuntivo dentro e fuori l'elemento `.fupl`. Quello interno (in blu) è completamente configurabile modificando il parametro `templates` delle opzioni.
+When a FileUploader  is generated, the `fupl` class is added to the original element (black bordered in the following diagram), and some additional markup is then generated inside and outside it. The internal one (blue bordered) is completely configurable by modifying the `templates` parameters.
 
 ![Schema markup](readme_files/markup_schema.png)
 
-L'unica accortezza da avere è quella di mantenere gli elementi con classe `fupl-*`che sono utilizzati dalla procedura e dal css.
+> Take care to preserve elements with `fupl-*` classes, requested by FileUploader
 
 
 ### Callback
@@ -232,7 +237,7 @@ Qualora fossero richiesti comportamenti aggiuntivi, è possibile definire alcuni
         - `tmp_file`: nel caso di nuovi elementi: nome del file temporaneo
     * `img_preview` : miniatura dell'immagine in forma di stringa Base64
         (null se si tratta di altre tipologie)
-    * `fupl_options`: oggetto `options` corrente
+    * `options`: oggetto `options` corrente
   
 * `upload_complete_callback` (default null):  Funzione richiamata ogni volta che un file viene caricato. La funzione viene invocata passandole un oggetto contenente:
 
@@ -242,12 +247,12 @@ Qualora fossero richiesti comportamenti aggiuntivi, è possibile definire alcuni
         - `width` e `height`: null o dimensioni in pixel dell'immagine
         - `tmp_file`: nel caso di nuovi elementi: nome del file temporaneo
     * `server_error`: null, se l'upload è stato completato correttamente. oppure stringa con il messaggio di errore restituito
-    * `fupl_options`: oggetto `options` corrente
+    * `options`: oggetto `options` corrente
     
 * `alternate_loading_func` (default null): Non un callback, ma una funzione per una visualizzazione alternativa del progresso di caricamento. Se presente, viene sostituita a quella standard.
 Viene invocata con due parametri:
     - `progress_event`: evento progress del caricamento
-    - `fupl_options`: oggetto `options` corrente
+    - `options`: oggetto `options` corrente
 
 
 ## Fancybox integration
@@ -311,7 +316,7 @@ $('form').each(function() {
 
 ```
 
-### Blocco browser non compatibili
+### Unsuitable browsers blocking
 
 Per impedire il submit dei form nei browser non compatibili (jQuery):
 
@@ -347,7 +352,7 @@ $('form').each(function() {
 });
 ```
 
-### Controllo contenuti `required`
+### `required` fields checking
 
 Dato che è possibile caricare contenuti tramite *Drag&Drop*, non è possibile utilizzare il controllo nativo del browser che utilizza l'attributo `required` del campo file.
 
