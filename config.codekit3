@@ -119,7 +119,7 @@
 		"ma": 1,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/demo/bs4_toast_notification-min.js",
+		"oAP": "/docs/bs4_toast_notification-min.js",
 		"oF": 2,
 		"sC": 3,
 		"tS": 1
@@ -150,7 +150,7 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 0,
-		"oAP": "/demo/bs4_toast_notificaton.css",
+		"oAP": "/docs/bs4_toast_notificaton.css",
 		"oF": 2,
 		"oS": 3,
 		"uL": 1
