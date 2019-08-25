@@ -11,7 +11,7 @@ Although the default settings are based on Bootstrap 4, FileUploader is entirely
 
 Similarly, all the string messages can be customized using the desired language. Look at the [\_set\_options.js](js/_set_options.js) file for a complete list of all available parameters.
 
-The [docs](https://massimo-cassandro.github.io/js-file-uploader/) folder contains many examples of FileUploader using.
+The [demo](https://massimo-cassandro.github.io/js-file-uploader/demo/) folder contains many examples of FileUploader using.
 
 
 ## Browser compatibility
@@ -30,7 +30,7 @@ To perform this option, you need to:
 * add the `enctype` attribute to your form (FileUploader doesn't need it)
 * provide the necessary server side scripting. Very likely, the script to be used in this situation differs from the one used in the Ajax procedure.
 
-Take a look at the [silent degradation demo](docs/silent_degradation_sample.html).
+Take a look at the [silent degradation demo](https://massimo-cassandro.github.io/js-file-uploader/demo/silent_degradation_sample.html).
 
 ## Codekit
 All distribution files are built using [Codekit](https://codekitapp.com/), but you can easily switch to other tools, if you need.
@@ -75,9 +75,9 @@ Once initialized, FileUploader is applied to all element with the `data-file-upl
 ![](readme_files/uploader_std.png)
 --
 
-The `docs` folder contains several FileUploader examples.
+The `demo` folder contains several FileUploader examples.
 
-> NB: The default selector is `data-file-uploader`, but, if necessary, the` file-uploader` part can be replaced with any string (with *dataset* compatible syntax, see <https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset>) using the `fupl_selector` option:
+> NB: The default selector is `data-file-uploader`, but, if necessary, the` file-uploader` part can be replaced with any string (with *dataset* compatible syntax, see <https://developer.mozilla.org/en-US/demo/Web/API/HTMLElement/dataset>) using the `fupl_selector` option:
 
 ```javascript
 FileUploader.init({
@@ -165,7 +165,7 @@ After form submit, uploaded files have to be be moved to their final destination
 
 When a file is uploaded, FileUploader receives from the server side script, the information necessary to complete the registration, inserts it in a series of hidden inputs, and returns it to the server when the form is submitted.
 
-For each file selected, FileUploader send to server-side script a *POST* call with file data. PHP `$ _FILES` variable, for example, returns to the script something like this:
+For each file selected, FileUploader send to server-side script a *POST* call with file data. PHP `$_FILES` variable, for example, returns to the script something like this:
 
 ```php
 Array
