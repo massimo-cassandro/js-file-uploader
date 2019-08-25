@@ -3,6 +3,9 @@
 **HTML5 + Javascript asyncronous file upload.**
 *v. 1 - Massimo Cassandro - (c) 2017/2019*
 
+[demo](https://massimo-cassandro.github.io/js-file-uploader/demo/)
+
+
 Fileuploader automates and simplifies uploading files to HTML pages.
 
 Uploads are performed asynchronously via an Ajax call to a server-side script that must register the file and return a JSON string.
