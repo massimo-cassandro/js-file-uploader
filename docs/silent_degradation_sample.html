@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <title>Silent degradation sample</title>
-    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
   </head>
 
   <body>
@@ -13,22 +13,29 @@
       <h1>Silent degradation sample</h1>
       <p>Open this file with Explorer</p>
       <form action="" enctype="multipart/form-data" id="form1" method="post" name="form1">
-        <div data-file-uploader="" data-filetype="img" data-img_min_h="500" data-img_min_w="500"
-          data-max_filesize="2500" data-uploader_legend="true" data-values='[]' id="upl1">
-          <label for="input_file">Label del campo file</label> <input class="form-control" id="input_file" name="myfile"
-            type="file">
+        <div
+          data-file-uploader
+          data-filetype="img"
+          data-img_min_h="500"
+          data-img_min_w="500"
+          data-max_filesize="2500"
+          data-uploader_legend="true"
+          data-values='[]' id="upl1">
+          <label for="input_file">Input field label</label>
+          <input class="form-control" id="input_file" name="myfile" type="file">
         </div>
         <p><button class="btn btn-primary" type="submit">Submit</button></p>
       </form>
       <script src="../dist/file_uploader-min.js"></script>
+      <script src="test-files/en_localization.js"></script>
       <script>
-        FileUploader.init({
+        FileUploader.init({...en_localization, ...{
           debug: true,
           css: '../dist/file_uploader.css',
-          uploader_url: 'server_side_response.json',
+          uploader_url: 'server_side_demo_response.json',
           silent_degradation: true,
           unsuitable_browser_callback: function() {console.log('unsuitable_browser_callback');}
-        });
+        }});
 
       </script>
     </div>

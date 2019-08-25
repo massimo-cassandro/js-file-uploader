@@ -11,6 +11,8 @@ Although the default settings are based on Bootstrap 4, FileUploader is entirely
 
 Similarly, all the string messages can be customized using the desired language. Look at the [\_set\_options.js](js/_set_options.js) file for a complete list of all available parameters.
 
+The [docs](/docs/) folder contains many examples of FileUploader using.
+
 
 ## Browser compatibility
 FileUploader needs a modern browser and is not compatible with Internet Explorer.
@@ -28,14 +30,24 @@ To perform this option, you need to:
 * add the `enctype` attribute to your form (FileUploader doesn't need it)
 * provide the necessary server side scripting. Very likely, the script to be used in this situation differs from the one used in the Ajax procedure.
 
-Take a look at the [silent degradation demo](demo/silent_degradation_sample.html).
+Take a look at the [silent degradation demo](docs/silent_degradation_sample.html).
+
+## Codekit
+All distribution files are built using [Codekit](https://codekitapp.com/), but you can easily switch to other tools, if you need.
+
+## Localization
+Actually, all localization strings are part of `default_options` object (in `_set_options.js`). The default language is italian.
+
+To change language, you can provide the desidered strings in the `init` function (as in demo files) or you can edit the `default_options` objects and rebuild dist files.
+
+Furthermore, you have to set the `locales` parameter to the desidered value to correctly represent numeric values. 
 
 
 ## Installation
 
 FileUploader can be installed thru npm:
 
-```bash
+```
 npm i --save js-file-uploader
 ```
 
@@ -63,7 +75,7 @@ Once initialized, FileUploader is applied to all element with the `data-file-upl
 ![](readme_files/uploader_std.png)
 --
 
-The `demo` folder contains several FileUploader examples.
+The `docs` folder contains several FileUploader examples.
 
 > NB: The default selector is `data-file-uploader`, but, if necessary, the` file-uploader` part can be replaced with any string (with *dataset* compatible syntax, see <https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset>) using the `fupl_selector` option:
 
@@ -218,41 +230,40 @@ When a FileUploader  is generated, the `fupl` class is added to the original ele
 
 ![Schema markup](readme_files/markup_schema.png)
 
-> Take care to preserve elements with `fupl-*` classes, requested by FileUploader
+> Take care to preserve elements with `fupl-*` classes, that are requested by FileUploader
 
 
 ### Callback
 
-Qualora fossero richiesti comportamenti aggiuntivi, è possibile definire alcuni callback, invocati in corrispondenza di alcuni eventi dell'uploader:
+If specific behaviors are required, you can define some callback functions that will be invoked when certain events occur:
 
-* `init_callback` (default null): Funzione richiamata dopo l'inizializzazione di ogni elemento FileUploader. La funzione viene invocata con l'oggetto di tutte le opzioni come argomento
+* `init_callback` (default null): called after the initialization of each FileUploader element. The argument of this function is an object containing all the options of the instance
 
-* `unsuitable_browser_callback` (default null): funzione richiamata se vieme rilevato un browser non adatto
+* `unsuitable_browser_callback` (default null): function called if an unsuitable browser is detected
 
-* `upload_start_callback` (default null): Funzione richiamata ogni volta che un file viene inviato al server.  La funzione viene invocata passandole un oggetto contenente:
-    * `item`: oggetto con i dati dell'elemento in esame:
-        - id: id univoco dell'elemento
-        - file: oggetto *filelist* corrente
-        - `width` e `height`: null o dimensioni in pixel dell'immagine
-        - `tmp_file`: nel caso di nuovi elementi: nome del file temporaneo
-    * `img_preview` : miniatura dell'immagine in forma di stringa Base64
-        (null se si tratta di altre tipologie)
-    * `options`: oggetto `options` corrente
-  
-* `upload_complete_callback` (default null):  Funzione richiamata ogni volta che un file viene caricato. La funzione viene invocata passandole un oggetto contenente:
+* `upload_start_callback` (null default): function called whenever a file is sent to the server. The function is invoked by passing an object containing:
+    * `item`: object. It contains:
+        - `id`: unique ID of the item
+        - `file`: current * filelist * object
+        - `width` and `height`: null or dimensions in pixels of the image
+        - `tmp_file`: temporary file name assigned by the server side script
+    * `img_preview`: image thumbnail as a Base64 string
+    (null if it is of other types)
+    * `options`: FileUploader options of current istance 
 
-    * `item`: oggetto con i dati dell'elemento in esame:
-        - `id`: id univoco dell'elemento
-        - `file`: oggetto filelist
-        - `width` e `height`: null o dimensioni in pixel dell'immagine
-        - `tmp_file`: nel caso di nuovi elementi: nome del file temporaneo
-    * `server_error`: null, se l'upload è stato completato correttamente. oppure stringa con il messaggio di errore restituito
-    * `options`: oggetto `options` corrente
-    
-* `alternate_loading_func` (default null): Non un callback, ma una funzione per una visualizzazione alternativa del progresso di caricamento. Se presente, viene sostituita a quella standard.
-Viene invocata con due parametri:
-    - `progress_event`: evento progress del caricamento
-    - `options`: oggetto `options` corrente
+* `upload_complete_callback` (default null): function called whenever a file is loaded. The function is invoked by passing an object containing:
+     * `item`: object. It contains:
+        - `id`: unique ID of the item
+        - `file`: current * filelist * object
+        - `width` and `height`: null or dimensions in pixels of the image
+        - `tmp_file`: temporary file name assigned by the server side script
+    * `server_error`: null, if the upload was completed successfully, or string with the returned error message
+    * `options`: FileUploader options of current istance 
+
+* `alternate_loading_func` (default null): Not a real callback, but an alternative function to display the upload progress. If present, it replaces the standard one.
+It is invoked with two parameters:
+    - `progress_event`: progress upload event
+    - `options`: FileUploader options of current istance 
 
 
 ## Fancybox integration
@@ -269,40 +280,40 @@ Fancybox is applied only to previously registered images.
 
 ### Controllo caricamento completato
 
-Appena un elemento viene aggiunto all'uploader, viene inviata la richiesta Ajax al server per la registrazione del file. A operazione completata, il server restituisce il json con i dati del file registrati, come indicato nei punti precedenti.
+As soon as an item is added to the uploader, an Ajax request is sent to the server for file registration. When the operation is completed, the server returns a json with the data of the recorded file, as indicated in the previous points.
 
-Dal momento in cui la richiesta viene inviata e fino a quando il server non risponde, l'utente può comunque effettuare il submit del form, ma in questo caso non saranno presenti tutti gli elementi hidden relativi al file che non verrà quindi registrato.
+From the moment the request is sent and until the server responds, the user can still submit the form, but in this case all the hidden elements related to the uploading file that will not be will not be present, therefore they will noit be registered
 
-Per evitare questo problema, si può attivare l'opzione `disable_submit` che disabilita il pulsante *Submit* del form finché il server non ha inviato la sua risposta.
+To avoid this problem, you can enable the `disable_submit` option which disables the *Submit * button of form until the server has sent its response.
 
-Questa opzione non è comunque sufficiente a garantire che siano evitati problemi di questo tipo (in alcuni casi, l'utente potrebbe effettuare il submit con il tasto Invio), ed è inoltre possibile che altre impostazioni riabilitino il pulsante indipendentemente dall'esito dell'upload.
+However, this option is not sufficient to ensure that problems of this type are avoided (in some cases, the user could submit with the Enter key), and it is also possible that other settings re-enable the button regardless of the upload outcome.
 
-La soluzione più sicura è quindi bloccare il submit se sono presenti elementi con classe `fupl-is-uploading`, classe assegnato ad ogni nuovo elemento aggiunto all'uploader ed eliminata a caricamento completato:
+The safest solution is therefore to block the submit if there are elements with the `fupl-is-uploading` class, class assigned to each new element added to the uploader and deleted upon completion of loading:
 
 ```javascript
 let myForm = document.getElementById('myForm');
 myForm.addEventListener('submit', () => {
     if(myForm.querySelectorAll('.fupl-is-uploading').length) {
-        alert('Caricamento non completato');
+        alert('Loading not completed');
         return false;
     }
 });
 ```
 
-Se FileUploader è usato in più pagine, possibile impostare un controllo centralizzato su tutti gli elementi form:
+If FileUploader is used in multiple pages, it is possible to set a centralized control on all form elements:
 
 ```javascript
 document.querySelectorAll('form').forEach( this_form => {
     this_form.addEventListener('submit', () => {
         if(this_form.querySelectorAll('.fupl-is-uploading').length) {
-            alert('Devi attendere che il caricamento delle immagini sia completato');
+            alert('Wait for the image upload to complete!');
             return false;
         }
     });
 });
 ```
 
-Utilizzando jQuery:
+Using jQuery:
 
 ```javascript
 $('form').each(function() {
@@ -313,12 +324,13 @@ $('form').each(function() {
         }
     });
 });
-
 ```
+
+However, implementing a server-side control too is certainly a good idea.
 
 ### Unsuitable browsers blocking
 
-Per impedire il submit dei form nei browser non compatibili (jQuery):
+To prevent the submission of forms in non-compatible browsers (jQuery):
 
 ```js
 
@@ -326,26 +338,28 @@ FileUploader.init({
   
   [...]
 
-  // aggiunge la classe 'unsuitable_browser' 
-  // e rimuove il pulsante submit, ma non impedisce il submit del form
+  /*
+    adds the class 'unsuitable_browser'
+    and removes the submit button, but does not prevent form submit
+  */
   unsuitable_browser_callback: function () {
     $('[data-file-uploader]')
       .closest('form')
         .addClass('unsuitable_browser')
         .find(':submit').each( function() {
-          $(this).replaceWith( '<div class="alert alert-danger my-4">Stai usando un browser non compatibile</div>' );
+          $(this).replaceWith( '<div class="alert alert-danger my-4">You are using an incompatible browser</div>' );
         });
   }
 
 });
 
-// impedisce il submit del form
+// stop form submit
 $('form').each(function() {
     
   $(this).submit(function() {
 
     if($(this).hasClass('unsuitable_browser')) {
-      alert("Stai utilizzando un browser non compatibile. Impossibile caricare le immagini");
+      alert("You are using an incompatible browser. Cannot load images");
       return false;
     }
   });
@@ -354,18 +368,19 @@ $('form').each(function() {
 
 ### `required` fields checking
 
-Dato che è possibile caricare contenuti tramite *Drag&Drop*, non è possibile utilizzare il controllo nativo del browser che utilizza l'attributo `required` del campo file.
+Since a file can be loaded via *Drag & Drop*, it is not possible to use the native `required` to check for  mandatory files.
 
-Questo controllo può però essere effettuato utilizzando gli attributi `data` aggiunti dinamicamente all'elemento `.fupl-wrapper` dell'uploader: `data-required="true"` e `data-has-values="true|false"`.
+However, this check can be performed using the `data` attributes added dynamically to the` .fupl-wrapper` element: `data-required="true"` and `data-has-values="true|false" `.
 
-Quindi, se per controllare la presenza di un contenuto per l'elemento `#my-uploader` sarebbe sufficiente verificare questa condizione:
+Therefore, to verify the required content of the `# my-uploader` element, it is very simple:
+
 
 ```javascript
-document.getElementById('mio-uploader')
+document.getElementById('my-uploader')
     .closest('.fupl-wrapper:not([disabled])[data-required="true"][data-has-values="true"]') !== null
 ```
 
-Oppure, per effettuare un controllo generale su tutto il form:
+Or, to check the entire form:
 
 ```javascript
 document.querySelectorAll('.fupl-wrapper:not([disabled])[data-required="true"][data-has-values="false"]').length === 0

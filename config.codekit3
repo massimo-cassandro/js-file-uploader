@@ -57,194 +57,6 @@
 		"oO": 0,
 		"oS": 1
 		},
-	"/demo/bs4_toast_notification-min.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 1,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/dist/bs4_toast_notification-min-min.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 1
-		},
-	"/demo/bs4_toast_notification-min.js.map": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/demo/bs4_toast_notification-min.js.map",
-		"oF": 0
-		},
-	"/demo/bs4_toast_notification.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 1,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/demo/bs4_toast_notification-min.js",
-		"oF": 2,
-		"sC": 3,
-		"tS": 1
-		},
-	"/demo/bs4_toast_notificaton.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "/demo/bs4_toast_notificaton-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/demo/bs4_toast_notificaton.css.map": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/demo/bs4_toast_notificaton.css.map",
-		"oF": 0
-		},
-	"/demo/bs4_toast_notificaton.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 1,
-		"oA": 0,
-		"oAP": "/demo/bs4_toast_notificaton.css",
-		"oF": 2,
-		"oS": 3,
-		"uL": 1
-		},
-	"/demo/demo_readme.md": {
-		"cB": 0,
-		"cS": 0,
-		"eF": 1,
-		"eL": 1,
-		"ema": 1,
-		"eSQ": 1,
-		"ft": 4096,
-		"hM": 0,
-		"oA": 1,
-		"oAP": "/demo/demo_readme.html",
-		"oF": 0,
-		"oFM": 0,
-		"oS": 0,
-		"pHT": 0,
-		"pME": 1,
-		"rFN": 0,
-		"uCM": 0
-		},
-	"/demo/fancybox_demo.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/demo/fancybox_demo.html",
-		"oF": 0
-		},
-	"/demo/file_uploader_DEMO.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/demo/file_uploader_DEMO.html",
-		"oF": 0
-		},
-	"/demo/layout_test.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/demo/layout_test.html",
-		"oF": 0
-		},
-	"/demo/server_side_response.json": {
-		"ft": 524288,
-		"oA": 1,
-		"oAP": "/demo/server_side_response-min.json",
-		"oF": 0,
-		"oO": 0,
-		"oS": 1
-		},
-	"/demo/silent_degradation_sample.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/demo/silent_degradation_sample.html",
-		"oF": 0
-		},
-	"/demo/sortable_demo.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/demo/sortable_demo.html",
-		"oF": 0
-		},
-	"/demo/test-files/fezbot2000-1511423-unsplash.jpg": {
-		"ft": 16384,
-		"iS": 358840,
-		"jF": 0,
-		"oA": 1,
-		"oAP": "/demo/test-files/fezbot2000-1511423-unsplash.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 100
-		},
-	"/demo/test-files/gigi-1508584-unsplash.jpg": {
-		"ft": 16384,
-		"iS": 175418,
-		"jF": 0,
-		"oA": 1,
-		"oAP": "/demo/test-files/gigi-1508584-unsplash.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 100
-		},
-	"/demo/test-files/ibrahim-rifath-787485-unsplash.jpg": {
-		"ft": 16384,
-		"iS": 193345,
-		"jF": 0,
-		"oA": 1,
-		"oAP": "/demo/test-files/ibrahim-rifath-787485-unsplash.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 100
-		},
-	"/demo/test-files/pdf1.pdf": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/demo/test-files/pdf1.pdf",
-		"oF": 0
-		},
-	"/demo/test-files/pdf2.pdf": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/demo/test-files/pdf2.pdf",
-		"oF": 0
-		},
-	"/demo/test-files/small_img.png": {
-		"ft": 32768,
-		"iS": 7429,
-		"oA": 1,
-		"oAP": "/demo/test-files/small_img.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
 	"/dist/file_uploader-min.js": {
 		"bF": 0,
 		"ft": 64,
@@ -281,6 +93,186 @@
 		"oA": 0,
 		"oAP": "/dist/file_uploader.css.map",
 		"oF": 0
+		},
+	"/docs/bs4_toast_notification-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/dist/bs4_toast_notification-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
+	"/docs/bs4_toast_notification-min.js.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/docs/bs4_toast_notification-min.js.map",
+		"oF": 0
+		},
+	"/docs/bs4_toast_notification.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/demo/bs4_toast_notification-min.js",
+		"oF": 2,
+		"sC": 3,
+		"tS": 1
+		},
+	"/docs/bs4_toast_notificaton.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/docs/bs4_toast_notificaton-min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"/docs/bs4_toast_notificaton.css.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/docs/bs4_toast_notificaton.css.map",
+		"oF": 0
+		},
+	"/docs/bs4_toast_notificaton.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 1,
+		"oA": 0,
+		"oAP": "/demo/bs4_toast_notificaton.css",
+		"oF": 2,
+		"oS": 3,
+		"uL": 1
+		},
+	"/docs/fancybox_demo.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/docs/fancybox_demo.html",
+		"oF": 0
+		},
+	"/docs/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/docs/index.html",
+		"oF": 0
+		},
+	"/docs/main_demo.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/docs/main_demo.html",
+		"oF": 0
+		},
+	"/docs/server_side_demo_response.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/docs/server_side_demo_response-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"/docs/silent_degradation_sample.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/docs/silent_degradation_sample.html",
+		"oF": 0
+		},
+	"/docs/sortable_demo.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/docs/sortable_demo.html",
+		"oF": 0
+		},
+	"/docs/test-files/en_localization.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/docs/dist/en_localization-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
+	"/docs/test-files/fezbot2000-1511423-unsplash.jpg": {
+		"ft": 16384,
+		"iS": 358840,
+		"jF": 0,
+		"oA": 1,
+		"oAP": "/docs/test-files/fezbot2000-1511423-unsplash.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"/docs/test-files/gigi-1508584-unsplash.jpg": {
+		"ft": 16384,
+		"iS": 175418,
+		"jF": 0,
+		"oA": 1,
+		"oAP": "/docs/test-files/gigi-1508584-unsplash.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"/docs/test-files/ibrahim-rifath-787485-unsplash.jpg": {
+		"ft": 16384,
+		"iS": 193345,
+		"jF": 0,
+		"oA": 1,
+		"oAP": "/docs/test-files/ibrahim-rifath-787485-unsplash.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"/docs/test-files/pdf1.pdf": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/docs/test-files/pdf1.pdf",
+		"oF": 0
+		},
+	"/docs/test-files/pdf2.pdf": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/docs/test-files/pdf2.pdf",
+		"oF": 0
+		},
+	"/docs/test-files/small_img.png": {
+		"ft": 32768,
+		"iS": 7429,
+		"oA": 1,
+		"oAP": "/docs/test-files/small_img.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
 		},
 	"/fileuploader.code-workspace": {
 		"cB": 0,
@@ -424,6 +416,28 @@
 		"oA": 2,
 		"oAP": "/build/node_modules",
 		"oF": 0
+		},
+	"/node_modules/bootstrap/js/dist/toast.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/node_modules/bootstrap/js/dist/toast-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
+	"/node_modules/bootstrap/js/dist/util.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/node_modules/bootstrap/js/dist/util-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
 		},
 	"/node_modules/bootstrap/scss/_functions.scss": {
 		"aP": 1,

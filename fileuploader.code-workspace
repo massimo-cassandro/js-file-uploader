@@ -4,8 +4,8 @@
 			"path": "."
 		}
 	],
-	"settings": {
-		"local-web-opener.pathPatten": "\/Users\/(max|mblu)\/Sites\/file-uploader2",
-		"local-web-opener.URLPatten": "http://fileuploader.test:8888"
+  "settings": {
+    "preview-in-browser.domain": "http://fileuploader.test:8888/"
+
 	}
 }

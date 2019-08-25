@@ -230,6 +230,24 @@ FileUploader = ( (upl) => {
       }
     },
 
+    // info text strings
+    info_text: {
+      std_imgs : 'immagini in formato <strong>JPEG</strong>, <strong>PNG</strong>, <strong>GIF</strong> o <strong>WEBP</strong>',
+      img_fixed_size: 'dimensioni: <strong>{{img_w}}&times;{{img_h}}px</strong>',
+      img_equal_min_size: 'larghezza e altezza non inferiori a <strong>{{img_min_w}}px</strong>',
+      img_equal_max_size: 'larghezza e altezza non superiori a <strong>{{img_max_w}}px</strong>',
+      img_fixed_width : 'larghezza <strong>{{img_w}}px</strong>',
+      img_fixed_height : 'altezza <strong>{{img_h}}px</strong>',
+      img_width_range: 'larghezza compresa tra <strong>{{img_min_w}}px</strong> e <strong>{{img_max_w}}px</strong>',
+      img_min_width: 'larghezza non inferiore a <strong>{{img_min_w}}px</strong>',
+      img_max_width: 'larghezza non superiore a <strong>{{img_max_w}}px</strong>',
+      img_height_range: 'altezza compresa tra <strong>{{img_min_h}}px</strong> e <strong>{{img_max_h}}px</strong>',
+      img_min_height: 'altezza non inferiore a <strong>{{img_min_h}}px</strong>',
+      img_max_height: 'altezza non superiore a <strong>{{img_max_h}}px</strong>',
+      pdf_file: 'file in formato <strong>PDF</strong>',
+      max_filesize: 'max <strong>{{max_filesize}}</strong>'
+    },
+
     // Eventuale classi da aggiungere all'elemento wrapper di FileUploader
     // (stringa separata da spazi)
     wrapper_extra_class: null,

@@ -4,68 +4,73 @@ FileUploader = ((upl) => {
 
   /**
 	 * create_info_text
-	 * (funzione) Genera la stringa riepilogativa delle limitazioni da rispettare
-	 * per la selezione dei file
+	 * Creates a string of information about the file requirements
 	 *
-   * - Restituisce la stringa informativa
 	 */
   upl.create_info_text = fupl_options => {
     let info_text = [];
 
     if( fupl_options.filetype === 'img' ) {
-      info_text.push( 'immagini in formato <strong>JPEG</strong>, <strong>PNG</strong>, <strong>GIF</strong> o <strong>WEBP</strong>' );
+      info_text.push( fupl_options.info_text.std_imgs );
 
       if( fupl_options.img_w && fupl_options.img_h ) {
-        info_text.push( 'dimensioni: <strong>' +  fupl_options.img_w + '&times;' + fupl_options.img_h + 'px</strong>');
+        info_text.push( fupl_options.info_text.img_fixed_size );
 
       } else {
 
-        if(fupl_options.img_w && fupl_options.img_h && fupl_options.img_w === fupl_options.img_h) {
-          info_text.push( 'larghezza e altezza <strong>' +  fupl_options.img_h + 'px</strong>');
-
-        } else if(fupl_options.img_min_w && fupl_options.img_min_h && fupl_options.img_min_w === fupl_options.img_min_h) {
-          info_text.push( 'larghezza e altezza non inferiori a <strong>' +  fupl_options.img_min_w + 'px</strong>');
+        if(fupl_options.img_min_w && fupl_options.img_min_h && fupl_options.img_min_w === fupl_options.img_min_h) {
+          info_text.push( fupl_options.info_text.img_equal_min_size );
 
         } else if(fupl_options.img_max_w && fupl_options.img_max_h && fupl_options.img_max_w === fupl_options.img_max_h) {
-          info_text.push( 'larghezza e altezza non superiori a <strong>' +  fupl_options.img_max_w + 'px</strong>');
+          info_text.push( fupl_options.info_text.img_equal_max_size );
 
         } else {
 
           if( fupl_options.img_w ) {
-            info_text.push( 'larghezza <strong>' +  fupl_options.img_w + 'px</strong>');
+            info_text.push( fupl_options.info_text.img_fixed_width );
 
           } else if( fupl_options.img_min_w && fupl_options.img_max_w ) {
-            info_text.push( 'larghezza compresa tra <strong>' +  fupl_options.img_min_w + 'px</strong> e <strong>' + fupl_options.img_max_w + 'px</strong>');
+            info_text.push( fupl_options.info_text.img_width_range );
 
           } else if( fupl_options.img_min_w ) {
-            info_text.push( 'larghezza non inferiore a <strong>' +  fupl_options.img_min_w + 'px</strong>');
+            info_text.push( fupl_options.info_text.img_min_width );
 
           } else if( fupl_options.img_max_w  ) {
-            info_text.push( 'larghezza non superiore a <strong>' +  fupl_options.img_max_w + 'px</strong>');
+            info_text.push( fupl_options.info_text.img_max_width );
           }
 
           if( fupl_options.img_h ) {
-            info_text.push( 'altezza <strong>' +  fupl_options.img_h + 'px</strong>');
+            info_text.push( fupl_options.info_text.img_fixed_width );
 
           } else if( fupl_options.img_min_h && fupl_options.img_max_h ) {
-            info_text.push( 'altezza compresa tra <strong>' +  fupl_options.img_min_h + 'px</strong> e <strong>' + fupl_options.img_max_h + 'px</strong>');
+            info_text.push( fupl_options.info_text.img_height_range );
 
           } else if( fupl_options.img_min_h ) {
-            info_text.push( 'altezza non inferiore a <strong>' +  fupl_options.img_min_h + 'px</strong>');
+            info_text.push( fupl_options.info_text.img_min_height );
 
           } else if( fupl_options.img_max_h  ) {
-            info_text.push( 'altezza non superiore a <strong>' +  fupl_options.img_max_h + 'px</strong>');
+            info_text.push( fupl_options.info_text.img_max_height );
           }
         }
       }
 
     } else if( fupl_options.filetype === 'pdf' ) {
-      info_text.push( 'file in formato <strong>PDF</strong>' );
+      info_text.push( fupl_options.info_text.pdf_file );
     }
 
     if( fupl_options.max_filesize !== null ) {
-      info_text.push( 'max <strong>' + fupl_options.max_filesize.feedback_size + '</strong>' );
+      info_text.push( fupl_options.info_text.max_filesize );
     }
+
+    info_text = info_text.map( item => {
+      return item.replace(/{{img_w}}/, fupl_options.img_w)
+        .replace(/{{img_h}}/, fupl_options.img_h)
+        .replace(/{{img_min_w}}/, fupl_options.img_min_w)
+        .replace(/{{img_min_h}}/, fupl_options.img_min_h)
+        .replace(/{{img_max_w}}/, fupl_options.img_max_w)
+        .replace(/{{img_max_h}}/, fupl_options.img_max_h)
+        .replace(/{{max_filesize}}/, fupl_options.max_filesize? fupl_options.max_filesize.feedback_size : null);
+    });
 
     let str = info_text.join(fupl_options.info_text_join_string);
     str = str.charAt(0).toUpperCase() + str.slice(1);

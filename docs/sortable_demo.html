@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <title>File uploader sortable demo</title>
-    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 
   </head>
 
@@ -65,7 +65,7 @@
             { "id": "126", "name": "pdf2.pdf", "url": "test-files/pdf2.pdf", "size": 6300 }
           ]'
           >
-          <label for="input_file3">Label del campo file</label>
+          <label for="input_file3">Input field label</label>
           <input class="form-control" id="input_file3" multiple name="myfile" type="file">
         </div>
         <p><button class="btn btn-primary" type="submit">Submit</button></p>
@@ -113,17 +113,18 @@
 
     </div>
     <script src="../dist/file_uploader-min.js"></script>
+    <script src="test-files/en_localization.js"></script>
     <script>
 
-      FileUploader.init({
+      FileUploader.init({...en_localization, ...{
         debug: true,
         css: '../dist/file_uploader.css',
-        uploader_url: 'server_side_response.json',
+        uploader_url: 'server_side_demo_response.json',
         disable_submit: true
-      });
+      }});
 
     </script>
-    <script src="../node_modules/m-layout-tools/dist/layout_tools-min.js"></script>
+    <!-- <script src="../node_modules/m-layout-tools/dist/layout_tools-min.js"></script> -->
   </body>
 
 </html>

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <title>Fancybox demo</title>
-    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
   </head>
 
@@ -55,24 +55,25 @@
 
 
     </div>
-    <script src="../node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
     <script src="../dist/file_uploader-min.js"></script>
+    <script src="test-files/en_localization.js"></script>
     <script>
 
-      FileUploader.init({
+      FileUploader.init({...en_localization, ...{
         debug: true,
         css: '../dist/file_uploader.css',
-        uploader_url: 'server_side_response.json',
+        uploader_url: 'server_side_demo_response.json',
         disable_submit: true,
         fancybox: true,
         fancybox_callback_func: (fupl_options) => {
           console.log('fancybox loaded');
         }
-      });
+      }});
 
     </script>
-    <script src="../node_modules/m-layout-tools/dist/layout_tools-min.js"></script>
+    <!-- <script src="../node_modules/m-layout-tools/dist/layout_tools-min.js"></script> -->
   </body>
 
 </html>

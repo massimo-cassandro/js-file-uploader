@@ -1,12 +1,17 @@
 /* exported showToastNotification */
 /* eslint-env jquery */
 
+/*
+  @codekit-prepend quiet '../node_modules/bootstrap/js/dist/util.js'
+  @codekit-prepend quiet '../node_modules/bootstrap/js/dist/toast.js'
+*/
+
 function showToastNotification (message, fupl_options, error_type='error') {
   let alert_class= error_type === 'error' ? 'danger' : error_type, // per allineamento alle classi di bs4
 
     toast_notification = `<div class="toast fupl-alert" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
-        <strong class="mr-auto lead text-${alert_class}">Attenzione!</strong>
+        <strong class="mr-auto lead text-${alert_class}">Warning!</strong>
         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
