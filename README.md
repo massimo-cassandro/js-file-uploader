@@ -11,7 +11,7 @@ Although the default settings are based on Bootstrap 4, FileUploader is entirely
 
 Similarly, all the string messages can be customized using the desired language. Look at the [\_set\_options.js](js/_set_options.js) file for a complete list of all available parameters.
 
-The [docs](/docs/) folder contains many examples of FileUploader using.
+The [docs](https://massimo-cassandro.github.io/js-file-uploader/) folder contains many examples of FileUploader using.
 
 
 ## Browser compatibility
