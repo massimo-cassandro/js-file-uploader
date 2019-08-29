@@ -509,7 +509,7 @@ FileUploader = ( (upl) => {
         [
           {
             "value_key": field key,
-            "markup": html strinf
+            "markup": html string
           },
           ...
         ]
