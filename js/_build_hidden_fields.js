@@ -1,8 +1,7 @@
 FileUploader = ((upl) => {
 
   /*
-    elimina i caratteri ascii > 127
-    Restituisce la stringa normalizzata
+    normalize ascii chars > 127 (and more)
   */
   const normalize_file_name = function (filename) {
     let converted = '';
@@ -68,9 +67,8 @@ FileUploader = ((upl) => {
   };
 
   /*
-  buildHiddenFields
-  genera i campi hidden con i valori da restituire al server.
-  Restituisce la stringa dei campi hidden
+  Generate hidden fields with values to be sent to server
+  Returns the hidden fields html string
   */
   upl.buildHiddenFields = (current_item, fupl_options) => {
 

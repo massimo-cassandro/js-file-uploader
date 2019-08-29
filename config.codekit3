@@ -118,6 +118,33 @@
 		"oS": 3,
 		"uL": 1
 		},
+	"/demo/dist/en_localization-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/demo/dist/en_localization-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 1
+		},
+	"/demo/dist/en_localization-min.js.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/dist/en_localization-min.js.map",
+		"oF": 0
+		},
+	"/demo/extra_fields_demo.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/extra_fields_demo.html",
+		"oF": 0
+		},
 	"/demo/fancybox_demo.html": {
 		"cB": 0,
 		"ft": 8192,
@@ -1127,25 +1154,6 @@
 		"oF": 0,
 		"oS": 3,
 		"uL": 1
-		},
-	"/TODO.md": {
-		"cB": 0,
-		"cS": 0,
-		"eF": 1,
-		"eL": 1,
-		"ema": 1,
-		"eSQ": 1,
-		"ft": 4096,
-		"hM": 0,
-		"oA": 1,
-		"oAP": "/TODO.html",
-		"oF": 0,
-		"oFM": 0,
-		"oS": 0,
-		"pHT": 0,
-		"pME": 1,
-		"rFN": 0,
-		"uCM": 0
 		}
 	},
 "hooks": [

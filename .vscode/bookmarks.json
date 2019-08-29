@@ -63,14 +63,9 @@
 		"path": "$ROOTPATH$/js/_create_item.js",
 		"bookmarks": [
 			{
-				"line": 135,
+				"line": 136,
 				"column": 16,
 				"label": "fancybox"
-			},
-			{
-				"line": 153,
-				"column": 6,
-				"label": ""
 			}
 		]
 	}

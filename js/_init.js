@@ -118,8 +118,11 @@ FileUploader = ((upl) => {
         'input_text',
         'templates',
         'info_text_wrap_string',
-        'values'
+        'values',
+        'extra_fields'
       ];
+
+
       json_params.forEach(item => {
         try {
           if(typeof fupl_options[item] === 'string' ) {

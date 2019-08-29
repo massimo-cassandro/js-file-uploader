@@ -221,6 +221,18 @@ Example (with `varname='custom_file'` and unique id equal to `__unique_id__`):
 [...]
 ```
 
+## Deleting a pre-registered file
+
+When a pre-registered file is removed from FileUploader, a hidden field is generated.
+
+It contains the id of the removed file as `value` and the `delete_varname` parameter as `name`.
+
+You must provide the necessary server side script to definitively remove the file from the server.
+
+```html
+<input type="hidden" name="delete_file_var[]" value="123">
+```
+
 
 ## Customization
 
@@ -252,7 +264,7 @@ If specific behaviors are required, you can define some callback functions that 
         - `tmp_file`: temporary file name assigned by the server side script
     * `img_preview`: image thumbnail as a Base64 string
     (null if it is of other types)
-    * `options`: FileUploader options of current istance 
+    * `options`: options of current FileUploader instance
 
 * `upload_complete_callback` (default null): function called whenever a file is loaded. The function is invoked by passing an object containing:
      * `item`: object. It contains:
@@ -261,12 +273,12 @@ If specific behaviors are required, you can define some callback functions that 
         - `width` and `height`: null or dimensions in pixels of the image
         - `tmp_file`: temporary file name assigned by the server side script
     * `server_error`: null, if the upload was completed successfully, or string with the returned error message
-    * `options`: FileUploader options of current istance 
+    * `options`: options of current FileUploader instance
 
-* `alternate_loading_func` (default null): Not a real callback, but an alternative function to display the upload progress. If present, it replaces the standard one.
+* `alternative_loading_func` (default null): Not a real callback, but an alternative function to display the upload progress. If present, it replaces the standard one.
 It is invoked with two parameters:
     - `progress_event`: progress upload event
-    - `options`: FileUploader options of current istance 
+    - `options`: options of current FileUploader instance
 
 
 ## Fancybox integration
@@ -373,10 +385,9 @@ $('form').each(function() {
 
 Since a file can be loaded via *Drag & Drop*, it is not possible to use the native `required` to check for  mandatory files.
 
-However, this check can be performed using the `data` attributes added dynamically to the` .fupl-wrapper` element: `data-required="true"` and `data-has-values="true|false" `.
+However, this check can be performed using the `data` attributes added dynamically to the` .fupl-wrapper` element: `data-required="true"` and `data-has-values="true|false"`.
 
 Therefore, to verify the required content of the `# my-uploader` element, it is very simple:
-
 
 ```javascript
 document.getElementById('my-uploader')
@@ -389,6 +400,14 @@ Or, to check the entire form:
 document.querySelectorAll('.fupl-wrapper:not([disabled])[data-required="true"][data-has-values="false"]').length === 0
 ```
 
+## TODO
+
+* mixed svg / bitmap img type (??)
+* es6 modules, getter / setter implementation
+* easier localization settings
+* explicit uploader activation (??)
+
+
 
 ## References (and inspirations)
 - <https://css-tricks.com/drag-and-drop-file-uploading/>
@@ -400,3 +419,4 @@ document.querySelectorAll('.fupl-wrapper:not([disabled])[data-required="true"][d
 - <https://developer.mozilla.org/it/docs/Web/API/HTML_Drag_and_Drop_API>
 - <https://www.html5rocks.com/en/tutorials/dnd/basics/>
 - <https://kryogenix.org/code/browser/custom-drag-image.html>
+

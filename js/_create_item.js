@@ -21,7 +21,7 @@ FileUploader = ((upl) => {
 
   */
 
-  upl.createItem = (item_data, fupl_options) => {
+  upl.createItem = (item_data, fupl_options, preregistered = false) => {
 
     try {
 
@@ -86,11 +86,7 @@ FileUploader = ((upl) => {
       }
 
       let fupl_item = fupl_item_wrapper.querySelector('.fupl-item');
-      // id elemento per eventuale cancellazione
-      // se esiste rel_id, viene utilizzato quello
-      if(item_data.id || item_data.rel_id) {
-        fupl_item.dataset[upl.data_attributes.item_id] = item_data.rel_id? item_data.rel_id : item_data.id;
-      }
+
 
       if(item_data.loading) {
         fupl_item.classList.add('fupl-is-uploading');
@@ -114,16 +110,18 @@ FileUploader = ((upl) => {
         );
       }
 
-      // aggiunta evento trigger eliminazione elemento
       let fupl_item_dom = fupl_options.istance_result_wrapper.querySelector('.fupl-item:last-child');
+      fupl_item_dom.dataset[upl.data_attributes.item_id] = item_data.id;
+
+      // aggiunta evento trigger eliminazione elemento
       fupl_item_dom.querySelector('.fupl-remove-trigger').addEventListener('click', () => {
-        // se l'id non è impostato si tratta di un nuovo elemento,
-        // e non va eseguita la cancellazione sul server
-        let id = fupl_item_dom.dataset[upl.data_attributes.item_id];
         fupl_item_dom.remove();
-        if(id) {
+
+        let prereg_id = item_data.rel_id? item_data.rel_id : item_data.id;
+
+        if(prereg_id && preregistered) {
           fupl_options.wrapper.insertAdjacentHTML('beforeend',
-            `<input type="hidden" name="${fupl_options.delete_varname}" value="${id}">`
+            `<input type="hidden" name="${fupl_options.delete_varname}" value="${prereg_id}">`
           );
         }
 
@@ -149,6 +147,21 @@ FileUploader = ((upl) => {
 
         fupl_item_dom.querySelector('a.fupl-url').setAttribute('href', item_data.url);
 
+      }
+
+      // extra fields
+      let extra_fields_wrapper = fupl_item_dom.querySelector('.fupl-extra-fields');
+      if(fupl_options.extra_fields !== null && extra_fields_wrapper) {
+
+        fupl_options.extra_fields.forEach( item => {
+
+          extra_fields_wrapper.insertAdjacentHTML('beforeend',
+            item.markup.replace(/{{idx}}/g, item_data.id)
+              .replace(/{{val}}/g, preregistered && item_data[item.value_key]? item_data[item.value_key] : '')
+              .replace(/{{checked}}/g, preregistered && +item_data[item.value_key]? 'checked' : '')
+              .replace(/{{name}}/g, fupl_options.varname + '[' + item_data.id +'][' + item.value_key + ']')
+          );
+        });
       }
 
       // sortable

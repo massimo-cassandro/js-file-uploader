@@ -159,9 +159,9 @@ FileUploader = ((upl) => {
           };
 
           ajax.upload.addEventListener('progress', function (e) {
-            if( fupl_options.alternate_loading_func &&
-            typeof fupl_options.alternate_loading_func === 'function') {
-              fupl_options.alternate_loading_func(e, fupl_options);
+            if( fupl_options.alternative_loading_func &&
+            typeof fupl_options.alternative_loading_func === 'function') {
+              fupl_options.alternative_loading_func(e, fupl_options);
 
             } else {
               let perc_loaded = Math.round(e.loaded / e.total * 100.0) || 0;
@@ -172,7 +172,7 @@ FileUploader = ((upl) => {
                   perc_loaded = perc_loaded === Infinity? 100 : perc_loaded;
                   this_item.querySelector('.fupl-progress').value = perc_loaded;
                 } else {
-                  fupl_loading_wrapper.innerHTML = fupl_options.templates.alternate_loading_progress;
+                  fupl_loading_wrapper.innerHTML = fupl_options.templates.alternative_loading_element;
                   fupl_progress = null;
                 }
               }

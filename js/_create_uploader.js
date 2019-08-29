@@ -180,7 +180,7 @@ FileUploader = ((upl) => {
     if( fupl_options.values && fupl_options.values.length ) {
 
       fupl_options.values.forEach( item => {
-        upl.createItem(item, fupl_options);
+        upl.createItem(item, fupl_options, true); // true means that the element comes from the server
       });
 
     }

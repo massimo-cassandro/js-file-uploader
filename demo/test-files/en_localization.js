@@ -45,7 +45,7 @@ const en_localization = {
 
     loading_element: '<div class="fupl-loading"><progress class="fupl-progress" max=100 value=0></progress></div>',
 
-    alternate_loading_progress: '<div class="spinner-grow text-primary" role="status">' +
+    alternative_loading_element: '<div class="spinner-grow text-primary" role="status">' +
         '<span class="sr-only">Loading...</span></div',
     img: {
       single: '<div class="fupl-item">' +
@@ -54,6 +54,7 @@ const en_localization = {
         '<div class="fupl-file-info">' +
           '<div class="text-truncate fupl-file-name"></div>' +
           '<div class="fupl-file-size"></div>' +
+          '<div class="fupl-extra-fields"></div>' +
         '</div>' +
       '</div>',
 
@@ -66,6 +67,7 @@ const en_localization = {
             '<div class="text-truncate fupl-file-name"></div>' +
             '<div class="fupl-file-size"></div>' +
           '</div>' +
+          '<div class="fupl-extra-fields"></div>' +
           '<div class="fupl-sortable-icon"></div>' +
         '</div>'
     },
@@ -77,6 +79,7 @@ const en_localization = {
             '<a class="text-truncate fupl-file-name fupl-url" draggable="false"></a>' +
           '</div>' +
           '<span class="small ml-1 text-nowrap fupl-file-size"></span>' +
+          '<div class="fupl-extra-fields"></div>' +
           '<div class="fupl-sortable-icon"></div>' +
         '</div>',
 

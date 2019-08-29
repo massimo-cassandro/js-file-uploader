@@ -1,8 +1,10 @@
 FileUploader = ((upl) => {
 
-  // mimetypes ed estensioni accettabili in base al parametro `filetype`.
-  // Il parametro `auto` accetta tutti i tipi di file (salvo eventuali limitazioni
-  // aggiunte tramite parametro e attributo `accept`)
+  /*
+    Mimetypes and extensions allowed according to `filetype` parameter
+    The `auto` parameter accepts all file types (except for limitations
+    added by `accept` parameter/attribute)
+  */
   upl.mimetypes = {
     auto : null,
     img  : ['image/png', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/webp',
@@ -10,11 +12,13 @@ FileUploader = ((upl) => {
     pdf  : ['application/pdf', '.pdf']
   };
 
-  // nomi degli attributi data utilizzati per controllare alcuni stati o eventi dell'uploader
+  /*
+    names of data-* attributes
+  */
   upl.data_attributes = {
-    required      : 'required', // true se il caricamento del file è obbligatorio
-    hasValues     : 'hasValues', // true se l'uploader congtiene dei file (prergistrati o meno)
-    item_id       : 'id' // id dell'elemento aggiunto all'uploader (se preregistrato)
+    required      : 'required',
+    hasValues     : 'hasValues', // true if preregistered files are present
+    item_id       : 'id' // unique id of each file added to FileUploader
   };
 
   upl.set_has_values = fupl_options => {
@@ -38,18 +42,18 @@ FileUploader = ((upl) => {
 
 
   /*
-   parse_max_filesize
-   elabora il parametro `filesize_value` (se esiste) e restituisce:
-    - `null` se `filesize_value` === null`
-    - `false` se `filesize_value` non è un valore corretto
-    - l'oggetto `{ maxbytes: 123456, unit: 'KB', feedback_size: ''}`
-    in cui:
-      - `maxbytes` è il valore in bytes del limite imposto
-      - `unit` è uno tra 'KB' e 'MB'
-      - `feedback_size` è la rappresentazione per un eventuale feedback per l'utente
+   Parse the `max_filesize` parameter (if exists) and returns:
+    - `null` if max_filesize === null
+    - `false` if `max_filesize` is not a correct value
+    - the object `{ maxbytes: 123456, unit: 'KB', feedback_size: '1.2KB'}`
+    where
+      - `maxbytes` is max_filesize value in bytes
+      - `unit` is one of 'KB' and 'MB'
+      - `feedback_size` is a textual representation of max_filesize
+         for the purpose of providing end user informations
   */
   upl.parse_max_filesize = (filesize_value, locales) =>  {
-    // controllo max_filesize ed elaborazione parametro
+    // max_filesize checking and parsing
     if( filesize_value ) {
       var maxbytes, unit, feedback_size;
 
@@ -69,8 +73,8 @@ FileUploader = ((upl) => {
         }
       }
 
-      // se l'unità è indicata in KB ma il valore è più grande
-      // di un MB, il parametro viene aggiornato
+      // If unit is KB but value is bigger than 1MB,
+      // unit is changed
       if( maxbytes >= 1024 && unit === 'KB') {
         unit = 'MB';
         feedback_size = (Math.round((maxbytes / 1024) * 100) /100);
