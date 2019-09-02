@@ -9,12 +9,14 @@
       margin:0;
       cursor: pointer;
 
-      [disabled] &, &:hover, &:active, &:focus {
-        cursor: not-allowed;
-        font-style: italic;
-        color: $fupl-disabled-color!important;
-        border-color: $fupl-disabled-color!important;
-        background-color: transparent!important;
+      [disabled] & {
+        &:hover, &:active, &:focus {
+          cursor: not-allowed;
+          font-style: italic;
+          color: $fupl-disabled-color!important;
+          border-color: $fupl-disabled-color!important;
+          background-color: transparent!important;
+        }
       }
     }
   }
