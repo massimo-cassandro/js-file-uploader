@@ -515,19 +515,27 @@ FileUploader = ( (upl) => {
         ]
 
       * `value_key` identifies the field element and corresponds to the key used
-        also in the values object.
+                    also in the values object.
+      * `use_rel_id` (default false), if true, and the `values` parameter contains the
+                     `rel_id` items, the `{{name}}` variable will be generated
+                     using `rel_id` instead of `id`.
+                     Only pre-registered items will be affected by this setting (since new items
+                     never have a `rel_id`).
+                     If `use_rel_id` is true but the `rel_id`  item doesn't exist,
+                     the `id`  will be used
+
       * `markup` is a HTML string which contains some Mustache-like placeholder:
-        - `{{idx}}`     → unique id of the element
-        - `{{val}}`     → content of value attribute, it corresponds to
-                          `values[...][value_key]` value
-        - `{{checked}}` → if `values[...][value_key]` exists and it's different from
-                          `0`, `null` or empty string, it is replaced with the `checked` attribute,
-                          otherwise, with an empty string
-        - `{{name}}`    → is replaced with a PHP name string formed by
-                             * the `varname` parameter
-                             * the unique id of the element
-                             * the `value_key` string
-                          Example: `file[fupl_00001][caption]`
+        - `{{idx}}`         → unique id of the element
+        - `{{val}}`         → content of value attribute, it corresponds to
+                              `values[...][value_key]` value
+        - `{{checked}}`     → if `values[...][value_key]` exists and it's different from
+                              `0`, `null` or empty string, it is replaced with the `checked` attribute,
+                              otherwise, with an empty string
+        - `{{name}}`        → is replaced with a PHP name string formed by
+                                 * the `varname` parameter
+                                 * the unique id or rel_id (according to use_rel_id setting) of the element
+                                 * the `value_key` string
+                              Example: `file[fupl_00001][caption]`
 
       Take a look to `extra_fields_demo.html` for a working demo.
 
