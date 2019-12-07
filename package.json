@@ -12,6 +12,15 @@
   },
   "author": "Massimo Cassandro",
   "license": "MIT",
+  "keywords": [
+    "ux",
+    "user-interface",
+    "user-experience",
+    "forms",
+    "upload-file",
+    "javascript",
+    "ajax"
+  ],
   "bugs": {
     "url": "https://github.com/massimo-cassandro/js-file-uploader.git/issues"
   },
