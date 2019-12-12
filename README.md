@@ -293,7 +293,7 @@ Fancybox is applied only to previously registered images.
 
 ## Recipes
 
-### Controllo caricamento completato
+### Check for completed loading
 
 As soon as an item is added to the uploader, an Ajax request is sent to the server for file registration. When the operation is completed, the server returns a json with the data of the recorded file, as indicated in the previous points.
 
