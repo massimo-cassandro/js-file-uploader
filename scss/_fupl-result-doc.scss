@@ -3,14 +3,18 @@
   .fupl-item {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content:flex-start;
     align-items:center;
     margin-bottom:.5rem;
     max-width: 100%;
+
+    padding:.2rem;
+    border: 1px solid $fupl-items-border-color;
+    border-radius: $fupl-items-border-radius;
   }
 
-  .fupl-elimina {
+  .fupl-remove {
     margin-right:.3rem;
   }
 

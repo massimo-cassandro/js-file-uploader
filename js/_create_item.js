@@ -44,9 +44,9 @@ FileUploader = ((upl) => {
         elementi interni a fupl-item:
           .fupl-file-name
           .fupl-file-size
-          .fupl-img →  img
+          .fupl-img → img
           .fupl-img → a.href
-          .fupl-doc →  a.href
+          .fupl-doc → a.href
 
       */
 
