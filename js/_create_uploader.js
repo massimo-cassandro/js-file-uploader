@@ -203,7 +203,7 @@ FileUploader = ((upl) => {
     //debug
     if( fupl_options.debug ) {
       /* eslint-disable */
-      console.groupCollapsed('FileUploader options');
+      /* console.groupCollapsed('FileUploader options');
         // creazione di un oggetto bidimensinale per
         // semplificare la rappresentazione in tabella
         let c_options = {},
@@ -220,6 +220,12 @@ FileUploader = ((upl) => {
           console.log(fupl_options);
         console.groupEnd();
       console.groupEnd();
+      */
+
+      console.groupCollapsed('FileUploader options');
+        console.log(fupl_options);
+      console.groupEnd();
+
       /* eslint-enable */
     } // end if debug
 
