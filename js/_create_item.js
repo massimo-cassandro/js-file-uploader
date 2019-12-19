@@ -154,7 +154,6 @@ FileUploader = ((upl) => {
       if(fupl_options.extra_fields !== null && extra_fields_wrapper) {
 
         fupl_options.extra_fields.forEach( item => {
-
           extra_fields_wrapper.insertAdjacentHTML('beforeend',
             item.markup.replace(/{{idx}}/g, item_data.id)
               .replace(/{{val}}/g, preregistered && item_data[item.value_key]? item_data[item.value_key] : '')
