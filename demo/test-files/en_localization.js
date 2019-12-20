@@ -74,11 +74,13 @@ const en_localization = {
 
     doc : {
       single: '<div class="fupl-item">' +
-          '<div class="fupl-remove"></div>' +
-          '<div class="fupl-doc text-truncate">' +
-            '<a class="text-truncate fupl-file-name fupl-url" draggable="false"></a>' +
+          '<div class="fupl-doc-wrapper">' +
+            '<div class="fupl-remove"></div>' +
+            '<div class="fupl-doc text-truncate">' +
+              '<a class="text-truncate fupl-file-name fupl-url" draggable="false"></a>' +
+            '</div>' +
           '</div>' +
-          '<span class="small ml-1 text-nowrap fupl-file-size"></span>' +
+          '<div class="small ml-1 text-nowrap fupl-file-size"></div>' +
           '<div class="fupl-extra-fields"></div>' +
           '<div class="fupl-sortable-icon"></div>' +
         '</div>',

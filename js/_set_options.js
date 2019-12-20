@@ -233,11 +233,13 @@ FileUploader = ( (upl) => {
 
       doc : {
         single: '<div class="fupl-item">' +
-            '<div class="fupl-remove"></div>' +
-            '<div class="fupl-doc text-truncate">' +
-              '<a class="text-truncate fupl-file-name fupl-url" draggable="false"></a>' +
+            '<div class="fupl-doc-wrapper">' +
+              '<div class="fupl-remove"></div>' +
+              '<div class="fupl-doc text-truncate">' +
+                '<a class="text-truncate fupl-file-name fupl-url" draggable="false"></a>' +
+              '</div>' +
             '</div>' +
-            '<span class="small ml-1 text-nowrap fupl-file-size"></span>' +
+            '<div class="small ml-1 text-nowrap fupl-file-size"></div>' +
             '<div class="fupl-extra-fields"></div>' +
             '<div class="fupl-sortable-icon"></div>' +
           '</div>',
@@ -274,7 +276,7 @@ FileUploader = ( (upl) => {
     wrapper_extra_class: null,
 
     /*
-      Class(es) to be added to FileUploader element when a file is dragged there from desktop
+      Class(es) to be added to the FileUploader element when a file is dragged there from desktop
     */
     element_dragover_class: 'fupl-is-dragover',
 
