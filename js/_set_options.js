@@ -384,6 +384,13 @@ FileUploader = ( (upl) => {
     varname: 'file',
 
     /*
+      Prefix of the variable used to send the data to the server,
+      for extra fields of preregistered files only
+      (For compatibility with beta version)
+    */
+    registered_extra_field_varname: null,
+
+    /*
       Function called after the initialization of each FileUploader element.
       Function is invoked passing the complete `fupl_options` obj as argument
     */
