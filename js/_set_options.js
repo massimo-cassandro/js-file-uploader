@@ -400,9 +400,9 @@ FileUploader = ( (upl) => {
       Function called each time a file upload begins.
       Function argument is an object that contains:
         * `item`: current item object, it contains:
-          - id: element unique id
-          - file: current filelist object
-          - `width` e `height`: null or image dimensions (pixel)
+            - `id`: element unique id
+            - `file`: current filelist object
+            - `width` and `height`: null or image dimensions (pixel)
         * `img_preview` : base64 image preview (null if not an image)
         * `fupl_options`: options of current FileUploader instance
     */
@@ -412,10 +412,10 @@ FileUploader = ( (upl) => {
       Function called each time a file has been uploaded.
         Function argument is an object that contains:
         * `item`: current item object, it contains:
-          - id: element unique id
-          - file: current filelist object
-          - `width` e `height`: null or image dimensions (pixel)
-          - `tmp_file`: name of temporary file saved on the server
+            - `id`: element unique id
+            - `file`: current filelist object
+            - `width` and `height`: null or image dimensions (pixel)
+            - `tmp_file`: name of temporary file saved on the server
         * `server_error`: error message strimg (null if no error occurred)
         * `fupl_options`: options of current FileUploader instance
     */
@@ -435,8 +435,8 @@ FileUploader = ( (upl) => {
       [
         {
           rel_id → id of the record related to the file (it's facultative and can be null).
-                   It's usefully for many-to-many dab tables, and, if present,
-                   is the one provided for delete a file from the server
+                   It's usefully for many-to-many tables, and, if present,
+                   is the one provided to delete a file from the server
           id     → unique id of the file (required)
           name   → file name (required)
           url    → url for <a> tag href attribute (if present) (facultative)
