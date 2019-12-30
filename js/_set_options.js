@@ -339,7 +339,7 @@ FileUploader = ( (upl) => {
 
     /*
       Custom info text
-      If replaces the generated info text
+      If present, replaces the generated info text
     */
     custom_info_text: null,
 
