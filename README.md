@@ -256,7 +256,7 @@ If specific behaviors are required, you can define some callback functions that 
 
 * `unsuitable_browser_callback` (default null): function called if an unsuitable browser is detected
 
-* `upload_start_callback` (null default): function called whenever a file is sent to the server. The function is invoked by passing an object containing:
+* `upload_start_callback` (default null): function called whenever a file is sent to the server. The function is invoked by passing an object containing:
     * `item`: object. It contains:
         - `id`: unique ID of the item
         - `file`: current * filelist * object

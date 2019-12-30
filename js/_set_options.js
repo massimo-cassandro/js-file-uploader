@@ -52,7 +52,7 @@ FileUploader = ( (upl) => {
     /*
       error messeges interface
       Parameters:
-        - mes  → `alert_messages` object key (`alert_messages` contains all string messages, see later)
+        - mes  → `alert_messages` object key (`alert_messages` contains all string messages, see below)
         - type → one of info, error, warning
         - opts → options of current FileUploader instance
     */
