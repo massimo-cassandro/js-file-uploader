@@ -159,7 +159,8 @@ FileUploader = ((upl) => {
               .replace(/{{val}}/g, preregistered && item_data[item.value_key]? item_data[item.value_key] : '')
               .replace(/{{checked}}/g, preregistered && +item_data[item.value_key]? 'checked' : '')
               .replace(/{{name}}/g,
-                (fupl_options.registered_extra_field_varname? fupl_options.registered_extra_field_varname : fupl_options.varname) +
+                (preregistered && fupl_options.registered_extra_field_varname?
+                  fupl_options.registered_extra_field_varname : fupl_options.varname) +
                 '[' +
                 ((item.use_rel_id && item_data.rel_id)? item_data.rel_id : item_data.id) +
                 '][' + item.value_key + ']'
