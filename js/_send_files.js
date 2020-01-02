@@ -80,14 +80,14 @@ FileUploader = ((upl) => {
         };
 
         /*
-      Funzione callback personalizzata
-      Vedi `_set_options.js` per tutti i parametri
-      */
-        if( fupl_options.upload_start_callback) {
-          fupl_options.upload_start_callback({
-            'item'              : current_item,
-            'img_preview'       : img_preview,
-            'uploader_options'  : fupl_options
+        Funzione callback personalizzata
+        Vedi `_set_options.js` per tutti i parametri
+        */
+        if( fupl_options.upload_start_callback ) {
+          upl.exec_callback(fupl_options.upload_start_callback, {
+            item              : current_item,
+            img_preview       : img_preview,
+            uploader_options  : fupl_options
           });
         }
 
@@ -123,14 +123,14 @@ FileUploader = ((upl) => {
               }
 
               /*
-            Funzione callback personalizzata
-            Vedi `_set_options.js` per tutti i parametri
-            */
+              Funzione callback personalizzata
+              Vedi `_set_options.js` per tutti i parametri
+              */
               if( fupl_options.upload_complete_callback ) {
-                fupl_options.upload_complete_callback({
-                  'item'          : current_item,
-                  'server_error'  : response.error,
-                  'fupl_options'  : fupl_options
+                upl.exec_callback(fupl_options.upload_complete_callback, {
+                  item          : current_item,
+                  server_error  : response.error,
+                  fupl_options  : fupl_options
                 });
               }
 
@@ -160,7 +160,9 @@ FileUploader = ((upl) => {
 
           ajax.upload.addEventListener('progress', function (e) {
             if( fupl_options.alternative_loading_func ) {
-              fupl_options.alternative_loading_func(e, fupl_options);
+              //fupl_options.alternative_loading_func(e, fupl_options);
+
+              upl.exec_callback(fupl_options.alternative_loading_func, ...[e, fupl_options]);
 
             } else {
               let perc_loaded = Math.round(e.loaded / e.total * 100.0) || 0;

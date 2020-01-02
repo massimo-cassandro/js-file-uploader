@@ -106,6 +106,17 @@ FileUploader = ((upl) => {
     }
   };
 
+  upl.exec_callback = (callback_function, params) => {
+
+    if(window[callback_function] &&
+      typeof window[callback_function] === 'function'
+    ) {
+      window[callback_function](params);
+    } else {
+      callback_function(params);
+    }
+  };
+
   return upl;
 
 })(FileUploader || {});

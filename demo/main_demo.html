@@ -190,6 +190,12 @@
     <script>
       //console.log(FileUploader); // eslint-disable-line
 
+      // external callback func
+      function complete_callback(callback_args) {
+        console.log('upload_complete_callback');
+        console.log(callback_args);
+      }
+
       FileUploader.init({...en_localization, ...{
         debug: true,
         css: '../dist/file_uploader.css',
@@ -199,9 +205,7 @@
         upload_start_callback: function () {
           console.log('upload_start_callback');
         },
-        upload_complete_callback: function () {
-          console.log('upload_complete_callback');
-        }
+        upload_complete_callback: complete_callback
       }});
 
     </script>

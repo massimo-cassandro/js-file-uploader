@@ -39,7 +39,7 @@ FileUploader = ((upl) => {
         alert(global_options.alert_messages.unsuitable_browser);
       }
       if(global_options.unsuitable_browser_callback) {
-        global_options.unsuitable_browser_callback();
+        upl.exec_callback(global_options.unsuitable_browser_callback)
       }
       return;
     }
