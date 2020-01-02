@@ -399,15 +399,17 @@ Or, to check the entire form:
 ```javascript
 document.querySelectorAll('.fupl-wrapper:not([disabled])[data-required="true"][data-has-values="false"]').length === 0
 ```
+## Known issues
+* Incorrect handling of drag events with extra fields
 
 ## TODO
-
 * mixed svg / bitmap img type (??)
 * es6 modules
 * easier localization settings
 * explicit uploader activation (??)
 * add option to generate download link for images
 * public method to check if uploader has values
+* predefined extra fields templates
 
 
 

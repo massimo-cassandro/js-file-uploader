@@ -137,8 +137,9 @@ FileUploader = ((upl) => {
 
       // interpretazione automatica di tutti i parametri booleani o null
       for(let i in fupl_options) {
+
         if(typeof fupl_options[i] === 'string' &&
-          ['true', 'false', 'null'].indexOf(fupl_options[i].toLowerCase) !== -1) {
+          ['true', 'false', 'null'].indexOf(fupl_options[i].toLowerCase()) !== -1) {
           fupl_options[i] = JSON.parse(fupl_options[i]);
         }
       }

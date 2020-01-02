@@ -167,6 +167,19 @@ FileUploader = ((upl) => {
               )
           );
         });
+
+        // stop bubbling when sortable
+        if( fupl_options.sortable ) {
+          extra_fields_wrapper.querySelectorAll('select, input, textarea').forEach(item => {
+            item.setAttribute('draggable', 'false');
+            ['dragstart', 'drag', 'mousedown'].forEach( ev => {
+              item.addEventListener(ev, e => {
+                if(ev !== 'mousedown') {e.preventDefault();}
+                e.stopPropagation();
+              });
+            });
+          });
+        }
       }
 
       // sortable
@@ -178,7 +191,7 @@ FileUploader = ((upl) => {
 
         fupl_item_dom.insertAdjacentHTML('beforeend',
           '<input type="hidden" class="fupl-sortable-order" ' +
-            `name="${fupl_options.sortable_varname}[${item_data.id}]" value="${order_value}">`
+            `name="[${fupl_options.varname}][${item_data.id}][${fupl_options.sortable_varname}]" value="${order_value}">`
         );
         if(fupl_options.sortable_icon) {
           fupl_item_dom.querySelector('.fupl-sortable-icon').innerHTML = fupl_options.sortable_icon;

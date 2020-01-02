@@ -498,9 +498,11 @@ FileUploader = ( (upl) => {
     sortable: false,
 
     /*
-      hidden item varname
+      sortable hidden item varname
+      it will be combined with main varname to obtain a string like
+        varname[item_id][sortable_varname]
     */
-    sortable_varname: 'uploader_order',
+    sortable_varname: 'fupl_order',
 
     /*
       markup for dragging icon

@@ -73,8 +73,7 @@ FileUploader = ((upl) => {
     // inizio posizionamento sopra un altro elemento
     // e.target (this) è l'elemento
     fupl_item.addEventListener('dragenter', function(e) {
-
-      // non si attiva per file dall'esterno e per uplaoder disbilitato
+      // non si attiva per file dall'esterno e per uploader disbilitato
       if( e.dataTransfer.getData('text') === 'fupl-sorting' && !uploader_is_disabled) {
         if (e.stopPropagation) {
           e.stopPropagation(); // stops the browser from redirecting.
