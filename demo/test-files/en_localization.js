@@ -97,7 +97,7 @@ const en_localization = {
     img_fixed_width : 'width <strong>{{img_w}}px</strong>',
     img_fixed_height : 'height <strong>{{img_h}}px</strong>',
     img_width_range: 'width between <strong>{{img_min_w}}px</strong> and <strong>{{img_max_w}}px</strong>',
-    img_min_width: 'width not less than<strong>{{img_min_w}}px</strong>',
+    img_min_width: 'width not less than <strong>{{img_min_w}}px</strong>',
     img_max_width: 'width not exceeding <strong>{{img_max_w}}px</strong>',
     img_height_range: 'height between <strong>{{img_min_h}}px</strong> and <strong>{{img_max_h}}px</strong>',
     img_min_height: 'height not less than <strong>{{img_min_h}}px</strong>',

@@ -40,7 +40,7 @@ FileUploader = ((upl) => {
           }
 
           if( fupl_options.img_h ) {
-            info_text.push( fupl_options.info_text.img_fixed_width );
+            info_text.push( fupl_options.info_text.img_fixed_height );
 
           } else if( fupl_options.img_min_h && fupl_options.img_max_h ) {
             info_text.push( fupl_options.info_text.img_height_range );
