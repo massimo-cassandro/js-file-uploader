@@ -38,7 +38,7 @@ FileUploader = ((upl) => {
       if(!global_options.silent_degradation) {
         alert(global_options.alert_messages.unsuitable_browser);
       }
-      if(global_options.unsuitable_browser_callback && typeof global_options.unsuitable_browser_callback === 'function') {
+      if(global_options.unsuitable_browser_callback) {
         global_options.unsuitable_browser_callback();
       }
       return;

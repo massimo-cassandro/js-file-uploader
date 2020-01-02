@@ -83,7 +83,7 @@ FileUploader = ((upl) => {
       Funzione callback personalizzata
       Vedi `_set_options.js` per tutti i parametri
       */
-        if( fupl_options.upload_start_callback && typeof fupl_options.upload_start_callback === 'function') {
+        if( fupl_options.upload_start_callback) {
           fupl_options.upload_start_callback({
             'item'              : current_item,
             'img_preview'       : img_preview,
@@ -126,7 +126,7 @@ FileUploader = ((upl) => {
             Funzione callback personalizzata
             Vedi `_set_options.js` per tutti i parametri
             */
-              if( fupl_options.upload_complete_callback && typeof fupl_options.upload_complete_callback === 'function') {
+              if( fupl_options.upload_complete_callback ) {
                 fupl_options.upload_complete_callback({
                   'item'          : current_item,
                   'server_error'  : response.error,
@@ -159,8 +159,7 @@ FileUploader = ((upl) => {
           };
 
           ajax.upload.addEventListener('progress', function (e) {
-            if( fupl_options.alternative_loading_func &&
-            typeof fupl_options.alternative_loading_func === 'function') {
+            if( fupl_options.alternative_loading_func ) {
               fupl_options.alternative_loading_func(e, fupl_options);
 
             } else {
