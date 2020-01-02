@@ -403,9 +403,11 @@ document.querySelectorAll('.fupl-wrapper:not([disabled])[data-required="true"][d
 ## TODO
 
 * mixed svg / bitmap img type (??)
-* es6 modules, getter / setter implementation
+* es6 modules
 * easier localization settings
 * explicit uploader activation (??)
+* add option to generate download link for images
+* public method to check if uploader has values
 
 
 
