@@ -196,12 +196,20 @@
         console.log(callback_args);
       }
 
+      // callback function as object called as string (useful is set thru a data attribute)
+      var myObj = {
+        init: () => {
+          console.log('init callback');
+        }
+      };
+
       FileUploader.init({...en_localization, ...{
         debug: true,
         css: '../dist/file_uploader.css',
         uploader_url: 'server_side_demo_response.json',
         alert_api: showToastNotification,
         disable_submit: true,
+        init_callback: 'myObj.init',
         upload_start_callback: function () {
           console.log('upload_start_callback');
         },

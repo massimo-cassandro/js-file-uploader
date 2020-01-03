@@ -107,13 +107,22 @@ FileUploader = ((upl) => {
   };
 
   upl.exec_callback = (callback_function, params) => {
+    try {
+      if(typeof callback_function === 'string') {
 
-    if(window[callback_function] &&
-      typeof window[callback_function] === 'function'
-    ) {
-      window[callback_function](params);
-    } else {
-      callback_function(params);
+        let cbk_func = window;
+        callback_function.split('.').forEach( function(item) {
+          cbk_func = cbk_func[item];
+        });
+        cbk_func(params);
+
+      } else {
+        callback_function(params);
+      }
+
+    } catch(error) {
+      alert(`Si è verificato un errore: la funzione “${callback_function}” non esiste`);
+      console.error(error); // eslint-disable-line
     }
   };
 
