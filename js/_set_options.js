@@ -169,7 +169,7 @@ FileUploader = ( (upl) => {
         '<div class="fupl-panel">' +
           '<div class="fupl-button">' +
             '<label><input type="file"></label>' +
-            '<div class="fupl-dd-text">{</div>' +
+            '<div class="fupl-dd-text"></div>' +
           '</div>' +
           '<div class="fupl-info-text"></div>' +
         '</div>',
