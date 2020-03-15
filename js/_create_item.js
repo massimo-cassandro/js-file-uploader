@@ -34,9 +34,10 @@ FileUploader = ((upl) => {
       fupl_item_wrapper.innerHTML = item_markup;
 
       // aggiunta pulsante rimozione
-      fupl_item_wrapper.querySelector('.fupl-remove').innerHTML = fupl_options.templates.remove_btn;
-
-
+      let fupl_remove = fupl_item_wrapper.querySelector('.fupl-remove');
+      if(fupl_remove) {
+        fupl_remove.innerHTML = fupl_options.templates.remove_btn;
+      }
 
       /*
         aggiunta dati specifici dell'elemento:
@@ -114,22 +115,25 @@ FileUploader = ((upl) => {
       fupl_item_dom.dataset[upl.data_attributes.item_id] = item_data.id;
 
       // aggiunta evento trigger eliminazione elemento
-      fupl_item_dom.querySelector('.fupl-remove-trigger').addEventListener('click', () => {
-        fupl_item_dom.remove();
+      let fupl_remove_trigger = fupl_item_dom.querySelector('.fupl-remove-trigger');
+      if(fupl_remove_trigger) {
+        fupl_remove_trigger.addEventListener('click', () => {
+          fupl_item_dom.remove();
 
-        let prereg_id = item_data.rel_id? item_data.rel_id : item_data.id;
+          let prereg_id = item_data.rel_id? item_data.rel_id : item_data.id;
 
-        if(prereg_id && preregistered) {
-          fupl_options.wrapper.insertAdjacentHTML('beforeend',
-            `<input type="hidden" name="${fupl_options.delete_varname}" value="${prereg_id}">`
-          );
-        }
+          if(prereg_id && preregistered) {
+            fupl_options.wrapper.insertAdjacentHTML('beforeend',
+              `<input type="hidden" name="${fupl_options.delete_varname}" value="${prereg_id}">`
+            );
+          }
 
-        // controllo se istance_result_wrapper è vuoto
-        // e impostazione di attributo e contenuti
-        upl.set_has_values(fupl_options);
+          // controllo se istance_result_wrapper è vuoto
+          // e impostazione di attributo e contenuti
+          upl.set_has_values(fupl_options);
 
-      });
+        });
+      }
 
       //fancybox
       if( fupl_options.fancybox && fupl_options._type === 'img' && item_data.url && fupl_options.fancybox_anchor_markup) {
