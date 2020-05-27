@@ -1,6 +1,6 @@
 {
   "name": "js-file-uploader",
-  "version": "1.3.17",
+  "version": "1.3.18",
   "description": "HTML5 Async File Uploader ",
   "main": "js/file_uploader.js",
   "scripts": {
