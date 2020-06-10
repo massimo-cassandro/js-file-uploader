@@ -18,7 +18,7 @@
         height: 140px;
         background: $fupl-img-background-color;
         text-align: center;
-        padding:2px;
+        padding:4px;
 
         img {
           max-width:100%;
@@ -29,22 +29,22 @@
       }
 
       @include media-breakpoint-up(sm) {
-        grid-template-columns: repeat(2, minmax(180px, 1fr));
+        grid-template-columns: repeat(2, minmax(160px, 1fr));
         .fupl-img-wrapper {
           height: 180px;
         }
       }
       @include media-breakpoint-up(md) {
-        grid-template-columns: repeat(3, minmax(180px, 1fr));
+        grid-template-columns: repeat(3, minmax(160px, 1fr));
         .fupl-img-wrapper {
           height: 200px;
         }
       }
       @include media-breakpoint-up(lg) {
-        grid-template-columns: repeat(4, minmax(180px, 1fr));
+        grid-template-columns: repeat(4, minmax(160px, 1fr));
       }
       @include media-breakpoint-up(xl) {
-        grid-template-columns: repeat(5, minmax(180px, 1fr));
+        grid-template-columns: repeat(5, minmax(160px, 1fr));
       }
 
       .fupl-item {
