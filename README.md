@@ -1,7 +1,7 @@
 # JS FileUploader
 
 **HTML5 + Javascript asyncronous file upload.**
-*v. 1 - Massimo Cassandro - (c) 2017/2019*
+*v. 1 - Massimo Cassandro - (c) 2017/2020*
 
 [demo](https://massimo-cassandro.github.io/js-file-uploader/demo/)
 
@@ -19,7 +19,7 @@ The [demo](https://massimo-cassandro.github.io/js-file-uploader/demo/) folder co
 
 ## Browser compatibility
 FileUploader needs a modern browser and is not compatible with Internet Explorer.
-Also requires Edge 16 or higher.
+It also requires Edge 16 or higher.
 
 If the browser is not compatible, an *alert* window is showed and FileUploader stops. The message shown is the one indicated in the `alert_messages.unsuitable_browser`parameter
 
