@@ -1,2 +1,2 @@
-.fupl-wrapper{position:relative}.fupl-alert-wrapper{position:absolute;top:0;width:100%;z-index:900;display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;flex-wrap:nowrap;-webkit-box-pack:start;justify-content:flex-start;-webkit-box-align:center;align-items:center}
+.fupl-wrapper{position:relative}.fupl-alert-wrapper{position:absolute;top:0;width:100%;z-index:900;display:flex;flex-direction:column;flex-wrap:nowrap;justify-content:flex-start;align-items:center}
 /*# sourceMappingURL=bs4_toast_notificaton.css.map */

@@ -103,8 +103,13 @@ FileUploader = ((upl) => {
           throw new Error( 'Parametro `uploader_url` non impostato' );
         }
 
-        //  controllo parametro filetype
+        // filetype parameter check
         fupl_options.filetype = fupl_options.filetype.toLowerCase();
+
+        // img+svg aliases
+        if(['svg+img', 'img-svg', 'svg-img'].indexOf(fupl_options.filetype) !== -1) {
+          fupl_options.filetype = 'img+svg';
+        }
         if( Object.keys(upl.mimetypes).indexOf(fupl_options.filetype) === -1 ) {
           throw new Error( 'Parametro `filetype` non corretto' );
         }
@@ -141,6 +146,49 @@ FileUploader = ((upl) => {
         if(typeof fupl_options[i] === 'string' &&
           ['true', 'false', 'null'].indexOf(fupl_options[i].toLowerCase()) !== -1) {
           fupl_options[i] = JSON.parse(fupl_options[i]);
+        }
+      }
+
+      // aspect ratio is ignored if exact constrains are presents
+      if(fupl_options.img_aspect_ratio && fupl_options.img_w && fupl_options.img_h) {
+        console.error('FileUploader: the aspect ratio parameter will be ignored, because exact constraints have been set for width and height'); // eslint-disable-line
+        fupl_options.img_aspect_ratio = null;
+      }
+
+      // aspect ratio
+      fupl_options.parsed_img_aspect_ratio = null;
+      if(fupl_options.img_aspect_ratio) {
+
+        try {
+          if(isNaN(fupl_options.img_aspect_ratio)) {
+            let w,h;
+            if(fupl_options.img_aspect_ratio.indexOf('/') !== -1) {
+              [w,h] = fupl_options.img_aspect_ratio.split('/');
+            } else if (fupl_options.img_aspect_ratio.indexOf(':') !== -1) {
+              [w,h] = fupl_options.img_aspect_ratio.split(':');
+            }
+
+            if( w && h ) {
+              fupl_options.parsed_img_aspect_ratio = +w/+h;
+            } else {
+              fupl_options.parsed_img_aspect_ratio = Number(fupl_options.img_aspect_ratio);
+            }
+
+          } else {
+            fupl_options.parsed_img_aspect_ratio = +fupl_options.img_aspect_ratio;
+          }
+
+          if(fupl_options.parsed_img_aspect_ratio) {
+            fupl_options.parsed_img_aspect_ratio = Math.round((fupl_options.parsed_img_aspect_ratio + Number.EPSILON) * 1000) / 1000;
+          }
+
+          if(isNaN(fupl_options.parsed_img_aspect_ratio) || !fupl_options.parsed_img_aspect_ratio) {
+            throw new Error();
+          }
+        } catch(e) {
+          console.error(`FileUploader: incorrect aspect ratio parameter → ${fupl_options.img_aspect_ratio}`); // eslint-disable-line
+          fupl_options.img_aspect_ratio = null;
+          fupl_options.parsed_img_aspect_ratio = null;
         }
       }
 

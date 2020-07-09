@@ -22,7 +22,6 @@ FileUploader = ((upl) => {
   */
 
   upl.createItem = (item_data, fupl_options, preregistered = false) => {
-
     try {
 
       let item_markup = fupl_options.templates[fupl_options._type][fupl_options._mode];

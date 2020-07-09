@@ -16,6 +16,11 @@ Similarly, all the string messages can be customized using the desired language.
 
 The [demo](https://massimo-cassandro.github.io/js-file-uploader/demo/) folder contains many examples of FileUploader using.
 
+## News from version 1.4
+* SVG images support
+* Mixed SVG + Bitmap images allowed
+* aspect ratio constrain (see specific demo page)
+
 
 ## Browser compatibility
 FileUploader needs a modern browser and is not compatible with Internet Explorer.
@@ -405,7 +410,6 @@ document.querySelectorAll('.fupl-wrapper:not([disabled])[data-required="true"][d
 ## TODO
 * convert to es6 modules!!!
 * device cameras integration
-* svg img type
 * more dist versions: es6 modules, umd etc,
 * easier localization settings
 * explicit uploader activation (??)
@@ -432,3 +436,22 @@ document.querySelectorAll('.fupl-wrapper:not([disabled])[data-required="true"][d
 - <https://www.html5rocks.com/en/tutorials/dnd/basics/>
 - <https://kryogenix.org/code/browser/custom-drag-image.html>
 
+## Changelog
+
+### Version 1.4 (Jul 2020) 
+* SVG images support
+* Mixed SVG + Bitmap images allowed
+* ability to add an extra custom help text
+* aspect ratio constrain (see specific demo page)
+* Bootstrap moved to dev-dependencies in package json
+
+### Version 1.3 (Aug 2019)
+First release with all the basic features:
+
+* Fancybox integration
+* items sorting
+* Handling of disabled and required status
+* Extra fields
+
+### Version 1.0-1.2
+First production releases with basic features

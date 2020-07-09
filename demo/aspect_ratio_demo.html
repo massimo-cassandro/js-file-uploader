@@ -4,9 +4,8 @@
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Fancybox demo</title>
+    <title>Aspect Ratio demo</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
 
     <link rel="apple-touch-icon" sizes="180x180" href="http://primominuto.altervista.org/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="http://primominuto.altervista.org/favicons/favicon-32x32.png">
@@ -17,57 +16,30 @@
     <meta name="msapplication-TileColor" content="#ffc40d">
     <meta name="msapplication-config" content="http://primominuto.altervista.org/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
+
   </head>
 
   <body>
     <div class="container">
-      <h1>File Uploader Fancybox demo</h1>
+      <h1>Aspect Ratio demo</h1>
+
       <p><a href="index.html">Demo summary</a> | <a href="https://github.com/massimo-cassandro/js-file-uploader#readme">Read me</a></p>
 
+      <p><em>Try <code>16-9 img - martha-dominguez-de-gouveia-747676-unsplash.jpg</code> from demo/test-files directory)</em></p>
       <form action="" method="post">
         <div data-file-uploader
           data-filetype="img"
-          data-max_filesize="12Mb"
+          data-max_filesize="5MB"
           data-uploader_legend="true"
-          data-uploader_legend_text="Test Fancybox"
-          data-multiple="true"
-          data-values='[
-            {
-              "id": "123",
-              "name": "gigi-1508584-unsplash.jpg",
-              "src": "test-files/gigi-1508584-unsplash.jpg",
-              "url": "test-files/gigi-1508584-unsplash.jpg",
-              "wi": 1199,
-              "he": 1600,
-              "size": 175418
-            },
-            {
-              "id": "124",
-              "name": "fezbot2000-1511423-unsplash.jpg",
-              "src": "test-files/fezbot2000-1511423-unsplash.jpg",
-              "url": "test-files/fezbot2000-1511423-unsplash.jpg",
-              "wi": 1067,
-              "he": 1600,
-              "size": 358840
-            },
-            {
-              "id": "125",
-              "name": "ibrahim-rifath-787485-unsplash.jpg",
-              "src": "test-files/ibrahim-rifath-787485-unsplash.jpg",
-              "url": "test-files/ibrahim-rifath-787485-unsplash.jpg",
-              "wi": 1920,
-              "he": 1280,
-              "size": 193345
-            }
-          ]'></div>
+          data-uploader_legend_text="Aspect ratio demo"
+          data-img_min_w="800"
+          data-img_aspect_ratio="16/9"
+          data-multiple="false"></div>
         <p><button class="btn btn-primary" type="submit">Submit</button></p>
       </form>
 
 
-
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
     <script src="../dist/file_uploader-min.js"></script>
     <script src="test-files/en_localization.js"></script>
     <script>
@@ -76,11 +48,7 @@
         debug: true,
         css: '../dist/file_uploader.css',
         uploader_url: 'server_side_demo_response.json',
-        disable_submit: true,
-        fancybox: true,
-        fancybox_callback_func: (fupl_options) => {
-          console.log('fancybox loaded');
-        }
+        disable_submit: true
       }});
 
     </script>

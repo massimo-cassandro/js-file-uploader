@@ -83,7 +83,8 @@ FileUploader = ( (upl) => {
       img_max_width_err: 'Larghezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
       img_exact_height_err: 'Altezza non corrispondente ({{image_dimension}}px invece di {{allowed_dimension}}px)',
       img_min_height_err: 'Altezza inferiore a quella minima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
-      img_max_height_err: 'Altezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)'
+      img_max_height_err: 'Altezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
+      img_ratio_err: 'La proporzione tra base e altezza dell\'immagine non corrisponde a quella richiesta ({{aspect_ratio}})'
     },
 
     /*
@@ -254,6 +255,10 @@ FileUploader = ( (upl) => {
     */
     info_text: {
       std_imgs : 'immagini in formato <strong>JPEG</strong>, <strong>PNG</strong>, <strong>GIF</strong> o <strong>WEBP</strong>',
+      imgs_svg : 'immagini in formato <strong>JPEG</strong>, <strong>PNG</strong>, <strong>GIF</strong>, <strong>WEBP</strong> o <strong>SVG</strong>',
+      imgs_svg_size_info_text: '<strong>Solo immagini non SVG:</strong> ',
+      svg_optimize_info: '<br>È consigliabile ottimizzare i file SVG prima del caricamento, ' +
+        'ad esempio tramite <a href="https://jakearchibald.github.io/svgomg/" target="_blank">SVGO</a>',
       img_fixed_size: 'dimensioni: <strong>{{img_w}}&times;{{img_h}}px</strong>',
       img_equal_min_size: 'larghezza e altezza non inferiori a <strong>{{img_min_w}}px</strong>',
       img_equal_max_size: 'larghezza e altezza non superiori a <strong>{{img_max_w}}px</strong>',
@@ -266,7 +271,9 @@ FileUploader = ( (upl) => {
       img_min_height: 'altezza non inferiore a <strong>{{img_min_h}}px</strong>',
       img_max_height: 'altezza non superiore a <strong>{{img_max_h}}px</strong>',
       pdf_file: 'file in formato <strong>PDF</strong>',
-      max_filesize: 'max <strong>{{max_filesize}}</strong>'
+      svg: 'immagini in formato <strong>SVG</strong>',
+      max_filesize: 'max <strong>{{max_filesize}}</strong>',
+      img_aspect_ratio: 'Il rapporto tra base e altezza dell\'immagine deve essere esattamente pari a <strong>{{img_aspect_ratio}}</strong>'
     },
 
     /*
@@ -335,7 +342,7 @@ FileUploader = ( (upl) => {
       String used to join the various parts of the generated info text
       used only if `custom_info_text` is not set
     */
-    info_text_join_string: ', ',
+    info_text_join_string: ' - ',
 
     /*
       Custom info text
@@ -344,29 +351,41 @@ FileUploader = ( (upl) => {
     custom_info_text: null,
 
     /*
+      help text
+      If present, is added after the info_text or custom_info_text
+      (if show_info_text === true)
+      help_text will be separated from the previous one with a `<br>`
+      html is allowed
+    */
+    help_text: null,
+
+    /*
     Images settings (only for filetype == 'img')
 
     Numeric values that correspond to the pixel dimensions required for the image.
     The img_min_* and img_max_* parameters can be assigned simultaneously,
     but they are ignored if the corresponding exact parameters exist
     (for example, if img_w is present, the parameters img_min_w and img_max_w
-    are not taken into consideration).
+    or img_aspect_ratio are not taken into consideration).
     The default value of all parameters is null, which means that they are not applied.
+    Aspect ratio must be a number or string in w/h or w:h format or the result of w/h division.
+    Aspect ratio values are rounded to three decimal places
 
-      * `img_min_w` : min image width
-      * `img_max_w` : max image width
-      * `img_w`     : exact image width
-      * `img_min_h` : min image height
-      * `img_max_h` : max image height
-      * `img_h`     : exact image height
+      * `img_w`            : exact image width
+      * `img_h`            : exact image height
+      * `img_min_w`        : min image width
+      * `img_min_h`        : min image height
+      * `img_max_w`        : max image width
+      * `img_max_h`        : max image height
+      * `img_aspect_ratio` : aspect ratio w/h value (16/9, 4:3, 0.5, ecc)
     */
-    img_min_w   : null,
-    img_max_w   : null,
-    img_w       : null,
-    img_min_h   : null,
-    img_max_h   : null,
-    img_h       : null,
-
+    img_w            : null,
+    img_h            : null,
+    img_min_w        : null,
+    img_min_h        : null,
+    img_max_w        : null,
+    img_max_h        : null,
+    img_aspect_ratio : null,
 
     /*
       Maximum size (weight) of the image. It can be a number,

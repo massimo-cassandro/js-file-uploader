@@ -7,7 +7,7 @@
 		"uuidString": "56CEA7EE-2256-402A-8381-171C143CCE38"
 		}
 	],
-"creatorBuild": "32147",
+"creatorBuild": "32186",
 "files": {
 	"/.editorconfig": {
 		"cB": 0,
@@ -41,6 +41,14 @@
 		"oAP": "/.gitignore",
 		"oF": 0
 		},
+	"/.npmignore": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/.npmignore",
+		"oF": 0
+		},
 	"/.vscode/bookmarks.json": {
 		"ft": 524288,
 		"oA": 1,
@@ -63,6 +71,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/demo/.htaccess",
+		"oF": 0
+		},
+	"/demo/aspect_ratio_demo.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/aspect_ratio_demo.html",
 		"oF": 0
 		},
 	"/demo/bs4_toast_notification-min.js": {
@@ -201,6 +217,25 @@
 		"oAP": "/demo/sortable_demo.html",
 		"oF": 0
 		},
+	"/demo/svg_demo.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/svg_demo.html",
+		"oF": 0
+		},
+	"/demo/test-files/16-9 img - martha-dominguez-de-gouveia-747676-unsplash.jpg": {
+		"ft": 16384,
+		"iS": 222121,
+		"jF": 0,
+		"oA": 1,
+		"oAP": "/demo/test-files/16-9 img - martha-dominguez-de-gouveia-747676-unsplash.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
 	"/demo/test-files/en_localization.js": {
 		"bF": 0,
 		"ft": 64,
@@ -245,6 +280,17 @@
 		"opt": 0,
 		"q": 100
 		},
+	"/demo/test-files/medium_img.png": {
+		"ft": 32768,
+		"iS": 6759,
+		"oA": 1,
+		"oAP": "/demo/test-files/medium_img.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"/demo/test-files/pdf1.pdf": {
 		"cB": 0,
 		"ft": 8192,
@@ -271,6 +317,26 @@
 		"opt": 0,
 		"oT": 1,
 		"q": 100
+		},
+	"/demo/test-files/svg1.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 1,
+		"oAP": "/demo/test-files/svg1.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"/demo/test-files/svg2.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 1,
+		"oAP": "/demo/test-files/svg2.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
 		},
 	"/dist/file_uploader-min.js": {
 		"bF": 0,
@@ -473,461 +539,6 @@
 		"oF": 0,
 		"sC": 3,
 		"tS": 1
-		},
-	"/node_modules/bootstrap/scss/_functions.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/dist/_functions.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/_mixins.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/dist/_mixins.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/_variables.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/dist/_variables.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_alert.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_alert.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_background-variant.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_background-variant.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_badge.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_badge.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_border-radius.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_border-radius.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_box-shadow.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_box-shadow.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_breakpoints.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_breakpoints.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_buttons.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_buttons.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_caret.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_caret.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_clearfix.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_clearfix.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_deprecate.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_deprecate.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_float.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_float.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_forms.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_forms.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_gradients.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_gradients.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_grid-framework.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_grid-framework.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_grid.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_grid.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_hover.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_hover.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_image.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_image.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_list-group.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_list-group.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_lists.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_lists.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_nav-divider.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_nav-divider.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_pagination.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_pagination.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_reset-text.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_reset-text.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_resize.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_resize.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_screen-reader.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_screen-reader.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_size.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_size.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_table-row.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_table-row.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_text-emphasis.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_text-emphasis.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_text-hide.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_text-hide.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_text-truncate.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_text-truncate.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_transition.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_transition.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/mixins/_visibility.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_visibility.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/node_modules/bootstrap/scss/vendor/_rfs.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/node_modules/bootstrap/scss/dist/_rfs.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
 		},
 	"/package-lock.json": {
 		"ft": 524288,
@@ -1735,6 +1346,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"default-case-last": {
+			"active": 0,
+			"optionString": ""
+			},
 		"default-param-last": {
 			"active": 0,
 			"optionString": ""
@@ -2147,6 +1762,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"no-loss-of-precision": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-magic-numbers": {
 			"active": 0,
 			"optionString": "{'ignore': [], 'ignoreArrayIndexes': true, 'enforceConst': false, 'detectObjects': false}"
@@ -2262,6 +1881,10 @@
 		"no-regex-spaces": {
 			"active": 1,
 			"optionString": ""
+			},
+		"no-restricted-exports": {
+			"active": 0,
+			"optionString": "{'restrictedNamedExports': []}"
 			},
 		"no-restricted-globals": {
 			"active": 0,
@@ -2406,6 +2029,10 @@
 		"no-use-before-define": {
 			"active": 0,
 			"optionString": "{'functions': true, 'classes': true, 'variables': true}"
+			},
+		"no-useless-backreference": {
+			"active": 0,
+			"optionString": ""
 			},
 		"no-useless-call": {
 			"active": 0,

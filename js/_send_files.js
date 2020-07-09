@@ -58,14 +58,15 @@ FileUploader = ((upl) => {
 
         // aggiunta elemento all'uploader
         let this_item = upl.createItem({
-            id   : current_item.id,
-            name : current_item.file.name,
-            url  : null,
-            src  : img_preview,
-            wi   : current_item.width,
-            he   : current_item.height,
-            size : current_item.file.size,
-            loading:true
+            id       : current_item.id,
+            name     : current_item.file.name,
+            url      : null,
+            src      : img_preview,
+            wi       : current_item.width,
+            he       : current_item.height,
+            size     : current_item.file.size,
+            img_type : current_item.file.img_type,
+            loading  : true
           }, fupl_options),
 
           fupl_progress= this_item.querySelector('.fupl-progress'),
@@ -111,10 +112,7 @@ FileUploader = ((upl) => {
               if(response.error) {
 
                 fupl_options.alert_api( xhr_error_message, fupl_options );
-                /* eslint-disable */
-              console.error( response.error );
-              /* eslint-enable */
-
+                console.error( response.error ); // eslint-disable-line
                 reject();
 
               } else {
@@ -138,9 +136,9 @@ FileUploader = ((upl) => {
             } else {
               fupl_options.alert_api( xhr_error_message, fupl_options );
               /* eslint-disable */
-            console.error( ajax.status, ajax.statusText );
-            console.error( ajax.responseText );
-            /* eslint-enable */
+              console.error( ajax.status, ajax.statusText );
+              console.error( ajax.responseText );
+              /* eslint-enable */
             }
 
             reject();
@@ -149,11 +147,11 @@ FileUploader = ((upl) => {
           ajax.onerror = function() {
             fupl_options.alert_api( xhr_error_message, fupl_options );
             /* eslint-disable */
-          if(fupl_options.debug) {
-            console.error( ajax.status,  ajax.statusText );
-            console.error( ajax.responseText );
-          }
-          /* eslint-enable */
+            if(fupl_options.debug) {
+              console.error( ajax.status,  ajax.statusText );
+              console.error( ajax.responseText );
+            }
+            /* eslint-enable */
 
             reject();
           };
@@ -224,7 +222,9 @@ FileUploader = ((upl) => {
             file: filelist_item,
             width: null,
             height: null,
-            tmp_file: null
+            tmp_file: null,
+            img_type: fupl_options._type === 'img'?
+              (filelist_item.type === 'image/svg+xml' ? 'svg' : 'bmp') : null
           };
 
           // controllo filetype (per drag&drop e browser che non supportano accept)
@@ -251,8 +251,8 @@ FileUploader = ((upl) => {
             }
           } // end controllo maxfilesize
 
-          // analisi immagine e caricamento
-          if(fupl_options.filetype === 'img') {
+          // analisi immagini bitmap e caricamento
+          if(current_item.img_type === 'bmp') {
 
             let reader  = new FileReader();
             reader.addEventListener('load', function () {
@@ -307,13 +307,25 @@ FileUploader = ((upl) => {
                       .replace(/{{image_dimension}}/, image.height)
                       .replace(/{{allowed_dimension}}/, fupl_options.img_max_h)
                   );
+
+                }
+
+                // aspect ratio
+                if(fupl_options.parsed_img_aspect_ratio) {
+                  let img_ratio = Math.round(((image.width / image.height) + Number.EPSILON) * 1000) / 1000;
+                  if(img_ratio !== fupl_options.parsed_img_aspect_ratio) {
+                    err_mes.push(
+                      fupl_options.alert_messages.img_ratio_err
+                        .replace(/{{aspect_ratio}}/, fupl_options.img_aspect_ratio)
+                    );
+                  }
                 }
 
                 if( err_mes.length ) {
                   fupl_options.alert_api(
                     fupl_options.alert_messages.img_err_start_string
-                      .replace(/{{file_name}}/, filelist_item.name ) + '<br>' +
-                    '<ul><li>' + err_mes.join('</li><li>') + '</li></ul>',
+                      .replace(/{{file_name}}/, filelist_item.name ) + '<br>\n' +
+                    '<ul><li>' + err_mes.join('</li>\n<li>') + '</li></ul>',
                     fupl_options );
 
                 } else {
@@ -325,6 +337,16 @@ FileUploader = ((upl) => {
             }, false); // end reader.addEventListener("load"
 
             reader.readAsDataURL( filelist_item );
+
+          } else if(current_item.img_type === 'svg') { // svg
+
+            let reader = new FileReader();
+            reader.addEventListener('load', (event) => {
+
+              uploadFile( current_item,
+                'data:image/svg+xml;base64,' +  window.btoa(event.target.result) );
+            });
+            reader.readAsText(filelist_item);
 
           } else { // non immagine
             uploadFile( current_item );

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <title>File uploader demo</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <!--  bootstrap toast notification only -->
     <link href="./bs4_toast_notificaton.css" media="all" rel="stylesheet" type="text/css">
@@ -36,6 +36,7 @@
   <body>
     <div class="container">
       <h1>File Uploader demo</h1>
+      <p><a href="index.html">Demo summary</a> | <a href="https://github.com/massimo-cassandro/js-file-uploader#readme">Read me</a></p>
 
       <p>Look at console for more info</p>
 
@@ -111,12 +112,13 @@
 
       <!-- demo #4 -->
       <form action="" id="form4" method="post" name="form4">
-        <h2 class="mt-5">4. With input field  (img, multiple and required from input) + pre-registered values</h2>
+        <h2 class="mt-5">4. With input field  (img, multiple and required from input) + pre-registered values + help text</h2>
         <div
           data-file-uploader
           data-filetype="img"
           data-max_filesize="8Mb"
           data-uploader_legend="true"
+          data-help_text="This is my &lt;strong&gt;help text&lt;/strong&gt;"
           data-values='[
             {
               "id": "123",
@@ -206,7 +208,7 @@
         console.log(callback_args);
       }
 
-      // callback function as object called as string (useful is set thru a data attribute)
+      // callback function as object called as string (can be set thru a data attribute)
       var myObj = {
         init: () => {
           console.log('init callback');

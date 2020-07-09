@@ -9,8 +9,10 @@ FileUploader = ((upl) => {
     auto : null,
     img  : ['image/png', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/webp',
       '.png', '.jpg', '.jpeg', '.pjpg', '.pjpeg', '.gif', '.webp'],
-    pdf  : ['application/pdf', '.pdf']
+    pdf  : ['application/pdf', '.pdf'],
+    svg  : ['image/svg+xml', '.svg', '.svgz']
   };
+  upl.mimetypes['img+svg'] = upl.mimetypes['img'].concat(upl.mimetypes['svg']);
 
   /*
     names of data-* attributes

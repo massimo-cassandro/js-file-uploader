@@ -53,7 +53,7 @@ FileUploader = ((upl) => {
 
     // tipologia generale dell'uploader (img o doc) e modalità
     // selezione file
-    fupl_options._type = fupl_options.filetype === 'img'? 'img' : 'doc';
+    fupl_options._type = ['img', 'svg', 'img+svg'].indexOf(fupl_options.filetype) !== -1? 'img' : 'doc';
     fupl_options._mode = fupl_options.multiple? 'multiple' : 'single';
 
     // testo label (da tag o parametro uploader_legend_text)
@@ -147,6 +147,12 @@ FileUploader = ((upl) => {
         fupl_options.istance_info_text.innerHTML = fupl_options.custom_info_text;
       } else {
         fupl_options.istance_info_text.innerHTML = upl.create_info_text(fupl_options);
+      }
+
+      if(fupl_options.help_text) {
+        fupl_options.istance_info_text.insertAdjacentHTML('beforeend',
+          '<br>' + fupl_options.help_text
+        );
       }
     }
 

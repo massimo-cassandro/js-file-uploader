@@ -19,7 +19,8 @@ const en_localization = {
     img_max_width_err: 'Width greater than the maximum allowed ({{image_dimension}}px instead of {{allowed_dimension}}px)',
     img_exact_height_err: 'Incorrect height ({{image_dimension}}px instead of {{allowed_dimension}}px)',
     img_min_height_err: 'Height below the minimum allowed ({{image_dimension}}px instead of {{allowed_dimension}}px)',
-    img_max_height_err: 'Height greater than the maximum allowed ({{image_dimension}}px instead of {{allowed_dimension}}px)'
+    img_max_height_err: 'Height greater than the maximum allowed ({{image_dimension}}px instead of {{allowed_dimension}}px)',
+    img_ratio_err: 'Image width/height ratio doesn\'t match the requested value of {{aspect_ratio}}'
   },
 
   templates: {
@@ -91,6 +92,10 @@ const en_localization = {
 
   info_text: {
     std_imgs : '<strong>JPEG</strong>, <strong>PNG</strong>, <strong>GIF</strong> or <strong>WEBP</strong> images',
+    imgs_svg : '<strong>JPEG</strong>, <strong>PNG</strong>, <strong>GIF</strong>, <strong>WEBP</strong> or <strong>SVG</strong> images',
+    imgs_svg_size_info_text: '<strong>Non-SVG images only:</strong> ',
+    svg_optimize_info: '<br>Optimize your SVG files before uploading ' +
+        '(for example using <a href="https://jakearchibald.github.io/svgomg/" target="_blank">SVGO</a>)',
     img_fixed_size: 'size: <strong>{{img_w}}&times;{{img_h}}px</strong>',
     img_equal_min_size: 'width and height not less than <strong>{{img_min_w}}px</strong>',
     img_equal_max_size: 'width and height not exceeding <strong>{{img_max_w}}px</strong>',
@@ -103,7 +108,9 @@ const en_localization = {
     img_min_height: 'height not less than <strong>{{img_min_h}}px</strong>',
     img_max_height: 'height not exceeding <strong>{{img_max_h}}px</strong>',
     pdf_file: '<strong>PDF</strong> file',
-    max_filesize: 'max <strong>{{max_filesize}}</strong>'
+    svg: '<strong>SVG</strong> file',
+    max_filesize: 'max <strong>{{max_filesize}}</strong>',
+    img_aspect_ratio: 'image width/height ratio must be exactly <strong>{{img_aspect_ratio}}</strong>'
   },
 
   input_text: {
