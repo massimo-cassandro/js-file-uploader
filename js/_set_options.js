@@ -354,7 +354,8 @@ FileUploader = ( (upl) => {
       help text
       If present, is added after the info_text or custom_info_text
       (if show_info_text === true)
-      help_text will be separated from the previous one with a `<br>`
+      help_text will be inserted into a `.fupl-help-text` div, located inside
+      the `.fupl-info-text` div
       html is allowed
     */
     help_text: null,

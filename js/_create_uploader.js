@@ -151,7 +151,7 @@ FileUploader = ((upl) => {
 
       if(fupl_options.help_text) {
         fupl_options.istance_info_text.insertAdjacentHTML('beforeend',
-          '<br>' + fupl_options.help_text
+          `<div class="fupl-help-text">${fupl_options.help_text}</div>`
         );
       }
     }
