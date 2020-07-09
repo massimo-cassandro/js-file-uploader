@@ -31,11 +31,13 @@
       // @include media-breakpoint-up(sm) {
       //   display: grid;
       //   grid-gap: 1.5rem;
+      //   gap: 1.5rem;
       //   grid-template-columns: repeat(2, minmax(40%, 1fr));
       // }
       @include media-breakpoint-up(md) {
         display: grid;
-        grid-gap: 1.5rem;
+        grid-gap: 1.5rem; // obsolete, mantained for compatibility
+        gap: 1.5rem;
         grid-template-columns: repeat(2, minmax(25%, 1fr));
       }
       @include media-breakpoint-up(lg) {
