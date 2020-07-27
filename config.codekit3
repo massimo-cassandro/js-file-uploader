@@ -134,25 +134,6 @@
 		"oS": 3,
 		"sct": 1
 		},
-	"/demo/dist/en_localization-min.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 1,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/demo/dist/en_localization-min-min.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 1
-		},
-	"/demo/dist/en_localization-min.js.map": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/demo/dist/en_localization-min.js.map",
-		"oF": 0
-		},
 	"/demo/extra_fields_demo.html": {
 		"cB": 0,
 		"ft": 8192,

@@ -84,11 +84,10 @@ FileUploader = ((upl) => {
       field_values.width = current_item.width;
       field_values.height = current_item.height;
     }
-
     for (let _key in field_values) {
       hidden_fields += '<input type="hidden" '+
         'name="' + fupl_options.varname + '[' + current_item.id +'][' + _key + ']" '+
-        'value="' + field_values[_key] +'">';
+        'value="' + ((field_values[_key] !== null && field_values[_key] !== undefined)? field_values[_key] : '') +'">';
     }
 
     return '<div class="fupl-hiddens">' + hidden_fields + '</div>';
