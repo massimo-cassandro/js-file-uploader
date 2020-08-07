@@ -312,7 +312,7 @@ FileUploader = ((upl) => {
 
                 // aspect ratio
                 if(fupl_options.parsed_img_aspect_ratio) {
-                  let img_ratio = Math.round(((image.width / image.height) + Number.EPSILON) * 1000) / 1000;
+                  let img_ratio = Math.round(((image.width / image.height) + Number.EPSILON) * fupl_options.aspect_ratio_accuracy) / fupl_options.aspect_ratio_accuracy;
                   if(img_ratio !== fupl_options.parsed_img_aspect_ratio) {
                     err_mes.push(
                       fupl_options.alert_messages.img_ratio_err

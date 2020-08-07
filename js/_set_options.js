@@ -388,6 +388,14 @@ FileUploader = ( (upl) => {
     img_max_h        : null,
     img_aspect_ratio : null,
 
+
+    /*
+      Aspect Ratio accuracy.
+      It is a number that indicates the decimal numbers to which the image size
+      ratio will be rounded for comparison with the `img_aspect_ratio` parameter
+    */
+    aspect_ratio_accuracy: 2,
+
     /*
       Maximum size (weight) of the image. It can be a number,
       and in this case it corresponds to a dimension in KB, or a string

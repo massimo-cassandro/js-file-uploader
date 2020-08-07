@@ -96,7 +96,7 @@ FileUploader = ((upl) => {
       // aggiunta dell'elemento stesso ad  `fupl_options`:
       fupl_options.element = upl_element;
 
-      // controllo parametri e avvio uploader
+      // controllo ed elaborazione parametri e avvio uploader
       try {
         //  controllo url
         if( !fupl_options.uploader_url ) {
@@ -105,6 +105,9 @@ FileUploader = ((upl) => {
 
         // filetype parameter check
         fupl_options.filetype = fupl_options.filetype.toLowerCase();
+
+        // aspect_ratio_accuracy
+        fupl_options.aspect_ratio_accuracy = 10 ** +fupl_options.aspect_ratio_accuracy;
 
         // img+svg aliases
         if(['svg+img', 'img-svg', 'svg-img'].indexOf(fupl_options.filetype) !== -1) {
@@ -179,7 +182,7 @@ FileUploader = ((upl) => {
           }
 
           if(fupl_options.parsed_img_aspect_ratio) {
-            fupl_options.parsed_img_aspect_ratio = Math.round((fupl_options.parsed_img_aspect_ratio + Number.EPSILON) * 1000) / 1000;
+            fupl_options.parsed_img_aspect_ratio = Math.round((fupl_options.parsed_img_aspect_ratio + Number.EPSILON) * fupl_options.aspect_ratio_accuracy) / fupl_options.aspect_ratio_accuracy;
           }
 
           if(isNaN(fupl_options.parsed_img_aspect_ratio) || !fupl_options.parsed_img_aspect_ratio) {
