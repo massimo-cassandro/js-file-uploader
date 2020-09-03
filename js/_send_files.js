@@ -69,6 +69,7 @@ FileUploader = ((upl) => {
             loading  : true
           }, fupl_options),
 
+
           fupl_progress= this_item.querySelector('.fupl-progress'),
           fupl_loading_wrapper = this_item.querySelector('.fupl-loading'),
 
@@ -252,8 +253,8 @@ FileUploader = ((upl) => {
           } // end controllo maxfilesize
 
           // analisi immagini bitmap e caricamento
-          if(current_item.img_type === 'bmp') {
-
+          //if(current_item.img_type === 'bmp') {
+          if( fupl_options._type === 'img') {
             let reader  = new FileReader();
             reader.addEventListener('load', function () {
 
@@ -264,50 +265,51 @@ FileUploader = ((upl) => {
                 let err_mes = [];
                 current_item.width=image.width;
                 current_item.height=image.height;
+                if(current_item.img_type === 'bmp') {
+                  if( fupl_options.img_w && image.width !== fupl_options.img_w ) {
+                    err_mes.push(
+                      fupl_options.alert_messages.img_exact_width_err
+                        .replace(/{{image_dimension}}/, image.width)
+                        .replace(/{{allowed_dimension}}/, fupl_options.img_w)
+                    );
 
-                if( fupl_options.img_w && image.width !== fupl_options.img_w ) {
-                  err_mes.push(
-                    fupl_options.alert_messages.img_exact_width_err
-                      .replace(/{{image_dimension}}/, image.width)
-                      .replace(/{{allowed_dimension}}/, fupl_options.img_w)
-                  );
+                  } else if(fupl_options.img_min_w && image.width < fupl_options.img_min_w) {
+                    err_mes.push(
+                      fupl_options.alert_messages.img_min_width_err
+                        .replace(/{{image_dimension}}/, image.width)
+                        .replace(/{{allowed_dimension}}/, fupl_options.img_min_w)
+                    );
 
-                } else if(fupl_options.img_min_w && image.width < fupl_options.img_min_w) {
-                  err_mes.push(
-                    fupl_options.alert_messages.img_min_width_err
-                      .replace(/{{image_dimension}}/, image.width)
-                      .replace(/{{allowed_dimension}}/, fupl_options.img_min_w)
-                  );
+                  } else if(fupl_options.img_max_w && image.width > fupl_options.img_max_w) {
+                    err_mes.push(
+                      fupl_options.alert_messages.img_max_width_err
+                        .replace(/{{image_dimension}}/, image.width)
+                        .replace(/{{allowed_dimension}}/, fupl_options.img_max_w)
+                    );
+                  }
 
-                } else if(fupl_options.img_max_w && image.width > fupl_options.img_max_w) {
-                  err_mes.push(
-                    fupl_options.alert_messages.img_max_width_err
-                      .replace(/{{image_dimension}}/, image.width)
-                      .replace(/{{allowed_dimension}}/, fupl_options.img_max_w)
-                  );
-                }
+                  if (fupl_options.img_h && image.height !== fupl_options.img_h) {
+                    err_mes.push(
+                      fupl_options.alert_messages.img_exact_height_err
+                        .replace(/{{image_dimension}}/, image.height)
+                        .replace(/{{allowed_dimension}}/, fupl_options.img_h)
+                    );
 
-                if (fupl_options.img_h && image.height !== fupl_options.img_h) {
-                  err_mes.push(
-                    fupl_options.alert_messages.img_exact_height_err
-                      .replace(/{{image_dimension}}/, image.height)
-                      .replace(/{{allowed_dimension}}/, fupl_options.img_h)
-                  );
+                  } else if(fupl_options.img_min_h && image.height < fupl_options.img_min_h) {
+                    err_mes.push(
+                      fupl_options.alert_messages.img_min_height_err
+                        .replace(/{{image_dimension}}/, image.height)
+                        .replace(/{{allowed_dimension}}/, fupl_options.img_min_h)
+                    );
 
-                } else if(fupl_options.img_min_h && image.height < fupl_options.img_min_h) {
-                  err_mes.push(
-                    fupl_options.alert_messages.img_min_height_err
-                      .replace(/{{image_dimension}}/, image.height)
-                      .replace(/{{allowed_dimension}}/, fupl_options.img_min_h)
-                  );
+                  } else if(fupl_options.img_max_h && image.height > fupl_options.img_max_h) {
+                    err_mes.push(
+                      fupl_options.alert_messages.img_max_height_err
+                        .replace(/{{image_dimension}}/, image.height)
+                        .replace(/{{allowed_dimension}}/, fupl_options.img_max_h)
+                    );
 
-                } else if(fupl_options.img_max_h && image.height > fupl_options.img_max_h) {
-                  err_mes.push(
-                    fupl_options.alert_messages.img_max_height_err
-                      .replace(/{{image_dimension}}/, image.height)
-                      .replace(/{{allowed_dimension}}/, fupl_options.img_max_h)
-                  );
-
+                  }
                 }
 
                 // aspect ratio
@@ -338,15 +340,26 @@ FileUploader = ((upl) => {
 
             reader.readAsDataURL( filelist_item );
 
-          } else if(current_item.img_type === 'svg') { // svg
+            // } else if(current_item.img_type === 'svg') { // svg
 
-            let reader = new FileReader();
-            reader.addEventListener('load', (event) => {
+            //   let reader = new FileReader();
 
-              uploadFile( current_item,
-                'data:image/svg+xml;base64,' +  window.btoa(event.target.result) );
-            });
-            reader.readAsText(filelist_item);
+            //   reader.addEventListener('load', () => {
+
+            //     let image = new Image();
+            //     image.src = reader.result;
+
+            //     image.addEventListener('load', function () {
+            //       current_item.width=image.width;
+            //       current_item.height=image.height;
+            //     });
+
+            //     uploadFile( current_item,
+            //       reader.result
+            //       //'data:image/svg+xml;base64,' +  window.btoa(event.target.result)
+            //     );
+            //   });
+            //   reader.readAsDataURL(filelist_item);
 
           } else { // non immagine
             uploadFile( current_item );

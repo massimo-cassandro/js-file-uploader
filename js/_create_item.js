@@ -110,6 +110,7 @@ FileUploader = ((upl) => {
         );
       }
 
+
       let fupl_item_dom = fupl_options.istance_result_wrapper.querySelector('.fupl-item:last-child');
       fupl_item_dom.dataset[upl.data_attributes.item_id] = item_data.id;
 
