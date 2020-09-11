@@ -1,5 +1,5 @@
 {
-  "name": "js-file-uploader",
+  "name": "@massimo-cassandro/js-file-uploader",
  "version": "1.6.0",
   "description": "HTML5 Async File Uploader ",
   "main": "js/file_uploader.js",
@@ -12,6 +12,9 @@
   },
   "author": "Massimo Cassandro",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "ux",
     "user-interface",

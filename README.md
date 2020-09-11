@@ -53,10 +53,10 @@ Furthermore, you have to set the `locales` parameter to the desidered value to c
 
 ## Installation
 
-FileUploader can be installed thru npm:
+FileUploader can be installed using npm:
 
 ```
-npm i --save js-file-uploader
+npm i --save @massimo-cassandro/js-file-uploader
 ```
 
 ## Using FileUploader
