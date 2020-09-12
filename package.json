@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/js-file-uploader",
- "version": "1.7.0",
+ "version": "1.7.1",
   "description": "HTML5 Async File Uploader ",
   "main": "js/file_uploader.js",
   "scripts": {
