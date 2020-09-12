@@ -257,7 +257,7 @@ FileUploader = ( (upl) => {
       std_imgs : 'immagini in formato <strong>JPEG</strong>, <strong>PNG</strong>, <strong>GIF</strong> o <strong>WEBP</strong>',
       imgs_svg : 'immagini in formato <strong>JPEG</strong>, <strong>PNG</strong>, <strong>GIF</strong>, <strong>WEBP</strong> o <strong>SVG</strong>',
       imgs_svg_size_info_text: '<strong>Solo immagini non SVG:</strong> ',
-      img_optimize_info: 'Ottimizza le tue immagine prima di caricarle. ' +
+      img_optimize_info: 'Ottimizza le tue immagini prima di caricarle. ' +
         '<a href="https://squoosh.app/" target="_blank">Squoosh</a> è un ottimo (e gratuito) ' +
         'strumento per farlo.',
       svg_optimize_info: 'È consigliabile ottimizzare i file SVG prima del caricamento, ' +
