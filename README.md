@@ -16,7 +16,10 @@ Similarly, all the string messages can be customized using the desired language.
 
 The [demo](https://massimo-cassandro.github.io/js-file-uploader/demo/) folder contains many examples of FileUploader using.
 
-## News from version 1.4
+## New from version 1.6
+* ready to use utility ES6 modules (look for them in the `utilities` folder)
+
+## New from version 1.4
 * SVG images support
 * Mixed SVG + Bitmap images allowed
 * aspect ratio constrain (see specific demo page)

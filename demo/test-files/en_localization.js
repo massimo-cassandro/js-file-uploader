@@ -94,7 +94,9 @@ const en_localization = {
     std_imgs : '<strong>JPEG</strong>, <strong>PNG</strong>, <strong>GIF</strong> or <strong>WEBP</strong> images',
     imgs_svg : '<strong>JPEG</strong>, <strong>PNG</strong>, <strong>GIF</strong>, <strong>WEBP</strong> or <strong>SVG</strong> images',
     imgs_svg_size_info_text: '<strong>Non-SVG images only:</strong> ',
-    svg_optimize_info: '<br>Optimize your SVG files before uploading ' +
+    img_optimize_info: 'Optimize your images before uploading. ' +
+        '<a href="https://squoosh.app/" target="_blank">Squoosh</a> is a great and free tools for this.',
+    svg_optimize_info: 'Optimize your SVG files before uploading ' +
         '(for example using <a href="https://jakearchibald.github.io/svgomg/" target="_blank">SVGO</a>)',
     img_fixed_size: 'size: <strong>{{img_w}}&times;{{img_h}}px</strong>',
     img_equal_min_size: 'width and height not less than <strong>{{img_min_w}}px</strong>',

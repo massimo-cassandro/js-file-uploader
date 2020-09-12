@@ -107,8 +107,12 @@ FileUploader = ((upl) => {
       str = fupl_options.info_text_wrap_string[0] + str + fupl_options.info_text_wrap_string[1];
     }
 
+    if(fupl_options.filetype === 'img') {
+      str += '<br>' + fupl_options.info_text.img_optimize_info;
+    }
+
     if(fupl_options.filetype === 'svg' || fupl_options.filetype === 'img+svg') {
-      str += fupl_options.info_text.svg_optimize_info;
+      str += '<br>' + fupl_options.info_text.svg_optimize_info;
     }
 
     return str;
