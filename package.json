@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/js-file-uploader",
- "version": "1.7.1",
+  "version": "2.0.0-alpha-0",
   "description": "HTML5 Async File Uploader ",
   "main": "js/file_uploader.js",
   "scripts": {
@@ -35,8 +35,10 @@
     "scss/*.scss",
     "readme_files/*.{png,jpg}"
   ],
+  "dependencies": {},
   "devDependencies": {
     "bootstrap": "^4.5.0",
+    "jquery": "^3.5.1",
     "m-layout-tools": "^2.0.3"
   }
 }
