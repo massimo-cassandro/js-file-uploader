@@ -4,12 +4,30 @@
 			"path": "."
 		},
 		{
+			"name": "wiki",
 			"path": "../js-file-uploader-wiki"
+		},
+		{
+			"path": "node_modules/@massimo-cassandro"
 		}
 	],
   "settings": {
-		"preview-in-browser.domain": "http://fileuploader.local:8888/",
-		"preview-in-browser.removeStartString": "~/Sites/js-file-uploader/"
+		"preview-in-browser.domain": "http://fileuploader2.local:8888/",
+		"preview-in-browser.removeStartString": "~/Sites/js-file-uploader-v2/",
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/*-lock.json": true,
+			"**/*.css.map": true,
+			"**/*.js.map": true,
+			"**/*.lock": true,
+			"**/*.mwb.bak": true,
+			"**/config.codekit3": true
+		},
+		"explorerExclude.backup": null
 
 	}
 }

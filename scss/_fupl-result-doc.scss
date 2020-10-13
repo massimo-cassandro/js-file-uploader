@@ -28,22 +28,22 @@
 
     .fupl-result {
 
-      // @include media-breakpoint-up(sm) {
+      // @include fupl-media-query-min(sm) {
       //   display: grid;
       //   grid-gap: 1.5rem;
       //   gap: 1.5rem;
       //   grid-template-columns: repeat(2, minmax(40%, 1fr));
       // }
-      @include media-breakpoint-up(md) {
+      @include fupl-media-query-min(md) {
         display: grid;
         grid-gap: 1.5rem; // obsolete, mantained for compatibility
         gap: 1.5rem;
         grid-template-columns: repeat(2, minmax(25%, 1fr));
       }
-      @include media-breakpoint-up(lg) {
+      @include fupl-media-query-min(lg) {
         grid-template-columns: repeat(3, minmax(20%, 1fr));
       }
-      // @include media-breakpoint-up(xl) {
+      // @include fupl-media-query-min(xl) {
       //   grid-template-columns: repeat(5, minmax(15%, 1fr));
       // }
     }

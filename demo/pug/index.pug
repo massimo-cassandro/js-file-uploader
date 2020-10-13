@@ -1,33 +1,49 @@
-- var title = "File uploader demo"
 extends _tpl.pug
+block variables
+  - title = 'File uploader demo'
+  - homepage = true
+block main_body
+  p
+    strong HTML5 + Javascript asyncronous file uploader.
+    br
+    | v. 2 - Massimo Cassandro - (c) 2015/2020
 
-block body
-    p
-      strong HTML5 + Javascript asyncronous file upload.
-      br
-      | v. 2 - Massimo Cassandro - (c) 2017/2020
+  p <strong>Fileuploader</strong> automates and simplifies uploading files to HTML pages.
+    |  Uploads are performed asynchronously via an Ajax call to a server-side script
+    |  that must save the file and return a JSON string.
+  p Although the default settings are based on Bootstrap 4, FileUploader
+    |  is entirely and easily configurable from scratch and can be adapted to any layout.
 
-    p Fileuploader automates and simplifies uploading files to HTML pages.
-    p Uploads are performed asynchronously via an Ajax call to a server-side script
-      | that must register the file and return a JSON string.
-    p Although the default settings are based on Bootstrap 4, FileUploader
-      | is entirely and easily configurable from scratch and can be adapted to any layout.
-    ul
-      li
-        a(href="main_demo.html") Main demo
-      li
-        a(href="silent_degradation_sample.html") Silent degradation sample
-      li
-        a(href="sortable_demo.html") Sortable demo
-      li
-        a(href="fancybox_demo.html") Fancybox demo
-      li
-        a(href="extra_fields_demo.html") Extra fields demo
-      li
-        a(href="svg_demo.html") Svg demo
-      li
-        a(href="aspect_ratio_demo.html") Aspect ratio demo
+  p
+    a(href="https://github.com/massimo-cassandro/js-file-uploader#readme") Show Read me
+    |  —
+    |
+    a(href="https://github.com/massimo-cassandro/js-file-uploader/wiki/About-the-demo") About the demo
 
 
-    p
-      a(href="https://github.com/massimo-cassandro/js-file-uploader#readme") Read me
+
+block intro
+  h2 Samples
+  ul
+    li
+      a(href="basic-img-demo.html") Basic single image demo
+
+
+
+
+
+
+    li
+      a(href="main_demo.html") Main demo &larr; dividere img e doc
+    li
+      a(href="silent_degradation_sample.html") Silent degradation sample
+    li
+      a(href="sortable_demo.html") Sortable demo
+    li
+      a(href="fancybox_demo.html") Fancybox demo
+    li
+      a(href="extra_fields_demo.html") Extra fields demo
+    li
+      a(href="svg_demo.html") Svg demo
+    li
+      a(href="aspect_ratio_demo.html") Aspect ratio demo

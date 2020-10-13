@@ -1,0 +1,5 @@
+@mixin fupl-media-query-min($min) {
+  @media (min-width: map-get($fupl-breakpoints, $min)) {
+    @content;
+  }
+}

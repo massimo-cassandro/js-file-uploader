@@ -1,0 +1,1 @@
+{"version":3,"sources":["../js/test.js"],"names":["_zzz","_interopRequireDefault","require","test","opts","default","mes"],"mappings":"aAEA,IAAAA,KAAAC,uBAAAC,QAAA,mFACA,IAAIC,KAAO,SAAPA,EAAgBC,IAClB,EAAAJ,KAAAK,SAAMD,EAAKE","sourcesContent":["/* exported test */\n\nimport mymes from './_zzz';\nvar test = function(opts) {\n  mymes(opts.mes);\n}\n\n\n"]}
