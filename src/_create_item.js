@@ -203,7 +203,7 @@ FileUploader = ((upl) => {
         if(fupl_options.sortable_icon) {
           fupl_item_dom.querySelector('.fupl-sortable-icon').innerHTML = fupl_options.sortable_icon;
         }
-        upl.addSortableEvents(fupl_item_dom, fupl_options);
+        upl.add_sortable_events(fupl_item_dom, fupl_options);
       }
 
       return fupl_options.instance_result_wrapper.querySelector('.fupl-item:last-child');

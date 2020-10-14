@@ -1,6 +1,6 @@
 import {fupl_utilities} from './_utilities.js';
 import {create_info_text} from './_create_info_text.js';
-import {activateSortable} from './_sortable';
+import {activate_sortable} from './_sortable';
 
 export function createUploader(fupl) {
 
@@ -164,7 +164,7 @@ export function createUploader(fupl) {
     if( fupl.opts.sortable) {
       if( fupl.opts.multiple && fupl.opts.sortable_varname ) {
 
-        activateSortable(fupl.opts);
+        activate_sortable(fupl.opts);
 
       } else {
         throw new Error('FileUploader: incorrect “sortable” settings:\n' +

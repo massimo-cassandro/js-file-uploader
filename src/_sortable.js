@@ -11,7 +11,7 @@
   - http://jsfiddle.net/zfnj5rv4/
 */
 
-export function addSortableEvents(fupl_item, fupl_options) {
+export function add_sortable_events(fupl_item, fupl_options) {
   'use strict';
 
   let dragged_element = null,
@@ -147,10 +147,10 @@ export function addSortableEvents(fupl_item, fupl_options) {
     }
 
   }, false);
-} // end addSortableEvents
+} // end add_sortable_events
 
 
-export function activateSortable(fupl_options) {
+export function activate_sortable(fupl_options) {
   'use strict';
 
   // classe aggiunta all'elemento fupl_options.instance_result_wrapper se l'opzione
