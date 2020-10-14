@@ -2,7 +2,7 @@ FileUploader = ((upl) => {
 
 
   /*
-  Aggiunge un elemento a fupl_options.istance_result_wrapper
+  Aggiunge un elemento a fupl_options.instance_result_wrapper
   e imposta i necessari listeners
 
   item_data è l'oggetto con i dati dell'elemento:
@@ -96,22 +96,22 @@ FileUploader = ((upl) => {
       }
 
       if(fupl_options._mode === 'single') {
-        fupl_options.istance_result_wrapper.innerHTML = fupl_item_wrapper.innerHTML;
+        fupl_options.instance_result_wrapper.innerHTML = fupl_item_wrapper.innerHTML;
       } else {
 
         // se non esistono elementi caricati predentemente, si svuota il div per
         // eliminare la scritta no file
-        if( !fupl_options.istance_result_wrapper.querySelector('.fupl-item')) {
-          fupl_options.istance_result_wrapper.innerHTML = '';
+        if( !fupl_options.instance_result_wrapper.querySelector('.fupl-item')) {
+          fupl_options.instance_result_wrapper.innerHTML = '';
         }
 
-        fupl_options.istance_result_wrapper.insertAdjacentHTML('beforeend',
+        fupl_options.instance_result_wrapper.insertAdjacentHTML('beforeend',
           fupl_item_wrapper.innerHTML
         );
       }
 
 
-      let fupl_item_dom = fupl_options.istance_result_wrapper.querySelector('.fupl-item:last-child');
+      let fupl_item_dom = fupl_options.instance_result_wrapper.querySelector('.fupl-item:last-child');
       fupl_item_dom.dataset.id = item_data.id;
 
       // aggiunta evento trigger eliminazione elemento
@@ -128,7 +128,7 @@ FileUploader = ((upl) => {
             );
           }
 
-          // controllo se istance_result_wrapper è vuoto
+          // controllo se instance_result_wrapper è vuoto
           // e impostazione di attributo e contenuti
           upl.set_has_values(fupl_options);
 
@@ -191,7 +191,7 @@ FileUploader = ((upl) => {
         fupl_item_dom.setAttribute('draggable', true);
 
         // il valore ordine comincia da zero
-        let order_value = fupl_options.istance_result_wrapper.querySelectorAll('.fupl-item').length -1;
+        let order_value = fupl_options.instance_result_wrapper.querySelectorAll('.fupl-item').length -1;
 
         fupl_item_dom.insertAdjacentHTML('beforeend',
           '<input type="hidden" class="fupl-sortable-order" name="' +
@@ -206,7 +206,7 @@ FileUploader = ((upl) => {
         upl.addSortableEvents(fupl_item_dom, fupl_options);
       }
 
-      return fupl_options.istance_result_wrapper.querySelector('.fupl-item:last-child');
+      return fupl_options.instance_result_wrapper.querySelector('.fupl-item:last-child');
 
     } catch(e) {
       console.error(e); // eslint-disable-line

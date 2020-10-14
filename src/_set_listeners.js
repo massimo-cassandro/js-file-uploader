@@ -38,8 +38,8 @@ FileUploader = ((upl) => {
     }, false);
 
     // selezione tramite input
-    fupl_options.istance_input.addEventListener('change', () => {
-      upl.sendFiles( fupl_options.istance_input.files, fupl_options );
+    fupl_options.instance_input.addEventListener('change', () => {
+      upl.sendFiles( fupl_options.instance_input.files, fupl_options );
     });
 
   }; // end upl.setListeners

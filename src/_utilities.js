@@ -41,10 +41,10 @@ export const fupl_utilities = {
   },
 
   set_has_values: fupl_options => {
-    let items = fupl_options.istance_result_wrapper.querySelectorAll('.fupl-item').length;
+    let items = fupl_options.instance_result_wrapper.querySelectorAll('.fupl-item').length;
     fupl_options.wrapper.dataset.hasValues = items? 'true' : 'false';
     if(!items) {
-      fupl_options.istance_result_wrapper.innerHTML = fupl_options.templates.no_file[fupl_options._type];
+      fupl_options.instance_result_wrapper.innerHTML = fupl_options.templates.no_file[fupl_options._type];
     }
   },
 

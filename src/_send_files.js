@@ -31,7 +31,7 @@ FileUploader = ((upl) => {
         // if(modo === true) {
         //   _form.addEventListener('submit', submitHandler);
         // } else {
-        //   if( !fupl_options.istance_result_wrapper.querySelector('.fupl-item.fupl-is-uploading')) {
+        //   if( !fupl_options.instance_result_wrapper.querySelector('.fupl-item.fupl-is-uploading')) {
         //     _form.removeEventListener('submit', submitHandler);
         //   }
         // }

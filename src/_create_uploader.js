@@ -1,5 +1,6 @@
 import {fupl_utilities} from './_utilities.js';
 import {create_info_text} from './_create_info_text.js';
+import {activateSortable} from './_sortable';
 
 export function createUploader(fupl) {
 
@@ -103,22 +104,22 @@ export function createUploader(fupl) {
     // uploader template
     fupl.opts.element.innerHTML = fupl.opts.template_main;
 
-    fupl.opts.istance_input = fupl.opts.element.querySelector('.fupl-panel input[type="file"]');
-    fupl.opts.istance_label = fupl.opts.element.querySelector('.fupl-panel label');
-    fupl.opts.istance_dd_text = fupl.opts.element.querySelector('.fupl-panel .fupl-dd-text');
-    fupl.opts.istance_info_text = fupl.opts.element.querySelector('.fupl-panel .fupl-info-text');
-    fupl.opts.istance_result_wrapper = fupl.opts.element.querySelector('.fupl-result');
+    fupl.opts.instance_input = fupl.opts.element.querySelector('.fupl-panel input[type="file"]');
+    fupl.opts.instance_label = fupl.opts.element.querySelector('.fupl-panel label');
+    fupl.opts.instance_dd_text = fupl.opts.element.querySelector('.fupl-panel .fupl-dd-text');
+    fupl.opts.instance_info_text = fupl.opts.element.querySelector('.fupl-panel .fupl-info-text');
+    fupl.opts.instance_result_wrapper = fupl.opts.element.querySelector('.fupl-result');
 
 
     // inserting text and attributes
     // if( fupl.opts.required ) {
-    //   fupl.opts.istance_input.setAttribute('required', '');
+    //   fupl.opts.instance_input.setAttribute('required', '');
     // }
     if( fupl.opts.multiple ) {
-      fupl.opts.istance_input.setAttribute('multiple', '');
+      fupl.opts.instance_input.setAttribute('multiple', '');
     }
     if( fupl.opts.accept !== null ) {
-      fupl.opts.istance_input.setAttribute('accept', fupl.opts.accept.join(','));
+      fupl.opts.instance_input.setAttribute('accept', fupl.opts.accept.join(','));
     }
 
     // adding data-required attribute to wrapper
@@ -133,26 +134,26 @@ export function createUploader(fupl) {
     }
 
 
-    fupl.opts.istance_label.insertAdjacentHTML('beforeend',
+    fupl.opts.instance_label.insertAdjacentHTML('beforeend',
       fupl.strs[`${fupl.opts._type}_${fupl.opts._mode}_select_text`]
     );
     if(fupl.opts.input_label_class) {
-      fupl.opts.istance_label.classList.add(...fupl.opts.input_label_class.split(' '));
+      fupl.opts.instance_label.classList.add(...fupl.opts.input_label_class.split(' '));
     }
-    fupl.opts.istance_dd_text.innerHTML = fupl.strs[`${fupl.opts._type}_${fupl.opts._mode}_drag_text`];
+    fupl.opts.instance_dd_text.innerHTML = fupl.strs[`${fupl.opts._type}_${fupl.opts._mode}_drag_text`];
 
 
 
     // info text
     if( fupl.opts.show_info_text ) {
       if(fupl.opts.custom_info_text) {
-        fupl.opts.istance_info_text.innerHTML = fupl.opts.custom_info_text;
+        fupl.opts.instance_info_text.innerHTML = fupl.opts.custom_info_text;
       } else {
-        fupl.opts.istance_info_text.innerHTML = create_info_text(fupl);
+        fupl.opts.instance_info_text.innerHTML = create_info_text(fupl);
       }
 
       if(fupl.opts.help_text) {
-        fupl.opts.istance_info_text.insertAdjacentHTML('beforeend',
+        fupl.opts.instance_info_text.insertAdjacentHTML('beforeend',
           `<div class="fupl-help-text">${fupl.opts.help_text}</div>`
         );
       }
@@ -163,8 +164,7 @@ export function createUploader(fupl) {
     if( fupl.opts.sortable) {
       if( fupl.opts.multiple && fupl.opts.sortable_varname ) {
 
-//TODO
-        // upl.activateSortable(fupl.opts);
+        activateSortable(fupl.opts);
 
       } else {
         throw new Error('FileUploader: incorrect “sortable” settings:\n' +

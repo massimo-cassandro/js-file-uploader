@@ -9,67 +9,123 @@
 	],
 "creatorBuild": "32186",
 "files": {
-	"/.htaccess": {
+	"/.editorconfig": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/.htaccess",
+		"oAP": "/.editorconfig",
 		"oF": 0
 		},
-	"/aspect_ratio_demo.html": {
+	"/.eslintignore": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/aspect_ratio_demo.html",
+		"oAP": "/.eslintignore",
 		"oF": 0
 		},
-	"/basic-img-demo.html": {
+	"/.eslintrc.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/.eslintrc-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"/.gitattributes": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/basic-img-demo.html",
+		"oAP": "/.gitattributes",
 		"oF": 0
 		},
-	"/css/bs4_toast_notificaton.css": {
+	"/.gitignore": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/.gitignore",
+		"oF": 0
+		},
+	"/.npmignore": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/.npmignore",
+		"oF": 0
+		},
+	"/.vscode/tasks.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/.vscode/tasks-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"/demo/.htaccess": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/.htaccess",
+		"oF": 0
+		},
+	"/demo/aspect_ratio_demo.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/aspect_ratio_demo.html",
+		"oF": 0
+		},
+	"/demo/basic-img-demo.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/basic-img-demo.html",
+		"oF": 0
+		},
+	"/demo/css/bs4_toast_notificaton.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "/css/bs4_toast_notificaton-min.css",
+		"oAP": "/demo/css/bs4_toast_notificaton-min.css",
 		"oF": 0,
 		"oS": 3
 		},
-	"/css/fileuploader-demo.css.map": {
+	"/demo/css/fileuploader-demo.css.map": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/css/fileuploader-demo.css.map",
+		"oAP": "/demo/css/fileuploader-demo.css.map",
 		"oF": 0
 		},
-	"/css/fileuploader.css": {
+	"/demo/css/fileuploader.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "/css/fileuploader-min.css",
+		"oAP": "/demo/css/fileuploader-min.css",
 		"oF": 0,
 		"oS": 3
 		},
-	"/css/fileuploader.css.map": {
+	"/demo/css/fileuploader.css.map": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/css/fileuploader.css.map",
+		"oAP": "/demo/css/fileuploader.css.map",
 		"oF": 0
 		},
-	"/css/fileuploader.scss": {
+	"/demo/css/fileuploader.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
@@ -77,60 +133,60 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 0,
-		"oAP": "/css/fileuploader.css",
+		"oAP": "/demo/css/fileuploader.css",
 		"oF": 0,
 		"oS": 3,
 		"sct": 1
 		},
-	"/demo-assets/demo-min.js": {
+	"/demo/demo-assets/demo-min.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/demo-min-min.js",
+		"oAP": "/demo/demo-min-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
 		},
-	"/demo-assets/demo-min.js.map": {
+	"/demo/demo-assets/demo-min.js.map": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/demo-assets/demo-min.js.map",
+		"oAP": "/demo/demo-assets/demo-min.js.map",
 		"oF": 0
 		},
-	"/demo-assets/demo.css": {
+	"/demo/demo-assets/demo.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "/demo-assets/demo-min.css",
+		"oAP": "/demo/demo-assets/demo-min.css",
 		"oF": 0,
 		"oS": 3
 		},
-	"/demo-assets/demo.css.map": {
+	"/demo/demo-assets/demo.css.map": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/demo-assets/demo.css.map",
+		"oAP": "/demo/demo-assets/demo.css.map",
 		"oF": 0
 		},
-	"/demo-assets/demo.js": {
+	"/demo/demo-assets/demo.js": {
 		"bF": 4,
 		"ft": 64,
 		"ma": 1,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/demo-assets/demo-min.js",
+		"oAP": "/demo/demo-assets/demo-min.js",
 		"oF": 3,
 		"sC": 3,
 		"tS": 0
 		},
-	"/demo-assets/demo.scss": {
+	"/demo/demo-assets/demo.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
@@ -138,22 +194,22 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 0,
-		"oAP": "/demo-assets/demo.css",
+		"oAP": "/demo/demo-assets/demo.css",
 		"oF": 0,
 		"oS": 3,
 		"sct": 1
 		},
-	"/demo-assets/github.svg": {
+	"/demo/demo-assets/github.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 1,
-		"oAP": "/demo-assets/github.svg",
+		"oAP": "/demo/demo-assets/github.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 3758088159,
 		"prP": 0
 		},
-	"/demo-assets/libraries/_prism.scss": {
+	"/demo/demo-assets/libraries/_prism.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
@@ -161,417 +217,558 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 1,
-		"oAP": "/demo-assets/libraries/_prism.css",
+		"oAP": "/demo/demo-assets/libraries/_prism.css",
 		"oF": 0,
 		"oS": 3,
 		"sct": 1
 		},
-	"/demo-assets/libraries/prism-min.js": {
+	"/demo/demo-assets/libraries/prism-min.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/demo-assets/prism-min-min.js",
+		"oAP": "/demo/demo-assets/prism-min-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
 		},
-	"/demo-assets/libraries/src/prism.js": {
-		"bF": 6,
+	"/demo/demo-assets/libraries/src/prism.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/demo-assets/libraries/prism-min.js",
-		"oF": 3,
+		"oAP": "/demo/demo-assets/libraries/prism-min.js",
+		"oF": 1,
 		"sC": 3,
 		"tS": 0
 		},
-	"/demo-assets/server-side-demo-response.json": {
+	"/demo/demo-assets/server-side-demo-response.json": {
 		"ft": 524288,
 		"oA": 1,
-		"oAP": "/demo-assets/server-side-demo-response-min.json",
+		"oAP": "/demo/demo-assets/server-side-demo-response-min.json",
 		"oF": 0,
 		"oO": 0,
 		"oS": 1
 		},
-	"/extra_fields_demo.html": {
+	"/demo/extra_fields_demo.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/extra_fields_demo.html",
+		"oAP": "/demo/extra_fields_demo.html",
 		"oF": 0
 		},
-	"/fancybox_demo.html": {
+	"/demo/fancybox_demo.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/fancybox_demo.html",
+		"oAP": "/demo/fancybox_demo.html",
 		"oF": 0
 		},
-	"/index.html": {
+	"/demo/index.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/index.html",
+		"oAP": "/demo/index.html",
 		"oF": 0
 		},
-	"/js/basic-img-demo.js": {
+	"/demo/js/basic-img-demo.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/basic-img-demo-min.js",
+		"oAP": "/demo/basic-img-demo-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
 		},
-	"/js/bs4-toast-notification.js": {
+	"/demo/js/bs4-toast-notification.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/bs4-toast-notification-min.js",
+		"oAP": "/demo/bs4-toast-notification-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
 		},
-	"/main_demo.html": {
+	"/demo/main_demo.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/main_demo.html",
+		"oAP": "/demo/main_demo.html",
 		"oF": 0
 		},
-	"/pug/_tpl.pug": {
+	"/demo/pug/_tpl.pug": {
 		"cB": 0,
 		"cOD": 0,
 		"ft": 512,
 		"hM": 0,
 		"oA": 1,
-		"oAP": "/_tpl.html",
+		"oAP": "/demo/_tpl.html",
 		"oF": 0,
 		"oS": 0
 		},
-	"/pug/basic-img-demo.pug": {
+	"/demo/pug/basic-img-demo.pug": {
 		"cB": 0,
 		"cOD": 0,
 		"ft": 512,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/basic-img-demo.html",
+		"oAP": "/demo/basic-img-demo.html",
 		"oF": 0,
 		"oS": 0
 		},
-	"/pug/index.pug": {
+	"/demo/pug/index.pug": {
 		"cB": 0,
 		"cOD": 0,
 		"ft": 512,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/index.html",
+		"oAP": "/demo/index.html",
 		"oF": 0,
 		"oS": 0
 		},
-	"/silent_degradation_sample.html": {
+	"/demo/silent_degradation_sample.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/silent_degradation_sample.html",
+		"oAP": "/demo/silent_degradation_sample.html",
 		"oF": 0
 		},
-	"/sortable_demo.html": {
+	"/demo/sortable_demo.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/sortable_demo.html",
+		"oAP": "/demo/sortable_demo.html",
 		"oF": 0
 		},
-	"/svg_demo.html": {
+	"/demo/svg_demo.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/svg_demo.html",
+		"oAP": "/demo/svg_demo.html",
 		"oF": 0
 		},
-	"/test-files/16-9 img - martha-dominguez-de-gouveia-747676-unsplash.jpg": {
+	"/demo/test-files/16-9 img - martha-dominguez-de-gouveia-747676-unsplash.jpg": {
 		"ft": 16384,
 		"iS": 222121,
 		"jF": 0,
 		"oA": 1,
-		"oAP": "/test-files/16-9 img - martha-dominguez-de-gouveia-747676-unsplash.jpg",
+		"oAP": "/demo/test-files/16-9 img - martha-dominguez-de-gouveia-747676-unsplash.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"q": 100
 		},
-	"/test-files/fezbot2000-1511423-unsplash.jpg": {
+	"/demo/test-files/fezbot2000-1511423-unsplash.jpg": {
 		"ft": 16384,
 		"iS": 358840,
 		"jF": 0,
 		"oA": 1,
-		"oAP": "/test-files/fezbot2000-1511423-unsplash.jpg",
+		"oAP": "/demo/test-files/fezbot2000-1511423-unsplash.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"q": 100
 		},
-	"/test-files/gigi-1508584-unsplash.jpg": {
+	"/demo/test-files/gigi-1508584-unsplash.jpg": {
 		"ft": 16384,
 		"iS": 175418,
 		"jF": 0,
 		"oA": 1,
-		"oAP": "/test-files/gigi-1508584-unsplash.jpg",
+		"oAP": "/demo/test-files/gigi-1508584-unsplash.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"q": 100
 		},
-	"/test-files/ibrahim-rifath-787485-unsplash.jpg": {
+	"/demo/test-files/ibrahim-rifath-787485-unsplash.jpg": {
 		"ft": 16384,
 		"iS": 193345,
 		"jF": 0,
 		"oA": 1,
-		"oAP": "/test-files/ibrahim-rifath-787485-unsplash.jpg",
+		"oAP": "/demo/test-files/ibrahim-rifath-787485-unsplash.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"q": 100
 		},
-	"/test-files/medium_img.png": {
+	"/demo/test-files/medium_img.png": {
 		"ft": 32768,
 		"iS": 6759,
 		"oA": 1,
-		"oAP": "/test-files/medium_img.png",
+		"oAP": "/demo/test-files/medium_img.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
 		"q": 100
 		},
-	"/test-files/pdf1.pdf": {
+	"/demo/test-files/pdf1.pdf": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/test-files/pdf1.pdf",
+		"oAP": "/demo/test-files/pdf1.pdf",
 		"oF": 0
 		},
-	"/test-files/pdf2.pdf": {
+	"/demo/test-files/pdf2.pdf": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/test-files/pdf2.pdf",
+		"oAP": "/demo/test-files/pdf2.pdf",
 		"oF": 0
 		},
-	"/test-files/small_img.png": {
+	"/demo/test-files/small_img.png": {
 		"ft": 32768,
 		"iS": 7429,
 		"oA": 1,
-		"oAP": "/test-files/small_img.png",
+		"oAP": "/demo/test-files/small_img.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
 		"q": 100
 		},
-	"/test-files/svg1.svg": {
+	"/demo/test-files/svg1.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 1,
-		"oAP": "/test-files/svg1.svg",
+		"oAP": "/demo/test-files/svg1.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 3758088159,
 		"prP": 0
 		},
-	"/test-files/svg2.svg": {
+	"/demo/test-files/svg2.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 1,
-		"oAP": "/test-files/svg2.svg",
+		"oAP": "/demo/test-files/svg2.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 3758088159,
 		"prP": 0
 		},
-	"/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/components/prism-clike.js": {
-		"bF": 0,
-		"ft": 64,
+	"/dist/fileUploader.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
 		"ma": 0,
-		"mi": 0,
-		"oA": 2,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/components/prism-clike.js",
+		"oA": 1,
+		"oAP": "/dist/fileUploader-min.css",
 		"oF": 0,
-		"sC": 3,
-		"tS": 0
+		"oS": 3
 		},
-	"/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/components/prism-core.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 0,
-		"mi": 0,
-		"oA": 2,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/components/prism-core.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 0
+	"/dist/fileUploader.css.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/dist/fileUploader.css.map",
+		"oF": 0
 		},
-	"/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/components/prism-css-extras.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 0,
-		"mi": 0,
-		"oA": 2,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/components/prism-css-extras.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 0
-		},
-	"/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/components/prism-css.js": {
+	"/dist/FileUploader.esm.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/prism-css-min.js",
+		"oAP": "/dist/FileUploader.esm-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
 		},
-	"/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/components/prism-javascript.js": {
+	"/dist/FileUploader.esm.min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/dist/FileUploader.esm.min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/dist/FileUploader.umd.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/dist/FileUploader.umd-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/dist/FileUploader.umd.min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/dist/FileUploader.umd.min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/js-file-uploader-v2.code-workspace": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/js-file-uploader-v2.code-workspace",
+		"oF": 0
+		},
+	"/LICENSE": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/LICENSE",
+		"oF": 0
+		},
+	"/node_modules": {
+		"ft": 65536,
+		"oA": 2,
+		"oAP": "/build/node_modules",
+		"oF": 0
+		},
+	"/node_modules/prismjs/components/prism-clike.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 2,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/components/prism-javascript.js",
+		"oAP": "/node_modules/prismjs/components/prism-clike.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
 		},
-	"/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/components/prism-json.js": {
+	"/node_modules/prismjs/components/prism-core.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 2,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/components/prism-json.js",
+		"oAP": "/node_modules/prismjs/components/prism-core.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
 		},
-	"/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/components/prism-markup-templating.js": {
+	"/node_modules/prismjs/components/prism-css-extras.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 2,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/components/prism-markup-templating.js",
+		"oAP": "/node_modules/prismjs/components/prism-css-extras.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
 		},
-	"/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/components/prism-markup.js": {
+	"/node_modules/prismjs/components/prism-css.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 2,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/components/prism-markup.js",
+		"oAP": "/node_modules/prismjs/components/prism-css.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
 		},
-	"/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/components/prism-php.js": {
+	"/node_modules/prismjs/components/prism-javascript.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 2,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/components/prism-php.js",
+		"oAP": "/node_modules/prismjs/components/prism-javascript.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
 		},
-	"/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/plugins/highlight-keywords/prism-highlight-keywords.js": {
+	"/node_modules/prismjs/components/prism-json.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 2,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/plugins/highlight-keywords/prism-highlight-keywords.js",
+		"oAP": "/node_modules/prismjs/components/prism-json.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
 		},
-	"/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js": {
+	"/node_modules/prismjs/components/prism-markup-templating.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 2,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js",
+		"oAP": "/node_modules/prismjs/components/prism-markup-templating.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
 		},
-	"/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.js": {
+	"/node_modules/prismjs/components/prism-markup.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 2,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.js",
+		"oAP": "/node_modules/prismjs/components/prism-markup.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
 		},
-	"/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/plugins/previewers/prism-previewers.js": {
+	"/node_modules/prismjs/components/prism-php.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 2,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/plugins/previewers/prism-previewers.js",
+		"oAP": "/node_modules/prismjs/components/prism-php.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
 		},
-	"/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/plugins/toolbar/prism-toolbar.js": {
+	"/node_modules/prismjs/plugins/highlight-keywords/prism-highlight-keywords.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 2,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/plugins/toolbar/prism-toolbar.js",
+		"oAP": "/node_modules/prismjs/plugins/highlight-keywords/prism-highlight-keywords.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
 		},
-	"/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/plugins/unescaped-markup/prism-unescaped-markup.js": {
+	"/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 2,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/node_modules/prismjs/plugins/unescaped-markup/prism-unescaped-markup.js",
+		"oAP": "/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
 		},
-	"/Users/max/Sites/js-file-uploader-v2/scss/_FileUploader.scss": {
+	"/node_modules/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 2,
+		"oAP": "/node_modules/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/node_modules/prismjs/plugins/previewers/prism-previewers.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 2,
+		"oAP": "/node_modules/prismjs/plugins/previewers/prism-previewers.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/node_modules/prismjs/plugins/toolbar/prism-toolbar.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 2,
+		"oAP": "/node_modules/prismjs/plugins/toolbar/prism-toolbar.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/node_modules/prismjs/plugins/unescaped-markup/prism-unescaped-markup.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 2,
+		"oAP": "/node_modules/prismjs/plugins/unescaped-markup/prism-unescaped-markup.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/node_modules/rollup-plugin-terser/rollup-plugin-terser.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 2,
+		"oAP": "/node_modules/rollup-plugin-terser/rollup-plugin-terser.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/package-lock.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/package-lock-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"/package.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/package-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"/README.md": {
+		"cB": 0,
+		"cS": 0,
+		"eF": 1,
+		"eL": 1,
+		"ema": 1,
+		"eSQ": 1,
+		"ft": 4096,
+		"hM": 0,
+		"oA": 1,
+		"oAP": "/README.html",
+		"oF": 0,
+		"oFM": 0,
+		"oS": 0,
+		"pHT": 0,
+		"pME": 1,
+		"rFN": 0,
+		"uCM": 0
+		},
+	"/rollup.config.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/rollup.config-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/scss/_fupl-default-variables.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
@@ -579,12 +776,12 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 1,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/scss/_FileUploader.css",
+		"oAP": "/scss/_fupl-default-variables.css",
 		"oF": 0,
 		"oS": 3,
 		"sct": 1
 		},
-	"/Users/max/Sites/js-file-uploader-v2/scss/_fupl-default-variables.scss": {
+	"/scss/_fupl-input.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
@@ -592,12 +789,12 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 1,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/scss/_fupl-default-variables.css",
+		"oAP": "/scss/_fupl-input.css",
 		"oF": 0,
 		"oS": 3,
 		"sct": 1
 		},
-	"/Users/max/Sites/js-file-uploader-v2/scss/_fupl-input.scss": {
+	"/scss/_fupl-legend.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
@@ -605,12 +802,12 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 1,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/scss/_fupl-input.css",
+		"oAP": "/scss/_fupl-legend.css",
 		"oF": 0,
 		"oS": 3,
 		"sct": 1
 		},
-	"/Users/max/Sites/js-file-uploader-v2/scss/_fupl-legend.scss": {
+	"/scss/_fupl-loading.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
@@ -618,12 +815,12 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 1,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/scss/_fupl-legend.css",
+		"oAP": "/scss/_fupl-loading.css",
 		"oF": 0,
 		"oS": 3,
 		"sct": 1
 		},
-	"/Users/max/Sites/js-file-uploader-v2/scss/_fupl-loading.scss": {
+	"/scss/_fupl-panel.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
@@ -631,12 +828,12 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 1,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/scss/_fupl-loading.css",
+		"oAP": "/scss/_fupl-panel.css",
 		"oF": 0,
 		"oS": 3,
 		"sct": 1
 		},
-	"/Users/max/Sites/js-file-uploader-v2/scss/_fupl-panel.scss": {
+	"/scss/_fupl-result-doc.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
@@ -644,12 +841,12 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 1,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/scss/_fupl-panel.css",
+		"oAP": "/scss/_fupl-result-doc.css",
 		"oF": 0,
 		"oS": 3,
 		"sct": 1
 		},
-	"/Users/max/Sites/js-file-uploader-v2/scss/_fupl-result-doc.scss": {
+	"/scss/_fupl-result-img.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
@@ -657,12 +854,12 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 1,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/scss/_fupl-result-doc.css",
+		"oAP": "/scss/_fupl-result-img.css",
 		"oF": 0,
 		"oS": 3,
 		"sct": 1
 		},
-	"/Users/max/Sites/js-file-uploader-v2/scss/_fupl-result-img.scss": {
+	"/scss/_fupl-result.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
@@ -670,12 +867,12 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 1,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/scss/_fupl-result-img.css",
+		"oAP": "/scss/_fupl-result.css",
 		"oF": 0,
 		"oS": 3,
 		"sct": 1
 		},
-	"/Users/max/Sites/js-file-uploader-v2/scss/_fupl-result.scss": {
+	"/scss/_fupl-wrapper.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
@@ -683,12 +880,12 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 1,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/scss/_fupl-result.css",
+		"oAP": "/scss/_fupl-wrapper.css",
 		"oF": 0,
 		"oS": 3,
 		"sct": 1
 		},
-	"/Users/max/Sites/js-file-uploader-v2/scss/_fupl-wrapper.scss": {
+	"/scss/_fupl.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
@@ -696,12 +893,12 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 1,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/scss/_fupl-wrapper.css",
+		"oAP": "/scss/_fupl.css",
 		"oF": 0,
 		"oS": 3,
 		"sct": 1
 		},
-	"/Users/max/Sites/js-file-uploader-v2/scss/_fupl.scss": {
+	"/scss/_fupl_breakpoints_mixins.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
@@ -709,12 +906,12 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 1,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/scss/_fupl.css",
+		"oAP": "/scss/_fupl_breakpoints_mixins.css",
 		"oF": 0,
 		"oS": 3,
 		"sct": 1
 		},
-	"/Users/max/Sites/js-file-uploader-v2/scss/_fupl_breakpoints_mixins.scss": {
+	"/scss/_fupl_extra_fields.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
@@ -722,12 +919,12 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 1,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/scss/_fupl_breakpoints_mixins.css",
+		"oAP": "/scss/_fupl_extra_fields.css",
 		"oF": 0,
 		"oS": 3,
 		"sct": 1
 		},
-	"/Users/max/Sites/js-file-uploader-v2/scss/_fupl_extra_fields.scss": {
+	"/scss/_fupl_sortable.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
@@ -735,23 +932,202 @@
 		"ft": 4,
 		"ma": 1,
 		"oA": 1,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/scss/_fupl_extra_fields.css",
+		"oAP": "/scss/_fupl_sortable.css",
 		"oF": 0,
 		"oS": 3,
 		"sct": 1
 		},
-	"/Users/max/Sites/js-file-uploader-v2/scss/_fupl_sortable.scss": {
+	"/scss/fileUploader.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
 		"ec": 1,
 		"ft": 4,
 		"ma": 1,
-		"oA": 1,
-		"oAP": "/Users/max/Sites/js-file-uploader-v2/scss/_fupl_sortable.css",
-		"oF": 0,
+		"oA": 0,
+		"oAP": "/dist/fileUploader.css",
+		"oF": 3,
 		"oS": 3,
-		"sct": 1
+		"sct": 0
+		},
+	"/src": {
+		"ft": 65536,
+		"oA": 1,
+		"oAP": "/build/src",
+		"oF": 0
+		},
+	"/src-utilities/check_required_uploader.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/src-utilities/check_required_uploader-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/src/_build_hidden_fields.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/_build_hidden_fields-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/src/_create_info_text.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/_create_info_text-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/src/_create_item.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/_create_item-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/src/_create_uploader.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/_create_uploader-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/src/_default_options.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/_default_options-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/src/_init.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/_init-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/src/_send_files.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/_send_files-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/src/_set_listeners.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/_set_listeners-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/src/_sortable.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/_sortable-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/src/_utilities.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/_utilities-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/src/file_uploader.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/file_uploader-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/src/i18n/en.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/src/en-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/src/i18n/it.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/src/it-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/TODO.md": {
+		"cB": 0,
+		"cS": 0,
+		"eF": 1,
+		"eL": 1,
+		"ema": 1,
+		"eSQ": 1,
+		"ft": 4096,
+		"hM": 0,
+		"oA": 1,
+		"oAP": "/TODO.html",
+		"oF": 0,
+		"oFM": 0,
+		"oS": 0,
+		"pHT": 0,
+		"pME": 1,
+		"rFN": 0,
+		"uCM": 0
 		}
 	},
 "hooks": [
@@ -760,7 +1136,7 @@
 	},
 "projectAttributes": {
 	"creationDate": 570912256.97591996,
-	"displayValue": "js-file-uploader-2 DEMO",
+	"displayValue": "js-file-uploader-2",
 	"displayValueWasSetByUser": 1,
 	"iconImageName": "brackets_gray",
 	"iconImageWasSetByUser": 1
@@ -2694,7 +3070,7 @@
 		"autoOutputPathRelativePath": "../",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
-		"autoOutputPathStyle": 2,
+		"autoOutputPathStyle": 0,
 		"bundleFormat": 0,
 		"createSourceMap": 0,
 		"minifyOutput": 0,
@@ -2873,7 +3249,7 @@
 	"rollupExternals": "NewExternalModule:::test",
 	"rollupReplacements": "process.env.NODE_ENV:::$NODE_ENV,,,ENVIRONMENT:::$NODE_ENV",
 	"rollupTreeshakingEnabled": 1,
-	"skippedFoldersString": "log, _logs, logs, _cache, cache, .idea, /storage/framework/sessions, node_modules, /__dev__, /src, /utilities",
+	"skippedFoldersString": "/utilities,/storage/framework/sessions,/src,node_modules,_logs,logs,log,.idea,/__dev__,_cache,cache",
 	"sourceFolderName": "source",
 	"susyVersion": 3,
 	"tsAllowSyntheticDefaultImports": 0,

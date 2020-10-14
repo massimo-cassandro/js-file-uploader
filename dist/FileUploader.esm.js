@@ -320,10 +320,10 @@ const fupl_utilities = {
   },
 
   set_has_values: fupl_options => {
-    let items = fupl_options.istance_result_wrapper.querySelectorAll('.fupl-item').length;
+    let items = fupl_options.instance_result_wrapper.querySelectorAll('.fupl-item').length;
     fupl_options.wrapper.dataset.hasValues = items? 'true' : 'false';
     if(!items) {
-      fupl_options.istance_result_wrapper.innerHTML = fupl_options.templates.no_file[fupl_options._type];
+      fupl_options.instance_result_wrapper.innerHTML = fupl_options.templates.no_file[fupl_options._type];
     }
   },
 
@@ -525,22 +525,22 @@ console.log(fupl.opts.element);
     // uploader template
     fupl.opts.element.innerHTML = fupl.opts.template_main;
 
-    fupl.opts.istance_input = fupl.opts.element.querySelector('.fupl-panel input[type="file"]');
-    fupl.opts.istance_label = fupl.opts.element.querySelector('.fupl-panel label');
-    fupl.opts.istance_dd_text = fupl.opts.element.querySelector('.fupl-panel .fupl-dd-text');
-    fupl.opts.istance_info_text = fupl.opts.element.querySelector('.fupl-panel .fupl-info-text');
-    fupl.opts.istance_result_wrapper = fupl.opts.element.querySelector('.fupl-result');
+    fupl.opts.instance_input = fupl.opts.element.querySelector('.fupl-panel input[type="file"]');
+    fupl.opts.instance_label = fupl.opts.element.querySelector('.fupl-panel label');
+    fupl.opts.instance_dd_text = fupl.opts.element.querySelector('.fupl-panel .fupl-dd-text');
+    fupl.opts.instance_info_text = fupl.opts.element.querySelector('.fupl-panel .fupl-info-text');
+    fupl.opts.instance_result_wrapper = fupl.opts.element.querySelector('.fupl-result');
 
 
     // inserting text and attributes
     // if( fupl.opts.required ) {
-    //   fupl.opts.istance_input.setAttribute('required', '');
+    //   fupl.opts.instance_input.setAttribute('required', '');
     // }
     if( fupl.opts.multiple ) {
-      fupl.opts.istance_input.setAttribute('multiple', '');
+      fupl.opts.instance_input.setAttribute('multiple', '');
     }
     if( fupl.opts.accept !== null ) {
-      fupl.opts.istance_input.setAttribute('accept', fupl.opts.accept.join(','));
+      fupl.opts.instance_input.setAttribute('accept', fupl.opts.accept.join(','));
     }
 
     // adding data-required attribute to wrapper
@@ -555,27 +555,27 @@ console.log(fupl.opts.element);
     }
 
 
-    fupl.opts.istance_label.insertAdjacentHTML('beforeend',
+    fupl.opts.instance_label.insertAdjacentHTML('beforeend',
       fupl.strs[`${fupl.opts._type}_${fupl.opts._mode}_select_text`]
     );
     if(fupl.opts.input_label_class) {
-      fupl.opts.istance_label.classList.add(...fupl.opts.input_label_class.split(' '));
+      fupl.opts.instance_label.classList.add(...fupl.opts.input_label_class.split(' '));
     }
-    fupl.opts.istance_dd_text.innerHTML = fupl.strs[`${fupl.opts._type}_${fupl.opts._mode}_drag_text`];
+    fupl.opts.instance_dd_text.innerHTML = fupl.strs[`${fupl.opts._type}_${fupl.opts._mode}_drag_text`];
 
 
 
     // info text
     if( fupl.opts.show_info_text ) {
       if(fupl.opts.custom_info_text) {
-        fupl.opts.istance_info_text.innerHTML = fupl.opts.custom_info_text;
+        fupl.opts.instance_info_text.innerHTML = fupl.opts.custom_info_text;
       } else {
 //TODO
-        // fupl.opts.istance_info_text.innerHTML = fupl_utilities.create_info_text(fupl);
+        // fupl.opts.instance_info_text.innerHTML = fupl_utilities.create_info_text(fupl);
       }
 
       if(fupl.opts.help_text) {
-        fupl.opts.istance_info_text.insertAdjacentHTML('beforeend',
+        fupl.opts.instance_info_text.insertAdjacentHTML('beforeend',
           `<div class="fupl-help-text">${fupl.opts.help_text}</div>`
         );
       }
@@ -715,34 +715,34 @@ function fupl_init(fupl) {
     // the fileUploader element contains json data and is parsed separately
     delete all_data_params.fileUploader;
 
-    let istance_opts = Object.assign(
+    let instance_opts = Object.assign(
       {},
       fupl.opts,
       JSON.parse(upl_element.dataset.fileUploader || '{}' ),
       all_data_params
     );
 
-    // the element itself is added to `istance_options`:
-    istance_opts.element = upl_element;
+    // the element itself is added to `instance_options`:
+    instance_opts.element = upl_element;
 
     // last check and fileuploader starting
     try {
       //  uploader remote url can't be null
-      if( !istance_opts.uploader_url ) {
+      if( !instance_opts.uploader_url ) {
         throw new Error( 'FileUploader: missing `uploader_url` parameter' );
       }
 
       // filetype parameter check
-      istance_opts.filetype = istance_opts.filetype.toLowerCase();
+      instance_opts.filetype = instance_opts.filetype.toLowerCase();
 
       // aspect_ratio_accuracy
-      istance_opts.aspect_ratio_accuracy = 10 ** +istance_opts.aspect_ratio_accuracy;
+      instance_opts.aspect_ratio_accuracy = 10 ** +instance_opts.aspect_ratio_accuracy;
 
       // img+svg key aliases
-      if(['svg+img', 'img-svg', 'svg-img'].indexOf(istance_opts.filetype) !== -1) {
-        istance_opts.filetype = 'img+svg';
+      if(['svg+img', 'img-svg', 'svg-img'].indexOf(instance_opts.filetype) !== -1) {
+        instance_opts.filetype = 'img+svg';
       }
-      if( Object.keys( fupl_utilities.mimetypes ).indexOf(istance_opts.filetype) === -1 ) {
+      if( Object.keys( fupl_utilities.mimetypes ).indexOf(instance_opts.filetype) === -1 ) {
         throw new Error( 'FileUploader: incorrect `filetype` parameter' );
       }
     } catch(e) {
@@ -761,74 +761,74 @@ function fupl_init(fupl) {
 
     json_params.forEach(item => {
       try {
-        if(typeof istance_opts[item] === 'string' ) {
-          istance_opts[item] = JSON.parse(istance_opts[item]);
+        if(typeof instance_opts[item] === 'string' ) {
+          instance_opts[item] = JSON.parse(instance_opts[item]);
         }
       } catch(e) {
         console.error(`FileUploader: the “${item}” parameter is not a valid json`); // eslint-disable-line
-        console.log(istance_opts.element); // eslint-disable-line
+        console.log(instance_opts.element); // eslint-disable-line
         console.error( e );// eslint-disable-line
       }
     });
 
     // parsing of all boolean or null parameters
-    for(let i in istance_opts) {
+    for(let i in instance_opts) {
 
-      if(typeof istance_opts[i] === 'string' &&
-        ['true', 'false', 'null'].indexOf(istance_opts[i].toLowerCase()) !== -1
+      if(typeof instance_opts[i] === 'string' &&
+        ['true', 'false', 'null'].indexOf(instance_opts[i].toLowerCase()) !== -1
       ) {
-        istance_opts[i] = JSON.parse(istance_opts[i]);
+        instance_opts[i] = JSON.parse(instance_opts[i]);
       }
     }
 
     // aspect ratio is ignored if exact constrains are presents
-    if(istance_opts.img_aspect_ratio && istance_opts.img_w && istance_opts.img_h) {
+    if(instance_opts.img_aspect_ratio && instance_opts.img_w && instance_opts.img_h) {
       console.error('FileUploader: the aspect ratio parameter will be ignored, because exact constraints have been set for width and height'); // eslint-disable-line
-      istance_opts.img_aspect_ratio = null;
+      instance_opts.img_aspect_ratio = null;
     }
 
     // aspect ratio parsing
-    istance_opts.parsed_img_aspect_ratio = null;
-    if(istance_opts.img_aspect_ratio) {
+    instance_opts.parsed_img_aspect_ratio = null;
+    if(instance_opts.img_aspect_ratio) {
 
       try {
-        if(isNaN(istance_opts.img_aspect_ratio)) {
+        if(isNaN(instance_opts.img_aspect_ratio)) {
           let w,h;
-          if(istance_opts.img_aspect_ratio.indexOf('/') !== -1) {
-            [w,h] = istance_opts.img_aspect_ratio.split('/');
-          } else if (istance_opts.img_aspect_ratio.indexOf(':') !== -1) {
-            [w,h] = istance_opts.img_aspect_ratio.split(':');
+          if(instance_opts.img_aspect_ratio.indexOf('/') !== -1) {
+            [w,h] = instance_opts.img_aspect_ratio.split('/');
+          } else if (instance_opts.img_aspect_ratio.indexOf(':') !== -1) {
+            [w,h] = instance_opts.img_aspect_ratio.split(':');
           }
 
           if( w && h ) {
-            istance_opts.parsed_img_aspect_ratio = +w/+h;
+            instance_opts.parsed_img_aspect_ratio = +w/+h;
           } else {
-            istance_opts.parsed_img_aspect_ratio = Number(istance_opts.img_aspect_ratio);
+            instance_opts.parsed_img_aspect_ratio = Number(instance_opts.img_aspect_ratio);
           }
 
         } else {
-          istance_opts.parsed_img_aspect_ratio = +istance_opts.img_aspect_ratio;
+          instance_opts.parsed_img_aspect_ratio = +instance_opts.img_aspect_ratio;
         }
 
-        if(istance_opts.parsed_img_aspect_ratio) {
-          istance_opts.parsed_img_aspect_ratio = Math.round((istance_opts.parsed_img_aspect_ratio + Number.EPSILON) * istance_opts.aspect_ratio_accuracy) / istance_opts.aspect_ratio_accuracy;
+        if(instance_opts.parsed_img_aspect_ratio) {
+          instance_opts.parsed_img_aspect_ratio = Math.round((instance_opts.parsed_img_aspect_ratio + Number.EPSILON) * instance_opts.aspect_ratio_accuracy) / instance_opts.aspect_ratio_accuracy;
         }
 
-        if(isNaN(istance_opts.parsed_img_aspect_ratio) || !istance_opts.parsed_img_aspect_ratio) {
+        if(isNaN(instance_opts.parsed_img_aspect_ratio) || !instance_opts.parsed_img_aspect_ratio) {
           throw new Error();
         }
       } catch(e) {
-        console.error(`FileUploader: incorrect aspect ratio parameter → ${istance_opts.img_aspect_ratio}`); // eslint-disable-line
-        istance_opts.img_aspect_ratio = null;
-        istance_opts.parsed_img_aspect_ratio = null;
+        console.error(`FileUploader: incorrect aspect ratio parameter → ${instance_opts.img_aspect_ratio}`); // eslint-disable-line
+        instance_opts.img_aspect_ratio = null;
+        instance_opts.parsed_img_aspect_ratio = null;
       }
     }
 
     // calling the createUploader function. Global options are completely overwritten
-    // by istance_opts
+    // by instance_opts
     new createUploader({
       strs: fupl.strs,
-      opts: istance_opts
+      opts: instance_opts
     });
 
   }); // end document.querySelectorAll(fupl.selector).forEach
