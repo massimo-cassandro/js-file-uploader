@@ -1,20 +1,10 @@
-/*
-uses:
-https://github.com/beautify-web/js-beautify
-https://prismjs.com/
-*/
-
-/* global Prism */
-
 import {html_beautify} from 'js-beautify/js/lib/beautify-html';
-// import {js_beautify} from 'js-beautify/js/lib/beautify';
-
 import {escapeHTML} from '@massimo-cassandro/m-utilities/js-utilities/_escapeHTML';
 
-(() => {
-  'use strict';
+export const demo_code_wrapper = document.querySelector('.demo_code');
 
-  // get and format markup
+export function show_markup(title) {
+
   const demo_code_wrapper = document.querySelector('.demo_code'),
     beautify_opts = {
       'indent_size'                 : 2,
@@ -46,7 +36,7 @@ import {escapeHTML} from '@massimo-cassandro/m-utilities/js-utilities/_escapeHTM
       fupl_markup = fupl_node.body.innerHTML.trim();
 
     demo_code_wrapper.insertAdjacentHTML('beforeend',
-      `<h2 class="h3">Markup</h2>
+      `<h2 class="h3">${title}</h2>
       <div class="line-numbers code-box">
         <pre><code class="language-markup">` +
           escapeHTML(html_beautify(fupl_markup, beautify_opts)) +
@@ -54,31 +44,6 @@ import {escapeHTML} from '@massimo-cassandro/m-utilities/js-utilities/_escapeHTM
       </div>`
     );
 
-
-    // get and format js
-    const script_tag = document.querySelector('.fupl-script script');
-    if(script_tag) {
-
-      fetch( script_tag.src )
-        .then(response => response.text())
-        .then((data) => {
-          const url = new URL(script_tag.src);
-          demo_code_wrapper.insertAdjacentHTML('beforeend',
-            `<h2 class="h3">Javascript <small>(${url.pathname})</small></h2>
-            <div class="line-numbers code-box">
-              <pre><code class="language-js">` +
-                escapeHTML(data) +
-              `</code></pre>
-            </div>`
-          );
-
-          // code highlighting
-          Prism.highlightAll(true);
-        });
-    } else {
-
-      Prism.highlightAll(true);
-    }
   }
 
-})();
+}

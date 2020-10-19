@@ -40,11 +40,11 @@ export const fupl_utilities = {
       && 'fetch' in window;
   },
 
-  set_has_values: fupl_options => {
-    let items = fupl_options.instance_result_wrapper.querySelectorAll('.fupl-item').length;
-    fupl_options.wrapper.dataset.hasValues = items? 'true' : 'false';
+  set_has_values: fupl => {
+    let items = fupl.opts.instance_result_wrapper.querySelectorAll('.fupl-item').length;
+    fupl.opts.wrapper.dataset.hasValues = items? 'true' : 'false';
     if(!items) {
-      fupl_options.instance_result_wrapper.innerHTML = fupl_options.templates.no_file[fupl_options._type];
+      fupl.opts.instance_result_wrapper.innerHTML = fupl.strs[`no_${fupl.opts._type}_text`];
     }
   },
 

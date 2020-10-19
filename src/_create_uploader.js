@@ -1,6 +1,8 @@
 import {fupl_utilities} from './_utilities.js';
 import {create_info_text} from './_create_info_text.js';
-import {activate_sortable} from './_sortable';
+import {activate_sortable} from './_sortable.js';
+import {create_item} from './_create_item.js';
+import {set_listeners} from './_set_listeners.js';
 
 export function createUploader(fupl) {
 
@@ -178,7 +180,7 @@ export function createUploader(fupl) {
 
     // adding registered values
     // fupl.opts.values must be an array of objects
-    // is it is a single object, it is wrapped in an array
+    // if it is a single object, it is wrapped in an array
     if(fupl.opts.values) {
       if(typeof fupl.opts.values === 'object') {
         if(!Array.isArray(fupl.opts.values)) {
@@ -189,53 +191,35 @@ export function createUploader(fupl) {
       }
     }
 
-//TODO
-/*
     if( fupl.opts.values && fupl.opts.values.length ) {
 
       fupl.opts.values.forEach( item => {
-        upl.createItem(item, fupl.opts, true); // true means that the element comes from the server
+        create_item(item, fupl, true); // true means that the element comes from the server
       });
 
     }
-    upl.set_has_values(fupl.opts);
+    fupl_utilities.set_has_values(fupl);
 
     // gestione aggiunta nuovi elementi
-    upl.setListeners(fupl.opts);
+    set_listeners(fupl);
 
 
     // calling init_callback, if present
     if( fupl.opts.init_callback !== null ) {
-      upl.exec_callback(fupl.opts.init_callback, fupl.opts);
+      fupl_utilities.exec_callback(fupl.opts.init_callback, fupl);
     }
 
     // calling fancybox_callback_func, if present
     if( fupl.opts.fancybox && fupl.opts.fancybox_callback_func !== null ) {
-      upl.exec_callback(fupl.opts.fancybox_callback_func, fupl.opts);
+      fupl_utilities.exec_callback(fupl.opts.fancybox_callback_func, fupl.opts);
     }
-*/
 
     //debug
     if( fupl.opts.debug ) {
       /* eslint-disable */
-      /* console.groupCollapsed('FileUploader options');
-        // creazione di un oggetto bidimensinale per
-        // semplificare la rappresentazione in tabella
-        let c_options = {},
-        c_keys = Object.keys(fupl.opts);
-        c_keys.sort();
-        c_keys.forEach(item => {
-          let _toStringify = typeof fupl.opts[item] === 'object' &&
-          fupl.opts[item] !== null &&
-            item !== 'element';
-          c_options[item] = _toStringify ? JSON.stringify(fupl.opts[item], null, ' ') : fupl.opts[item];
-        });
-        console.table(c_options);
-        console.groupCollapsed('fupl.opts');
-          console.log(fupl.opts);
-        console.groupEnd();
-      console.groupEnd();
-      */
+
+      //fupl.opts is exposed as global object for debug purposes
+      window.fileUploderOpts = fupl.opts;
 
       console.groupCollapsed('FileUploader options');
         console.log(fupl.opts);

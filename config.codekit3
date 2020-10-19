@@ -138,23 +138,50 @@
 		"oS": 3,
 		"sct": 1
 		},
-	"/demo/demo-assets/demo-min.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 0,
-		"mi": 0,
-		"oA": 1,
-		"oAP": "/demo/demo-min-min.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 0
-		},
 	"/demo/demo-assets/demo-min.js.map": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/demo/demo-assets/demo-min.js.map",
+		"oF": 0
+		},
+	"/demo/demo-assets/demo-post-parsing-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/demo/demo-assets/demo-post-parsing-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/demo/demo-assets/demo-post-parsing-min.js.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/demo-assets/demo-post-parsing-min.js.map",
+		"oF": 0
+		},
+	"/demo/demo-assets/demo-pre-parsing-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/demo/demo-assets/demo-pre-parsing-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/demo/demo-assets/demo-pre-parsing-min.js.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/demo-assets/demo-pre-parsing-min.js.map",
 		"oF": 0
 		},
 	"/demo/demo-assets/demo.css": {
@@ -174,17 +201,6 @@
 		"oA": 0,
 		"oAP": "/demo/demo-assets/demo.css.map",
 		"oF": 0
-		},
-	"/demo/demo-assets/demo.js": {
-		"bF": 4,
-		"ft": 64,
-		"ma": 1,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/demo/demo-assets/demo-min.js",
-		"oF": 3,
-		"sC": 3,
-		"tS": 0
 		},
 	"/demo/demo-assets/demo.scss": {
 		"aP": 1,
@@ -209,20 +225,7 @@
 		"plM": 3758088159,
 		"prP": 0
 		},
-	"/demo/demo-assets/libraries/_prism.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"ec": 1,
-		"ft": 4,
-		"ma": 1,
-		"oA": 1,
-		"oAP": "/demo/demo-assets/libraries/_prism.css",
-		"oF": 0,
-		"oS": 3,
-		"sct": 1
-		},
-	"/demo/demo-assets/libraries/prism-min.js": {
+	"/demo/demo-assets/prism-min.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
@@ -233,17 +236,6 @@
 		"sC": 3,
 		"tS": 0
 		},
-	"/demo/demo-assets/libraries/src/prism.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/demo/demo-assets/libraries/prism-min.js",
-		"oF": 1,
-		"sC": 3,
-		"tS": 0
-		},
 	"/demo/demo-assets/server-side-demo-response.json": {
 		"ft": 524288,
 		"oA": 1,
@@ -251,6 +243,63 @@
 		"oF": 0,
 		"oO": 0,
 		"oS": 1
+		},
+	"/demo/demo-assets/src/_demo_utils.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/demo/demo-assets/src/_demo_utils-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/demo/demo-assets/src/_prism.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"ec": 1,
+		"ft": 4,
+		"ma": 1,
+		"oA": 1,
+		"oAP": "/demo/demo-assets/src/_prism.css",
+		"oF": 0,
+		"oS": 3,
+		"sct": 1
+		},
+	"/demo/demo-assets/src/demo-post-parsing.js": {
+		"bF": 4,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/demo/demo-assets/demo-post-parsing-min.js",
+		"oF": 3,
+		"sC": 3,
+		"tS": 0
+		},
+	"/demo/demo-assets/src/demo-pre-parsing.js": {
+		"bF": 4,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/demo/demo-assets/demo-pre-parsing-min.js",
+		"oF": 3,
+		"sC": 3,
+		"tS": 0
+		},
+	"/demo/demo-assets/src/prism.js": {
+		"bF": 4,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 0,
+		"oAP": "/demo/demo-assets/prism-min.js",
+		"oF": 3,
+		"sC": 3,
+		"tS": 0
 		},
 	"/demo/extra_fields_demo.html": {
 		"cB": 0,
@@ -551,8 +600,8 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
-		"oA": 2,
-		"oAP": "/node_modules/prismjs/components/prism-clike.js",
+		"oA": 1,
+		"oAP": "/node_modules/prismjs/components/prism-clike-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -562,8 +611,8 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
-		"oA": 2,
-		"oAP": "/node_modules/prismjs/components/prism-core.js",
+		"oA": 1,
+		"oAP": "/node_modules/prismjs/components/prism-core-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -573,8 +622,8 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
-		"oA": 2,
-		"oAP": "/node_modules/prismjs/components/prism-css-extras.js",
+		"oA": 1,
+		"oAP": "/node_modules/prismjs/components/prism-css-extras-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -584,8 +633,8 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
-		"oA": 2,
-		"oAP": "/node_modules/prismjs/components/prism-css.js",
+		"oA": 1,
+		"oAP": "/node_modules/prismjs/components/prism-css-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -595,8 +644,8 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
-		"oA": 2,
-		"oAP": "/node_modules/prismjs/components/prism-javascript.js",
+		"oA": 1,
+		"oAP": "/node_modules/prismjs/components/prism-javascript-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -606,8 +655,8 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
-		"oA": 2,
-		"oAP": "/node_modules/prismjs/components/prism-json.js",
+		"oA": 1,
+		"oAP": "/node_modules/prismjs/components/prism-json-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -617,8 +666,8 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
-		"oA": 2,
-		"oAP": "/node_modules/prismjs/components/prism-markup-templating.js",
+		"oA": 1,
+		"oAP": "/node_modules/prismjs/components/prism-markup-templating-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -628,8 +677,8 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
-		"oA": 2,
-		"oAP": "/node_modules/prismjs/components/prism-markup.js",
+		"oA": 1,
+		"oAP": "/node_modules/prismjs/components/prism-markup-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -639,8 +688,8 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
-		"oA": 2,
-		"oAP": "/node_modules/prismjs/components/prism-php.js",
+		"oA": 1,
+		"oAP": "/node_modules/prismjs/components/prism-php-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -650,8 +699,8 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
-		"oA": 2,
-		"oAP": "/node_modules/prismjs/plugins/highlight-keywords/prism-highlight-keywords.js",
+		"oA": 1,
+		"oAP": "/node_modules/prismjs/plugins/highlight-keywords/prism-highlight-keywords-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -661,8 +710,8 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
-		"oA": 2,
-		"oAP": "/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js",
+		"oA": 1,
+		"oAP": "/node_modules/prismjs/plugins/line-numbers/prism-line-numbers-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -672,8 +721,8 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
-		"oA": 2,
-		"oAP": "/node_modules/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.js",
+		"oA": 1,
+		"oAP": "/node_modules/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -683,8 +732,8 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
-		"oA": 2,
-		"oAP": "/node_modules/prismjs/plugins/previewers/prism-previewers.js",
+		"oA": 1,
+		"oAP": "/node_modules/prismjs/plugins/previewers/prism-previewers-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -694,8 +743,8 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
-		"oA": 2,
-		"oAP": "/node_modules/prismjs/plugins/toolbar/prism-toolbar.js",
+		"oA": 1,
+		"oAP": "/node_modules/prismjs/plugins/toolbar/prism-toolbar-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -705,8 +754,8 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
-		"oA": 2,
-		"oAP": "/node_modules/prismjs/plugins/unescaped-markup/prism-unescaped-markup.js",
+		"oA": 1,
+		"oAP": "/node_modules/prismjs/plugins/unescaped-markup/prism-unescaped-markup-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -716,8 +765,8 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
-		"oA": 2,
-		"oAP": "/node_modules/rollup-plugin-terser/rollup-plugin-terser.js",
+		"oA": 1,
+		"oAP": "/node_modules/rollup-plugin-terser/rollup-plugin-terser-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -967,24 +1016,13 @@
 		"sC": 3,
 		"tS": 0
 		},
-	"/src/_build_hidden_fields.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 0,
-		"mi": 0,
-		"oA": 1,
-		"oAP": "/_build_hidden_fields-min.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 0
-		},
 	"/src/_create_info_text.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/_create_info_text-min.js",
+		"oAP": "/src/_create_info_text-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -995,7 +1033,7 @@
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/_create_item-min.js",
+		"oAP": "/src/_create_item-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -1006,7 +1044,7 @@
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/_create_uploader-min.js",
+		"oAP": "/src/_create_uploader-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -1017,7 +1055,7 @@
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/_default_options-min.js",
+		"oAP": "/src/_default_options-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -1028,7 +1066,7 @@
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/_init-min.js",
+		"oAP": "/src/_init-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -1039,7 +1077,7 @@
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/_send_files-min.js",
+		"oAP": "/src/_send_files-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -1050,7 +1088,7 @@
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/_set_listeners-min.js",
+		"oAP": "/src/_set_listeners-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -1061,7 +1099,7 @@
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/_sortable-min.js",
+		"oAP": "/src/_sortable-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -1072,7 +1110,7 @@
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/_utilities-min.js",
+		"oAP": "/src/_utilities-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -1083,7 +1121,7 @@
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/file_uploader-min.js",
+		"oAP": "/src/file_uploader-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -1094,7 +1132,7 @@
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/src/en-min.js",
+		"oAP": "/src/i18n/en-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -1105,7 +1143,7 @@
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/src/it-min.js",
+		"oAP": "/src/i18n/it-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0

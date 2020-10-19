@@ -22,7 +22,9 @@ html(lang='en')
     meta(name="theme-color" content="#ffffff")
 
   body
-    div.header JS-FileUploader v. 2
+    div.header
+      div.container.py-0
+        a(href="/demo") JS-FileUploader v. 2 Demo
     div.github-banner
       a(href="https://github.com/massimo-cassandro/js-file-uploader" title="Go to repository")
         include ../demo-assets/github.svg
@@ -42,14 +44,22 @@ html(lang='en')
         p.back
           a(href="/demo") Back to index
 
+        p.font-italic Take a look at the
+          |
+          |
+          a(href="https://github.com/massimo-cassandro/js-file-uploader/wiki/About-the-demo") "About the demo"
+          |
+          | page for info about the following code boxes.
+
         div.demo_code
 
         p.back
           a(href="/demo") Back to index
 
+
+    script(src="demo-assets/prism-min.js" data-manual)
+    script(src="demo-assets/demo-pre-parsing-min.js")
     div.fupl-script
       block js
-    script(src="demo-assets/libraries/prism-min.js" data-manual)
-    script(src="demo-assets/demo-min.js")
-
+    script(src="demo-assets/demo-post-parsing-min.js" defer)
 

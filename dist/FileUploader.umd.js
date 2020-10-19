@@ -623,7 +623,7 @@
       if( fupl.opts.values && fupl.opts.values.length ) {
 
         fupl.opts.values.forEach( item => {
-          upl.createItem(item, fupl.opts, true); // true means that the element comes from the server
+          upl.create_item(item, fupl.opts, true); // true means that the element comes from the server
         });
 
       }

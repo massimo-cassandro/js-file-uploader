@@ -22,8 +22,8 @@ export const fupl_strings_it = {
   alert_img_max_height_err: 'Altezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
   alert_img_ratio_err: 'La proporzione tra base e altezza dell\'immagine non corrisponde a quella richiesta ({{aspect_ratio}})',
 
-  no_img_test: 'Nessuna immagine presente',
-  no_doc_test: 'Nessun file presente',
+  no_img_text: 'Nessuna immagine presente',
+  no_doc_text: 'Nessun file presente',
   remove_btn_text: 'Elimina questo file',
 
   // info text strings

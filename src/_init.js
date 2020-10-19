@@ -80,8 +80,6 @@ export  function fupl_init(fupl) {
 
     // these parameters must be arrays but can retrieved as strings from data attributes
     const json_params = [
-      'input_text',
-      'templates',
       'info_text_wrap_string',
       'values',
       'extra_fields'

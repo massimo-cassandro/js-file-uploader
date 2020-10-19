@@ -1,49 +1,46 @@
-FileUploader = ((upl) => {
 
-  // https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
-  upl.setListeners = (fupl_options) => {
+import {send_files} from './_send_files.js';
 
-    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-      fupl_options.element.addEventListener(eventName, (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-      }, false);
-    });
+// https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
+export function set_listeners(fupl) {
 
-    ['dragover', 'dragenter'].forEach(eventName => {
-      fupl_options.element.addEventListener(eventName, () => {
-        fupl_options.element.classList.add( fupl_options.element_dragover_class );
-      }, false);
-    });
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    fupl.opts.element.addEventListener(eventName, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    }, false);
+  });
 
-    ['dragleave', 'dragend'].forEach(eventName => {
-      fupl_options.element.addEventListener(eventName, () => {
-        fupl_options.element.classList.remove( fupl_options.element_dragover_class );
-      }, false);
-    });
+  ['dragover', 'dragenter'].forEach(eventName => {
+    fupl.opts.element.addEventListener(eventName, () => {
+      fupl.opts.element.classList.add( fupl.opts.element_dragover_class );
+    }, false);
+  });
 
-    fupl_options.element.addEventListener('drop', (e) => {
-      fupl_options.element.classList.remove( fupl_options.element_dragover_class );
-      if(!fupl_options.wrapper.hasAttribute('disabled')) {
-        let files = e.dataTransfer.files;
+  ['dragleave', 'dragend'].forEach(eventName => {
+    fupl.opts.element.addEventListener(eventName, () => {
+      fupl.opts.element.classList.remove( fupl.opts.element_dragover_class );
+    }, false);
+  });
 
-        if(files.length) { // se 0 è un riordinamento o altro evento
-          if( !fupl_options.multiple && files.length > 1 ) {
-            fupl_options.alert_api(fupl_options.alert_messages.too_much_files, fupl_options);
-          } else {
-            upl.sendFiles( files, fupl_options );
-          }
+  fupl.opts.element.addEventListener('drop', (e) => {
+    fupl.opts.element.classList.remove( fupl.opts.element_dragover_class );
+    if(!fupl.opts.wrapper.hasAttribute('disabled')) {
+      let files = e.dataTransfer.files;
+
+      if(files.length) { // if 0 is a reordering or another event
+        if( !fupl.opts.multiple && files.length > 1 ) {
+          fupl.opts.alert_api(fupl.str.alert_too_much_files, fupl);
+        } else {
+          send_files( files, fupl );
         }
       }
-    }, false);
+    }
+  }, false);
 
-    // selezione tramite input
-    fupl_options.instance_input.addEventListener('change', () => {
-      upl.sendFiles( fupl_options.instance_input.files, fupl_options );
-    });
+  // selecting thru input element
+  fupl.opts.instance_input.addEventListener('change', () => {
+    send_files( fupl.opts.instance_input.files, fupl );
+  });
 
-  }; // end upl.setListeners
-
-  return upl;
-
-})(FileUploader || {});
+}
