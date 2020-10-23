@@ -79,6 +79,9 @@
     // ff true, console shows informations about current FileUploader Configuration
     debug: false,
 
+    // method for ajax request
+    ajax_method: 'POST',
+
     // disabled state
     disabled: false,
 
@@ -430,6 +433,7 @@
    */
 
   function create_info_text(fupl) {
+
     let info_text = [];
 
     switch (fupl.opts.filetype) {
@@ -1097,7 +1101,7 @@
 
         new Promise(function(resolve, reject) {
           let ajax = new XMLHttpRequest();
-          ajax.open( 'POST', fupl.opts.uploader_url, true );
+          ajax.open( fupl.opts.ajax_method, fupl.opts.uploader_url, true );
 
           ajax.onload = function() {
 
