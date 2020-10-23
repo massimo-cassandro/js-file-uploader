@@ -8,8 +8,8 @@ html(lang='en')
     meta(content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport")
     title= `${title}${!homepage? ` | FileUploader` : ''}`
     link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous")
-    link(rel="stylesheet" href="/demo/css/fileuploader.css")
-    link(rel="stylesheet" href="/demo/demo-assets/demo.css")
+    link(rel="stylesheet" href="./css/fileuploader.css")
+    link(rel="stylesheet" href="./demo-assets/demo.css")
 
     link(rel="apple-touch-icon" sizes="180x180" href="http://primominuto.altervista.org/favicons/apple-touch-icon.png")
     link(rel="icon" type="image/png" sizes="32x32" href="http://primominuto.altervista.org/favicons/favicon-32x32.png")
@@ -26,7 +26,7 @@ html(lang='en')
   body
     div.header
       div.container.py-0
-        a(href="/demo") JS-FileUploader v. 2 Demo
+        a(href="./") JS-FileUploader v. 2 Demo
     div.github-banner
       a(href="https://github.com/massimo-cassandro/js-file-uploader" title="Go to repository")
         include ../demo-assets/github.svg
@@ -44,7 +44,7 @@ html(lang='en')
           block fupl
 
         p.back
-          a(href="/demo") Back to demo index
+          a(href="./") Back to demo index
 
         p.font-italic Take a look at the
           |
@@ -56,14 +56,14 @@ html(lang='en')
         div.demo_code
 
         p.back
-          a(href="/demo") Back to demo index
+          a(href="./") Back to demo index
 
 
-    script(src="/demo/demo-assets/prism-min.js" data-manual)
-    script(src="/demo/demo-assets/demo-pre-parsing-min.js")
+    script(src="./demo-assets/prism-min.js" data-manual)
+    script(src="./demo-assets/demo-pre-parsing-min.js")
 
     block external_scripts
     div.fupl-script
       block js
-    script(src="/demo/demo-assets/demo-post-parsing-min.js" defer)
+    script(src="./demo-assets/demo-post-parsing-min.js" defer)
 
