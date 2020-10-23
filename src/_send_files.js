@@ -89,7 +89,7 @@ export function send_files(filelist, fupl) {
 
       new Promise(function(resolve, reject) {
         let ajax = new XMLHttpRequest();
-        ajax.open( 'GET', fupl.opts.uploader_url, true );
+        ajax.open( fupl.opts.ajax_method, fupl.opts.uploader_url, true );
 
         ajax.onload = function() {
 

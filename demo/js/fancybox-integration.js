@@ -12,6 +12,10 @@ FileUploader({
     uploader_url: './demo-assets/server-side-demo-response.json',
     debug: true, // show a console.log of parsed options
 
+    // needed for GitHub Pages, but the POST method (the default)
+    // is the best option in most cases
+    ajax_method: 'GET',
+
     fancybox: true,
     fancybox_callback_func: (params) => {
       alert('fancybox_callback_func');

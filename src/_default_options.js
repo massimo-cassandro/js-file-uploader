@@ -9,6 +9,9 @@ export const default_options = {
   // ff true, console shows informations about current FileUploader Configuration
   debug: false,
 
+  // method for ajax request
+  ajax_method: 'POST',
+
   // disabled state
   disabled: false,
 
