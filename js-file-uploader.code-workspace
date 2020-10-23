@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "wiki",
+			"path": "../js-file-uploader-wiki"
+		},
+		{
+			"path": "node_modules/@massimo-cassandro"
+		}
+	],
+  "settings": {
+		"preview-in-browser.domain": "http://fileuploader2.local:8888/",
+		"preview-in-browser.removeStartString": "~/Sites/js-file-uploader-v2/"
+	}
+}

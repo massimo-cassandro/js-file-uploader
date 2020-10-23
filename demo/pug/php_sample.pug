@@ -1,0 +1,58 @@
+extends _tpl.pug
+block variables
+  - title = 'PHP Server Side sample'
+
+  <?php
+  |
+  |require './get_file_properties.php';
+  |
+  |$params = htmlspecialchars(json_encode(
+  |    array(
+  |      'filetype'        => 'img',
+  |      'img_min_h'       => 500,
+  |      'img_min_w'       => 500,
+  |      'max_filesize'    => 2500,
+  |      'uploader_legend' => true,
+  |      'values'          => array(
+  |        get_file_properties('fezbot2000-1511423-unsplash.jpg')
+  |      )
+  |    ), JSON_PRETTY_PRINT
+  |));
+  |?>
+  |
+  |
+
+block intro
+  p PHP server side sample. Take a look at #[code server_side.php] file in this folder.
+  p.
+    After file upload, look for ajax response in your console (debug must be on),
+    then submit the form to display data sent to the server.
+  p.
+    Note that the uploader parameters are built using php functions
+    (avoid using single #[code data] attributes), and the
+    predefined value array is generated reading file properties directly in the filesystem
+    (see #[code get_file_properties.php]).
+
+
+  <?php if(!empty($_POST)) { ?>
+    hr.mt-4
+    h2.h3 PHP #[code $_POST] data
+    div.line-numbers.code-box
+      pre
+        code.language-php
+          <?php var_export($_POST) ?>
+  <?php } ?>
+
+block fupl
+  form#form1(action="" method="post" name="form1")
+
+    div(data-file-uploader!="<?php echo $params ?>")
+      label(for="input_file") This is the original input field label
+      input#input_file(name="myfile" type="file")
+    p
+      button.btn.btn-primary(type="submit") Submit
+
+block js
+  script(src="./php_sample.js" type="module")
+
+

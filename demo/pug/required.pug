@@ -1,0 +1,45 @@
+extends _tpl.pug
+block variables
+  - title = 'Required Uploader'
+block intro
+  p.
+    Since a file can be loaded via #[em Drag &amp; Drop], it is not possible
+    to use the native #[code required] attribute to check for  mandatory files.
+  p.
+    However, this check can be performed using the #[code data-has-values] attribute
+    added dynamically to the #[code .fupl-wrapper] element.
+  p.
+    First, mark an uploader as #[em required] adding the relative attribute to the original
+    #[code input[type=file]] element (you can also add the #[code data-required="true"]
+    attribute to the main uploader container).
+  p.
+    Then, check for #[code data-has-values] (#[code true] or #[code false])
+    on form submit.
+    #[br]
+    You can use the #[code src-utilities/check_required_uploader.js] script
+    to quickly add a check function. The script is also located in the
+    #[code dist/utilities] folder as ESM and UMD.
+  p.
+    Look for more info at
+    #[a(href="https://github.com/massimo-cassandro/js-file-uploader/wiki/recipes-required") Recipes: required Uploader]
+    Wiki page.
+  p.
+    To test the script, submit the form without the required image.
+
+
+block fupl
+  form#form1
+    div#my-uploader(data-file-uploader
+      data-filetype="img"
+      data-img_min_h="500"
+      data-img_min_w="500"
+      data-max_filesize="2500"
+      data-uploader_legend="true"
+    )
+      label(for="input_file") Required image
+      input#input_file(name="myfile" type="file" required)
+    p
+      button.btn.btn-primary(type="submit") Submit
+
+block js
+  script(src="/demo/js/required-demo.js" type="module")

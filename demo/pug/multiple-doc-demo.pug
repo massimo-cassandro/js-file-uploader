@@ -1,0 +1,30 @@
+extends _tpl.pug
+block variables
+  - title = 'Multiple PDF demo'
+block intro
+  p Multiple PDF documents uploader.
+
+block fupl
+  div(data-file-uploader
+    data-filetype="pdf"
+    data-max_filesize="2500"
+    data-uploader_legend="true"
+    data-values= `[{
+      "id": "123",
+      "name": "pdf1.pdf",
+      "src": "test-files/pdf1.pdf",
+      "size": 6157
+    },
+    {
+      "id": "456",
+      "name": "pdf2.pdf",
+      "src": "test-files/pdf2.pdf",
+      "size": 6300
+    }]`
+  )
+    label(for="input_file") This is the original input field label
+    input#input_file(name="myfile" type="file" multiple)
+
+
+block js
+  script(src="/demo/js/basic-demo.js" type="module")

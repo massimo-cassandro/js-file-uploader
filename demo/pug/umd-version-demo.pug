@@ -1,0 +1,40 @@
+extends _tpl.pug
+block variables
+  - title = 'UMD version demo'
+block intro
+  p.
+    Same demo of #[a(href="basic-img-demo.html") Basic single image demo] but
+    loading #[em FileUploader] using the UMD version.
+  p.
+    Both #[code FileUploader.umd.min.js] (that exposes the #[code FileUplader] variable)
+    and #[code en.umd.min.js] (that exposes #[code fupl_strings_en])
+    are loaded using a script tag directly from #[code dist/] folder.
+
+
+block fupl
+    div(data-file-uploader
+      data-filetype="img"
+      data-img_min_h="500"
+      data-img_min_w="500"
+      data-max_filesize="2500"
+      data-uploader_legend="true"
+      data-values= `[{
+        "id": "124",
+        "name": "ibrahim-rifath-787485-unsplash.jpg",
+        "src": "test-files/ibrahim-rifath-787485-unsplash.jpg",
+        "wi": 1920,
+        "he": 1280,
+        "size": 193345
+      }]`
+    )
+      label(for="input_file") This is the original input field label
+      input#input_file(name="myfile" type="file")
+
+block external_scripts
+  script(src="/dist/FileUploader.umd.min.js")
+  script(src="/dist/i18n/en.umd.min.js")
+
+block js
+  script(src="/demo/js/umd-version-demo.js")
+
+

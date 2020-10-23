@@ -6,9 +6,9 @@
   "extends": "eslint:recommended",
   "globals": {
     "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly",
-    "FileUploader": "writable"
+    "SharedArrayBuffer": "readonly"
   },
+  "parser": "",
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module"

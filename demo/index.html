@@ -4,13 +4,9 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <title>File uploader demo</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
-    <style>
-      body {
-        padding:1rem 0;
-      }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/demo/css/fileuploader.css">
+    <link rel="stylesheet" href="/demo/demo-assets/demo.css">
     <link rel="apple-touch-icon" sizes="180x180" href="http://primominuto.altervista.org/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="http://primominuto.altervista.org/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="http://primominuto.altervista.org/favicons/favicon-16x16.png">
@@ -22,39 +18,65 @@
     <meta name="theme-color" content="#ffffff">
   </head>
   <body>
+    <div class="header">
+      <div class="container py-0"><a href="/demo">JS-FileUploader v. 2 Demo</a></div>
+    </div>
+    <div class="github-banner"><a href="https://github.com/massimo-cassandro/js-file-uploader" title="Go to repository"><svg width="33" height="33" viewBox="0 0 33 33" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M16.608.455C7.614.455.32 7.748.32 16.745c0 7.197 4.667 13.302 11.14 15.456.815.15 1.112-.353 1.112-.785 0-.386-.014-1.411-.022-2.77-4.531.984-5.487-2.184-5.487-2.184-.741-1.882-1.809-2.383-1.809-2.383-1.479-1.01.112-.99.112-.99 1.635.115 2.495 1.679 2.495 1.679 1.453 2.489 3.813 1.77 4.741 1.353.148-1.052.569-1.77 1.034-2.177-3.617-.411-7.42-1.809-7.42-8.051 0-1.778.635-3.233 1.677-4.371-.168-.412-.727-2.069.16-4.311 0 0 1.367-.438 4.479 1.67a15.602 15.602 0 0 1 4.078-.549 15.62 15.62 0 0 1 4.078.549c3.11-2.108 4.475-1.67 4.475-1.67.889 2.242.33 3.899.163 4.311C26.37 12.66 27 14.115 27 15.893c0 6.258-3.809 7.635-7.437 8.038.584.503 1.105 1.497 1.105 3.017 0 2.177-.02 3.934-.02 4.468 0 .436.294.943 1.12.784 6.468-2.159 11.131-8.26 11.131-15.455 0-8.997-7.294-16.29-16.291-16.29" fill-rule="evenodd" /></svg>
+</a></div>
     <div class="container">
-      <h1>File Uploader demo</h1>
-
-      <p>
-        <strong>HTML5 + Javascript asyncronous file upload.</strong><br>
-        v. 1 - Massimo Cassandro - (c) 2017/2020
-      </p>
-
-      <p>
-        Fileuploader automates and simplifies uploading files to HTML pages.
-      </p>
-
-      <p>
+      <h1>File uploader demo</h1>
+      <p><strong>HTML5 + Javascript asyncronous file uploader.</strong><br>v. 2 - Massimo Cassandro - (c) 2015/2020</p>
+      <p><strong>Fileuploader</strong> automates and simplifies html file uploading.
+        <br>
         Uploads are performed asynchronously via an Ajax call to a server-side script
-        that must register the file and return a JSON string.
+        that saves the file and returns a JSON string.
       </p>
-
       <p>
         Although the default settings are based on Bootstrap 4, FileUploader
         is entirely and easily configurable from scratch and can be adapted to any layout.
       </p>
-
-
+      <p>
+        The following demos, show some features of FileUploader in front-end
+        (take a look to the
+        <a href="https://github.com/massimo-cassandro/js-file-uploader/wiki/About-the-demo">About the demo</a>
+        pages for more info).
+        <br>
+        You can also find a small example of a complete server-side application
+        in the <code>/demo/php_sample</code> folder.
+        
+      </p>
+      <p>Take a look at <a href="https://github.com/massimo-cassandro/js-file-uploader#readme">Read me</a>
+        and <a href="https://github.com/massimo-cassandro/js-file-uploader/wiki">Wiki pages</a> for more info.
+        
+        
+      </p>
+      <h2>Demo pages</h2>
       <ul>
-        <li><a href="main_demo.html">Main demo</a></li>
-        <li><a href="silent_degradation_sample.html">Silent degradation sample</a></li>
-        <li><a href="sortable_demo.html">Sortable demo</a></li>
-        <li><a href="fancybox_demo.html">Fancybox demo</a></li>
-        <li><a href="extra_fields_demo.html">Extra fields demo</a></li>
-        <li><a href="svg_demo.html">Svg demo</a></li>
-        <li><a href="aspect_ratio_demo.html">Aspect ratio demo</a></li>
+        <li><a href="single-img-demo.html">Single image</a></li>
+        <li><a href="multiple-uploaders.html">Multiple uploaders in the same page</a></li>
+        <li><a href="sortable.html">Sortable elements</a></li>
+        <li><a href="extra-fields.html">Adding extra fields</a></li>
+        <li><a href="aspect-ratio.html">Aspect ratio check</a></li>
+        <li><a href="disabling-submit-demo.html">Disabling submit</a></li>
+        <li><a href="disabling-uploader.html">Disabling uploader</a></li>
+        <li><a href="required.html">Required uploader</a></li>
+        <li><a href="#">Using Bootstrap toast notification</a></li>
+        <li><a href="single-doc-demo.html">Single document</a></li>
+        <li><a href="multiple-doc-demo.html">Multiple PDF only documents</a></li>
+        <li><a href="#">Custom accept attribute (TODO)</a></li>
+        <li><a href="callbacks.html">Callbacks</a></li>
+        <li><a href="svg-demo.html">SVG uploader</a></li>
+        <li><a href="mixed-img-svg-demo.html">Mixed IMG / SVG uploader</a></li>
+        <li><a href="fancybox.html">Fancybox integration</a></li>
+        <li><a href="umd-version-demo.html">Using UMD version</a></li>
       </ul>
-
-      <p><a href="https://github.com/massimo-cassandro/js-file-uploader#readme">Read me</a></p>
+      <div class="intro">
+      </div>
+    </div>
+    <script src="/demo/demo-assets/prism-min.js" data-manual></script>
+    <script src="/demo/demo-assets/demo-pre-parsing-min.js"></script>
+    <div class="fupl-script">
+    </div>
+    <script src="/demo/demo-assets/demo-post-parsing-min.js" defer></script>
   </body>
 </html>

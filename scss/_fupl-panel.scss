@@ -10,7 +10,7 @@
       cursor: pointer;
 
       [disabled] & {
-        &:hover, &:active, &:focus {
+        &, &:hover, &:active, &:focus {
           cursor: not-allowed;
           font-style: italic;
           color: $fupl-disabled-color!important;
@@ -24,20 +24,28 @@
   .fupl-dd-text {
     font-size:85%;
     margin:.5rem 0 0;
-    font-weight: $font-weight-bold;
+    font-weight: $fupl-font-weight-bold;
     display: block;
 
-    @include media-breakpoint-up(md) {
+    @include fupl-media-query-min(md) {
       margin:0 0 0 .5rem;
       display: inline;
       white-space: nowrap;
     }
   }
-  .fupl-info-text {
+  .fupl-info-text  {
     font-size:75%;
     font-style: italic;
     color: $fupl-info-text-color;
     margin-top:.5rem;
+    &, & > div {  // optimization info
+      margin-top:.5rem;
+    }
+  }
+
+  .fupl-help-text {
+    margin-top: 1rem;
+    font-weight: $fupl-help-text-font-weight;
   }
 
 }

@@ -1,0 +1,25 @@
+extends _tpl.pug
+block variables
+  - title = 'SVG demo'
+block intro
+
+
+block fupl
+  div(data-file-uploader
+    data-filetype="svg"
+    data-max_filesize="100"
+    data-uploader_legend="true"
+    data-uploader_legend_text="Test svg"
+    data-multiple="false"
+    data-values= `[{
+      "id": "123",
+      "name": "svg1.svg",
+      "src": "test-files/svg1.svg",
+      "wi": null,
+      "he": null,
+      "size": 298
+    }]`
+  )
+
+block js
+  script(src="/demo/js/basic-demo.js" type="module")

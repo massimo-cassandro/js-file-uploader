@@ -1,0 +1,26 @@
+extends _tpl.pug
+block variables
+  - title = 'Single document demo'
+block intro
+  p Single document FileUploader built from <code>input[type="file"]</code>, with pre-registered values.
+  p the #[code data-filetype="auto"] attribute allows to load any tipe of file.
+  p Look at console for more info
+
+block fupl
+  div(data-file-uploader
+    data-filetype="auto"
+    data-max_filesize="2500"
+    data-uploader_legend="true"
+    data-values= `[{
+      "id": "123",
+      "name": "rtf-doc.rtf",
+      "src": "test-files/rtf-doc.rtf",
+      "size": 399
+    }]`
+  )
+    label(for="input_file") This is the original input field label
+    input#input_file(name="myfile" type="file")
+
+
+block js
+  script(src="/demo/js/basic-demo.js" type="module")

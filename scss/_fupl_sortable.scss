@@ -7,19 +7,10 @@
   }
 }
 
-
 // class attached to an element when begin dragged
 .fupl-item-sorting {
-  opacity: .6;
-
-  $line_size: 10px;
-  background-color: #ddd;
-  background-image: repeating-linear-gradient(
-    45deg, transparent,
-    transparent $line_size,
-    rgba($white,.5) $line_size,
-    rgba($white,.5) ($line_size * 2)
-  );
+  opacity: .7;
+  background: $fupl-sorting-bg;
 }
 
 .fupl-item-dragover {

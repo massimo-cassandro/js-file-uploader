@@ -1,0 +1,44 @@
+extends _tpl.pug
+block variables
+  - title = 'Disabling sumit button while uploading'
+block intro
+  p.
+    This demo shows how the submit button can be disabled while
+    file is still loading adding the #[code data-disable_submit="true"] attribute.
+  p.
+    FileUploader adds hidden fields for server-side registration only
+    #[em after] the completion of the file upload process. Therefore,
+    if the form is submitted before the upload has been completed, the fields
+    with the file data will not be present.
+  p.
+    To avoid (not completely) this problem, the submit button can be disabled, as in this
+    example. A more efficient procedure can be performed using
+    a callback function.
+
+  p Drag or select a new image and check the submit button status in the browser console.
+
+block fupl
+  form#form1(action="" method="post" name="form1")
+    div(data-file-uploader
+      data-filetype="img"
+      data-uploader_legend="true"
+      data-disable_submit="true"
+      data-values= `[{
+        "id": "123",
+        "name": "ibrahim-rifath-787485-unsplash.jpg",
+        "src": "test-files/ibrahim-rifath-787485-unsplash.jpg",
+        "wi": 1920,
+        "he": 1280,
+        "size": 193345
+      }]`
+    )
+      label(for="input_file") This is the original input field label
+      input#input_file(name="myfile" type="file")
+    p
+      button#submitButton.btn.btn-primary(type="submit") Submit
+
+
+block js
+  script(src="/demo/js/disabling-submit-demo.js" type="module")
+
+

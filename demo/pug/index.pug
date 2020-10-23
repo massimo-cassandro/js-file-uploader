@@ -1,0 +1,68 @@
+extends _tpl.pug
+block variables
+  - title = 'File uploader demo'
+  - homepage = true
+block main_body
+  p
+    strong HTML5 + Javascript asyncronous file uploader.
+    br
+    | v. 2 - Massimo Cassandro - (c) 2015/2020
+
+  p.
+    #[strong Fileuploader] automates and simplifies html file uploading.
+    #[br]
+    Uploads are performed asynchronously via an Ajax call to a server-side script
+    that saves the file and returns a JSON string.
+  p.
+    Although the default settings are based on Bootstrap 4, FileUploader
+    is entirely and easily configurable from scratch and can be adapted to any layout.
+  p.
+    The following demos, show some features of FileUploader in front-end
+    (take a look to the
+    #[a(href="https://github.com/massimo-cassandro/js-file-uploader/wiki/About-the-demo") About the demo]
+    pages for more info).
+    #[br]
+    You can also find a small example of a complete server-side application
+    in the #[code /demo/php_sample] folder.
+
+  p.
+    Take a look at #[a(href="https://github.com/massimo-cassandro/js-file-uploader#readme") Read me]
+    and #[a(href="https://github.com/massimo-cassandro/js-file-uploader/wiki") Wiki pages] for more info.
+
+
+  h2 Demo pages
+  ul
+    li
+      a(href="single-img-demo.html") Single image
+    li
+      a(href="multiple-uploaders.html") Multiple uploaders in the same page
+    li
+      a(href="sortable.html") Sortable elements
+    li
+      a(href="extra-fields.html") Adding extra fields
+    li
+      a(href="aspect-ratio.html") Aspect ratio check
+    li
+      a(href="disabling-submit-demo.html") Disabling submit
+    li
+      a(href="disabling-uploader.html") Disabling uploader
+    li
+      a(href="required.html") Required uploader
+    li
+      a(href="#") Using Bootstrap toast notification
+    li
+      a(href="single-doc-demo.html") Single document
+    li
+      a(href="multiple-doc-demo.html") Multiple PDF only documents
+    li
+      a(href="#") Custom accept attribute (TODO)
+    li
+      a(href="callbacks.html") Callbacks
+    li
+      a(href="svg-demo.html") SVG uploader
+    li
+      a(href="mixed-img-svg-demo.html") Mixed IMG / SVG uploader
+    li
+      a(href="fancybox.html") Fancybox integration
+    li
+      a(href="umd-version-demo.html") Using UMD version
