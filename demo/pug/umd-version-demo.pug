@@ -1,12 +1,17 @@
 extends _tpl.pug
 block variables
-  - title = 'Basic image demo'
+  - title = 'UMD version demo'
 block intro
-  p Single image FileUploader built from <code>input[type="file"]</code>. With pre-registered values.
-  p Look at console for more info
+  p.
+    Same demo of #[a(href="basic-img-demo.html") Basic single image demo] but
+    loading #[em FileUploader] using the UMD version.
+  p.
+    Both #[code FileUploader.umd.min.js] (that exposes the #[code FileUplader] variable)
+    and #[code en.umd.min.js] (that exposes #[code fupl_strings_en])
+    are loaded using a script tag directly from #[code dist/] folder.
+
 
 block fupl
-  form#form1(action="#" method="post" name="form1")
     div(data-file-uploader
       data-filetype="img"
       data-img_min_h="500"
@@ -24,10 +29,12 @@ block fupl
     )
       label(for="input_file") This is the original input field label
       input#input_file(name="myfile" type="file")
-    p
-      button(class="btn btn-primary" type="submit") Submit
+
+block external_scripts
+  script(src="/dist/FileUploader.umd.min.js")
+  script(src="/dist/i18n/en.umd.min.js")
 
 block js
-  script(src="js/basic-img-demo.js" type="module")
+  script(src="/demo/js/umd-version-demo.js")
 
 

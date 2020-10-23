@@ -6,8 +6,6 @@ import {set_listeners} from './_set_listeners.js';
 
 export function createUploader(fupl) {
 
-  'use strict';
-
   try {
 
     // check for input[file] and label elements
@@ -218,11 +216,17 @@ export function createUploader(fupl) {
     if( fupl.opts.debug ) {
       /* eslint-disable */
 
+      const sorted_options= Object.keys(fupl.opts).sort()
+        .reduce((result, key) => ( result[key] = fupl.opts[key], result), {} );
+
       //fupl.opts is exposed as global object for debug purposes
-      window.fileUploderOpts = fupl.opts;
+      if(window.fileUploderOpts === undefined) {
+        window.fileUploderOpts = {};
+      }
+      window.fileUploderOpts[fupl.opts.varname] = sorted_options;
 
       console.groupCollapsed('FileUploader options');
-        console.log(fupl.opts);
+        console.log(sorted_options);
       console.groupEnd();
 
       /* eslint-enable */

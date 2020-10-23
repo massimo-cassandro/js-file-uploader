@@ -1,0 +1,28 @@
+extends _tpl.pug
+block variables
+  - title = 'Aspect Ratio check'
+block intro
+  p.
+   Try uploading images without a 16/9 aspect ratio
+
+
+block fupl
+  div(data-file-uploader
+    data-filetype="img"
+    data-max_filesize="5MB"
+    data-uploader_legend="true"
+    data-uploader_legend_text="Aspect ratio demo"
+    data-img_min_w="800"
+    data-img_aspect_ratio="16/9"
+    data-values= `[{
+      "id": "789",
+      "name": "16-9-img-martha-dominguez-de-gouveia-747676-unsplash.jpg",
+      "src": "test-files/16-9-img-martha-dominguez-de-gouveia-747676-unsplash.jpg",
+      "wi": 1600,
+      "he": 900,
+      "size": 222121
+    }]`
+  )
+
+block js
+  script(src="/demo/js/basic-demo.js" type="module")

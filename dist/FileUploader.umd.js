@@ -1,16 +1,12 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FileUploader = {}));
-}(this, (function (exports) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.FileUploader = factory());
+}(this, (function () { 'use strict';
 
   const fupl_strings_it = {
 
     // Mustache-like placeholders will be replaced with corresponding values
-
-    alert_unsuitable_browser: 'Il tuo browser non ha tutte le funzionalità richieste ' +
-      'da questa applicazione.\n' +
-      'Utilizza la versione più recente di Firefox, Edge, Safari, Opera o Chrome',
 
     alert_too_much_files: 'Puoi selezionare un solo file!', // tentativo di trascinare più file con uploader singolo
     alert_xhr_error: 'Si &egrave; verificato un errore nel caricamento del file “<strong>{{file_name}}</strong>”.', // errore ajax
@@ -28,19 +24,21 @@
     alert_img_max_height_err: 'Altezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
     alert_img_ratio_err: 'La proporzione tra base e altezza dell\'immagine non corrisponde a quella richiesta ({{aspect_ratio}})',
 
-    no_img_test: 'Nessuna immagine presente',
-    no_doc_test: 'Nessun file presente',
+    no_img_text: 'Nessuna immagine presente',
+    no_doc_text: 'Nessun file presente',
     remove_btn_text: 'Elimina questo file',
 
     // info text strings
     info_text_std_imgs : 'immagini in formato <strong>JPEG</strong>, <strong>PNG</strong>, <strong>GIF</strong> o <strong>WEBP</strong>',
     info_text_imgs_svg : 'immagini in formato <strong>JPEG</strong>, <strong>PNG</strong>, <strong>GIF</strong>, <strong>WEBP</strong> o <strong>SVG</strong>',
     info_text_imgs_svg_size_info_text: '<strong>Solo immagini non SVG:</strong> ',
+
     info_text_img_optimize_info: 'Ottimizza le tue immagini prima di caricarle. ' +
       '<a href="https://squoosh.app/" target="_blank">Squoosh</a> è un ottimo (e gratuito) ' +
       'strumento per farlo.',
     info_text_svg_optimize_info: 'È consigliabile ottimizzare i file SVG prima del caricamento, ' +
       'ad esempio tramite <a href="https://jakearchibald.github.io/svgomg/" target="_blank">SVGO</a>',
+
     info_text_img_fixed_size: 'dimensioni: <strong>{{img_w}}&times;{{img_h}}px</strong>',
     info_text_img_equal_min_size: 'larghezza e altezza non inferiori a <strong>{{img_min_w}}px</strong>',
     info_text_img_equal_max_size: 'larghezza e altezza non superiori a <strong>{{img_max_w}}px</strong>',
@@ -74,11 +72,6 @@
 
     // server side script url
     uploader_url: null,
-
-    silent_degradation: false,
-
-    //function called when an unsuitable browser is detected
-    unsuitable_browser_callback: null,
 
     // locales for numbers parsing
     locales: 'it-IT',
@@ -134,9 +127,9 @@
     // Markup to show uploading progress
     template_loading_element: '<div class="fupl-loading"><progress class="fupl-progress" max=100 value=0></progress></div>',
 
-    //  Alternative loading feedback, used if progress.lengthComputable == false.
-    //  In this case and if the `alternative_loading_func` function is not present,
-    //  this string replaces the `.fupl-progress` element.
+    // Alternative loading feedback, used if progress.lengthComputable == false.
+    // In this case and if the `alternative_loading_func` function is not present,
+    // this string replaces the `.fupl-progress` element.
     template_alternative_loading_element: '<div class="spinner-grow text-primary" role="status">' +
       '<span class="sr-only">Loading...</span></div',
 
@@ -274,7 +267,7 @@
     sortable_varname: 'fupl_order',
 
     // markup for dragging icon
-    sortable_icon: '<div title="{{sortable_icon_title_text}}></div>',
+    sortable_icon: '<div title="{{sortable_icon_title_text}}"></div>',
 
     // ========================================
     // EXTRA FIELDS
@@ -325,11 +318,11 @@
         && 'fetch' in window;
     },
 
-    set_has_values: fupl_options => {
-      let items = fupl_options.instance_result_wrapper.querySelectorAll('.fupl-item').length;
-      fupl_options.wrapper.dataset.hasValues = items? 'true' : 'false';
+    set_has_values: fupl => {
+      let items = fupl.opts.instance_result_wrapper.querySelectorAll('.fupl-item').length;
+      fupl.opts.wrapper.dataset.hasValues = items? 'true' : 'false';
       if(!items) {
-        fupl_options.instance_result_wrapper.innerHTML = fupl_options.templates.no_file[fupl_options._type];
+        fupl.opts.instance_result_wrapper.innerHTML = fupl.strs[`no_${fupl.opts._type}_text`];
       }
     },
 
@@ -430,6 +423,1006 @@
 
   };
 
+  /**
+   * create_info_text
+   * Creates a string of information about the file requirements
+   *
+   */
+
+  function create_info_text(fupl) {
+    let info_text = [];
+
+    switch (fupl.opts.filetype) {
+      case 'img':
+        info_text.push( fupl.strs.info_text_std_imgs );
+        break;
+
+      case 'img+svg':
+        info_text.push( fupl.strs.info_text_imgs_svg);
+        break;
+
+      case 'svg':
+        info_text.push( fupl.strs.info_text_svg_file);
+        break;
+
+      case 'pdf':
+        info_text.push( fupl.strs.info_text_pdf_file);
+        break;
+    }
+
+    if( fupl.opts.max_filesize !== null ) {
+      info_text.push( fupl.strs.info_text_max_filesize );
+    }
+
+    if( fupl.opts.filetype === 'img' || fupl.opts.filetype === 'img+svg' ) {
+
+      let img_size_info = [];
+
+      if( fupl.opts.img_w && fupl.opts.img_h ) {
+        img_size_info.push( fupl.strs.info_text_img_fixed_size );
+
+      } else {
+
+        if(fupl.opts.img_min_w && fupl.opts.img_min_h && fupl.opts.img_min_w === fupl.opts.img_min_h) {
+          img_size_info.push( fupl.strs.info_text_img_equal_min_size );
+
+        } else if(fupl.opts.img_max_w && fupl.opts.img_max_h && fupl.opts.img_max_w === fupl.opts.img_max_h) {
+          img_size_info.push( fupl.strs.info_text_img_equal_max_size );
+
+        } else {
+
+          if( fupl.opts.img_w ) {
+            img_size_info.push( fupl.strs.info_text_img_fixed_width );
+
+          } else if( fupl.opts.img_min_w && fupl.opts.img_max_w ) {
+            img_size_info.push( fupl.strs.info_text_img_width_range );
+
+          } else if( fupl.opts.img_min_w ) {
+            img_size_info.push( fupl.strs.info_text_img_min_width );
+
+          } else if( fupl.opts.img_max_w  ) {
+            img_size_info.push( fupl.strs.info_text_img_max_width );
+          }
+
+          if( fupl.opts.img_h ) {
+            img_size_info.push( fupl.strs.info_text_img_fixed_height );
+
+          } else if( fupl.opts.img_min_h && fupl.opts.img_max_h ) {
+            img_size_info.push( fupl.strs.info_text_img_height_range );
+
+          } else if( fupl.opts.img_min_h ) {
+            img_size_info.push( fupl.strs.info_text_img_min_height );
+
+          } else if( fupl.opts.img_max_h ) {
+            img_size_info.push( fupl.strs.info_text_img_max_height );
+          }
+
+          if(fupl.opts.img_aspect_ratio) {
+            img_size_info.push( fupl.strs.info_text_img_aspect_ratio );
+          }
+        }
+      }
+
+      if(img_size_info.length) {
+        info_text.push(
+          (fupl.opts.filetype === 'img+svg' ? fupl.strs.info_text_imgs_svg_size_info_text : '') +
+          img_size_info.join(', ')
+        );
+      }
+    }
+
+    info_text = info_text.map( item => {
+      return item.replace(/{{img_w}}/, fupl.opts.img_w)
+        .replace(/{{img_h}}/, fupl.opts.img_h)
+        .replace(/{{img_min_w}}/, fupl.opts.img_min_w)
+        .replace(/{{img_min_h}}/, fupl.opts.img_min_h)
+        .replace(/{{img_max_w}}/, fupl.opts.img_max_w)
+        .replace(/{{img_max_h}}/, fupl.opts.img_max_h)
+        .replace(/{{img_aspect_ratio}}/, fupl.opts.img_aspect_ratio)
+        .replace(/{{max_filesize}}/, fupl.opts.max_filesize? fupl.opts.max_filesize.feedback_size : null);
+    });
+
+    let str = info_text.join(fupl.opts.info_text_join_string);
+    str = str.charAt(0).toUpperCase() + str.slice(1);
+
+    if( fupl.opts.info_text_wrap_string && str ) {
+      str = fupl.opts.info_text_wrap_string[0] + str + fupl.opts.info_text_wrap_string[1];
+    }
+
+    if(fupl.opts.filetype === 'img' || fupl.opts.filetype === 'img+svg') {
+      str += '<div>' + fupl.strs.info_text_img_optimize_info + '</div>';
+    }
+
+    if(fupl.opts.filetype === 'svg' || fupl.opts.filetype === 'img+svg') {
+      str += '<div>' + fupl.strs.info_text_svg_optimize_info + '</div>';
+    }
+
+    return str;
+  }
+
+  /*
+    based on
+    - https://github.com/WolfgangKurz/grabbable
+
+    references:
+    - https://codepen.io/therealDaze/pen/ZaoErp
+    - https://github.com/gridstack/gridstack.js
+    - https://developer.mozilla.org/it/docs/Web/API/HTML_Drag_and_Drop_API
+    - https://www.html5rocks.com/en/tutorials/dnd/basics/
+    - https://kryogenix.org/code/browser/custom-drag-image.html
+    - http://jsfiddle.net/zfnj5rv4/
+  */
+
+  let dragged_element = null,
+    uploader_is_disabled = false;
+
+  const classes = {
+
+      // class added to the FileUploader elment (fupl_options.element)
+      // when a drag is started. It is removed at dragleave
+      sorting_class: 'fupl-sorting',
+
+      // same way, class added to the dragged element
+      sorting_item_class: 'fupl-item-sorting',
+
+      // class added to an item on dragover
+      over_item_class: 'fupl-item-dragover'
+    },
+
+    // broken events cleaning
+    resetAll = () => {
+
+      if( dragged_element ) {
+        dragged_element.classList.remove(classes.sorting_item_class);
+
+        dragged_element.parentNode.querySelectorAll('.' + classes.over_item_class).forEach(item => {
+          item.classList.remove(classes.over_item_class);
+        });
+
+        dragged_element.closest('.fupl').classList.remove(classes.sorting_class);
+      }
+
+      dragged_element = null;
+    };
+
+  function add_sortable_events(fupl_item, fupl_options) {
+
+    // start dragging
+    fupl_item.addEventListener('dragstart', function(e) {
+      uploader_is_disabled = fupl_options.wrapper.disabled;
+      resetAll();
+      if(!uploader_is_disabled) {
+
+        dragged_element = this;
+
+        // `classes.sorting_class` is added to the dragged element
+        // this prevents the feedback triggered when external files are dropped
+        // in the broswer (look at scss/_fupl.scss)
+        fupl_options.element.classList.add(classes.sorting_class);
+
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text', 'fupl-sorting');
+
+        this.classList.add(classes.sorting_item_class);
+      }
+
+    }, false);
+
+    // enter positioning over another element (→ e.target == this)
+    fupl_item.addEventListener('dragenter', function(e) {
+
+      // disabled for external files or when the uploader is disabled
+      if( e.dataTransfer.getData('text') === 'fupl-sorting' && !uploader_is_disabled) {
+        if (e.stopPropagation) {
+          e.stopPropagation(); // stops the browser from redirecting.
+        }
+        if( this !== dragged_element ) {
+          this.classList.add(classes.over_item_class);
+        }
+      }
+
+    }, false);
+
+    // positioning over another element (→ e.target)
+    fupl_item.addEventListener('dragover', function(e) {
+      if( e.dataTransfer.getData('text') === 'fupl-sorting' && !uploader_is_disabled ) {
+
+        if (e.preventDefault) {
+          e.preventDefault();
+        }
+        e.dataTransfer.dropEffect = 'move';
+        if( this !== dragged_element ) {
+          this.classList.add(classes.over_item_class);
+        }
+      }
+
+      return false;
+    }, false);
+
+    // exit positioning over another element
+    fupl_item.addEventListener('dragleave', function() {
+
+      this.classList.remove(classes.over_item_class);
+    }, false);
+
+    // drop
+    fupl_item.addEventListener('drop', function(e) {
+      if( e.dataTransfer.getData('text') === 'fupl-sorting' && !uploader_is_disabled) {
+        if (e.stopPropagation) {
+          e.stopPropagation(); // stops the browser from redirecting.
+        }
+
+        e.preventDefault();
+
+        if(dragged_element) {
+          if(this.previousElementSibling === dragged_element && this.nextElementSibling ) {
+            this.parentNode.insertBefore(dragged_element, this.nextElementSibling);
+
+          } else if( this.nextElementSibling ) {
+            this.parentNode.insertBefore(dragged_element, this);
+
+          // if target element is the last one, the dropped one is positioned after it
+          } else {
+            this.parentNode.insertAdjacentElement('beforeend', dragged_element);
+          }
+        }
+        resetAll();
+      }
+
+      return false;
+
+    }, false);
+
+    // end dragging
+    fupl_item.addEventListener('dragend', function(e) {
+
+      if( e.dataTransfer.getData('text') === 'fupl-sorting' && !uploader_is_disabled) {
+        fupl_options.element.classList.remove(classes.sorting_class);
+        resetAll();
+
+        // order variable
+        fupl_options.instance_result_wrapper.querySelectorAll('.fupl-sortable-order').forEach((item,idx) => {
+          item.value = idx;
+        });
+      }
+
+    }, false);
+  } // end add_sortable_events
+
+
+  function activate_sortable(fupl_options) {
+
+    // class added to `fupl_options.instance_result_wrapper`
+    // when `sortable` option is activated
+    fupl_options.instance_result_wrapper.classList.add( 'fupl-sortable' );
+
+  }
+
+  /*
+    Add an element to fupl.opts.instance_result_wrapper
+    and set all needed listeners
+
+    `item_data` obj contains all element data:
+      {
+        id      → file unique id (can be file path too)
+        name    → file name
+        url     → url for any <a> tag present in the element (if it is an image can be a null or not set)
+        src     → `src` attribute. Required if element is an image, otherwise null or not set
+        wi      → image px width (null or not set if not image)
+        he      → image px height (null or not set if not image)
+        size    → file size (bytes)
+        loading → `true` if it is an item being uploaded
+        ...     → any additional instance-specific fields
+      }
+
+    `fupl`                    : is the fupl object
+    `preregistered` === true  : means that the element was previously saved and comes
+                                from the `fupl.opts.values` array
+
+  */
+
+  function create_item(item_data, fupl, preregistered = false) {
+
+    try {
+
+      let item_markup = fupl.opts[`template_${fupl.opts._type}_item_${fupl.opts._mode}`];
+      if( item_markup === null && fupl.opts._mode === 'multiple' ) {
+        item_markup = fupl.opts[`template_${fupl.opts._type}_item_single`];
+      }
+
+      let fupl_item_wrapper = document.createElement('div'); // wrapper to be removed after inserting
+      fupl_item_wrapper.innerHTML = item_markup;
+
+      // delete button
+      let fupl_remove = fupl_item_wrapper.querySelector('.fupl-remove');
+      if(fupl_remove) {
+        fupl_remove.innerHTML = fupl.opts.template_remove_btn;
+      }
+
+      /*
+        element data
+        ============================
+
+        each fupl-item element contains:
+          .fupl-file-name
+          .fupl-file-size
+          .fupl-img → img
+          .fupl-img → a.href
+          .fupl-doc → a.href
+
+      */
+
+      // file name
+      let fupl_file_name = fupl_item_wrapper.querySelector('.fupl-file-name');
+      if(fupl_file_name && item_data.name ) {
+        fupl_file_name.innerHTML = item_data.name;
+        fupl_file_name.title = item_data.name;
+      }
+
+      // size info
+      let fupl_file_size = fupl_item_wrapper.querySelector('.fupl-file-size');
+      if(fupl_file_size ) {
+        let size_string = '';
+        if(fupl.opts._type === 'img' && item_data.wi && item_data.he) {
+          size_string = item_data.wi + '&times;' + item_data.he + '<span class="fupl-unit">px</span>';
+          if(item_data.size) {
+            size_string += ' &ndash; ';
+          }
+        }
+        if(item_data.size) {
+          size_string += fupl_utilities.parse_bytes_value(item_data.size, fupl.opts.locales);
+        }
+
+        fupl_file_size.innerHTML = size_string;
+      }
+
+      // image
+      if( fupl.opts._type === 'img' ) {
+        fupl_item_wrapper.querySelector('.fupl-img').src = item_data.src;
+      }
+
+      // url
+      let fupl_url = fupl_item_wrapper.querySelector('.fupl-url');
+      if( fupl_url && item_data.url) {
+        fupl_url.href = item_data.url;
+      }
+
+      let fupl_item = fupl_item_wrapper.querySelector('.fupl-item');
+
+
+      if(item_data.loading) {
+        fupl_item.classList.add('fupl-is-uploading');
+        fupl_item.insertAdjacentHTML('beforeend',
+          fupl.opts.template_loading_element
+        );
+      }
+
+      if(fupl.opts._mode === 'single') {
+        fupl.opts.instance_result_wrapper.innerHTML = fupl_item_wrapper.innerHTML;
+      } else {
+
+        // instance_result_wrapper cleaning (to remove 'no file' string, if present)
+        if( !fupl.opts.instance_result_wrapper.querySelector('.fupl-item')) {
+          fupl.opts.instance_result_wrapper.innerHTML = '';
+        }
+
+        fupl.opts.instance_result_wrapper.insertAdjacentHTML('beforeend',
+          fupl_item_wrapper.innerHTML
+        );
+      }
+
+
+      let fupl_item_dom = fupl.opts.instance_result_wrapper.querySelector('.fupl-item:last-child');
+      fupl_item_dom.dataset.id = item_data.id;
+
+      // remove element listener
+      let fupl_remove_trigger = fupl_item_dom.querySelector('.fupl-remove-trigger');
+      if(fupl_remove_trigger) {
+        fupl_remove_trigger.addEventListener('click', () => {
+          fupl_item_dom.remove();
+
+          let prereg_id = item_data.rel_id? item_data.rel_id : item_data.id;
+
+          if(prereg_id && preregistered) {
+            fupl.opts.wrapper.insertAdjacentHTML('beforeend',
+              `<input type="hidden" name="${fupl.opts.delete_varname}" value="${prereg_id}">`
+            );
+          }
+
+          // controllo se instance_result_wrapper è vuoto
+          // e impostazione di attributo e contenuti
+          fupl_utilities.set_has_values(fupl);
+
+        });
+      }
+
+      //fancybox integration
+      if( fupl.opts.fancybox && fupl.opts._type === 'img' && item_data.url && fupl.opts.fancybox_anchor_markup) {
+        // check for `a.fupl-url` tag and add it if necessary
+        if( !fupl_item_dom.querySelector('a.fupl-url') ) {
+
+          let img_element = fupl_item_dom.querySelector('.fupl-img'),
+            fancybox_wrapper = document.createElement('div');
+          fancybox_wrapper.innerHTML = fupl.opts.fancybox_anchor_markup;
+
+          fancybox_wrapper = fancybox_wrapper.firstChild;
+          img_element.parentNode.insertBefore(fancybox_wrapper, img_element);
+          fancybox_wrapper.appendChild(img_element);
+        }
+
+        fupl_item_dom.querySelector('a.fupl-url').setAttribute('href', item_data.url);
+
+      }
+
+      // extra fields
+      let extra_fields_wrapper = fupl_item_dom.querySelector('.fupl-extra-fields');
+      if(fupl.opts.extra_fields !== null && extra_fields_wrapper) {
+
+        fupl.opts.extra_fields.forEach( item => {
+          extra_fields_wrapper.insertAdjacentHTML('beforeend',
+            item.markup.replace(/{{idx}}/g, item_data.id)
+              .replace(/{{val}}/g, preregistered && item_data[item.value_key]? item_data[item.value_key] : '')
+              .replace(/{{checked}}/g, preregistered && +item_data[item.value_key]? 'checked' : '')
+              .replace(/{{name}}/g,
+                (preregistered && fupl.opts.registered_extra_field_varname?
+                  fupl.opts.registered_extra_field_varname : fupl.opts.varname) +
+                '[' +
+                ((item.use_rel_id && item_data.rel_id)? item_data.rel_id : item_data.id) +
+                '][' + item.value_key + ']'
+              )
+          );
+        });
+
+        // stop bubbling when sortable
+        if( fupl.opts.sortable ) {
+          extra_fields_wrapper.querySelectorAll('select, input, textarea').forEach(item => {
+            item.setAttribute('draggable', 'false');
+            ['dragstart', 'drag', 'mousedown'].forEach( ev => {
+              item.addEventListener(ev, e => {
+                if(ev !== 'mousedown') {e.preventDefault();}
+                e.stopPropagation();
+              });
+            });
+          });
+        }
+      }
+
+      // sortable
+      if( fupl.opts.sortable ) {
+        fupl_item_dom.setAttribute('draggable', true);
+
+        // order_value starts from zero
+        let order_value = fupl.opts.instance_result_wrapper.querySelectorAll('.fupl-item').length -1;
+
+        fupl_item_dom.insertAdjacentHTML('beforeend',
+          '<input type="hidden" class="fupl-sortable-order" name="' +
+              (preregistered && fupl.opts.registered_extra_field_varname?
+                fupl.opts.registered_extra_field_varname :
+                fupl.opts.varname) +
+              `[${item_data.id}][${fupl.opts.sortable_varname}]" value="${order_value}">`
+        );
+
+        if(fupl.opts.sortable_icon) {
+          fupl_item_dom.querySelector('.fupl-sortable-icon').innerHTML =
+            fupl.opts.sortable_icon
+              .replace('{{sortable_icon_title_text}}', fupl.strs.sortable_icon_title_text);
+        }
+        add_sortable_events(fupl_item_dom, fupl.opts);
+      }
+
+      return fupl.opts.instance_result_wrapper.querySelector('.fupl-item:last-child');
+
+    } catch(e) {
+      console.error(e); // eslint-disable-line
+    }
+
+  }
+
+  /*
+  Generate hidden fields with values to be sent to server
+  Returns the hidden fields html string
+  */
+  function build_hidden_fields(current_item, fupl_options) {
+
+    // normalize ascii chars > 127 (and more)
+    const normalize_file_name = filename => {
+      let converted = '';
+      const conversionTable = { // Reference table Unicode vs ASCII
+        'à' : 'a', // 224
+        'è' : 'e', // 232
+        'é' : 'e', // 233
+        'ì' : 'i', // 236
+        'ò' : 'o', // 242
+        'ù' : 'u', // 249
+        'À' : 'A', // 192
+        'È' : 'E', // 200
+        'É' : 'E', // 201
+        'Ì' : 'I', // 204
+        'Ò' : 'O', // 210
+        'Ù' : 'U', // 217
+        '\'' : '_', // 39
+        '|' : '_', // 124
+        '!' : '_', // 33
+        '"' : '_', // 34
+        '$' : '_', // 36
+        '%' : '_', // 37
+        '&' : '_', // 38
+        '/' : '_', // 47
+        '(' : '_', // 40
+        ')' : '_', // 41
+        '=' : '_', // 61
+        '?' : '_', // 63
+        '^' : '_', // 94
+        '*' : '_', // 42
+        '[' : '_', // 91
+        ']' : '_', // 93
+        'ç' : 'c', // 231
+        '@' : '_', // 64
+        '#' : '_', // 35
+        '<' : '_', // 60
+        '>' : '_', // 62
+        'ü' : 'u', // 252
+        'Ü' : 'U', // 220
+        'ñ' : 'n', // 241
+        'Ñ' : 'N', // 209
+        '~' : '_', // 126
+        ':' : '_',
+        '\\' : '_'
+      };
+
+      for(var i = 0; i < filename.length; i++) {
+        if( filename[i] in conversionTable) {
+          converted += conversionTable[filename[i]];
+
+        } else if(filename.charCodeAt(i) === 768 || filename.charCodeAt(i) === 769 ) { // accento grave e accento acuto
+          converted += '';
+
+        } else if(filename.charCodeAt(i) > 127 ) {
+          converted += '_';
+
+        } else {
+          converted += filename.charAt(i);
+        }
+      }
+
+      return converted.replace(/ /g, '_').replace(/_+/g, '_');
+    };
+
+    let hidden_fields = '',
+      field_values = {
+        'tmp_file'  : current_item.tmp_file,
+        'file_name' : normalize_file_name(current_item.file.name),
+        'size'      : current_item.file.size,
+        'type'      : current_item.file.type
+      };
+
+    if(fupl_options._type === 'img') {
+      field_values.width = current_item.width;
+      field_values.height = current_item.height;
+    }
+    for (let _key in field_values) {
+      hidden_fields += '<input type="hidden" '+
+        'name="' + fupl_options.varname + '[' + current_item.id +'][' + _key + ']" '+
+        'value="' + ((field_values[_key] !== null && field_values[_key] !== undefined)? field_values[_key] : '') +'">';
+    }
+
+    return '<div class="fupl-hiddens">' + hidden_fields + '</div>';
+
+  }
+
+  /*
+  Performs all the checks, calls the remote url via ajax
+  and generates the feedback for the user
+  */
+
+  function send_files(filelist, fupl) {
+
+    // disable the form submit button until the upload is completed
+    const disable_submit = (mode) => {
+        // mode === true → disable, false → enable
+        const _form = fupl.opts.element.closest('form');
+
+        if(fupl.opts.disable_submit && _form) {
+          const submit_btns = _form.querySelectorAll('[type="submit"]');
+
+          submit_btns.forEach( btn => {
+            btn.disabled = mode;
+          });
+
+          // TODO: removeEventListener doesn't work
+          // const submitHandler = (e) => {
+          //   e.preventDefault();
+          //   //return false;
+          // };
+          // if(mode === true) {
+          //   _form.addEventListener('submit', submitHandler, false);
+          // } else {
+          //   if( !fupl.opts.instance_result_wrapper.querySelector('.fupl-item.fupl-is-uploading')) {
+          //     _form.removeEventListener('submit', submitHandler, false);
+          //   }
+          // }
+        }
+      },
+
+      /*
+      uploadFile
+      ajax upload
+      https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
+
+      current_item contains:
+        - `id`: element unique id
+        - `file`: filelist obj
+        - `width` e height: image pixel sizes. null if not an image
+        - `tmp_file`: temporary server file name (new uplaods only)
+
+      */
+      uploadFile = function ( current_item, img_preview ) {
+
+        // disabling form
+        disable_submit(true);
+
+        // aggiunta elemento all'uploader
+        let this_item = create_item({
+            id       : current_item.id,
+            name     : current_item.file.name,
+            url      : null,
+            src      : img_preview,
+            wi       : current_item.width,
+            he       : current_item.height,
+            size     : current_item.file.size,
+            img_type : current_item.file.img_type,
+            loading  : true
+          }, fupl),
+
+
+          fupl_progress= this_item.querySelector('.fupl-progress'),
+          fupl_loading_wrapper = this_item.querySelector('.fupl-loading'),
+
+          xhr_error_message = fupl.strs.alert_xhr_error.replace(/{{file_name}}/, current_item.file.name);
+
+        //console.log(this_item); // eslint-disable-line
+
+        const remove_item_on_error = () => {
+          this_item.querySelector('.fupl-remove-trigger').click();
+        };
+
+        // custom callback function
+        if( fupl.opts.upload_start_callback ) {
+          fupl_utilities.exec_callback(fupl.opts.upload_start_callback, {
+            item              : current_item,
+            img_preview       : img_preview,
+            uploader_options  : fupl
+          });
+        }
+
+        new Promise(function(resolve, reject) {
+          let ajax = new XMLHttpRequest();
+          ajax.open( 'POST', fupl.opts.uploader_url, true );
+
+          ajax.onload = function() {
+
+            if( ajax.status >= 200 && ajax.status < 400 ) {
+
+              const response = JSON.parse( ajax.responseText );
+
+              /*
+              jsonResponse:
+                {
+                  "tmp_file": "temp_file_name",
+                  "error": null
+                }
+              */
+              if(response.error) {
+
+                fupl.opts.alert_api( xhr_error_message, fupl );
+                console.error( response.error ); // eslint-disable-line
+                reject();
+
+              } else {
+                current_item.tmp_file = response.tmp_file;
+                resolve();
+              }
+
+              // custom callback function
+              if( fupl.opts.upload_complete_callback ) {
+                fupl_utilities.exec_callback(fupl.opts.upload_complete_callback, {
+                  item          : current_item,
+                  server_error  : response.error,
+                  fupl          : fupl
+                });
+              }
+
+              if(fupl.opts.debug) {
+                /* eslint-disable */
+                console.groupCollapsed('FileUploader ajax response');
+                console.log(response);
+                console.groupEnd();
+                /* eslint-enable */
+              }
+
+            } else {
+              fupl.opts.alert_api( xhr_error_message, fupl );
+              /* eslint-disable */
+              console.error( ajax.status, ajax.statusText );
+              console.error( ajax.responseText );
+              /* eslint-enable */
+            }
+
+            reject();
+          };
+
+          ajax.onerror = function() {
+            fupl.opts.alert_api( xhr_error_message, fupl );
+            /* eslint-disable */
+            if(fupl.opts.debug) {
+              console.error( ajax.status,  ajax.statusText );
+              console.error( ajax.responseText );
+            }
+            /* eslint-enable */
+
+            reject();
+          };
+
+          ajax.upload.addEventListener('progress', function (e) {
+            if( fupl.opts.alternative_loading_func ) {
+
+              fupl_utilities.exec_callback(fupl.opts.alternative_loading_func, ...[e, fupl]);
+
+            } else {
+              let perc_loaded = Math.round(e.loaded / e.total * 100.0) || 0;
+
+              //console.log(e.loaded ,e.total, perc_loaded); // eslint-disable-line
+              if(fupl_progress) {
+                if(e.lengthComputable) {
+                  perc_loaded = perc_loaded === Infinity? 100 : perc_loaded;
+                  this_item.querySelector('.fupl-progress').value = perc_loaded;
+                } else {
+                  fupl_loading_wrapper.innerHTML = fupl.opts.template_alternative_loading_element;
+                  fupl_progress = null;
+                }
+              }
+            }
+          }, false);
+
+
+          let fileData = new FormData();
+          fileData.append('file', current_item.file);
+          ajax.send( fileData );
+        }) // end promise
+          .then(
+            // resolve
+            function (  ) {
+              //console.log('resolve'); // eslint-disable-line
+              this_item.classList.remove('fupl-is-uploading');
+              this_item.querySelector('.fupl-loading').remove(); // elemento loading
+
+              this_item.insertAdjacentHTML('beforeend',
+
+                build_hidden_fields(current_item, fupl.opts)
+              );
+
+              fupl_utilities.set_has_values(fupl);
+
+              // restoring submit
+              disable_submit(false);
+
+            },
+            //reject
+            function (  ) {
+              //console.log('reject'); // eslint-disable-line
+              remove_item_on_error();
+              fupl_utilities.set_has_values(fupl);
+            }
+          );
+
+      };
+
+    if( filelist.length ) {
+
+      // https://stackoverflow.com/questions/38362231/
+      // how-to-use-promise-in-foreach-loop-of-array-to-populate-an-object
+      [...filelist].forEach(function (filelist_item, idx) {
+        try {
+
+          let current_item = {
+            id: 'fupl_item_' + Date.now() + '_' + idx, // id unico
+            file: filelist_item,
+            width: null,
+            height: null,
+            tmp_file: null,
+            img_type: fupl.opts._type === 'img'?
+              (filelist_item.type === 'image/svg+xml' ? 'svg' : 'bmp') : null
+          };
+
+          // filetype check (for drag & drop and browsers that don't support accept)
+          if( fupl.opts.accept.length ) {
+            let ext = filelist_item.name.split('.').pop().toLowerCase();
+            if( fupl.opts.accept.indexOf( filelist_item.type ) === -1 &&
+              fupl.opts.accept.indexOf( '.' + ext ) === -1) {
+
+              throw fupl.strs.alert_file_format_error
+                .replace(/{{file_name}}/, filelist_item.name );
+            }
+          } // end filetype check
+
+          // maxfilesize check
+          if( fupl.opts.max_filesize !== null ) {
+            if( filelist_item.size > fupl.opts.max_filesize.maxbytes ) {
+              let item_parsed_size = fupl_utilities.parse_bytes_value(filelist_item.size, fupl.opts.locales);
+
+              throw fupl.strs.alert_file_size_error
+                .replace(/{{file_name}}/, filelist_item.name )
+                .replace(/{{file_size}}/, item_parsed_size )
+                .replace(/{{allowed_size}}/, fupl.opts.max_filesize.feedback_size );
+            }
+          } // end maxfilesize check
+
+          // images
+          if( fupl.opts._type === 'img') {
+            let reader  = new FileReader();
+            reader.addEventListener('load', function () {
+
+              let image = new Image();
+              image.src = reader.result;
+              image.addEventListener('load', function () {
+
+                let err_mes = [];
+                current_item.width=image.width;
+                current_item.height=image.height;
+                if(current_item.img_type === 'bmp') {
+                  if( fupl.opts.img_w && image.width !== fupl.opts.img_w ) {
+                    err_mes.push(
+                      fupl.strs.alert_img_exact_width_err
+                        .replace(/{{image_dimension}}/, image.width)
+                        .replace(/{{allowed_dimension}}/, fupl.opts.img_w)
+                    );
+
+                  } else if(fupl.opts.img_min_w && image.width < fupl.opts.img_min_w) {
+                    err_mes.push(
+                      fupl.strs.alert_img_min_width_err
+                        .replace(/{{image_dimension}}/, image.width)
+                        .replace(/{{allowed_dimension}}/, fupl.opts.img_min_w)
+                    );
+
+                  } else if(fupl.opts.img_max_w && image.width > fupl.opts.img_max_w) {
+                    err_mes.push(
+                      fupl.strs.alert_img_max_width_err
+                        .replace(/{{image_dimension}}/, image.width)
+                        .replace(/{{allowed_dimension}}/, fupl.opts.img_max_w)
+                    );
+                  }
+
+                  if (fupl.opts.img_h && image.height !== fupl.opts.img_h) {
+                    err_mes.push(
+                      fupl.strs.alert_img_exact_height_err
+                        .replace(/{{image_dimension}}/, image.height)
+                        .replace(/{{allowed_dimension}}/, fupl.opts.img_h)
+                    );
+
+                  } else if(fupl.opts.img_min_h && image.height < fupl.opts.img_min_h) {
+                    err_mes.push(
+                      fupl.strs.alert_img_min_height_err
+                        .replace(/{{image_dimension}}/, image.height)
+                        .replace(/{{allowed_dimension}}/, fupl.opts.img_min_h)
+                    );
+
+                  } else if(fupl.opts.img_max_h && image.height > fupl.opts.img_max_h) {
+                    err_mes.push(
+                      fupl.strs.alert_img_max_height_err
+                        .replace(/{{image_dimension}}/, image.height)
+                        .replace(/{{allowed_dimension}}/, fupl.opts.img_max_h)
+                    );
+
+                  }
+                }
+
+                // aspect ratio
+                if(fupl.opts.parsed_img_aspect_ratio) {
+                  let img_ratio = Math.round(((image.width / image.height) + Number.EPSILON) * fupl.opts.aspect_ratio_accuracy) / fupl.opts.aspect_ratio_accuracy;
+                  if(img_ratio !== fupl.opts.parsed_img_aspect_ratio) {
+                    err_mes.push(
+                      fupl.strs.alert_img_ratio_err
+                        .replace(/{{aspect_ratio}}/, fupl.opts.img_aspect_ratio)
+                    );
+                  }
+                }
+
+                if( err_mes.length ) {
+                  fupl.opts.alert_api(
+                    fupl.strs.alert_img_err_start_string
+                      .replace(/{{file_name}}/, filelist_item.name ) + '<br>\n' +
+                    '<ul><li>' + err_mes.join('</li>\n<li>') + '</li></ul>',
+                    fupl );
+
+                } else {
+                  uploadFile( current_item, reader.result );
+                }
+
+              }, false); // end image.addEventListener("load"
+
+            }, false); // end reader.addEventListener("load"
+
+            reader.readAsDataURL( filelist_item );
+
+            // } else if(current_item.img_type === 'svg') { // svg
+
+            //   let reader = new FileReader();
+
+            //   reader.addEventListener('load', () => {
+
+            //     let image = new Image();
+            //     image.src = reader.result;
+
+            //     image.addEventListener('load', function () {
+            //       current_item.width=image.width;
+            //       current_item.height=image.height;
+            //     });
+
+            //     uploadFile( current_item,
+            //       reader.result
+            //       //'data:image/svg+xml;base64,' +  window.btoa(event.target.result)
+            //     );
+            //   });
+            //   reader.readAsDataURL(filelist_item);
+
+          } else { // not image
+            uploadFile( current_item );
+
+          } // end if image
+
+        } catch (errormessage) {
+          fupl.opts.alert_api( errormessage, fupl ,'error');
+        }
+      }); // end foreach
+
+    } // end if( filelist.length )
+
+  }
+
+  // https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
+  function set_listeners(fupl) {
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      fupl.opts.element.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      }, false);
+    });
+
+    ['dragover', 'dragenter'].forEach(eventName => {
+      fupl.opts.element.addEventListener(eventName, () => {
+        fupl.opts.element.classList.add( fupl.opts.element_dragover_class );
+      }, false);
+    });
+
+    ['dragleave', 'dragend'].forEach(eventName => {
+      fupl.opts.element.addEventListener(eventName, () => {
+        fupl.opts.element.classList.remove( fupl.opts.element_dragover_class );
+      }, false);
+    });
+
+    fupl.opts.element.addEventListener('drop', (e) => {
+      fupl.opts.element.classList.remove( fupl.opts.element_dragover_class );
+      if(!fupl.opts.wrapper.hasAttribute('disabled')) {
+        let files = e.dataTransfer.files;
+
+        if(files.length) { // if 0 is a reordering or another event
+          if( !fupl.opts.multiple && files.length > 1 ) {
+            fupl.opts.alert_api(fupl.str.alert_too_much_files, fupl);
+          } else {
+            send_files( files, fupl );
+          }
+        }
+      }
+    }, false);
+
+    // selecting thru input element
+    fupl.opts.instance_input.addEventListener('change', () => {
+      send_files( fupl.opts.instance_input.files, fupl );
+    });
+
+  }
+
   function createUploader(fupl) {
 
     try {
@@ -437,7 +1430,6 @@
       // check for input[file] and label elements
       let _input = fupl.opts.element.querySelector('input[type="file"]'),
         original_label = fupl.opts.element.querySelector('label');
-  console.log(fupl.opts.element);
 
       // parsing `accept` parameter and attribute, if exist
       if( fupl.opts.filetype === 'auto' ) {
@@ -576,8 +1568,7 @@
         if(fupl.opts.custom_info_text) {
           fupl.opts.instance_info_text.innerHTML = fupl.opts.custom_info_text;
         } else {
-  //TODO
-          // fupl.opts.instance_info_text.innerHTML = fupl_utilities.create_info_text(fupl);
+          fupl.opts.instance_info_text.innerHTML = create_info_text(fupl);
         }
 
         if(fupl.opts.help_text) {
@@ -592,8 +1583,7 @@
       if( fupl.opts.sortable) {
         if( fupl.opts.multiple && fupl.opts.sortable_varname ) {
 
-  //TODO
-          // upl.activateSortable(fupl.opts);
+          activate_sortable(fupl.opts);
 
         } else {
           throw new Error('FileUploader: incorrect “sortable” settings:\n' +
@@ -607,7 +1597,7 @@
 
       // adding registered values
       // fupl.opts.values must be an array of objects
-      // is it is a single object, it is wrapped in an array
+      // if it is a single object, it is wrapped in an array
       if(fupl.opts.values) {
         if(typeof fupl.opts.values === 'object') {
           if(!Array.isArray(fupl.opts.values)) {
@@ -618,56 +1608,44 @@
         }
       }
 
-  //TODO
-  /*
       if( fupl.opts.values && fupl.opts.values.length ) {
 
         fupl.opts.values.forEach( item => {
-          upl.create_item(item, fupl.opts, true); // true means that the element comes from the server
+          create_item(item, fupl, true); // true means that the element comes from the server
         });
 
       }
-      upl.set_has_values(fupl.opts);
+      fupl_utilities.set_has_values(fupl);
 
       // gestione aggiunta nuovi elementi
-      upl.setListeners(fupl.opts);
+      set_listeners(fupl);
 
 
       // calling init_callback, if present
       if( fupl.opts.init_callback !== null ) {
-        upl.exec_callback(fupl.opts.init_callback, fupl.opts);
+        fupl_utilities.exec_callback(fupl.opts.init_callback, fupl);
       }
 
       // calling fancybox_callback_func, if present
       if( fupl.opts.fancybox && fupl.opts.fancybox_callback_func !== null ) {
-        upl.exec_callback(fupl.opts.fancybox_callback_func, fupl.opts);
+        fupl_utilities.exec_callback(fupl.opts.fancybox_callback_func, fupl.opts);
       }
-  */
 
       //debug
       if( fupl.opts.debug ) {
         /* eslint-disable */
-        /* console.groupCollapsed('FileUploader options');
-          // creazione di un oggetto bidimensinale per
-          // semplificare la rappresentazione in tabella
-          let c_options = {},
-          c_keys = Object.keys(fupl.opts);
-          c_keys.sort();
-          c_keys.forEach(item => {
-            let _toStringify = typeof fupl.opts[item] === 'object' &&
-            fupl.opts[item] !== null &&
-              item !== 'element';
-            c_options[item] = _toStringify ? JSON.stringify(fupl.opts[item], null, ' ') : fupl.opts[item];
-          });
-          console.table(c_options);
-          console.groupCollapsed('fupl.opts');
-            console.log(fupl.opts);
-          console.groupEnd();
-        console.groupEnd();
-        */
+
+        const sorted_options= Object.keys(fupl.opts).sort()
+          .reduce((result, key) => ( result[key] = fupl.opts[key], result), {} );
+
+        //fupl.opts is exposed as global object for debug purposes
+        if(window.fileUploderOpts === undefined) {
+          window.fileUploderOpts = {};
+        }
+        window.fileUploderOpts[fupl.opts.varname] = sorted_options;
 
         console.groupCollapsed('FileUploader options');
-          console.log(fupl.opts);
+          console.log(sorted_options);
         console.groupEnd();
 
         /* eslint-enable */
@@ -683,11 +1661,8 @@
 
     // browser check
     if( !fupl_utilities.isSuitableBrowser() ) {
-      if(!fupl.opts.silent_degradation) {
-        alert( fupl.strs.alert_unsuitable_browser );
-      }
-      if( fupl.opts.unsuitable_browser_callback ) {
-        fupl_utilities.exec_callback( fupl.opts.unsuitable_browser_callback );
+      if ( 'console' in window ) {
+        console.error('This browser can\'t run FileUploader'); // eslint-disable-line
       }
       return;
     }
@@ -757,8 +1732,6 @@
 
       // these parameters must be arrays but can retrieved as strings from data attributes
       const json_params = [
-        'input_text',
-        'templates',
         'info_text_wrap_string',
         'values',
         'extra_fields'
@@ -861,15 +1834,13 @@
     */
 
     fupl_init({
-      selector : params.selector || '[data-file-uploader]',
+      selector : params.selector || '[data-file-uploader]', // used in fupl_init only
+      css      : params.css || null,                        // used in fupl_init only
       opts     : Object.assign( {}, default_options, params.options || {} ),
-      css      : params.css || null,
-      strs     : Object.assign( {}, fupl_strings_it, params.local_strs || {} ),
+      strs     : Object.assign( {}, fupl_strings_it, params.local_strs || {} )
     });
   }
 
-  exports.FileUploader = FileUploader;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
+  return FileUploader;
 
 })));

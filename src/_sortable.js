@@ -1,8 +1,8 @@
 /*
-  basato su
+  based on
   - https://github.com/WolfgangKurz/grabbable
 
-  altri riferimenti:
+  references:
   - https://codepen.io/therealDaze/pen/ZaoErp
   - https://github.com/gridstack/gridstack.js
   - https://developer.mozilla.org/it/docs/Web/API/HTML_Drag_and_Drop_API
@@ -11,52 +11,51 @@
   - http://jsfiddle.net/zfnj5rv4/
 */
 
+let dragged_element = null,
+  uploader_is_disabled = false;
+
+const classes = {
+
+    // class added to the FileUploader elment (fupl_options.element)
+    // when a drag is started. It is removed at dragleave
+    sorting_class: 'fupl-sorting',
+
+    // same way, class added to the dragged element
+    sorting_item_class: 'fupl-item-sorting',
+
+    // class added to an item on dragover
+    over_item_class: 'fupl-item-dragover'
+  },
+
+  // broken events cleaning
+  resetAll = () => {
+
+    if( dragged_element ) {
+      dragged_element.classList.remove(classes.sorting_item_class);
+
+      dragged_element.parentNode.querySelectorAll('.' + classes.over_item_class).forEach(item => {
+        item.classList.remove(classes.over_item_class);
+      });
+
+      dragged_element.closest('.fupl').classList.remove(classes.sorting_class);
+    }
+
+    dragged_element = null;
+  };
+
 export function add_sortable_events(fupl_item, fupl_options) {
-  'use strict';
 
-  let dragged_element = null,
-    uploader_is_disabled = false;
-
-  const classes = {
-
-      // classe aggiunta all'elemento principale (fupl_options.element) quando
-      // si trascina un elemento. Viene eliminata al dragleave
-      sorting_class: 'fupl-sorting',
-
-      // stesso criterio, ma classe aggiunta all'elemento trascinato
-      sorting_item_class: 'fupl-item-sorting',
-
-      // classe aggiunta all'elemento in seguito all'evento dragover
-      over_item_class: 'fupl-item-dragover'
-    },
-
-    // pulisce eventuali eventi non conclusi correttamente
-    resetAll = () => {
-      if( dragged_element ) {
-        dragged_element.classList.remove(classes.sorting_item_class);
-
-        dragged_element.parentNode.querySelectorAll('.' + classes.over_item_class).forEach(item => {
-          item.classList.remove(classes.over_item_class);
-        });
-
-        dragged_element.closest('.fupl').classList.remove(classes.sorting_class);
-      }
-
-      dragged_element = null;
-    };
-
-
-  // trascinamento avviato
+  // start dragging
   fupl_item.addEventListener('dragstart', function(e) {
-
     uploader_is_disabled = fupl_options.wrapper.disabled;
     resetAll();
     if(!uploader_is_disabled) {
 
       dragged_element = this;
 
-      // aggiunta classe `.fupl-sorting` all'elemento fupl per disattivare il feedback
-      // del drag&drop esterno al browser (vedi scss/_fupl.scss)
+      // `classes.sorting_class` is added to the dragged element
+      // this prevents the feedback triggered when external files are dropped
+      // in the broswer (look at scss/_fupl.scss)
       fupl_options.element.classList.add(classes.sorting_class);
 
       e.dataTransfer.effectAllowed = 'move';
@@ -64,12 +63,13 @@ export function add_sortable_events(fupl_item, fupl_options) {
 
       this.classList.add(classes.sorting_item_class);
     }
+
   }, false);
 
-  // inizio posizionamento sopra un altro elemento
-  // e.target (this) è l'elemento
+  // enter positioning over another element (→ e.target == this)
   fupl_item.addEventListener('dragenter', function(e) {
-    // non si attiva per file dall'esterno e per uploader disbilitato
+
+    // disabled for external files or when the uploader is disabled
     if( e.dataTransfer.getData('text') === 'fupl-sorting' && !uploader_is_disabled) {
       if (e.stopPropagation) {
         e.stopPropagation(); // stops the browser from redirecting.
@@ -78,12 +78,11 @@ export function add_sortable_events(fupl_item, fupl_options) {
         this.classList.add(classes.over_item_class);
       }
     }
+
   }, false);
 
-  // posizionamento sopra un altro elemento
-  // e.target è l'elemento
+  // positioning over another element (→ e.target)
   fupl_item.addEventListener('dragover', function(e) {
-
     if( e.dataTransfer.getData('text') === 'fupl-sorting' && !uploader_is_disabled ) {
 
       if (e.preventDefault) {
@@ -98,15 +97,14 @@ export function add_sortable_events(fupl_item, fupl_options) {
     return false;
   }, false);
 
-  // uscita posizionamento sopra un altro elemento
-  // e.target è l'elemento
+  // exit positioning over another element
   fupl_item.addEventListener('dragleave', function() {
+
     this.classList.remove(classes.over_item_class);
   }, false);
 
-  // drop e.target è l'elemento
+  // drop
   fupl_item.addEventListener('drop', function(e) {
-
     if( e.dataTransfer.getData('text') === 'fupl-sorting' && !uploader_is_disabled) {
       if (e.stopPropagation) {
         e.stopPropagation(); // stops the browser from redirecting.
@@ -121,7 +119,7 @@ export function add_sortable_events(fupl_item, fupl_options) {
         } else if( this.nextElementSibling ) {
           this.parentNode.insertBefore(dragged_element, this);
 
-        // se si tratta dell'ultimo elemento si mette alla fine
+        // if target element is the last one, the dropped one is positioned after it
         } else {
           this.parentNode.insertAdjacentElement('beforeend', dragged_element);
         }
@@ -133,14 +131,14 @@ export function add_sortable_events(fupl_item, fupl_options) {
 
   }, false);
 
-  // trascinamento terminato
+  // end dragging
   fupl_item.addEventListener('dragend', function(e) {
 
     if( e.dataTransfer.getData('text') === 'fupl-sorting' && !uploader_is_disabled) {
       fupl_options.element.classList.remove(classes.sorting_class);
       resetAll();
 
-      //variable order
+      // order variable
       fupl_options.instance_result_wrapper.querySelectorAll('.fupl-sortable-order').forEach((item,idx) => {
         item.value = idx;
       });
@@ -151,10 +149,9 @@ export function add_sortable_events(fupl_item, fupl_options) {
 
 
 export function activate_sortable(fupl_options) {
-  'use strict';
 
-  // classe aggiunta all'elemento fupl_options.instance_result_wrapper se l'opzione
-  // sortable è attiva
+  // class added to `fupl_options.instance_result_wrapper`
+  // when `sortable` option is activated
   fupl_options.instance_result_wrapper.classList.add( 'fupl-sortable' );
 
 }

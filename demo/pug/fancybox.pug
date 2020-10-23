@@ -1,0 +1,61 @@
+extends _tpl.pug
+block variables
+  - title = 'Fancybox integration'
+
+block head
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous")
+
+block intro
+  p.
+    Clic the images to display them using #[a(href="https://fancyapps.com/fancybox/3/") Fancybox]
+    (#[a(href="https://jquery.com/") jQuery] is requested).
+  p NB: works only with pre-registered images.
+
+block fupl
+  div(data-file-uploader
+    data-filetype="img"
+    data-img_min_h="500"
+    data-img_min_w="500"
+    data-max_filesize="2500"
+    data-uploader_legend="true"
+    data-multiple="true"
+    data-uploader_legend_text="Fancybox test"
+    data-values= `[
+      {
+        "id": "123",
+        "name": "gigi-1508584-unsplash.jpg",
+        "src": "test-files/gigi-1508584-unsplash.jpg",
+        "url": "test-files/gigi-1508584-unsplash.jpg",
+        "wi": 1199,
+        "he": 1600,
+        "size": 175418
+      },
+      {
+        "id": "456",
+        "name": "fezbot2000-1511423-unsplash.jpg",
+        "src": "test-files/fezbot2000-1511423-unsplash.jpg",
+        "url": "test-files/fezbot2000-1511423-unsplash.jpg",
+        "wi": 1067,
+        "he": 1600,
+        "size": 358840
+      },
+      {
+        "id": "789",
+        "name": "ibrahim-rifath-787485-unsplash.jpg",
+        "src": "test-files/ibrahim-rifath-787485-unsplash.jpg",
+        "url": "test-files/ibrahim-rifath-787485-unsplash.jpg",
+        "wi": 1920,
+        "he": 1280,
+        "size": 193345
+      }
+    ]`
+  )
+
+block external_scripts
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js" integrity="sha512-/DXTXr6nQodMUiq+IUJYCt2PPOUjrHJ9wFrqpJ3XkgPNOZVfMok7cRw6CSxyCQxXn6ozlESsSh1/sMCTF1rL/g==" crossorigin="anonymous")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous")
+
+block js
+  script(src="/demo/js/fancybox-integration.js" type="module")
+
+

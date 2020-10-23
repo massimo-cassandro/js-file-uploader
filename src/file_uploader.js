@@ -6,13 +6,12 @@
  *
  */
 
-import {fupl_strings_it} from './i18n/it.js';
+import fupl_strings_it from './i18n/it.js';
 import {default_options} from './_default_options.js';
 
 import {fupl_init} from './_init.js';
 
-export function FileUploader( params ) {
-  'use strict';
+export default function FileUploader( params ) {
 
   /*
   params obj => {

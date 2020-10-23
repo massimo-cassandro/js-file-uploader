@@ -3,11 +3,6 @@ export const default_options = {
   // server side script url
   uploader_url: null,
 
-  silent_degradation: false,
-
-  //function called when an unsuitable browser is detected
-  unsuitable_browser_callback: null,
-
   // locales for numbers parsing
   locales: 'it-IT',
 
@@ -62,9 +57,9 @@ export const default_options = {
   // Markup to show uploading progress
   template_loading_element: '<div class="fupl-loading"><progress class="fupl-progress" max=100 value=0></progress></div>',
 
-  //  Alternative loading feedback, used if progress.lengthComputable == false.
-  //  In this case and if the `alternative_loading_func` function is not present,
-  //  this string replaces the `.fupl-progress` element.
+  // Alternative loading feedback, used if progress.lengthComputable == false.
+  // In this case and if the `alternative_loading_func` function is not present,
+  // this string replaces the `.fupl-progress` element.
   template_alternative_loading_element: '<div class="spinner-grow text-primary" role="status">' +
     '<span class="sr-only">Loading...</span></div',
 
@@ -202,7 +197,7 @@ export const default_options = {
   sortable_varname: 'fupl_order',
 
   // markup for dragging icon
-  sortable_icon: '<div title="{{sortable_icon_title_text}}></div>',
+  sortable_icon: '<div title="{{sortable_icon_title_text}}"></div>',
 
   // ========================================
   // EXTRA FIELDS

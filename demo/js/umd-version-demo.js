@@ -1,5 +1,4 @@
-import {FileUploader} from '/src/file_uploader.js';
-import {fupl_strings_en} from '/src/i18n/en.js';
+/* global FileUploader, fupl_strings_en */
 
 FileUploader({
   // selector: default value is used

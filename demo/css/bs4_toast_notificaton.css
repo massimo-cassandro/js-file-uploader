@@ -1,4 +1,4 @@
-/* solo per utilizzo boostrap toast */
+/* boostrap toast notification only */
 .fupl-wrapper {
   position: relative;
 }
@@ -13,4 +13,7 @@
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
+}
+.fupl-alert {
+  flex:0;
 }

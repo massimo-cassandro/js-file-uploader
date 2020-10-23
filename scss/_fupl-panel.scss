@@ -10,7 +10,7 @@
       cursor: pointer;
 
       [disabled] & {
-        &:hover, &:active, &:focus {
+        &, &:hover, &:active, &:focus {
           cursor: not-allowed;
           font-style: italic;
           color: $fupl-disabled-color!important;

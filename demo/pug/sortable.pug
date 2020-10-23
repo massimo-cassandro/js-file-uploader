@@ -1,0 +1,49 @@
+extends _tpl.pug
+block variables
+  - title = 'Sortable elements'
+block intro
+  p.
+    Drag images to change their order.
+  p.
+    Extra hidden fields are added to save order values.
+
+
+block fupl
+  div(data-file-uploader
+    data-filetype="img"
+    data-uploader_legend="true"
+    data-uploader_legend_text="Sort images by dragging them"
+    data-max_filesize="2MB"
+    data-multiple="true"
+    data-sortable="true"
+    data-sortable_varname="img_order"
+    data-img_max_w="2000"
+    data-img_max_h="500"
+    data-values= `[{
+      "id": "123",
+      "name": "fezbot2000-1511423-unsplash.jpg",
+      "src": "test-files/fezbot2000-1511423-unsplash.jpg",
+      "wi": 1067,
+      "he": 1500,
+      "size": 358840
+    },
+    {
+      "id": "456",
+      "name": "ibrahim-rifath-787485-unsplash.jpg",
+      "src": "test-files/ibrahim-rifath-787485-unsplash.jpg",
+      "wi": 1920,
+      "he": 1280,
+      "size": 193345
+    },
+    {
+      "id": "789",
+      "name": "16-9-img-martha-dominguez-de-gouveia-747676-unsplash.jpg",
+      "src": "test-files/16-9-img-martha-dominguez-de-gouveia-747676-unsplash.jpg",
+      "wi": 1600,
+      "he": 900,
+      "size": 222121
+    }]`
+  )
+
+block js
+  script(src="/demo/js/basic-demo.js" type="module")

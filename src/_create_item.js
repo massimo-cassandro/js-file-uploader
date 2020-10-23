@@ -204,8 +204,11 @@ export function create_item(item_data, fupl, preregistered = false) {
               fupl.opts.varname) +
             `[${item_data.id}][${fupl.opts.sortable_varname}]" value="${order_value}">`
       );
+
       if(fupl.opts.sortable_icon) {
-        fupl_item_dom.querySelector('.fupl-sortable-icon').innerHTML = fupl.opts.sortable_icon;
+        fupl_item_dom.querySelector('.fupl-sortable-icon').innerHTML =
+          fupl.opts.sortable_icon
+            .replace('{{sortable_icon_title_text}}', fupl.strs.sortable_icon_title_text);
       }
       add_sortable_events(fupl_item_dom, fupl.opts);
     }

@@ -1,4 +1,3 @@
-
 import {send_files} from './_send_files.js';
 
 // https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/

@@ -2,15 +2,11 @@ import {fupl_utilities} from './_utilities.js';
 import {createUploader} from './_create_uploader.js';
 
 export  function fupl_init(fupl) {
-  'use strict';
 
   // browser check
   if( !fupl_utilities.isSuitableBrowser() ) {
-    if(!fupl.opts.silent_degradation) {
-      alert( fupl.strs.alert_unsuitable_browser );
-    }
-    if( fupl.opts.unsuitable_browser_callback ) {
-      fupl_utilities.exec_callback( fupl.opts.unsuitable_browser_callback );
+    if ( 'console' in window ) {
+      console.error('This browser can\'t run FileUploader'); // eslint-disable-line
     }
     return;
   }

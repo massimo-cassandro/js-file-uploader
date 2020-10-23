@@ -45,5 +45,4 @@ export function show_markup(title) {
     );
 
   }
-
 }

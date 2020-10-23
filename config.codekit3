@@ -57,13 +57,11 @@
 		"oAP": "/.npmignore",
 		"oF": 0
 		},
-	"/.vscode/tasks.json": {
-		"ft": 524288,
+	"/.vscode": {
+		"ft": 65536,
 		"oA": 1,
-		"oAP": "/.vscode/tasks-min.json",
-		"oF": 0,
-		"oO": 0,
-		"oS": 1
+		"oAP": "/build/.vscode",
+		"oF": 0
 		},
 	"/demo/.htaccess": {
 		"cB": 0,
@@ -73,20 +71,28 @@
 		"oAP": "/demo/.htaccess",
 		"oF": 0
 		},
-	"/demo/aspect_ratio_demo.html": {
+	"/demo/aspect-ratio.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/demo/aspect_ratio_demo.html",
+		"oAP": "/demo/aspect-ratio.html",
 		"oF": 0
 		},
-	"/demo/basic-img-demo.html": {
+	"/demo/bootstrap-toast-demo.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/demo/basic-img-demo.html",
+		"oAP": "/demo/bootstrap-toast-demo.html",
+		"oF": 0
+		},
+	"/demo/callbacks.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/callbacks.html",
 		"oF": 0
 		},
 	"/demo/css/bs4_toast_notificaton.css": {
@@ -301,20 +307,36 @@
 		"sC": 3,
 		"tS": 0
 		},
-	"/demo/extra_fields_demo.html": {
+	"/demo/disabling-submit-demo.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/demo/extra_fields_demo.html",
+		"oAP": "/demo/disabling-submit-demo.html",
 		"oF": 0
 		},
-	"/demo/fancybox_demo.html": {
+	"/demo/disabling-uploader.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/demo/fancybox_demo.html",
+		"oAP": "/demo/disabling-uploader.html",
+		"oF": 0
+		},
+	"/demo/extra-fields.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/extra-fields.html",
+		"oF": 0
+		},
+	"/demo/fancybox.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/fancybox.html",
 		"oF": 0
 		},
 	"/demo/index.html": {
@@ -325,13 +347,13 @@
 		"oAP": "/demo/index.html",
 		"oF": 0
 		},
-	"/demo/js/basic-img-demo.js": {
+	"/demo/js/basic-demo.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/demo/basic-img-demo-min.js",
+		"oAP": "/demo/js/basic-demo-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -347,12 +369,140 @@
 		"sC": 3,
 		"tS": 0
 		},
-	"/demo/main_demo.html": {
+	"/demo/js/callbacks-demo.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/demo/js/callbacks-demo-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/demo/js/disabling-submit-demo.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/demo/js/disabling-submit-demo-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/demo/js/disabling-uploader.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/demo/js/disabling-uploader-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/demo/js/extra-fields.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/demo/js/extra-fields-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/demo/js/fancybox-integration.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/demo/js/fancybox-integration-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/demo/js/required-demo.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/demo/js/required-demo-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/demo/js/umd-version-demo.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/demo/js/umd-version-demo-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/demo/mixed-img-svg-demo.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/demo/main_demo.html",
+		"oAP": "/demo/mixed-img-svg-demo.html",
+		"oF": 0
+		},
+	"/demo/multiple-doc-demo.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/multiple-doc-demo.html",
+		"oF": 0
+		},
+	"/demo/multiple-uploaders.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/multiple-uploaders.html",
+		"oF": 0
+		},
+	"/demo/php_sample/get_file_properties.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/php_sample/get_file_properties.php",
+		"oF": 0
+		},
+	"/demo/php_sample/php_sample.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/demo/php_sample/php_sample-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/demo/php_sample/php_sample.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/php_sample/php_sample.php",
+		"oF": 0
+		},
+	"/demo/php_sample/server_side.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/php_sample/server_side.php",
 		"oF": 0
 		},
 	"/demo/pug/_tpl.pug": {
@@ -365,13 +515,73 @@
 		"oF": 0,
 		"oS": 0
 		},
-	"/demo/pug/basic-img-demo.pug": {
+	"/demo/pug/aspect-ratio.pug": {
 		"cB": 0,
 		"cOD": 0,
 		"ft": 512,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/demo/basic-img-demo.html",
+		"oAP": "/demo/aspect-ratio.html",
+		"oF": 0,
+		"oS": 0
+		},
+	"/demo/pug/bootstrap-toast-demo.pug": {
+		"cB": 0,
+		"cOD": 0,
+		"ft": 512,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/bootstrap-toast-demo.html",
+		"oF": 0,
+		"oS": 0
+		},
+	"/demo/pug/callbacks.pug": {
+		"cB": 0,
+		"cOD": 0,
+		"ft": 512,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/callbacks.html",
+		"oF": 0,
+		"oS": 0
+		},
+	"/demo/pug/disabling-submit-demo.pug": {
+		"cB": 0,
+		"cOD": 0,
+		"ft": 512,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/disabling-submit-demo.html",
+		"oF": 0,
+		"oS": 0
+		},
+	"/demo/pug/disabling-uploader.pug": {
+		"cB": 0,
+		"cOD": 0,
+		"ft": 512,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/disabling-uploader.html",
+		"oF": 0,
+		"oS": 0
+		},
+	"/demo/pug/extra-fields.pug": {
+		"cB": 0,
+		"cOD": 0,
+		"ft": 512,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/extra-fields.html",
+		"oF": 0,
+		"oS": 0
+		},
+	"/demo/pug/fancybox.pug": {
+		"cB": 0,
+		"cOD": 0,
+		"ft": 512,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/fancybox.html",
 		"oF": 0,
 		"oS": 0
 		},
@@ -385,36 +595,152 @@
 		"oF": 0,
 		"oS": 0
 		},
-	"/demo/silent_degradation_sample.html": {
+	"/demo/pug/mixed-img-svg-demo.pug": {
+		"cB": 0,
+		"cOD": 0,
+		"ft": 512,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/mixed-img-svg-demo.html",
+		"oF": 0,
+		"oS": 0
+		},
+	"/demo/pug/multiple-doc-demo.pug": {
+		"cB": 0,
+		"cOD": 0,
+		"ft": 512,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/multiple-doc-demo.html",
+		"oF": 0,
+		"oS": 0
+		},
+	"/demo/pug/multiple-uploaders.pug": {
+		"cB": 0,
+		"cOD": 0,
+		"ft": 512,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/multiple-uploaders.html",
+		"oF": 0,
+		"oS": 0
+		},
+	"/demo/pug/php_sample.pug": {
+		"cB": 0,
+		"cOD": 0,
+		"ft": 512,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/php_sample/php_sample.php",
+		"oF": 2,
+		"oS": 0
+		},
+	"/demo/pug/required.pug": {
+		"cB": 0,
+		"cOD": 0,
+		"ft": 512,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/required.html",
+		"oF": 0,
+		"oS": 0
+		},
+	"/demo/pug/single-doc-demo.pug": {
+		"cB": 0,
+		"cOD": 0,
+		"ft": 512,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/single-doc-demo.html",
+		"oF": 0,
+		"oS": 0
+		},
+	"/demo/pug/single-img-demo.pug": {
+		"cB": 0,
+		"cOD": 0,
+		"ft": 512,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/single-img-demo.html",
+		"oF": 0,
+		"oS": 0
+		},
+	"/demo/pug/sortable.pug": {
+		"cB": 0,
+		"cOD": 0,
+		"ft": 512,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/sortable.html",
+		"oF": 0,
+		"oS": 0
+		},
+	"/demo/pug/svg-demo.pug": {
+		"cB": 0,
+		"cOD": 0,
+		"ft": 512,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/svg-demo.html",
+		"oF": 0,
+		"oS": 0
+		},
+	"/demo/pug/umd-version-demo.pug": {
+		"cB": 0,
+		"cOD": 0,
+		"ft": 512,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/umd-version-demo.html",
+		"oF": 0,
+		"oS": 0
+		},
+	"/demo/required.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/demo/silent_degradation_sample.html",
+		"oAP": "/demo/required.html",
 		"oF": 0
 		},
-	"/demo/sortable_demo.html": {
+	"/demo/single-doc-demo.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/demo/sortable_demo.html",
+		"oAP": "/demo/single-doc-demo.html",
 		"oF": 0
 		},
-	"/demo/svg_demo.html": {
+	"/demo/single-img-demo.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/demo/svg_demo.html",
+		"oAP": "/demo/single-img-demo.html",
 		"oF": 0
 		},
-	"/demo/test-files/16-9 img - martha-dominguez-de-gouveia-747676-unsplash.jpg": {
+	"/demo/sortable.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/sortable.html",
+		"oF": 0
+		},
+	"/demo/svg-demo.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/svg-demo.html",
+		"oF": 0
+		},
+	"/demo/test-files/16-9-img-martha-dominguez-de-gouveia-747676-unsplash.jpg": {
 		"ft": 16384,
 		"iS": 222121,
 		"jF": 0,
 		"oA": 1,
-		"oAP": "/demo/test-files/16-9 img - martha-dominguez-de-gouveia-747676-unsplash.jpg",
+		"oAP": "/demo/test-files/16-9-img-martha-dominguez-de-gouveia-747676-unsplash.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
@@ -480,6 +806,14 @@
 		"oAP": "/demo/test-files/pdf2.pdf",
 		"oF": 0
 		},
+	"/demo/test-files/rtf-doc.rtf": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/demo/test-files/rtf-doc.rtf",
+		"oF": 0
+		},
 	"/demo/test-files/small_img.png": {
 		"ft": 32768,
 		"iS": 7429,
@@ -511,74 +845,26 @@
 		"plM": 3758088159,
 		"prP": 0
 		},
-	"/dist/fileUploader.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "/dist/fileUploader-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/dist/fileUploader.css.map": {
+	"/demo/umd-version-demo.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/dist/fileUploader.css.map",
+		"oAP": "/demo/umd-version-demo.html",
 		"oF": 0
 		},
-	"/dist/FileUploader.esm.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 0,
-		"mi": 0,
+	"/dist": {
+		"ft": 65536,
 		"oA": 1,
-		"oAP": "/dist/FileUploader.esm-min.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 0
+		"oAP": "/build/dist",
+		"oF": 0
 		},
-	"/dist/FileUploader.esm.min.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 0,
-		"mi": 0,
-		"oA": 1,
-		"oAP": "/dist/FileUploader.esm.min-min.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 0
-		},
-	"/dist/FileUploader.umd.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 0,
-		"mi": 0,
-		"oA": 1,
-		"oAP": "/dist/FileUploader.umd-min.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 0
-		},
-	"/dist/FileUploader.umd.min.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 0,
-		"mi": 0,
-		"oA": 1,
-		"oAP": "/dist/FileUploader.umd.min-min.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 0
-		},
-	"/js-file-uploader-v2.code-workspace": {
+	"/js-file-uploader.code-workspace": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/js-file-uploader-v2.code-workspace",
+		"oAP": "/js-file-uploader.code-workspace",
 		"oF": 0
 		},
 	"/LICENSE": {
@@ -1005,6 +1291,12 @@
 		"oAP": "/build/src",
 		"oF": 0
 		},
+	"/src-utilities": {
+		"ft": 65536,
+		"oA": 1,
+		"oAP": "/build/src-utilities",
+		"oF": 0
+		},
 	"/src-utilities/check_required_uploader.js": {
 		"bF": 0,
 		"ft": 64,
@@ -1012,6 +1304,17 @@
 		"mi": 0,
 		"oA": 1,
 		"oAP": "/src-utilities/check_required_uploader-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/src/_build_hidden_fields.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/src/_build_hidden_fields-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -3287,7 +3590,7 @@
 	"rollupExternals": "NewExternalModule:::test",
 	"rollupReplacements": "process.env.NODE_ENV:::$NODE_ENV,,,ENVIRONMENT:::$NODE_ENV",
 	"rollupTreeshakingEnabled": 1,
-	"skippedFoldersString": "/utilities,/storage/framework/sessions,/src,node_modules,_logs,logs,log,.idea,/__dev__,_cache,cache",
+	"skippedFoldersString": "/.vscode,/storage/framework/sessions,/src-utilities,/src,node_modules,_logs,logs,log,.idea,/dist,/__dev__,_cache,cache",
 	"sourceFolderName": "source",
 	"susyVersion": 3,
 	"tsAllowSyntheticDefaultImports": 0,

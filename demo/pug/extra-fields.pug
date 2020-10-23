@@ -1,0 +1,62 @@
+extends _tpl.pug
+block variables
+  - title = 'Extra fields demo'
+
+block intro
+  p.
+    Uploader with extra fields attached to each (sortable) item.
+  p.
+    NB: a bug in some browsers (including Firefox) makes the value of input
+    fields inside draggable containers unselectable.
+    There are many posts (like #[a(href="https://stackoverflow.com/questions/21680363/prevent-drag-event-to-interfere-with-input-elements-in-firefox-using-html5-drag") this one])
+    on Stackoverflow with some workaround.
+
+block fupl
+  div(data-file-uploader
+    data-filetype="img"
+    data-max_filesize="12Mb"
+    data-uploader_legend="true"
+    data-uploader_legend_text="Extra fields demo"
+    data-multiple="true"
+    data-sortable="true"
+    data-values=`[
+      {
+        "id": "123",
+        "rel_id" : "1123",
+        "name": "gigi-1508584-unsplash.jpg",
+        "src": "test-files/gigi-1508584-unsplash.jpg",
+        "wi": 1199,
+        "he": 1600,
+        "size": 175418,
+        "publish": 1,
+        "caption": "Simatai Great Wall, Beijing, China (@ling_gigi/Unsplash)"
+      },
+      {
+        "id": "456",
+        "rel_id" : "4456",
+        "name": "fezbot2000-1511423-unsplash.jpg",
+        "src": "test-files/fezbot2000-1511423-unsplash.jpg",
+        "wi": 1067,
+        "he": 1600,
+        "size": 358840,
+        "publish": 1,
+        "caption": "Higashi-Tenno, Kyoto, Japan (@fezbot2000/Unsplash)"
+      },
+      {
+        "id": "789",
+        "rel_id" : "7789",
+        "name": "ibrahim-rifath-787485-unsplash.jpg",
+        "src": "test-files/ibrahim-rifath-787485-unsplash.jpg",
+        "wi": 1920,
+        "he": 1280,
+        "size": 193345,
+        "publish": 0,
+        "caption": "Tomb of I’timād-ud-Daulah, Agra, India (@photoripey/Unsplash)"
+      }
+    ]`
+  )
+
+block js
+  script(src="/demo/js/extra-fields.js" type="module")
+
+

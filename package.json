@@ -33,7 +33,8 @@
   "homepage": "https://github.com/massimo-cassandro/js-file-uploader.git#readme",
   "files": [
     "dist/*.{css,js,map}",
-    "src/*.js",
+    "src/*.{js,map}",
+    "src-utilities/*.{js,map}",
     "scss/*.scss"
   ],
   "dependencies": {},

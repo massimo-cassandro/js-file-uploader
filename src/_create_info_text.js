@@ -6,7 +6,6 @@
 
 export function create_info_text(fupl) {
 
-  'use strict';
   let info_text = [];
 
   switch (fupl.opts.filetype) {
@@ -106,7 +105,7 @@ export function create_info_text(fupl) {
     str = fupl.opts.info_text_wrap_string[0] + str + fupl.opts.info_text_wrap_string[1];
   }
 
-  if(fupl.opts.filetype === 'img') {
+  if(fupl.opts.filetype === 'img' || fupl.opts.filetype === 'img+svg') {
     str += '<div>' + fupl.strs.info_text_img_optimize_info + '</div>';
   }
 

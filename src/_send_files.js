@@ -5,6 +5,7 @@ and generates the feedback for the user
 
 import {create_item} from './_create_item.js';
 import {fupl_utilities} from './_utilities.js';
+import {build_hidden_fields} from './_build_hidden_fields.js';
 
 export function send_files(filelist, fupl) {
 
@@ -20,17 +21,18 @@ export function send_files(filelist, fupl) {
           btn.disabled = mode;
         });
 
-        const submitHandler = (e) => {
-          e.preventDefault();
-          //return false;
-        };
-        if(mode === true) {
-          _form.addEventListener('submit', submitHandler, false);
-        } else {
-          if( !fupl.opts.instance_result_wrapper.querySelector('.fupl-item.fupl-is-uploading')) {
-            _form.removeEventListener('submit', submitHandler, false);
-          }
-        }
+        // TODO: removeEventListener doesn't work
+        // const submitHandler = (e) => {
+        //   e.preventDefault();
+        //   //return false;
+        // };
+        // if(mode === true) {
+        //   _form.addEventListener('submit', submitHandler, false);
+        // } else {
+        //   if( !fupl.opts.instance_result_wrapper.querySelector('.fupl-item.fupl-is-uploading')) {
+        //     _form.removeEventListener('submit', submitHandler, false);
+        //   }
+        // }
       }
     },
 
@@ -122,6 +124,13 @@ export function send_files(filelist, fupl) {
               });
             }
 
+            if(fupl.opts.debug) {
+              /* eslint-disable */
+              console.groupCollapsed('FileUploader ajax response');
+              console.log(response);
+              console.groupEnd();
+              /* eslint-enable */
+            }
 
           } else {
             fupl.opts.alert_api( xhr_error_message, fupl );
@@ -180,8 +189,8 @@ export function send_files(filelist, fupl) {
             this_item.querySelector('.fupl-loading').remove(); // elemento loading
 
             this_item.insertAdjacentHTML('beforeend',
-//TODO
-              // upl.buildHiddenFields(current_item, fupl.opts)
+
+              build_hidden_fields(current_item, fupl.opts)
             );
 
             fupl_utilities.set_has_values(fupl);

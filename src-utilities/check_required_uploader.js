@@ -1,6 +1,5 @@
-// check for equired file-uploader
-export  function check_required_uploader(options) {
-  'use strict';
+// check for required file-uploaders
+export default function (options) {
 
   const default_options = {
     alert_api: message => { window.alert(message); },
@@ -26,7 +25,5 @@ export  function check_required_uploader(options) {
         return false;
       }
     }, false);
-
   });
-
 }

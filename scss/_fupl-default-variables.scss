@@ -13,8 +13,8 @@ $fupl-sortable-icon-dot-color: #333!default;
 $fupl-sortable-icon-hover-dot-color: #c00!default;
 
 // background of an element while dragging
-$fupl-sorting-bg-line-size: 10px;
-$fupl-sorting-bg: #fff repeating-linear-gradient(
+$fupl-sorting-bg-line-size: 20px;
+$fupl-sorting-bg: #ccc repeating-linear-gradient(
   45deg, transparent,
   transparent $fupl-sorting-bg-line-size,
   rgba(#fff,.5) $fupl-sorting-bg-line-size,

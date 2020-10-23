@@ -1,9 +1,11 @@
-FileUploader = ((upl) => {
+/*
+Generate hidden fields with values to be sent to server
+Returns the hidden fields html string
+*/
+export function build_hidden_fields(current_item, fupl_options) {
 
-  /*
-    normalize ascii chars > 127 (and more)
-  */
-  const normalize_file_name = function (filename) {
+  // normalize ascii chars > 127 (and more)
+  const normalize_file_name = filename => {
     let converted = '';
     const conversionTable = { // Reference table Unicode vs ASCII
       'à' : 'a', // 224
@@ -66,34 +68,24 @@ FileUploader = ((upl) => {
     return converted.replace(/ /g, '_').replace(/_+/g, '_');
   };
 
-  /*
-  Generate hidden fields with values to be sent to server
-  Returns the hidden fields html string
-  */
-  upl.buildHiddenFields = (current_item, fupl_options) => {
+  let hidden_fields = '',
+    field_values = {
+      'tmp_file'  : current_item.tmp_file,
+      'file_name' : normalize_file_name(current_item.file.name),
+      'size'      : current_item.file.size,
+      'type'      : current_item.file.type
+    };
 
-    let hidden_fields = '',
-      field_values = {
-        'tmp_file'  : current_item.tmp_file,
-        'file_name' : normalize_file_name(current_item.file.name),
-        'size'      : current_item.file.size,
-        'type'      : current_item.file.type
-      };
+  if(fupl_options._type === 'img') {
+    field_values.width = current_item.width;
+    field_values.height = current_item.height;
+  }
+  for (let _key in field_values) {
+    hidden_fields += '<input type="hidden" '+
+      'name="' + fupl_options.varname + '[' + current_item.id +'][' + _key + ']" '+
+      'value="' + ((field_values[_key] !== null && field_values[_key] !== undefined)? field_values[_key] : '') +'">';
+  }
 
-    if(fupl_options._type === 'img') {
-      field_values.width = current_item.width;
-      field_values.height = current_item.height;
-    }
-    for (let _key in field_values) {
-      hidden_fields += '<input type="hidden" '+
-        'name="' + fupl_options.varname + '[' + current_item.id +'][' + _key + ']" '+
-        'value="' + ((field_values[_key] !== null && field_values[_key] !== undefined)? field_values[_key] : '') +'">';
-    }
+  return '<div class="fupl-hiddens">' + hidden_fields + '</div>';
 
-    return '<div class="fupl-hiddens">' + hidden_fields + '</div>';
-
-  };
-
-  return upl;
-
-})(FileUploader || {});
+}
