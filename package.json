@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/js-file-uploader",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "HTML5 Async File Uploader ",
   "main": "js/file_uploader.js",
   "module": "dist/lazyload.esm.js",
@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/massimo-cassandro/js-file-uploader.git#readme",
   "files": [
-    "dist/*.{css,js,map}",
+    "dist/**/*.{css,js,map}",
     "src/*.{js,map}",
     "src-utilities/*.{js,map}",
     "scss/*.scss"
