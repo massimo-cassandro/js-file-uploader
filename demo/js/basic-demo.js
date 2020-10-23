@@ -1,9 +1,9 @@
-import FileUploader from '../../src/file_uploader.js';
+import FileUploader from '../src/file_uploader.js';
 
 // use this if you prefer the all-in-one es6 file:
 // import FileUploader from '/dist/FileUploader.esm.min.js';
 
-import fupl_strings_en from '../../src/i18n/en.js';
+import fupl_strings_en from './../../src/i18n/en.js';
 
 FileUploader({
   // selector: default value is used
