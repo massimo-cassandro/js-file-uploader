@@ -49,6 +49,14 @@
 		"oAP": "/.gitignore",
 		"oF": 0
 		},
+	"/.nojekyll": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/.nojekyll",
+		"oF": 0
+		},
 	"/.npmignore": {
 		"cB": 0,
 		"ft": 8192,
