@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/js-file-uploader",
-  "version": "2.0.0-alpha-0",
+  "version": "2.0.0",
   "description": "HTML5 Async File Uploader ",
   "main": "js/file_uploader.js",
   "module": "dist/lazyload.esm.js",
