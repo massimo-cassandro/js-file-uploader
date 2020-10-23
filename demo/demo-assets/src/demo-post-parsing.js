@@ -21,7 +21,7 @@ import {escapeHTML} from '@massimo-cassandro/m-utilities/js-utilities/_escapeHTM
       .then((data) => {
         const url = new URL(script_tag.src);
         demo_code_wrapper.insertAdjacentHTML('beforeend',
-          `<h2 class="h3">Javascript <small>(${url.pathname})</small></h2>
+          `<h2 class="h3">Javascript <small>(${url.pathname.replace(/^\/js-file-uploader/, '')})</small></h2>
           <div class="line-numbers code-box">
             <pre><code class="language-js">` +
               escapeHTML(data.trim()) +
