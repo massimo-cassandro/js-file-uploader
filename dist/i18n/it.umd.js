@@ -30,10 +30,10 @@ define(function () { 'use strict';
     info_text_imgs_svg_size_info_text: '<strong>Solo immagini non SVG:</strong> ',
 
     info_text_img_optimize_info: 'Ottimizza le tue immagini prima di caricarle. ' +
-      '<a href="https://squoosh.app/" target="_blank">Squoosh</a> è un ottimo (e gratuito) ' +
+      '<a href="https://squoosh.app/" target="_blank" rel="noopener noreferrer">Squoosh</a> è un ottimo (e gratuito) ' +
       'strumento per farlo.',
     info_text_svg_optimize_info: 'È consigliabile ottimizzare i file SVG prima del caricamento, ' +
-      'ad esempio tramite <a href="https://jakearchibald.github.io/svgomg/" target="_blank">SVGO</a>',
+      'ad esempio tramite <a href="https://jakearchibald.github.io/svgomg/" target="_blank" rel="noopener noreferrer">SVGO</a>',
 
     info_text_img_fixed_size: 'dimensioni: <strong>{{img_w}}&times;{{img_h}}px</strong>',
     info_text_img_equal_min_size: 'larghezza e altezza non inferiori a <strong>{{img_min_w}}px</strong>',

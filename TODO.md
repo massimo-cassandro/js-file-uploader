@@ -1,5 +1,5 @@
 # TODO
-* device cameras integration
+* device cameras integration (https://web.dev/camera-pan-tilt-zoom/)
 * add option to generate download link for images
 * public method to check if uploader has values
 * predefined extra fields templates for common uses
