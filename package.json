@@ -1,10 +1,11 @@
 {
   "name": "@massimo-cassandro/js-file-uploader",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "HTML5 Async File Uploader ",
-  "main": "src/file_uploader.js",
-  "module": "dist/lazyload.esm.js",
-  "browser": "dist/lazyload.min.js",
+  "main": "./src/file_uploader.js",
+  "style": "./scss/fileUploader.scss",
+  "module": "./dist/lazyload.esm.js",
+  "browser": "./dist/lazyload.min.js",
   "scripts": {
     "build": "npx rollup --config",
     "test": "echo \"Error: no test specified\" && exit 1"
