@@ -1,8 +1,8 @@
 {
   "name": "@massimo-cassandro/js-file-uploader",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "HTML5 Async File Uploader ",
-  "main": "js/file_uploader.js",
+  "main": "src/file_uploader.js",
   "module": "dist/lazyload.esm.js",
   "browser": "dist/lazyload.min.js",
   "scripts": {
