@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/js-file-uploader",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "description": "HTML5 Async File Uploader ",
   "main": "./src/file_uploader.js",
   "style": "./scss/fileUploader.scss",
@@ -34,7 +34,7 @@
   "homepage": "https://github.com/massimo-cassandro/js-file-uploader.git#readme",
   "files": [
     "dist/**/*.{css,js,map}",
-    "src/*.{js,map}",
+    "src/**/*.{js,map}",
     "src-utilities/*.{js,map}",
     "scss/*.scss"
   ],
