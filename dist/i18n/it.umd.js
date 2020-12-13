@@ -11,14 +11,14 @@ define(function () { 'use strict';
       'superano il valore massimo consentito ({{allowed_size}})',
 
     // images sizes alerts
-    alert_img_err_start_string: 'L\'immagine “<strong>{{file_name}}</strong>” non è corretta:',
+    alert_img_err_start_string: 'L’immagine “<strong>{{file_name}}</strong>” non è corretta:',
     alert_img_exact_width_err: 'Larghezza non corrispondente ({{image_dimension}}px invece di {{allowed_dimension}}px)',
     alert_img_min_width_err: 'Larghezza inferiore a quella minima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
     alert_img_max_width_err: 'Larghezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
     alert_img_exact_height_err: 'Altezza non corrispondente ({{image_dimension}}px invece di {{allowed_dimension}}px)',
     alert_img_min_height_err: 'Altezza inferiore a quella minima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
     alert_img_max_height_err: 'Altezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
-    alert_img_ratio_err: 'La proporzione tra base e altezza dell\'immagine non corrisponde a quella richiesta ({{aspect_ratio}})',
+    alert_img_ratio_err: 'La proporzione tra base e altezza dell’immagine non corrisponde a quella richiesta ({{aspect_ratio}})',
 
     no_img_text: 'Nessuna immagine presente',
     no_doc_text: 'Nessun file presente',
@@ -49,10 +49,10 @@ define(function () { 'use strict';
     info_text_pdf_file: 'file in formato <strong>PDF</strong>',
     info_text_svg_file: 'immagini in formato <strong>SVG</strong>',
     info_text_max_filesize: 'max <strong>{{max_filesize}}</strong>',
-    info_text_img_aspect_ratio: 'Il rapporto tra base e altezza dell\'immagine deve essere esattamente pari a <strong>{{img_aspect_ratio}}</strong>',
+    info_text_img_aspect_ratio: 'Il rapporto tra base e altezza dell’immagine deve essere esattamente pari a <strong>{{img_aspect_ratio}}</strong>',
 
     // select or drag labels
-    img_single_select_text   : 'Seleziona un\'immagine',
+    img_single_select_text   : 'Seleziona un’immagine',
     img_single_drag_text     : '&hellip;oppure trascinala qui',
     img_multiple_select_text : 'Seleziona una o pi&ugrave; immagini',
     img_multiple_drag_text   : '&hellip;oppure trascinale qui',
@@ -61,7 +61,7 @@ define(function () { 'use strict';
     doc_multiple_select_text : 'Seleziona uno o pi&ugrave; documenti',
     doc_multiple_drag_text   : '&hellip;oppure trascinali qui',
 
-    sortable_icon_title_text: 'Trascina per cambiare l\'ordinamento'
+    sortable_icon_title_text: 'Trascina per cambiare l’ordinamento'
   };
 
   return fupl_strings_it;
