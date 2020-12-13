@@ -6,13 +6,14 @@
 		{
 			"name": "wiki",
 			"path": "../js-file-uploader-wiki"
-		},
-		{
-			"path": "node_modules/@massimo-cassandro"
 		}
 	],
   "settings": {
 		"preview-in-browser.domain": "http://fileuploader.local:8888/",
-		"preview-in-browser.removeStartString": "~/Sites/js-file-uploader/"
+		"preview-in-browser.removeStartString": "~/Sites/js-file-uploader/",
+		"favorites.resources": [
+			"/Users/max/Sites/js-file-uploader/js-file-uploader.code-workspace",
+			"/Users/max/Sites/js-file-uploader/node_modules/@massimo-cassandro"
+		]
 	}
 }
