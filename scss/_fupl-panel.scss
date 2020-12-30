@@ -42,10 +42,10 @@
       margin-top:.5rem;
     }
   }
-
-  .fupl-help-text {
-    margin-top: 1rem;
-    font-weight: $fupl-help-text-font-weight;
+  @if $fupl-set-fupl-help-rules {
+    .fupl-help-text {
+      font-size:80%;
+    }
   }
 
 }

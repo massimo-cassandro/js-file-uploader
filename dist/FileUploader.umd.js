@@ -1716,6 +1716,12 @@
         fupl.opts.wrapper.classList.add( 'fupl-has-legend' );
       }
 
+      if(fupl.opts.help_text) {
+        fupl.opts.element.insertAdjacentHTML('beforebegin',
+          `<div class="fupl-help-text">${fupl.opts.help_text}</div>`
+        );
+      }
+
       // uploader template
       fupl.opts.element.innerHTML = fupl.opts.template_main;
 
@@ -1765,12 +1771,6 @@
           fupl.opts.instance_info_text.innerHTML = fupl.opts.custom_info_text;
         } else {
           fupl.opts.instance_info_text.innerHTML = create_info_text(fupl);
-        }
-
-        if(fupl.opts.help_text) {
-          fupl.opts.instance_info_text.insertAdjacentHTML('beforeend',
-            `<div class="fupl-help-text">${fupl.opts.help_text}</div>`
-          );
         }
       }
 

@@ -26,7 +26,7 @@ $fupl-info-text-color:#666!default; // bootstrap: $text-muted
 $fupl-font-weight-bold: bold!default; // bootstrap: $font-weight-bold
 $fupl-small-font-size: 80%!default; // bootstrap: $small-font-size
 
-$fupl-help-text-font-weight: $fupl-font-weight-bold!default;
+$fupl-set-fupl-help-rules: true!default; // set to false to provide custom rules
 
 $fupl-breakpoints: ( // bootstrap: $grid-breakpoints
   xs: 0,
