@@ -39,7 +39,8 @@ export function create_item(item_data, fupl, preregistered = false) {
     // delete button
     let fupl_remove = fupl_item_wrapper.querySelector('.fupl-remove');
     if(fupl_remove) {
-      fupl_remove.innerHTML = fupl.opts.template_remove_btn;
+      fupl_remove.innerHTML = fupl.opts.template_remove_btn
+        .replace('{{remove_btn_text}}', fupl.strs.remove_btn_text);
     }
 
     /*
