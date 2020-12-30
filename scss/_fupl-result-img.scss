@@ -31,20 +31,20 @@
       }
 
       @include fupl-media-query-min(sm) {
-        grid-template-columns: repeat(2, minmax(160px, 1fr));
+        grid-template-columns: repeat(3, minmax(160px, 1fr));
         .fupl-img-wrapper {
           height: 180px;
         }
       }
       @include fupl-media-query-min(md) {
-        grid-template-columns: repeat(3, minmax(160px, 1fr));
+        grid-template-columns: repeat(4, minmax(160px, 1fr));
         .fupl-img-wrapper {
           height: 200px;
         }
       }
-      @include fupl-media-query-min(lg) {
-        grid-template-columns: repeat(4, minmax(160px, 1fr));
-      }
+      // @include fupl-media-query-min(lg) {
+      //   grid-template-columns: repeat(4, minmax(160px, 1fr));
+      // }
       @include fupl-media-query-min(xl) {
         grid-template-columns: repeat(5, minmax(160px, 1fr));
       }
