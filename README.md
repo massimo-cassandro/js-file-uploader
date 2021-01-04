@@ -3,7 +3,7 @@
 **js-file-uploader: HTML5 + Javascript asyncronous file upload.**  
 *v. 2 - Massimo Cassandro - (c) 2017/2020*
 
-[demo](https://github.com/massimo-cassandro/js-file-uploader/demo/)
+[demo](https://massimo-cassandro.github.io/js-file-uploader/demo/)
 |
 [wiki](https://github.com/massimo-cassandro/js-file-uploader/wiki)
 
@@ -17,7 +17,7 @@ Uploads are performed asynchronously via an Ajax call to a server-side script th
 
 Although the default settings are based on Bootstrap 4, FileUploader is entirely and easily configurable from scratch and can be adapted to any layout.
 
-The [demo](https://github.com/massimo-cassandro/js-file-uploader/demo/) folder contains many examples of FileUploader using.
+The [demo](https://massimo-cassandro.github.io/js-file-uploader/demo/) folder contains many examples of FileUploader using.
 
 Take a look at [wiki pages](https://github.com/massimo-cassandro/js-file-uploader/wiki) for detailed usage and configuration instructions.
 
