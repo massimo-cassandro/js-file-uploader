@@ -25,7 +25,8 @@
     "forms",
     "upload-file",
     "javascript",
-    "ajax"
+    "ajax",
+    "interaction-design"
   ],
   "bugs": {
     "url": "https://github.com/massimo-cassandro/js-file-uploader.git/issues"
