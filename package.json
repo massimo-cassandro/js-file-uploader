@@ -38,7 +38,6 @@
     "src-utilities/*.{js,map}",
     "scss/*.scss"
   ],
-  "dependencies": {},
   "devDependencies": {
     "@massimo-cassandro/m-utilities": "^3.2.3",
     "js-beautify": "^1.13.0",
