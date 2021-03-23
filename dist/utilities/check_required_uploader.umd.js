@@ -6,7 +6,7 @@ define(function () { 'use strict';
     const default_options = {
       alert_api: message => { window.alert(message); },
       message: 'È necessario caricare le immagini obbligatorie',
-      fupl_selector: '[data-file-uploader]'
+      fupl_selector: '.fupl2'
     };
 
     options = Object.assign({}, default_options, options);
@@ -35,3 +35,4 @@ define(function () { 'use strict';
   return check_required_uploader;
 
 });
+//# sourceMappingURL=check_required_uploader.umd.js.map

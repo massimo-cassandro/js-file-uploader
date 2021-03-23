@@ -4,7 +4,7 @@ function check_required_uploader (options) {
   const default_options = {
     alert_api: message => { window.alert(message); },
     message: 'È necessario caricare le immagini obbligatorie',
-    fupl_selector: '[data-file-uploader]'
+    fupl_selector: '.fupl2'
   };
 
   options = Object.assign({}, default_options, options);
@@ -31,3 +31,4 @@ function check_required_uploader (options) {
 }
 
 export default check_required_uploader;
+//# sourceMappingURL=check_required_uploader.esm.js.map

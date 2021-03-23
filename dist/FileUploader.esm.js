@@ -25,7 +25,7 @@ const fupl_strings_it = {
   // info text strings
   info_text_std_imgs : 'immagini in formato <strong>JPEG</strong>, <strong>PNG</strong>, <strong>GIF</strong> o <strong>WEBP</strong>',
   info_text_imgs_svg : 'immagini in formato <strong>JPEG</strong>, <strong>PNG</strong>, <strong>GIF</strong>, <strong>WEBP</strong> o <strong>SVG</strong>',
-  info_text_imgs_svg_size_info_text: '<strong>Solo immagini non SVG:</strong> ',
+  info_text_imgs_svg_size_info_text: '<strong>Solo per le immagini non SVG:</strong> ',
 
   info_text_img_optimize_info: 'Ottimizza le tue immagini prima di caricarle. ' +
     '<a href="https://squoosh.app/" target="_blank" rel="noopener noreferrer">Squoosh</a> è un ottimo (e gratuito) ' +
@@ -1835,7 +1835,7 @@ function createUploader(fupl) {
       }
       window.fileUploderOpts[fupl.opts.varname] = sorted_options;
 
-      console.groupCollapsed('FileUploader options');
+      console.groupCollapsed(`FileUploader ${fupl.opts._vers} options`);
         console.log(sorted_options);
       console.groupEnd();
 
@@ -2024,12 +2024,15 @@ function FileUploader( params ) {
   }
   */
 
+  const version =  '2.2';
+
   fupl_init({
-    selector : params.selector || '[data-file-uploader]', // used in fupl_init only
-    css      : params.css || null,                        // used in fupl_init only
-    opts     : Object.assign( {}, default_options, params.options || {} ),
+    selector : params.selector || '.fupl2',            // used in fupl_init only
+    css      : params.css || null,                     // used in fupl_init only
+    opts     : Object.assign( {_vers: version}, default_options, params.options || {} ),
     strs     : Object.assign( {}, fupl_strings_it, params.local_strs || {} )
   });
 }
 
 export default FileUploader;
+//# sourceMappingURL=FileUploader.esm.js.map

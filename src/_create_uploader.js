@@ -225,7 +225,7 @@ export function createUploader(fupl) {
       }
       window.fileUploderOpts[fupl.opts.varname] = sorted_options;
 
-      console.groupCollapsed('FileUploader options');
+      console.groupCollapsed(`FileUploader ${fupl.opts._vers} options`);
         console.log(sorted_options);
       console.groupEnd();
 

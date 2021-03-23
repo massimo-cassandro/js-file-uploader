@@ -1,13 +1,14 @@
 {
   "name": "@massimo-cassandro/js-file-uploader",
-  "version": "2.1.6",
+  "version": "2.2.0",
   "description": "HTML5 Async File Uploader ",
   "main": "./src/file_uploader.js",
   "style": "./scss/fileUploader.scss",
   "module": "./dist/FileUploader.esm.js",
   "browser": "./dist/FileUploader.umd.js",
   "scripts": {
-    "build": "npx rollup --config"
+    "start sass": "node_modules/.bin/sass ./scss/fileUploader.scss ./dist/fileUploader.css --source-map --load-path=node_modules/ --style=compressed --watch",
+    "start rollup": "npx rollup --config --watch"
   },
   "repository": {
     "type": "git",
@@ -40,9 +41,12 @@
   ],
   "devDependencies": {
     "@massimo-cassandro/m-utilities": "^3.2.3",
+    "@rollup/plugin-node-resolve": "^11.2.0",
     "js-beautify": "^1.13.0",
     "prismjs": "^1.22.0",
     "rollup": "^2.34.2",
-    "rollup-plugin-terser": "^7.0.2"
+    "rollup-plugin-sourcemaps": "^0.6.3",
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.32.8"
   }
 }

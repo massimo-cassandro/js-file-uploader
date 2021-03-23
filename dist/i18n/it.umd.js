@@ -27,7 +27,7 @@ define(function () { 'use strict';
     // info text strings
     info_text_std_imgs : 'immagini in formato <strong>JPEG</strong>, <strong>PNG</strong>, <strong>GIF</strong> o <strong>WEBP</strong>',
     info_text_imgs_svg : 'immagini in formato <strong>JPEG</strong>, <strong>PNG</strong>, <strong>GIF</strong>, <strong>WEBP</strong> o <strong>SVG</strong>',
-    info_text_imgs_svg_size_info_text: '<strong>Solo immagini non SVG:</strong> ',
+    info_text_imgs_svg_size_info_text: '<strong>Solo per le immagini non SVG:</strong> ',
 
     info_text_img_optimize_info: 'Ottimizza le tue immagini prima di caricarle. ' +
       '<a href="https://squoosh.app/" target="_blank" rel="noopener noreferrer">Squoosh</a> è un ottimo (e gratuito) ' +
@@ -67,3 +67,4 @@ define(function () { 'use strict';
   return fupl_strings_it;
 
 });
+//# sourceMappingURL=it.umd.js.map

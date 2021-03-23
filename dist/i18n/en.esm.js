@@ -65,3 +65,4 @@ const fupl_strings_en = {
 };
 
 export default fupl_strings_en;
+//# sourceMappingURL=en.esm.js.map

@@ -4,7 +4,7 @@ export default function (options) {
   const default_options = {
     alert_api: message => { window.alert(message); },
     message: 'Devi attendere che il caricamento delle immagini sia completato',
-    fupl_selector: '[data-file-uploader]'
+    fupl_selector: '.fupl2'
   };
 
   options = Object.assign({}, default_options, options);

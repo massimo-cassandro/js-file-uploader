@@ -24,5 +24,6 @@ import fupl_strings_en from '../../src/i18n/en.js';
 
   check_required_uploader({
     message: 'The image is required'
+    // fupl_selector: default value is used
   });
 })();

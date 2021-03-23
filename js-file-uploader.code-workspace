@@ -14,6 +14,7 @@
 		"favorites.resources": [
 			"/Users/max/Sites/js-file-uploader/js-file-uploader.code-workspace",
 			"/Users/max/Sites/js-file-uploader/node_modules/@massimo-cassandro"
-		]
+		],
+		"liveServer.settings.multiRootWorkspaceName": "js-file-uploader"
 	}
 }
