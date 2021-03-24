@@ -2027,7 +2027,7 @@ function FileUploader( params ) {
   const version =  '2.2';
 
   fupl_init({
-    selector : params.selector || '.fupl2',            // used in fupl_init only
+    selector : params.selector || '.file-uploader2',            // used in fupl_init only
     css      : params.css || null,                     // used in fupl_init only
     opts     : Object.assign( {_vers: version}, default_options, params.options || {} ),
     strs     : Object.assign( {}, fupl_strings_it, params.local_strs || {} )

@@ -53,8 +53,8 @@ $params = htmlspecialchars(json_encode(
           (avoid using single <code>data</code> attributes), and the
           predefined value array is generated reading file properties directly in the filesystem
           (see <code>get_file_properties.php</code>).
-          
-          
+
+
         </p><?php if(!empty($_POST)) { ?>
         <hr class="mt-4">
         <h2 class="h3">PHP <code>$_POST</code> data</h2>
@@ -64,7 +64,7 @@ $params = htmlspecialchars(json_encode(
       </div>
       <div class="demo-wrapper">
         <form id="form1" action="" method="get" name="form1">
-          <div class="fupl2" data-file-uploader="<?php echo $params ?>">
+          <div class="file-uploader2" data-file-uploader="<?php echo $params ?>">
             <label for="input_file">This is the original input field label</label>
             <input id="input_file" name="myfile" type="file">
           </div>

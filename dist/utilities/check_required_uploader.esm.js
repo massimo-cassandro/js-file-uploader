@@ -4,7 +4,7 @@ function check_required_uploader (options) {
   const default_options = {
     alert_api: message => { window.alert(message); },
     message: 'È necessario caricare le immagini obbligatorie',
-    fupl_selector: '.fupl2'
+    fupl_selector: '.file-uploader2'
   };
 
   options = Object.assign({}, default_options, options);
