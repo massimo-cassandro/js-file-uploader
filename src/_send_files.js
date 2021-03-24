@@ -126,7 +126,7 @@ export function send_files(filelist, fupl) {
 
             if(fupl.opts.debug) {
               /* eslint-disable */
-              console.groupCollapsed('FileUploader ajax response');
+              console.groupCollapsed(`FileUploader ${fupl.opts._vers} ajax response`);
               console.log(response);
               console.groupEnd();
               /* eslint-enable */
