@@ -7,48 +7,49 @@ export function build_hidden_fields(current_item, fupl_options) {
   // normalize ascii chars > 127 (and more)
   const normalize_file_name = filename => {
     let converted = '';
-    const conversionTable = { // Reference table Unicode vs ASCII
-      'à' : 'a', // 224
-      'è' : 'e', // 232
-      'é' : 'e', // 233
-      'ì' : 'i', // 236
-      'ò' : 'o', // 242
-      'ù' : 'u', // 249
-      'À' : 'A', // 192
-      'È' : 'E', // 200
-      'É' : 'E', // 201
-      'Ì' : 'I', // 204
-      'Ò' : 'O', // 210
-      'Ù' : 'U', // 217
-      '\'' : '_', // 39
-      '|' : '_', // 124
-      '!' : '_', // 33
-      '"' : '_', // 34
-      '$' : '_', // 36
-      '%' : '_', // 37
-      '&' : '_', // 38
-      '/' : '_', // 47
-      '(' : '_', // 40
-      ')' : '_', // 41
-      '=' : '_', // 61
-      '?' : '_', // 63
-      '^' : '_', // 94
-      '*' : '_', // 42
-      '[' : '_', // 91
-      ']' : '_', // 93
-      'ç' : 'c', // 231
-      '@' : '_', // 64
-      '#' : '_', // 35
-      '<' : '_', // 60
-      '>' : '_', // 62
-      'ü' : 'u', // 252
-      'Ü' : 'U', // 220
-      'ñ' : 'n', // 241
-      'Ñ' : 'N', // 209
-      '~' : '_', // 126
-      ':' : '_',
-      '\\' : '_'
-    };
+    const std_char = '-', // char for standrd substitutions
+      conversionTable = { // Reference table Unicode vs ASCII
+        'à' : 'a', // 224
+        'è' : 'e', // 232
+        'é' : 'e', // 233
+        'ì' : 'i', // 236
+        'ò' : 'o', // 242
+        'ù' : 'u', // 249
+        'À' : 'A', // 192
+        'È' : 'E', // 200
+        'É' : 'E', // 201
+        'Ì' : 'I', // 204
+        'Ò' : 'O', // 210
+        'Ù' : 'U', // 217
+        '\'' : std_char, // 39
+        '|' : std_char, // 124
+        '!' : std_char, // 33
+        '"' : std_char, // 34
+        '$' : std_char, // 36
+        '%' : std_char, // 37
+        '&' : std_char, // 38
+        '/' : std_char, // 47
+        '(' : std_char, // 40
+        ')' : std_char, // 41
+        '=' : std_char, // 61
+        '?' : std_char, // 63
+        '^' : std_char, // 94
+        '*' : std_char, // 42
+        '[' : std_char, // 91
+        ']' : std_char, // 93
+        'ç' : 'c', // 231
+        '@' : std_char, // 64
+        '#' : std_char, // 35
+        '<' : std_char, // 60
+        '>' : std_char, // 62
+        'ü' : 'u', // 252
+        'Ü' : 'U', // 220
+        'ñ' : 'n', // 241
+        'Ñ' : 'N', // 209
+        '~' : std_char, // 126
+        ':' : std_char,
+        '\\' : std_char
+      };
 
     for(var i = 0; i < filename.length; i++) {
       if( filename[i] in conversionTable) {
@@ -58,14 +59,16 @@ export function build_hidden_fields(current_item, fupl_options) {
         converted += '';
 
       } else if(filename.charCodeAt(i) > 127 ) {
-        converted += '_';
+        converted += std_char;
 
       } else {
         converted += filename.charAt(i);
       }
     }
 
-    return converted.replace(/ /g, '_').replace(/_+/g, '_');
+    return converted.replace(/ /g, std_char)
+      .replace(new RegExp(`^${std_char}+`), '')
+      .replace(new RegExp(`${std_char}+`,'g'), std_char);
   };
 
   let hidden_fields = '',

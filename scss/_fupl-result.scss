@@ -8,14 +8,14 @@
 }
 
 .fupl-file-info {
-  font-size: $fupl-small-font-size;
   margin-top:.4rem;
+  font-size: $fupl-small-font-size;
 
 }
 
 // classe applicata agli span in cui è inserita un'unità di misura
 // es <span class="fupl-unit">MB</span>
 .fupl-unit {
-  font-size: 90%;
   margin-left: 3px;
+  font-size: 90%;
 }

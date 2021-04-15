@@ -1,0 +1,39 @@
+.fupl-alert-overlay {
+  position: absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+
+  backdrop-filter: blur(2px);
+
+  @supports not (backdrop-filter: blur(2px)) {
+    background-color: $fupl-alert-overlay-fallback-bg;
+  };
+}
+.fupl-alert {
+  display: flex;
+  position: absolute;
+  top:5px;
+  left:50%;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  transform: translateX(-50%);
+
+  box-shadow: $fupl-alert-box-shadow;
+  background-color: $fupl-alert-bg;
+  padding: .5rem;
+  width:350px;
+  max-width: 100%;
+  min-height: 200px;
+  max-height: 100%;
+
+  color: $fupl-alert-color;
+
+  > div {
+    overflow-y: auto;
+  }
+}

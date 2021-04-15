@@ -1,34 +1,38 @@
 .fupl {
-  padding:1rem;
+  position: relative;
+  transition: outline-offset .15s ease-in-out, background-color .15s linear;
   outline: 2px dashed $fupl-outline-color;
   outline-offset: 0;
-  transition: outline-offset .15s ease-in-out, background-color .15s linear;
   background-color: $fupl-background-color;
+  padding: 1rem;
 
   &.fupl-is-dragover:not(.fupl-sorting) {
+
 		outline-offset: -.5rem;
-		outline-color: $fupl-outline-color-dragover;
+    outline-color: $fupl-outline-color-dragover;
+
     background-color: $fupl-background-color-dragover;
 
     .fupl-panel {
       border: none;
     }
+
     [disabled] & {
+      position: relative;
       outline-offset: 0;
       outline-color: $fupl-disabled-color;
+
       background-color: transparent;
 
-      position: relative;
       &::before {
-        content:'Non è possibile caricare file';
-        position: absolute;
         display: block;
+        position: absolute;
         top:50%;
         left:50%;
         transform: translate(-50%, -50%);
         color: $fupl-disabled-color;
         font-size: 2rem;
-
+        content:'Non è possibile caricare file';
       }
 
       .fupl-result, .fupl-panel {
@@ -39,8 +43,7 @@
 
   [disabled] & {
     cursor: no-drop;
-    font-style: italic!important;
     color: $fupl-disabled-color!important;
+    font-style: italic!important;
   }
-
 }

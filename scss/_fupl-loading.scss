@@ -1,19 +1,20 @@
-//<div class="fupl-loading"><progress class="fupl-progress" max=100 value=0></progress></div>
+// <div class="fupl-loading"><progress class="fupl-progress" max=100 value=0></progress></div>
 .fupl-item.fupl-is-uploading {
   position: relative;
 
   .fupl-loading {
-    position: absolute;
-    top:0;
-    right:0;
-    bottom:0;
-    left:0;
-    background: $fupl-loading-background-color;
-    backdrop-filter: blur(3px);
-
     display: flex;
-    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left:0;
     align-items: center;
+    justify-content: center;
+
+    background: $fupl-loading-background-color;
+
+    backdrop-filter: blur(3px);
   }
 
   .fupl-img {
@@ -21,9 +22,9 @@
   }
 
   .fupl-progress {
+    border-radius:5px;
     width:90%;
     height:5px;
-    border-radius:5px;
   }
 
 }

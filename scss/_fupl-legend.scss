@@ -14,8 +14,8 @@
   // }
 
   [disabled] & {
-    font-style: italic;
     color: $fupl-disabled-color;
+    font-style: italic;
   }
 }
 

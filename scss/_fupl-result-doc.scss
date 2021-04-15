@@ -4,8 +4,8 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content:flex-start;
     align-items:center;
+    justify-content:flex-start;
     margin-bottom:.2rem;
     max-width: 100%;
   }
@@ -21,9 +21,9 @@
   &.fupl-multiple {
 
     .fupl-item {
-      padding:.2rem;
       border: 1px solid $fupl-items-border-color;
       border-radius: $fupl-items-border-radius;
+      padding:.2rem;
     }
 
     .fupl-result {
@@ -36,9 +36,9 @@
       // }
       @include fupl-media-query-min(md) {
         display: grid;
-        grid-gap: 1.5rem; // obsolete, mantained for compatibility
-        gap: 1.5rem;
         grid-template-columns: repeat(2, minmax(25%, 1fr));
+        gap: 1.5rem;
+        grid-gap: 1.5rem; // obsolete, mantained for compatibility
       }
       @include fupl-media-query-min(lg) {
         grid-template-columns: repeat(3, minmax(20%, 1fr));

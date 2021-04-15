@@ -63,7 +63,7 @@ export function createUploader(fupl) {
     }
     // label not set
     if ( !fupl.opts.uploader_legend_text ) {
-      fupl.opts.uploader_legend_text = '__legend not present__';
+      fupl.opts.uploader_legend_text = '__legend__';
     }
 
     // main class is added to FileUploader element

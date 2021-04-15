@@ -1,4 +1,5 @@
 import {send_files} from './_send_files.js';
+import {fupl_alert} from './_alert.js';
 
 // https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
 export function set_listeners(fupl) {
@@ -29,7 +30,7 @@ export function set_listeners(fupl) {
 
       if(files.length) { // if 0 is a reordering or another event
         if( !fupl.opts.multiple && files.length > 1 ) {
-          fupl.opts.alert_api(fupl.str.alert_too_much_files, fupl);
+          fupl_alert(fupl.strs.alert_too_much_files, fupl.opts);
         } else {
           send_files( files, fupl );
         }

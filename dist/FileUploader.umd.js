@@ -70,6 +70,22 @@
 
   const default_options = {
 
+    // **********************
+    // rimuovere
+    // error messages interface
+    /*
+      Parameters:
+        - mes  → message string
+        - opts → options & strings of current FileUploader instance
+        - type → one of info, error, warning
+    */
+    alert_api: (mes, opts, type = 'error') => {  // eslint-disable-line
+      window.alert(mes.replace(/(<([^>]+)>)/ig, '' ));
+    },
+    // **********************
+
+
+
     // server side script url
     uploader_url: null,
 
@@ -97,21 +113,10 @@
     */
     disabled: false,
 
-    // error messages interface
-    /*
-      Parameters:
-        - mes  → message string
-        - type → one of info, error, warning
-        - fupl → options & strings of current FileUploader instance
-    */
-    alert_api: (mes, opts, type = 'error') => {  // eslint-disable-line
-      window.alert(mes.replace(/(<([^>]+)>)/ig, '' ));
-    },
-
     // types of selectable files. the value must match one of the `upl.mimetypes` arrays
     filetype: 'auto',
 
-   /*
+    /*
       String of extensions or mimetypes separated by commas that identify
       alloewd files to be uploaded,
       in addition or replacement of what is set via the `filetype` parameter.
@@ -1124,48 +1129,49 @@
     // normalize ascii chars > 127 (and more)
     const normalize_file_name = filename => {
       let converted = '';
-      const conversionTable = { // Reference table Unicode vs ASCII
-        'à' : 'a', // 224
-        'è' : 'e', // 232
-        'é' : 'e', // 233
-        'ì' : 'i', // 236
-        'ò' : 'o', // 242
-        'ù' : 'u', // 249
-        'À' : 'A', // 192
-        'È' : 'E', // 200
-        'É' : 'E', // 201
-        'Ì' : 'I', // 204
-        'Ò' : 'O', // 210
-        'Ù' : 'U', // 217
-        '\'' : '_', // 39
-        '|' : '_', // 124
-        '!' : '_', // 33
-        '"' : '_', // 34
-        '$' : '_', // 36
-        '%' : '_', // 37
-        '&' : '_', // 38
-        '/' : '_', // 47
-        '(' : '_', // 40
-        ')' : '_', // 41
-        '=' : '_', // 61
-        '?' : '_', // 63
-        '^' : '_', // 94
-        '*' : '_', // 42
-        '[' : '_', // 91
-        ']' : '_', // 93
-        'ç' : 'c', // 231
-        '@' : '_', // 64
-        '#' : '_', // 35
-        '<' : '_', // 60
-        '>' : '_', // 62
-        'ü' : 'u', // 252
-        'Ü' : 'U', // 220
-        'ñ' : 'n', // 241
-        'Ñ' : 'N', // 209
-        '~' : '_', // 126
-        ':' : '_',
-        '\\' : '_'
-      };
+      const std_char = '-', // char for standrd substitutions
+        conversionTable = { // Reference table Unicode vs ASCII
+          'à' : 'a', // 224
+          'è' : 'e', // 232
+          'é' : 'e', // 233
+          'ì' : 'i', // 236
+          'ò' : 'o', // 242
+          'ù' : 'u', // 249
+          'À' : 'A', // 192
+          'È' : 'E', // 200
+          'É' : 'E', // 201
+          'Ì' : 'I', // 204
+          'Ò' : 'O', // 210
+          'Ù' : 'U', // 217
+          '\'' : std_char, // 39
+          '|' : std_char, // 124
+          '!' : std_char, // 33
+          '"' : std_char, // 34
+          '$' : std_char, // 36
+          '%' : std_char, // 37
+          '&' : std_char, // 38
+          '/' : std_char, // 47
+          '(' : std_char, // 40
+          ')' : std_char, // 41
+          '=' : std_char, // 61
+          '?' : std_char, // 63
+          '^' : std_char, // 94
+          '*' : std_char, // 42
+          '[' : std_char, // 91
+          ']' : std_char, // 93
+          'ç' : 'c', // 231
+          '@' : std_char, // 64
+          '#' : std_char, // 35
+          '<' : std_char, // 60
+          '>' : std_char, // 62
+          'ü' : 'u', // 252
+          'Ü' : 'U', // 220
+          'ñ' : 'n', // 241
+          'Ñ' : 'N', // 209
+          '~' : std_char, // 126
+          ':' : std_char,
+          '\\' : std_char
+        };
 
       for(var i = 0; i < filename.length; i++) {
         if( filename[i] in conversionTable) {
@@ -1175,14 +1181,16 @@
           converted += '';
 
         } else if(filename.charCodeAt(i) > 127 ) {
-          converted += '_';
+          converted += std_char;
 
         } else {
           converted += filename.charAt(i);
         }
       }
 
-      return converted.replace(/ /g, '_').replace(/_+/g, '_');
+      return converted.replace(/ /g, std_char)
+        .replace(new RegExp(`^${std_char}+`), '')
+        .replace(new RegExp(`${std_char}+`,'g'), std_char);
     };
 
     let hidden_fields = '',
@@ -1331,7 +1339,7 @@
 
               if(fupl.opts.debug) {
                 /* eslint-disable */
-                console.groupCollapsed('FileUploader ajax response');
+                console.groupCollapsed(`FileUploader ${fupl.opts._vers} ajax response`);
                 console.log(response);
                 console.groupEnd();
                 /* eslint-enable */
@@ -1576,6 +1584,29 @@
 
   }
 
+  // TODO update to dialog element
+
+  function fupl_alert(mes, fupl_opts) {
+
+    const alert_dialog = `<div class="fupl-alert-overlay">
+    <div class="fupl-alert">
+        <div class="fupl-alert-inner"></div>
+        <button type="button">OK</button>
+      </div>
+  </div>`;
+
+    let alert_container = fupl_opts.element.querySelector('.fupl-alert-inner');
+
+    if(!alert_container) {
+      fupl_opts.element.insertAdjacentHTML('beforeend', alert_dialog);
+      alert_container = fupl_opts.element.querySelector('.fupl-alert-inner');
+    }
+
+    alert_container.insertAdjacentHTML('afterbegin', mes);
+
+
+  }
+
   // https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
   function set_listeners(fupl) {
 
@@ -1605,7 +1636,7 @@
 
         if(files.length) { // if 0 is a reordering or another event
           if( !fupl.opts.multiple && files.length > 1 ) {
-            fupl.opts.alert_api(fupl.str.alert_too_much_files, fupl);
+            fupl_alert(fupl.strs.alert_too_much_files, fupl.opts);
           } else {
             send_files( files, fupl );
           }
@@ -1679,7 +1710,7 @@
       }
       // label not set
       if ( !fupl.opts.uploader_legend_text ) {
-        fupl.opts.uploader_legend_text = '__legend not present__';
+        fupl.opts.uploader_legend_text = '__legend__';
       }
 
       // main class is added to FileUploader element

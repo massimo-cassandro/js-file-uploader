@@ -7,7 +7,7 @@
       "uuidString" : "56CEA7EE-2256-402A-8381-171C143CCE38"
     }
   ],
-  "creatorBuild" : "34081",
+  "creatorBuild" : "34127",
   "files" : {
     "\/.htaccess" : {
       "cB" : 0,
@@ -52,14 +52,6 @@
       "oAP" : "\/css\/bs4_toast_notificaton-min.css",
       "oF" : 0,
       "pg" : 0
-    },
-    "\/css\/fileuploader-demo.css.map" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/css\/fileuploader-demo.css.map",
-      "oF" : 0
     },
     "\/css\/fileuploader.css" : {
       "aP" : 1,
@@ -1027,6 +1019,20 @@
       "pg" : 0,
       "sct" : 1
     },
+    "\/Users\/max\/Sites\/js-file-uploader\/scss\/_fupl-alert.scss" : {
+      "aP" : 1,
+      "bl" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 1,
+      "oA" : 1,
+      "oAP" : "\/Users\/max\/Sites\/js-file-uploader\/scss\/_fupl-alert.css",
+      "oF" : 0,
+      "oS" : 3,
+      "pg" : 0,
+      "sct" : 1
+    },
     "\/Users\/max\/Sites\/js-file-uploader\/scss\/_fupl-default-variables.scss" : {
       "aP" : 1,
       "bl" : 0,
@@ -1188,6 +1194,17 @@
       "mi" : 0,
       "oA" : 1,
       "oAP" : "\/Users\/max\/Sites\/js-file-uploader\/check_required_uploader-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/Users\/max\/Sites\/js-file-uploader\/src\/_alert.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 0,
+      "oA" : 1,
+      "oAP" : "\/Users\/max\/Sites\/js-file-uploader\/_alert-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -3400,6 +3417,9 @@
       "removeVariables" : 0,
       "safelistEntries" : [
 
+      ],
+      "skippedEntries" : [
+        "node_modules\/**"
       ]
     },
     "rollupContext" : "",
@@ -3434,6 +3454,7 @@
     "tsNoImplicitThis" : 0,
     "tsNoImplicitUseStrict" : 0,
     "tsNoLib" : 0,
+    "tsNoPropertyAccessFromIndexSignature" : 0,
     "tsNoResolve" : 0,
     "tsNoStrictGenericChecks" : 0,
     "tsNoUncheckedIndexAccess" : 0,

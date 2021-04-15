@@ -1,5 +1,21 @@
 export const default_options = {
 
+  // **********************
+  // rimuovere
+  // error messages interface
+  /*
+    Parameters:
+      - mes  → message string
+      - opts → options & strings of current FileUploader instance
+      - type → one of info, error, warning
+  */
+  alert_api: (mes, opts, type = 'error') => {  // eslint-disable-line
+    window.alert(mes.replace(/(<([^>]+)>)/ig, '' ));
+  },
+  // **********************
+
+
+
   // server side script url
   uploader_url: null,
 
@@ -27,21 +43,10 @@ export const default_options = {
   */
   disabled: false,
 
-  // error messages interface
-  /*
-    Parameters:
-      - mes  → message string
-      - type → one of info, error, warning
-      - fupl → options & strings of current FileUploader instance
-  */
-  alert_api: (mes, opts, type = 'error') => {  // eslint-disable-line
-    window.alert(mes.replace(/(<([^>]+)>)/ig, '' ));
-  },
-
   // types of selectable files. the value must match one of the `upl.mimetypes` arrays
   filetype: 'auto',
 
- /*
+  /*
     String of extensions or mimetypes separated by commas that identify
     alloewd files to be uploaded,
     in addition or replacement of what is set via the `filetype` parameter.

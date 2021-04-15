@@ -1,7 +1,7 @@
 .fupl-panel {
   margin:1rem 0 0;
-  padding: .5rem 0 0;
   border-top:1px dotted $fupl-panel-border-color;
+  padding: .5rem 0 0;
   text-align: center;
 
   .fupl-button {
@@ -11,33 +11,34 @@
 
       [disabled] & {
         &, &:hover, &:active, &:focus {
-          cursor: not-allowed;
-          font-style: italic;
-          color: $fupl-disabled-color!important;
           border-color: $fupl-disabled-color!important;
           background-color: transparent!important;
+          cursor: not-allowed;
+          color: $fupl-disabled-color!important;
+          font-style: italic;
         }
       }
     }
   }
 
   .fupl-dd-text {
-    font-size:85%;
-    margin:.5rem 0 0;
-    font-weight: $fupl-font-weight-bold;
-    display: block;
-
     @include fupl-media-query-min(md) {
-      margin:0 0 0 .5rem;
       display: inline;
+      margin:0 0 0 .5rem;
       white-space: nowrap;
     }
+
+    display: block;
+    margin:.5rem 0 0;
+    font-size:85%;
+    font-weight: $fupl-font-weight-bold;
+
   }
   .fupl-info-text  {
+    margin-top:.5rem;
+    color: $fupl-info-text-color;
     font-size:75%;
     font-style: italic;
-    color: $fupl-info-text-color;
-    margin-top:.5rem;
     &, & > div {  // optimization info
       margin-top:.5rem;
     }
