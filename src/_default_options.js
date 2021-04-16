@@ -1,20 +1,12 @@
+/*
+  Some options contain Mustache-like variables (e.g.: {{xxx}}) that will be replaced
+  with the corresponding values of the localized strings items.
+
+  Variable name (the `xxx` part) must be the same as the string item name
+
+*/
+
 export const default_options = {
-
-  // **********************
-  // rimuovere
-  // error messages interface
-  /*
-    Parameters:
-      - mes  → message string
-      - opts → options & strings of current FileUploader instance
-      - type → one of info, error, warning
-  */
-  alert_api: (mes, opts, type = 'error') => {  // eslint-disable-line
-    window.alert(mes.replace(/(<([^>]+)>)/ig, '' ));
-  },
-  // **********************
-
-
 
   // server side script url
   uploader_url: null,
@@ -152,6 +144,25 @@ export const default_options = {
 
   // Extra classes to be added to the FileUploader wrapper element (classes names separated by spaces)
   wrapper_extra_class: null,
+
+  // template for error messages dialog
+  // if changed, .fupl-x classes must be maintained
+  fupl_alert_template:
+    `<div class="fupl-alert-overlay">
+      <div class="fupl-alert">
+        <div class="fupl-alert-header">{{fupl_alert_header}}</div>
+        <div class="fupl-alert-body"></div>
+        <div class="fupl-alert-footer">
+          <button type="button" class="fupl-alert-btn">{{fupl_alert_btn_text}}</button>
+        </div>
+      </div>
+    </div>`,
+
+  // classes to be added to alert button
+  // they can be changed without redefine entire alert template
+  // merging is perfomed in the `init` module
+  fupl_alert_btn_class: 'btn btn-secondary',
+
 
   // Class(es) to be added to the FileUploader element when a file is dragged there from desktop
   element_dragover_class: 'fupl-is-dragover',

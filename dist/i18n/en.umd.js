@@ -11,15 +11,17 @@ define(function () { 'use strict';
     alert_file_size_error: 'Size of “<strong>{{file_name}}</strong>” ({{file_size}}) '+
       'exceeds the maximum allowed value ({{allowed_size}})',
 
+    fupl_alert_header: 'Error',
+    fupl_alert_btn_text: 'OK',
+
     // images sizes alerts
-    alert_img_err_start_string: 'Image “<strong>{{file_name}}</strong>” is incorrect:',
-    alert_img_exact_width_err: 'Incorrect width ({{image_dimension}}px instead of {{allowed_dimension}}px)',
-    alert_img_min_width_err: 'Width below the minimum allowed ({{image_dimension}}px instead of {{allowed_dimension}}px)',
-    alert_img_max_width_err: 'Width greater than the maximum allowed ({{image_dimension}}px instead of {{allowed_dimension}}px)',
-    alert_img_exact_height_err: 'Incorrect height ({{image_dimension}}px instead of {{allowed_dimension}}px)',
-    alert_img_min_height_err: 'Height below the minimum allowed ({{image_dimension}}px instead of {{allowed_dimension}}px)',
-    alert_img_max_height_err: 'Height greater than the maximum allowed ({{image_dimension}}px instead of {{allowed_dimension}}px)',
-    alert_img_ratio_err: 'Image width/height ratio doesn\'t match the requested value of {{aspect_ratio}}',
+    alert_img_exact_width_err: '<strong>{{file_name}}</strong>: incorrect width ({{image_dimension}}px instead of {{allowed_dimension}}px)',
+    alert_img_min_width_err: '<strong>{{file_name}}</strong>: width below the minimum allowed ({{image_dimension}}px instead of {{allowed_dimension}}px)',
+    alert_img_max_width_err: '<strong>{{file_name}}</strong>: width greater than the maximum allowed ({{image_dimension}}px instead of {{allowed_dimension}}px)',
+    alert_img_exact_height_err: '<strong>{{file_name}}</strong>: incorrect height ({{image_dimension}}px instead of {{allowed_dimension}}px)',
+    alert_img_min_height_err: '<strong>{{file_name}}</strong>: height below the minimum allowed ({{image_dimension}}px instead of {{allowed_dimension}}px)',
+    alert_img_max_height_err: '<strong>{{file_name}}</strong>: height greater than the maximum allowed ({{image_dimension}}px instead of {{allowed_dimension}}px)',
+    alert_img_ratio_err: '<strong>{{file_name}}</strong>: image width/height ratio doesn\'t match the requested value of {{aspect_ratio}}',
 
     no_img_text: 'No image present',
     no_doc_text: 'No file present',

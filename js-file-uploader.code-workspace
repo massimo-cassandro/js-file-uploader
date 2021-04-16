@@ -2,11 +2,8 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"name": "wiki",
-			"path": "../js-file-uploader-wiki"
 		}
+
 	],
   "settings": {
 		"preview-in-browser.domain": "http://fileuploader.local:8888/",
@@ -16,5 +13,6 @@
 			"/Users/max/Sites/js-file-uploader/node_modules/@massimo-cassandro"
 		],
 		"liveServer.settings.multiRootWorkspaceName": "js-file-uploader"
+
 	}
 }

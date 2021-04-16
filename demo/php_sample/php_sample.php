@@ -53,8 +53,8 @@ $params = htmlspecialchars(json_encode(
           (avoid using single <code>data</code> attributes), and the
           predefined value array is generated reading file properties directly in the filesystem
           (see <code>get_file_properties.php</code>).
-
-
+          
+          
         </p><?php if(!empty($_POST)) { ?>
         <hr class="mt-4">
         <h2 class="h3">PHP <code>$_POST</code> data</h2>
@@ -76,8 +76,8 @@ $params = htmlspecialchars(json_encode(
       <p class="back"><a href="./">Back to demo index</a></p>
       <p class="font-italic">
         Take a look at the
-        <a href="https://github.com/massimo-cassandro/js-file-uploader/wiki/About-the-demo">"About the demo"</a>
-        page for info about the following code boxes.
+        <a href="https://github.com/massimo-cassandro/js-file-uploader#about-the-demo">"About the demo"</a>
+        section in the README file for info about the following code boxes.
       </p>
       <div class="demo_code"></div>
       <p class="back"><a href="./">Back to demo index</a></p>

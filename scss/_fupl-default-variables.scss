@@ -36,7 +36,9 @@ $fupl-breakpoints: ( // bootstrap: $grid-breakpoints
   xl: 1200px
 )!default;
 
-$fupl-alert-bg: #ff8400;
+$fupl-alert-bg: #fff;
 $fupl-alert-color: #000;
-$fupl-alert-box-shadow: 0 0 20px rgba(#000, .6);
+$fupl-alert-border: 1px solid #999;
+$fupl-alert-border-radius: .5rem;
+$fupl-alert-box-shadow: 0 0 20px 4px rgba(#000, .5);
 $fupl-alert-overlay-fallback-bg: rgba(#000, .6); // for browsers that do not support backdrop-filter

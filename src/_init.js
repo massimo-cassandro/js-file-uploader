@@ -147,6 +147,12 @@ export  function fupl_init(fupl) {
       }
     }
 
+    // classes and all needed merging
+    if(instance_opts.fupl_alert_btn_class) {
+      instance_opts.fupl_alert_template = instance_opts.fupl_alert_template
+        .replace('fupl-alert-btn', 'fupl-alert-btn ' + instance_opts.fupl_alert_btn_class);
+    }
+
     // calling the createUploader function. Global options are completely overwritten
     // by instance_opts
     new createUploader({

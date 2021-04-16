@@ -8,15 +8,17 @@ const fupl_strings_it = {
   alert_file_size_error: 'Le dimensioni di “<strong>{{file_name}}</strong>” ({{file_size}}) '+
     'superano il valore massimo consentito ({{allowed_size}})',
 
+  fupl_alert_header: 'Errore',
+  fupl_alert_btn_text: 'OK',
+
   // images sizes alerts
-  alert_img_err_start_string: 'L’immagine “<strong>{{file_name}}</strong>” non è corretta:',
-  alert_img_exact_width_err: 'Larghezza non corrispondente ({{image_dimension}}px invece di {{allowed_dimension}}px)',
-  alert_img_min_width_err: 'Larghezza inferiore a quella minima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
-  alert_img_max_width_err: 'Larghezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
-  alert_img_exact_height_err: 'Altezza non corrispondente ({{image_dimension}}px invece di {{allowed_dimension}}px)',
-  alert_img_min_height_err: 'Altezza inferiore a quella minima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
-  alert_img_max_height_err: 'Altezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
-  alert_img_ratio_err: 'La proporzione tra base e altezza dell’immagine non corrisponde a quella richiesta ({{aspect_ratio}})',
+  alert_img_exact_width_err: '<strong>{{file_name}}</strong>: larghezza non corrispondente ({{image_dimension}}px invece di {{allowed_dimension}}px)',
+  alert_img_min_width_err: '<strong>{{file_name}}</strong>: larghezza inferiore a quella minima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
+  alert_img_max_width_err: '<strong>{{file_name}}</strong>: larghezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
+  alert_img_exact_height_err: '<strong>{{file_name}}</strong>: altezza non corrispondente ({{image_dimension}}px invece di {{allowed_dimension}}px)',
+  alert_img_min_height_err: '<strong>{{file_name}}</strong>: altezza inferiore a quella minima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
+  alert_img_max_height_err: '<strong>{{file_name}}</strong>: altezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
+  alert_img_ratio_err: '<strong>{{file_name}}</strong>: la proporzione tra base e altezza dell’immagine non corrisponde a quella richiesta ({{aspect_ratio}})',
 
   no_img_text: 'Nessuna immagine presente',
   no_doc_text: 'Nessun file presente',

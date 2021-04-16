@@ -1,0 +1,15 @@
+extends _tpl.pug
+block variables
+  - title = 'Multiple images demo'
+block intro
+  p Multiple images uploader.
+  p All parameters of this uploader are set in “js/multiple-imgs-demo.js”
+
+block fupl
+  div.file-uploader2
+    label(for="input_file") This is the original input field label
+    input#input_file(name="myfile" type="file" multiple)
+
+
+block js
+  script(src="./js/multiple-imgs-demo.js" type="module")

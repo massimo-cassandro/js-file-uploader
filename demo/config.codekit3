@@ -25,14 +25,6 @@
       "oAP" : "\/aspect-ratio.html",
       "oF" : 0
     },
-    "\/bootstrap-toast-demo.html" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/bootstrap-toast-demo.html",
-      "oF" : 0
-    },
     "\/callbacks.html" : {
       "cB" : 0,
       "ft" : 8192,
@@ -40,18 +32,6 @@
       "oA" : 0,
       "oAP" : "\/callbacks.html",
       "oF" : 0
-    },
-    "\/css\/bs4_toast_notificaton.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 1,
-      "oAP" : "\/css\/bs4_toast_notificaton-min.css",
-      "oF" : 0,
-      "pg" : 0
     },
     "\/css\/fileuploader.css" : {
       "aP" : 1,
@@ -305,17 +285,6 @@
       "sC" : 3,
       "tS" : 0
     },
-    "\/js\/bs4-toast-notification.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 0,
-      "oA" : 1,
-      "oAP" : "\/bs4-toast-notification-min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
     "\/js\/callbacks-demo.js" : {
       "bF" : 0,
       "ft" : 64,
@@ -371,6 +340,17 @@
       "sC" : 3,
       "tS" : 0
     },
+    "\/js\/multiple-imgs-demo.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 0,
+      "oA" : 1,
+      "oAP" : "\/multiple-imgs-demo-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
     "\/js\/required-demo.js" : {
       "bF" : 0,
       "ft" : 64,
@@ -393,6 +373,17 @@
       "sC" : 3,
       "tS" : 0
     },
+    "\/js\/uncompleted-upload-demo.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 0,
+      "oA" : 1,
+      "oAP" : "\/uncompleted-upload-demo-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
     "\/mixed-img-svg-demo.html" : {
       "cB" : 0,
       "ft" : 8192,
@@ -407,6 +398,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/multiple-doc-demo.html",
+      "oF" : 0
+    },
+    "\/multiple-imgs-demo.html" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/multiple-imgs-demo.html",
       "oF" : 0
     },
     "\/multiple-uploaders.html" : {
@@ -469,16 +468,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/aspect-ratio.html",
-      "oF" : 0,
-      "oS" : 0
-    },
-    "\/pug\/bootstrap-toast-demo.pug" : {
-      "cB" : 0,
-      "cOD" : 0,
-      "ft" : 512,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/bootstrap-toast-demo.html",
       "oF" : 0,
       "oS" : 0
     },
@@ -562,6 +551,16 @@
       "oF" : 0,
       "oS" : 0
     },
+    "\/pug\/multiple-imgs-demo.pug" : {
+      "cB" : 0,
+      "cOD" : 0,
+      "ft" : 512,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/multiple-imgs-demo.html",
+      "oF" : 0,
+      "oS" : 0
+    },
     "\/pug\/multiple-uploaders.pug" : {
       "cB" : 0,
       "cOD" : 0,
@@ -639,6 +638,16 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/umd-version-demo.html",
+      "oF" : 0,
+      "oS" : 0
+    },
+    "\/pug\/uncompleted-upload.pug" : {
+      "cB" : 0,
+      "cOD" : 0,
+      "ft" : 512,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/uncompleted-upload.html",
       "oF" : 0,
       "oS" : 0
     },
@@ -1194,6 +1203,17 @@
       "mi" : 0,
       "oA" : 1,
       "oAP" : "\/Users\/max\/Sites\/js-file-uploader\/check_required_uploader-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/Users\/max\/Sites\/js-file-uploader\/src-utilities\/check_uncompleted_uploads.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 0,
+      "oA" : 1,
+      "oAP" : "\/Users\/max\/Sites\/js-file-uploader\/check_uncompleted_uploads-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -3308,7 +3328,7 @@
       "shouldRunCacheBuster" : 0
     },
     "languageDefaultsSASS" : {
-      "autoOutputAction" : 0,
+      "autoOutputAction" : 1,
       "autoOutputPathFilenamePattern" : "*.css",
       "autoOutputPathRelativePath" : "..\/dist",
       "autoOutputPathReplace1" : "sass",

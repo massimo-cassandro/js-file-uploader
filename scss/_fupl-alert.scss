@@ -23,17 +23,42 @@
 
   transform: translateX(-50%);
 
+  border: $fupl-alert-border;
+  border-radius: $fupl-alert-border-radius;
   box-shadow: $fupl-alert-box-shadow;
   background-color: $fupl-alert-bg;
-  padding: .5rem;
-  width:350px;
+
+  width:600px;
   max-width: 100%;
   min-height: 200px;
-  max-height: 100%;
+  // max-height: 100%;
 
   color: $fupl-alert-color;
 
   > div {
-    overflow-y: auto;
+    width:100%
   }
+}
+.fupl-alert-header {
+  border-bottom: $fupl-alert-border;
+  padding: .5rem;
+  text-align:center;
+  font-weight: bold;
+}
+.fupl-alert-body {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  // text-align: center;
+
+  ul {
+    margin: 0 0 .5rem;
+    // width:100%;
+    text-align: left;
+  }
+}
+.fupl-alert-footer {
+  border-top: $fupl-alert-border;
+  padding: .5rem;
+  text-align: center;
 }

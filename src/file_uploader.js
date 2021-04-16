@@ -2,7 +2,7 @@
  *
  * FileUploader 2
  * HTML5 / JS Async Uploader
- * Massimo Cassandro 2017-2020
+ * Massimo Cassandro 2017-2021
  *
  */
 
@@ -22,12 +22,22 @@ export default function FileUploader( params ) {
   }
   */
 
-  const version =  '2.2';
+  const version =  '2.3',
+    strs = Object.assign( {}, fupl_strings_it, params.local_strs || {} );
+
+  let opts = Object.assign( {_vers: version}, default_options, params.options || {});
+
+  // change all Mustache-Like Variables with corresponding strings
+  for(let i in opts) {
+    if(typeof opts[i] === 'string') {
+      opts[i] = opts[i].replace(/\{\{(.*?)\}\}/g, (match, substr) => strs[substr]);
+    }
+  }
 
   fupl_init({
-    selector : params.selector || '.file-uploader2',            // used in fupl_init only
-    css      : params.css || null,                     // used in fupl_init only
-    opts     : Object.assign( {_vers: version}, default_options, params.options || {} ),
-    strs     : Object.assign( {}, fupl_strings_it, params.local_strs || {} )
+    selector : params.selector || '.file-uploader2', // used in fupl_init only
+    css      : params.css || null,                   // used in fupl_init only
+    opts     : opts,
+    strs     : strs
   });
 }

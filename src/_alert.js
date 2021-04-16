@@ -2,21 +2,30 @@
 
 export function fupl_alert(mes, fupl_opts) {
 
-  const alert_dialog = `<div class="fupl-alert-overlay">
-    <div class="fupl-alert">
-        <div class="fupl-alert-inner"></div>
-        <button type="button">OK</button>
-      </div>
-  </div>`;
+  let alert_container = fupl_opts.element.querySelector('.fupl-alert-body ul');
 
-  let alert_container = fupl_opts.element.querySelector('.fupl-alert-inner');
-
-  if(!alert_container) {
-    fupl_opts.element.insertAdjacentHTML('beforeend', alert_dialog);
-    alert_container = fupl_opts.element.querySelector('.fupl-alert-inner');
+  if(typeof mes === 'string') {
+    mes = [mes];
   }
 
-  alert_container.insertAdjacentHTML('afterbegin', mes);
+
+  if(!alert_container) {
+    fupl_opts.element.insertAdjacentHTML('beforeend',
+      fupl_opts.fupl_alert_template
+    );
+
+    fupl_opts.element.querySelector('.fupl-alert-body').innerHTML = '<ul></ul>';
+
+    alert_container = fupl_opts.element.querySelector('.fupl-alert-body ul');
+
+    fupl_opts.element.querySelector('.fupl-alert button').addEventListener('click', () => {
+      fupl_opts.element.querySelector('.fupl-alert-overlay').remove();
+    }, false);
+  }
+
+  mes.forEach(item => {
+    alert_container.insertAdjacentHTML('afterbegin', `<li>${item}</li>`);
+  });
 
 
 }

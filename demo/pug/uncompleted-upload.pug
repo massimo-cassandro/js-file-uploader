@@ -1,0 +1,29 @@
+extends _tpl.pug
+block variables
+  - title = 'Uncompleted uploads demo'
+block intro
+  p.
+    To avoid that users could submit your forms before uploads are completed, you can set
+    the #[code disable_submit] option to true to disable the submit button until the upload is complete.
+  p.
+    For more control, you can set up a little script as described in
+    #[a(href="https://github.com/massimo-cassandro/js-file-uploader#checking-for-completed-loading") Recipes: Checking for completed loading]
+    in the README page, or use the #[code src-utilities/check_uncompleted_uploads.js] script
+    to quickly add a check function. The script is also located in the
+    #[code dist/utilities] folder as ESM and UMD.
+  p.
+    To test the script, submit the form before the image is completely uploaded.
+    Take care to use a very big file, that the #[code disable_submit] option is set to #[code false] (the default) and
+    simulate a really slow connection using your devTool throttling options.
+
+
+block fupl
+  form#form1(action="" method="get" name="form1")
+    div#my-uploader.file-uploader2()
+      label(for="input_file") Uncompleted image upload check
+      input#input_file(name="myfile" type="file" required)
+    p
+      button.btn.btn-primary(type="submit") Submit
+
+block js
+  script(src="./js/uncompleted-upload-demo.js" type="module")

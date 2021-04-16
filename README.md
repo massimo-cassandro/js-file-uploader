@@ -287,7 +287,7 @@ When a FileUploader  is generated, the `fupl` class is added to the original ele
 > Take care to preserve elements with `fupl-*` classes, that are requested by FileUploader
 
 
-#### Callback
+#### Callbacks
 
 If specific behaviors are required, you can define some callback functions that will be invoked when certain events occur:
 
@@ -371,7 +371,7 @@ The module `src-utilities/check_uncompleted_uploads.js` is already ready for thi
 However, implementing a server-side control too is certainly a good idea.
 
 
-### `required` fields checking
+### Required fields checking
 
 Since a file can be loaded via *Drag & Drop*, it is not possible to use the native `required` to check for  mandatory files.
 
@@ -446,11 +446,11 @@ There is a long list of future implementation and fix I've planned, take a look 
 * Added built-in alert interface
 * Dropped custom alert UI support 
 
+
 ### V. 2.0 (Oct 2020)
 * All rewritten as ES6 module
 * Dropped check and callback for legacy browsers
 * New demo pages
-* Wiki pages (in progress)
 
 ### Version 1.4-1.7 (Jul-Sep 2020) 
 * SVG images support

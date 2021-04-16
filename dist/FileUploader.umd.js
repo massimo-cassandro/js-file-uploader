@@ -14,15 +14,17 @@
     alert_file_size_error: 'Le dimensioni di “<strong>{{file_name}}</strong>” ({{file_size}}) '+
       'superano il valore massimo consentito ({{allowed_size}})',
 
+    fupl_alert_header: 'Errore',
+    fupl_alert_btn_text: 'OK',
+
     // images sizes alerts
-    alert_img_err_start_string: 'L’immagine “<strong>{{file_name}}</strong>” non è corretta:',
-    alert_img_exact_width_err: 'Larghezza non corrispondente ({{image_dimension}}px invece di {{allowed_dimension}}px)',
-    alert_img_min_width_err: 'Larghezza inferiore a quella minima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
-    alert_img_max_width_err: 'Larghezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
-    alert_img_exact_height_err: 'Altezza non corrispondente ({{image_dimension}}px invece di {{allowed_dimension}}px)',
-    alert_img_min_height_err: 'Altezza inferiore a quella minima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
-    alert_img_max_height_err: 'Altezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
-    alert_img_ratio_err: 'La proporzione tra base e altezza dell’immagine non corrisponde a quella richiesta ({{aspect_ratio}})',
+    alert_img_exact_width_err: '<strong>{{file_name}}</strong>: larghezza non corrispondente ({{image_dimension}}px invece di {{allowed_dimension}}px)',
+    alert_img_min_width_err: '<strong>{{file_name}}</strong>: larghezza inferiore a quella minima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
+    alert_img_max_width_err: '<strong>{{file_name}}</strong>: larghezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
+    alert_img_exact_height_err: '<strong>{{file_name}}</strong>: altezza non corrispondente ({{image_dimension}}px invece di {{allowed_dimension}}px)',
+    alert_img_min_height_err: '<strong>{{file_name}}</strong>: altezza inferiore a quella minima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
+    alert_img_max_height_err: '<strong>{{file_name}}</strong>: altezza superiore a quella massima consentita ({{image_dimension}}px invece di {{allowed_dimension}}px)',
+    alert_img_ratio_err: '<strong>{{file_name}}</strong>: la proporzione tra base e altezza dell’immagine non corrisponde a quella richiesta ({{aspect_ratio}})',
 
     no_img_text: 'Nessuna immagine presente',
     no_doc_text: 'Nessun file presente',
@@ -68,23 +70,15 @@
     sortable_icon_title_text: 'Trascina per cambiare l’ordinamento'
   };
 
+  /*
+    Some options contain Mustache-like variables (e.g.: {{xxx}}) that will be replaced
+    with the corresponding values of the localized strings items.
+
+    Variable name (the `xxx` part) must be the same as the string item name
+
+  */
+
   const default_options = {
-
-    // **********************
-    // rimuovere
-    // error messages interface
-    /*
-      Parameters:
-        - mes  → message string
-        - opts → options & strings of current FileUploader instance
-        - type → one of info, error, warning
-    */
-    alert_api: (mes, opts, type = 'error') => {  // eslint-disable-line
-      window.alert(mes.replace(/(<([^>]+)>)/ig, '' ));
-    },
-    // **********************
-
-
 
     // server side script url
     uploader_url: null,
@@ -222,6 +216,25 @@
 
     // Extra classes to be added to the FileUploader wrapper element (classes names separated by spaces)
     wrapper_extra_class: null,
+
+    // template for error messages dialog
+    // if changed, .fupl-x classes must be maintained
+    fupl_alert_template:
+      `<div class="fupl-alert-overlay">
+      <div class="fupl-alert">
+        <div class="fupl-alert-header">{{fupl_alert_header}}</div>
+        <div class="fupl-alert-body"></div>
+        <div class="fupl-alert-footer">
+          <button type="button" class="fupl-alert-btn">{{fupl_alert_btn_text}}</button>
+        </div>
+      </div>
+    </div>`,
+
+    // classes to be added to alert button
+    // they can be changed without redefine entire alert template
+    // merging is perfomed in the `init` module
+    fupl_alert_btn_class: 'btn btn-secondary',
+
 
     // Class(es) to be added to the FileUploader element when a file is dragged there from desktop
     element_dragover_class: 'fupl-is-dragover',
@@ -1215,10 +1228,43 @@
 
   }
 
+  // TODO update to dialog element
+
+  function fupl_alert(mes, fupl_opts) {
+
+    let alert_container = fupl_opts.element.querySelector('.fupl-alert-body ul');
+
+    if(typeof mes === 'string') {
+      mes = [mes];
+    }
+
+
+    if(!alert_container) {
+      fupl_opts.element.insertAdjacentHTML('beforeend',
+        fupl_opts.fupl_alert_template
+      );
+
+      fupl_opts.element.querySelector('.fupl-alert-body').innerHTML = '<ul></ul>';
+
+      alert_container = fupl_opts.element.querySelector('.fupl-alert-body ul');
+
+      fupl_opts.element.querySelector('.fupl-alert button').addEventListener('click', () => {
+        fupl_opts.element.querySelector('.fupl-alert-overlay').remove();
+      }, false);
+    }
+
+    mes.forEach(item => {
+      alert_container.insertAdjacentHTML('afterbegin', `<li>${item}</li>`);
+    });
+
+
+  }
+
   /*
   Performs all the checks, calls the remote url via ajax
   and generates the feedback for the user
   */
+
 
   function send_files(filelist, fupl) {
 
@@ -1319,7 +1365,7 @@
               */
               if(response.error) {
 
-                fupl.opts.alert_api( xhr_error_message, fupl );
+                fupl_alert( xhr_error_message, fupl.opts );
                 console.error( response.error ); // eslint-disable-line
                 reject();
 
@@ -1346,7 +1392,7 @@
               }
 
             } else {
-              fupl.opts.alert_api( xhr_error_message, fupl );
+              fupl_alert( xhr_error_message, fupl.opts );
               /* eslint-disable */
               console.error( ajax.status, ajax.statusText );
               console.error( ajax.responseText );
@@ -1357,7 +1403,7 @@
           };
 
           ajax.onerror = function() {
-            fupl.opts.alert_api( xhr_error_message, fupl );
+            fupl_alert( xhr_error_message, fupl.opts );
             /* eslint-disable */
             if(fupl.opts.debug) {
               console.error( ajax.status,  ajax.statusText );
@@ -1471,26 +1517,26 @@
               image.src = reader.result;
               image.addEventListener('load', function () {
 
-                let err_mes = [];
+                let error_messages = [];
                 current_item.width=image.width;
                 current_item.height=image.height;
                 if(current_item.img_type === 'bmp') {
                   if( fupl.opts.img_w && image.width !== fupl.opts.img_w ) {
-                    err_mes.push(
+                    error_messages.push(
                       fupl.strs.alert_img_exact_width_err
                         .replace(/{{image_dimension}}/, image.width)
                         .replace(/{{allowed_dimension}}/, fupl.opts.img_w)
                     );
 
                   } else if(fupl.opts.img_min_w && image.width < fupl.opts.img_min_w) {
-                    err_mes.push(
+                    error_messages.push(
                       fupl.strs.alert_img_min_width_err
                         .replace(/{{image_dimension}}/, image.width)
                         .replace(/{{allowed_dimension}}/, fupl.opts.img_min_w)
                     );
 
                   } else if(fupl.opts.img_max_w && image.width > fupl.opts.img_max_w) {
-                    err_mes.push(
+                    error_messages.push(
                       fupl.strs.alert_img_max_width_err
                         .replace(/{{image_dimension}}/, image.width)
                         .replace(/{{allowed_dimension}}/, fupl.opts.img_max_w)
@@ -1498,21 +1544,21 @@
                   }
 
                   if (fupl.opts.img_h && image.height !== fupl.opts.img_h) {
-                    err_mes.push(
+                    error_messages.push(
                       fupl.strs.alert_img_exact_height_err
                         .replace(/{{image_dimension}}/, image.height)
                         .replace(/{{allowed_dimension}}/, fupl.opts.img_h)
                     );
 
                   } else if(fupl.opts.img_min_h && image.height < fupl.opts.img_min_h) {
-                    err_mes.push(
+                    error_messages.push(
                       fupl.strs.alert_img_min_height_err
                         .replace(/{{image_dimension}}/, image.height)
                         .replace(/{{allowed_dimension}}/, fupl.opts.img_min_h)
                     );
 
                   } else if(fupl.opts.img_max_h && image.height > fupl.opts.img_max_h) {
-                    err_mes.push(
+                    error_messages.push(
                       fupl.strs.alert_img_max_height_err
                         .replace(/{{image_dimension}}/, image.height)
                         .replace(/{{allowed_dimension}}/, fupl.opts.img_max_h)
@@ -1525,19 +1571,17 @@
                 if(fupl.opts.parsed_img_aspect_ratio) {
                   let img_ratio = Math.round(((image.width / image.height) + Number.EPSILON) * fupl.opts.aspect_ratio_accuracy) / fupl.opts.aspect_ratio_accuracy;
                   if(img_ratio !== fupl.opts.parsed_img_aspect_ratio) {
-                    err_mes.push(
+                    error_messages.push(
                       fupl.strs.alert_img_ratio_err
                         .replace(/{{aspect_ratio}}/, fupl.opts.img_aspect_ratio)
                     );
                   }
                 }
 
-                if( err_mes.length ) {
-                  fupl.opts.alert_api(
-                    fupl.strs.alert_img_err_start_string
-                      .replace(/{{file_name}}/, filelist_item.name ) + '<br>\n' +
-                    '<ul><li>' + err_mes.join('</li>\n<li>') + '</li></ul>',
-                    fupl );
+                if( error_messages.length ) {
+                  error_messages = error_messages
+                    .map(item => item.replace(/{{file_name}}/, filelist_item.name ) );
+                  fupl_alert(error_messages, fupl.opts );
 
                 } else {
                   uploadFile( current_item, reader.result );
@@ -1576,34 +1620,11 @@
           } // end if image
 
         } catch (errormessage) {
-          fupl.opts.alert_api( errormessage, fupl ,'error');
+          fupl_alert( errormessage, fupl.opts);
         }
       }); // end foreach
 
     } // end if( filelist.length )
-
-  }
-
-  // TODO update to dialog element
-
-  function fupl_alert(mes, fupl_opts) {
-
-    const alert_dialog = `<div class="fupl-alert-overlay">
-    <div class="fupl-alert">
-        <div class="fupl-alert-inner"></div>
-        <button type="button">OK</button>
-      </div>
-  </div>`;
-
-    let alert_container = fupl_opts.element.querySelector('.fupl-alert-inner');
-
-    if(!alert_container) {
-      fupl_opts.element.insertAdjacentHTML('beforeend', alert_dialog);
-      alert_container = fupl_opts.element.querySelector('.fupl-alert-inner');
-    }
-
-    alert_container.insertAdjacentHTML('afterbegin', mes);
-
 
   }
 
@@ -2031,6 +2052,12 @@
         }
       }
 
+      // classes and all needed merging
+      if(instance_opts.fupl_alert_btn_class) {
+        instance_opts.fupl_alert_template = instance_opts.fupl_alert_template
+          .replace('fupl-alert-btn', 'fupl-alert-btn ' + instance_opts.fupl_alert_btn_class);
+      }
+
       // calling the createUploader function. Global options are completely overwritten
       // by instance_opts
       new createUploader({
@@ -2046,7 +2073,7 @@
    *
    * FileUploader 2
    * HTML5 / JS Async Uploader
-   * Massimo Cassandro 2017-2020
+   * Massimo Cassandro 2017-2021
    *
    */
 
@@ -2061,13 +2088,23 @@
     }
     */
 
-    const version =  '2.2';
+    const version =  '2.3',
+      strs = Object.assign( {}, fupl_strings_it, params.local_strs || {} );
+
+    let opts = Object.assign( {_vers: version}, default_options, params.options || {});
+
+    // change all Mustache-Like Variables with corresponding strings
+    for(let i in opts) {
+      if(typeof opts[i] === 'string') {
+        opts[i] = opts[i].replace(/\{\{(.*?)\}\}/g, (match, substr) => strs[substr]);
+      }
+    }
 
     fupl_init({
-      selector : params.selector || '.file-uploader2',            // used in fupl_init only
-      css      : params.css || null,                     // used in fupl_init only
-      opts     : Object.assign( {_vers: version}, default_options, params.options || {} ),
-      strs     : Object.assign( {}, fupl_strings_it, params.local_strs || {} )
+      selector : params.selector || '.file-uploader2', // used in fupl_init only
+      css      : params.css || null,                   // used in fupl_init only
+      opts     : opts,
+      strs     : strs
     });
   }
 

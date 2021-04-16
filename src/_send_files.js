@@ -6,6 +6,8 @@ and generates the feedback for the user
 import {create_item} from './_create_item.js';
 import {fupl_utilities} from './_utilities.js';
 import {build_hidden_fields} from './_build_hidden_fields.js';
+import {fupl_alert} from './_alert.js';
+
 
 export function send_files(filelist, fupl) {
 
@@ -106,7 +108,7 @@ export function send_files(filelist, fupl) {
             */
             if(response.error) {
 
-              fupl.opts.alert_api( xhr_error_message, fupl );
+              fupl_alert( xhr_error_message, fupl.opts );
               console.error( response.error ); // eslint-disable-line
               reject();
 
@@ -133,7 +135,7 @@ export function send_files(filelist, fupl) {
             }
 
           } else {
-            fupl.opts.alert_api( xhr_error_message, fupl );
+            fupl_alert( xhr_error_message, fupl.opts );
             /* eslint-disable */
             console.error( ajax.status, ajax.statusText );
             console.error( ajax.responseText );
@@ -144,7 +146,7 @@ export function send_files(filelist, fupl) {
         };
 
         ajax.onerror = function() {
-          fupl.opts.alert_api( xhr_error_message, fupl );
+          fupl_alert( xhr_error_message, fupl.opts );
           /* eslint-disable */
           if(fupl.opts.debug) {
             console.error( ajax.status,  ajax.statusText );
@@ -258,26 +260,26 @@ export function send_files(filelist, fupl) {
             image.src = reader.result;
             image.addEventListener('load', function () {
 
-              let err_mes = [];
+              let error_messages = [];
               current_item.width=image.width;
               current_item.height=image.height;
               if(current_item.img_type === 'bmp') {
                 if( fupl.opts.img_w && image.width !== fupl.opts.img_w ) {
-                  err_mes.push(
+                  error_messages.push(
                     fupl.strs.alert_img_exact_width_err
                       .replace(/{{image_dimension}}/, image.width)
                       .replace(/{{allowed_dimension}}/, fupl.opts.img_w)
                   );
 
                 } else if(fupl.opts.img_min_w && image.width < fupl.opts.img_min_w) {
-                  err_mes.push(
+                  error_messages.push(
                     fupl.strs.alert_img_min_width_err
                       .replace(/{{image_dimension}}/, image.width)
                       .replace(/{{allowed_dimension}}/, fupl.opts.img_min_w)
                   );
 
                 } else if(fupl.opts.img_max_w && image.width > fupl.opts.img_max_w) {
-                  err_mes.push(
+                  error_messages.push(
                     fupl.strs.alert_img_max_width_err
                       .replace(/{{image_dimension}}/, image.width)
                       .replace(/{{allowed_dimension}}/, fupl.opts.img_max_w)
@@ -285,21 +287,21 @@ export function send_files(filelist, fupl) {
                 }
 
                 if (fupl.opts.img_h && image.height !== fupl.opts.img_h) {
-                  err_mes.push(
+                  error_messages.push(
                     fupl.strs.alert_img_exact_height_err
                       .replace(/{{image_dimension}}/, image.height)
                       .replace(/{{allowed_dimension}}/, fupl.opts.img_h)
                   );
 
                 } else if(fupl.opts.img_min_h && image.height < fupl.opts.img_min_h) {
-                  err_mes.push(
+                  error_messages.push(
                     fupl.strs.alert_img_min_height_err
                       .replace(/{{image_dimension}}/, image.height)
                       .replace(/{{allowed_dimension}}/, fupl.opts.img_min_h)
                   );
 
                 } else if(fupl.opts.img_max_h && image.height > fupl.opts.img_max_h) {
-                  err_mes.push(
+                  error_messages.push(
                     fupl.strs.alert_img_max_height_err
                       .replace(/{{image_dimension}}/, image.height)
                       .replace(/{{allowed_dimension}}/, fupl.opts.img_max_h)
@@ -312,19 +314,17 @@ export function send_files(filelist, fupl) {
               if(fupl.opts.parsed_img_aspect_ratio) {
                 let img_ratio = Math.round(((image.width / image.height) + Number.EPSILON) * fupl.opts.aspect_ratio_accuracy) / fupl.opts.aspect_ratio_accuracy;
                 if(img_ratio !== fupl.opts.parsed_img_aspect_ratio) {
-                  err_mes.push(
+                  error_messages.push(
                     fupl.strs.alert_img_ratio_err
                       .replace(/{{aspect_ratio}}/, fupl.opts.img_aspect_ratio)
                   );
                 }
               }
 
-              if( err_mes.length ) {
-                fupl.opts.alert_api(
-                  fupl.strs.alert_img_err_start_string
-                    .replace(/{{file_name}}/, filelist_item.name ) + '<br>\n' +
-                  '<ul><li>' + err_mes.join('</li>\n<li>') + '</li></ul>',
-                  fupl );
+              if( error_messages.length ) {
+                error_messages = error_messages
+                  .map(item => item.replace(/{{file_name}}/, filelist_item.name ) );
+                fupl_alert(error_messages, fupl.opts );
 
               } else {
                 uploadFile( current_item, reader.result );
@@ -363,7 +363,7 @@ export function send_files(filelist, fupl) {
         } // end if image
 
       } catch (errormessage) {
-        fupl.opts.alert_api( errormessage, fupl ,'error');
+        fupl_alert( errormessage, fupl.opts);
       }
     }); // end foreach
 
