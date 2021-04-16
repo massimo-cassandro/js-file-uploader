@@ -5,10 +5,6 @@
 
 [demo](https://massimo-cassandro.github.io/js-file-uploader/demo/)
 
-[GitHub](https://github.com/massimo-cassandro/js-file-uploader)
-|
-[npm](https://www.npmjs.com/package/@massimo-cassandro/js-file-uploader)
-
 JS-File-Uploader is a small javascript utility (less than 8kb minified and gzipped) that simplifies uploading files to HTML pages.
 
 Uploads are performed asynchronously via an Ajax call to a server-side script that must register the file and return a JSON string.
@@ -44,7 +40,7 @@ JS-File-Uploader is tested with many browsers and mobile devices (thanks to [Bro
 
 ## Installation and startup
 
-JS-File-Uploader can be installed using npm:
+JS-File-Uploader can be installed using [npm](https://www.npmjs.com/package/@massimo-cassandro/js-file-uploader):
 
 ```bash
 npm i @massimo-cassandro/js-file-uploader
