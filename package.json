@@ -42,17 +42,18 @@
   "devDependencies": {
     "@massimo-cassandro/m-utilities": "^3.2.3",
     "@rollup/plugin-node-resolve": "^11.2.0",
+    "eslint": "^7.28.0",
     "js-beautify": "^1.13.0",
     "prismjs": "^1.22.0",
     "rollup": "^2.34.2",
     "rollup-plugin-sourcemaps": "^0.6.3",
     "rollup-plugin-terser": "^7.0.2",
-    "sass": "^1.32.8"
+    "sass": "^1.32.8",
+    "stylelint": "^13.13.1",
+    "stylelint-config-twbs-bootstrap": "^2.2.0"
   },
   "optionalDependencies": {
-    "eslint": "^7.24.0",
     "eslint-config-standard": "^16.0.2",
-    "stylelint": "^13.12.0",
     "stylelint-config-standard": "^21.0.0",
     "stylelint-order": "^4.1.0",
     "stylelint-config-concentric-order": "^4.0.1",
