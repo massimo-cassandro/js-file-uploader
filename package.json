@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/js-file-uploader",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "HTML5 Async File Uploader ",
   "main": "./src/file_uploader.js",
   "style": "./scss/fileUploader.scss",
@@ -42,7 +42,7 @@
   "devDependencies": {
     "@massimo-cassandro/m-utilities": "^3.2.3",
     "@rollup/plugin-node-resolve": "^11.2.0",
-    "eslint": "^7.28.0",
+    "eslint": "^7.29.0",
     "js-beautify": "^1.13.0",
     "prismjs": "^1.22.0",
     "rollup": "^2.34.2",
@@ -50,13 +50,13 @@
     "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.32.8",
     "stylelint": "^13.13.1",
-    "stylelint-config-twbs-bootstrap": "^2.2.0"
+    "stylelint-config-twbs-bootstrap": "^2.2.1"
   },
   "optionalDependencies": {
     "eslint-config-standard": "^16.0.2",
+    "stylelint-config-concentric-order": "^4.0.1",
     "stylelint-config-standard": "^21.0.0",
     "stylelint-order": "^4.1.0",
-    "stylelint-config-concentric-order": "^4.0.1",
     "stylelint-scss": "^3.19.0"
   }
 }

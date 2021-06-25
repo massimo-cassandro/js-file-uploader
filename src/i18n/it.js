@@ -31,7 +31,9 @@ const fupl_strings_it = {
 
   info_text_img_optimize_info: 'Ottimizza le tue immagini prima di caricarle. ' +
     '<a href="https://squoosh.app/" target="_blank" rel="noopener noreferrer">Squoosh</a> è un ottimo (e gratuito) ' +
-    'strumento per farlo.',
+    'strumento per farlo.'+
+    '<br>Per l’editing puoi utilizzare <a href="https://www.befunky.com/create/photo-editor/" target="_blank" rel="noopener noreferrer">Befunky</a>',
+
   info_text_svg_optimize_info: 'È consigliabile ottimizzare i file SVG prima del caricamento, ' +
     'ad esempio tramite <a href="https://jakearchibald.github.io/svgomg/" target="_blank" rel="noopener noreferrer">SVGO</a>',
 
