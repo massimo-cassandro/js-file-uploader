@@ -36,12 +36,12 @@
       // }
       @include fupl-media-query-min(md) {
         display: grid;
-        grid-template-columns: repeat(2, minmax(25%, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
         gap: 1.5rem;
         grid-gap: 1.5rem; // obsolete, mantained for compatibility
       }
       @include fupl-media-query-min(lg) {
-        grid-template-columns: repeat(3, minmax(20%, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
       }
       // @include fupl-media-query-min(xl) {
       //   grid-template-columns: repeat(5, minmax(15%, 1fr));
