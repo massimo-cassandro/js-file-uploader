@@ -21,8 +21,8 @@
 
 */
 
-import {fupl_utilities} from './_utilities.js';
-import {add_sortable_events} from './_sortable.js';
+import {fupl_utilities} from './utilities.js';
+import {add_sortable_events} from './sortable.js';
 
 export function create_item(item_data, fupl, preregistered = false) {
 

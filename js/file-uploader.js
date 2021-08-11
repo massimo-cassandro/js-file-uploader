@@ -7,9 +7,9 @@
  */
 
 import fupl_strings_it from './i18n/it.js';
-import {default_options} from './_default_options.js';
+import {default_options} from './src/default-options.js';
 
-import {fupl_init} from './_init.js';
+import {fupl_init} from './src/init.js';
 
 export default function FileUploader( params ) {
 

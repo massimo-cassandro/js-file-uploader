@@ -1,5 +1,5 @@
 // check for required file-uploaders
-function check_required_uploader (options) {
+function checkRequiredUploader (options) {
 
   const default_options = {
     alert_api: message => { window.alert(message); },
@@ -30,5 +30,5 @@ function check_required_uploader (options) {
   });
 }
 
-export default check_required_uploader;
-//# sourceMappingURL=check_required_uploader.esm.js.map
+export default checkRequiredUploader;
+//# sourceMappingURL=check-required-uploader.esm.js.map

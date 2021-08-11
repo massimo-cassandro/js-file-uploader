@@ -1,5 +1,5 @@
-import {fupl_utilities} from './_utilities.js';
-import {createUploader} from './_create_uploader.js';
+import {fupl_utilities} from './utilities.js';
+import {createUploader} from './create-uploader.js';
 
 export  function fupl_init(fupl) {
 

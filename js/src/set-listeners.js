@@ -1,5 +1,5 @@
-import {send_files} from './_send_files.js';
-import {fupl_alert} from './_alert.js';
+import {send_files} from './send-files.js';
+import {fupl_alert} from './alert.js';
 
 // https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
 export function set_listeners(fupl) {

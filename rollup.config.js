@@ -11,7 +11,7 @@ const terserOptions = {
 
 export default [
   {
-    input: "src/file_uploader.js",
+    input: "js/file-uploader.js",
     plugins: [sourcemaps(), resolve()],
     output: [
       {
@@ -41,7 +41,7 @@ export default [
     ]
   },
   {
-    input: "src/i18n/en.js",
+    input: "js/i18n/en.js",
     plugins: [sourcemaps(), resolve()],
     output: [
       {
@@ -71,7 +71,7 @@ export default [
     ]
   },
   {
-    input: "src/i18n/it.js",
+    input: "js/i18n/it.js",
     plugins: [sourcemaps(), resolve()],
     output: [
       {
@@ -101,29 +101,59 @@ export default [
     ]
   },
   {
-    input: "src-utilities/check_required_uploader.js",
+    input: "js-utilities/check-required-uploader.js",
     plugins: [sourcemaps(), resolve()],
     output: [
       {
-        file: "dist/utilities/check_required_uploader.umd.js",
+        file: "dist/utilities/check-required-uploader.umd.js",
         name: "check_required_uploader",
-        format: "amd",
+        format: "umd",
         sourcemap: true
       },
       {
-        file: "dist/utilities/check_required_uploader.umd.min.js",
+        file: "dist/utilities/check-required-uploader.umd.min.js",
         name: "check_required_uploader",
         format: "umd",
         plugins: [terser(terserOptions)],
         sourcemap: true
       },
       {
-        file: "dist/utilities/check_required_uploader.esm.js",
+        file: "dist/utilities/check-required-uploader.esm.js",
         format: "esm",
         sourcemap: true
       },
       {
-        file: "dist/utilities/check_required_uploader.esm.min.js",
+        file: "dist/utilities/check-required-uploader.esm.min.js",
+        format: "esm",
+        plugins: [terser(terserOptions)],
+        sourcemap: true
+      }
+    ]
+  },
+  {
+    input: "js-utilities/check-uncompleted-uploads.js",
+    plugins: [sourcemaps(), resolve()],
+    output: [
+      {
+        file: "dist/utilities/check-uncompleted-uploads.umd.js",
+        name: "check_uncompleted_uploads",
+        format: "umd",
+        sourcemap: true
+      },
+      {
+        file: "dist/utilities/check-uncompleted-uploads.umd.min.js",
+        name: "check_uncompleted_uploads",
+        format: "umd",
+        plugins: [terser(terserOptions)],
+        sourcemap: true
+      },
+      {
+        file: "dist/utilities/check-uncompleted-uploads.esm.js",
+        format: "esm",
+        sourcemap: true
+      },
+      {
+        file: "dist/utilities/check-uncompleted-uploads.esm.min.js",
         format: "esm",
         plugins: [terser(terserOptions)],
         sourcemap: true

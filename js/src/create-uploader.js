@@ -1,8 +1,8 @@
-import {fupl_utilities} from './_utilities.js';
-import {create_info_text} from './_create_info_text.js';
-import {activate_sortable} from './_sortable.js';
-import {create_item} from './_create_item.js';
-import {set_listeners} from './_set_listeners.js';
+import {fupl_utilities} from './utilities.js';
+import {create_info_text} from './create-info-text.js';
+import {activate_sortable} from './sortable.js';
+import {create_item} from './create-item.js';
+import {set_listeners} from './set-listeners.js';
 
 export function createUploader(fupl) {
 

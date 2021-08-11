@@ -3,10 +3,10 @@ Performs all the checks, calls the remote url via ajax
 and generates the feedback for the user
 */
 
-import {create_item} from './_create_item.js';
-import {fupl_utilities} from './_utilities.js';
-import {build_hidden_fields} from './_build_hidden_fields.js';
-import {fupl_alert} from './_alert.js';
+import {create_item} from './create-item.js';
+import {fupl_utilities} from './utilities.js';
+import {build_hidden_fields} from './build-hidden-fields.js';
+import {fupl_alert} from './alert.js';
 
 
 export function send_files(filelist, fupl) {

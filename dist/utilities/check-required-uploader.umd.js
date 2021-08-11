@@ -1,7 +1,11 @@
-define(function () { 'use strict';
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.check_required_uploader = factory());
+}(this, (function () { 'use strict';
 
   // check for required file-uploaders
-  function check_required_uploader (options) {
+  function checkRequiredUploader (options) {
 
     const default_options = {
       alert_api: message => { window.alert(message); },
@@ -32,7 +36,7 @@ define(function () { 'use strict';
     });
   }
 
-  return check_required_uploader;
+  return checkRequiredUploader;
 
-});
-//# sourceMappingURL=check_required_uploader.umd.js.map
+})));
+//# sourceMappingURL=check-required-uploader.umd.js.map
