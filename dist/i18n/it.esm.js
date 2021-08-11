@@ -66,5 +66,5 @@ const fupl_strings_it = {
   sortable_icon_title_text: 'Trascina per cambiare l’ordinamento'
 };
 
-export default fupl_strings_it;
+export { fupl_strings_it as default };
 //# sourceMappingURL=it.esm.js.map

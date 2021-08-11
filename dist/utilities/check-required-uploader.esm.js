@@ -30,5 +30,5 @@ function checkRequiredUploader (options) {
   });
 }
 
-export default checkRequiredUploader;
+export { checkRequiredUploader as default };
 //# sourceMappingURL=check-required-uploader.esm.js.map

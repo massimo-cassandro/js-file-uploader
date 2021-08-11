@@ -2104,5 +2104,5 @@ function FileUploader( params ) {
   });
 }
 
-export default FileUploader;
+export { FileUploader as default };
 //# sourceMappingURL=FileUploader.esm.js.map

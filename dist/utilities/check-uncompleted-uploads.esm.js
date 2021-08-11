@@ -22,5 +22,5 @@ function checkUncompletedUploads (options) {
   });
 }
 
-export default checkUncompletedUploads;
+export { checkUncompletedUploads as default };
 //# sourceMappingURL=check-uncompleted-uploads.esm.js.map
