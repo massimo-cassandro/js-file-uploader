@@ -40,7 +40,7 @@
     "scss/*.scss"
   ],
   "devDependencies": {
-    "@massimo-cassandro/m-utilities": "^3.2.3",
+    "@massimo-cassandro/m-utilities": "^4.2.8",
     "@rollup/plugin-node-resolve": "^11.2.0",
     "eslint": "^7.29.0",
     "js-beautify": "^1.13.0",

@@ -1,5 +1,5 @@
 import {html_beautify} from 'js-beautify/js/lib/beautify-html';
-import {escapeHTML} from '@massimo-cassandro/m-utilities/js-utilities/_escapeHTML';
+import {escapeHTML} from '@massimo-cassandro/m-utilities/js-utilities/escapeHTML';
 
 export const demo_code_wrapper = document.querySelector('.demo_code');
 

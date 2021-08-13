@@ -7,7 +7,7 @@ https://prismjs.com/
 /* global Prism */
 
 import {demo_code_wrapper, show_markup} from './_demo_utils';
-import {escapeHTML} from '@massimo-cassandro/m-utilities/js-utilities/_escapeHTML';
+import {escapeHTML} from '@massimo-cassandro/m-utilities/js-utilities/escapeHTML';
 
 (() => {
   'use strict';
