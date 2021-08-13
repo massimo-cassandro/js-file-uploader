@@ -3,12 +3,12 @@
   position: relative;
 
   .fupl-loading {
-    display: flex;
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
-    left:0;
+    left: 0;
+    display: flex;
     align-items: center;
     justify-content: center;
 
@@ -22,9 +22,9 @@
   }
 
   .fupl-progress {
-    border-radius:5px;
-    width:90%;
-    height:5px;
+    width: 90%;
+    height: 5px;
+    border-radius: 5px;
   }
 
 }

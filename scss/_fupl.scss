@@ -1,17 +1,16 @@
 .fupl {
   position: relative;
-  transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  padding: 1rem;
+  background-color: $fupl-background-color;
   outline: 2px dashed $fupl-outline-color;
   outline-offset: 0;
-  background-color: $fupl-background-color;
-  padding: 1rem;
+  transition: outline-offset .15s ease-in-out, background-color .15s linear;
 
   &.fupl-is-dragover:not(.fupl-sorting) {
 
-		outline-offset: -.5rem;
-    outline-color: $fupl-outline-color-dragover;
-
     background-color: $fupl-background-color-dragover;
+    outline-color: $fupl-outline-color-dragover;
+    outline-offset: -.5rem;
 
     .fupl-panel {
       border: none;
@@ -19,31 +18,32 @@
 
     [disabled] & {
       position: relative;
-      outline-offset: 0;
-      outline-color: $fupl-disabled-color;
-
       background-color: transparent;
+      outline-color: $fupl-disabled-color;
+      outline-offset: 0;
 
       &::before {
-        display: block;
         position: absolute;
-        top:50%;
-        left:50%;
-        transform: translate(-50%, -50%);
-        color: $fupl-disabled-color;
+        top: 50%;
+        left: 50%;
+        display: block;
         font-size: 2rem;
-        content:'Non è possibile caricare file';
+        color: $fupl-disabled-color;
+        content: 'Non è possibile caricare file';
+        transform: translate(-50%, -50%);
       }
 
       .fupl-result, .fupl-panel {
-        opacity:0;
+        opacity: 0;
       }
     }
   }
 
   [disabled] & {
+    /* stylelint-disable declaration-no-important */
+    font-style: italic !important;
+    color: $fupl-disabled-color !important;
+    /* stylelint-enable declaration-no-important */
     cursor: no-drop;
-    color: $fupl-disabled-color!important;
-    font-style: italic!important;
   }
 }

@@ -1,14 +1,14 @@
 .fupl-extra-fields:not(:empty) {
-  margin:1rem 0;
+  margin: 1rem 0;
 
   .fupl-type-doc & {
     flex-basis: 100%;
+    padding-top: .2rem;
     margin: .2rem 0 0;
-    border-top:1px dotted $fupl-items-border-color;
-    padding-top:.2rem;
+    border-top: 1px dotted $fupl-items-border-color;
   }
 
   .form-group:last-child {
-    margin-bottom:0;
+    margin-bottom: 0;
   }
 }

@@ -1,16 +1,16 @@
 .fupl-sortable {
   position: relative;
   .fupl-item[draggable] {
+    cursor: grab;
     user-select: none;
     transition: transform .3s linear;
-    cursor: grab;
   }
 }
 
 // class attached to an element when begin dragged
 .fupl-item-sorting {
-  opacity: .7;
   background: $fupl-sorting-bg;
+  opacity: .7;
 }
 
 .fupl-item-dragover {
@@ -22,16 +22,16 @@
 
   &.fupl-type-img {
     .fupl-sortable-icon {
-      display:block;
-      margin:1rem 0;
-      width:100%;
+      display: block;
+      width: 100%;
+      margin: 1rem 0;
     }
   }
   &.fupl-type-doc {
     .fupl-sortable-icon {
-      display:block;
-      margin:.5rem 0;
-      width:100%;
+      display: block;
+      width: 100%;
+      margin: .5rem 0;
       text-align: center;
     }
   }
@@ -39,36 +39,33 @@
   .fupl-sortable-icon {
 
     > div {
-      display: block;
       position: relative;
-      margin: 0 auto;
-      cursor: grab;
+      display: block;
       width: $fupl-sortable-icon-dot-size * 5;
       height: $fupl-sortable-icon-dot-size * 3;
+      margin: 0 auto;
+      cursor: grab;
 
-      &:after {
+      &::after {
         position: absolute;
         top: 0;
         left: 50%;
-        transform: translateX(-50%);
-        border-radius:50%;
-
-        box-shadow: ($fupl-sortable-icon-dot-size * -2) ($fupl-sortable-icon-dot-size * 0) 0 0,       // Top left
-                    ($fupl-sortable-icon-dot-size * 2) ($fupl-sortable-icon-dot-size * 0) 0 0,        // Top right
-                    ($fupl-sortable-icon-dot-size * -2) ($fupl-sortable-icon-dot-size * 2) 0 0,        // Bottom left
-                    ($fupl-sortable-icon-dot-size * 0) ($fupl-sortable-icon-dot-size * 2) 0 0,          // Bottom middle
-                    ($fupl-sortable-icon-dot-size * 2) ($fupl-sortable-icon-dot-size * 2) 0 0          // Bottom right
-        ;
-
-        background-color: $fupl-sortable-icon-dot-color;
-
         width: $fupl-sortable-icon-dot-size;
         height: $fupl-sortable-icon-dot-size;
 
         color: $fupl-sortable-icon-dot-color; // inherit from box shadow
-
         content: '';
+        background-color: $fupl-sortable-icon-dot-color;
+        border-radius: 50%;
 
+        box-shadow:
+          ($fupl-sortable-icon-dot-size * -2) ($fupl-sortable-icon-dot-size * 0) 0 0,  // Top left
+          ($fupl-sortable-icon-dot-size * 2) ($fupl-sortable-icon-dot-size * 0) 0 0,  // Top right
+          ($fupl-sortable-icon-dot-size * -2) ($fupl-sortable-icon-dot-size * 2) 0 0, // Bottom left
+          ($fupl-sortable-icon-dot-size * 0) ($fupl-sortable-icon-dot-size * 2) 0 0,  // Bottom middle
+          ($fupl-sortable-icon-dot-size * 2) ($fupl-sortable-icon-dot-size * 2) 0 0;  // Bottom right
+
+        transform: translateX(-50%);
       }
     }
   }
@@ -77,9 +74,9 @@
   .fupl-sortable {
     .fupl-item:hover {
       .fupl-sortable-icon {
-        > div::after {
-          background-color: $fupl-sortable-icon-hover-dot-color;
+        > div::after { /* stylelint-disable-line selector-max-compound-selectors, max-nesting-depth */
           color: $fupl-sortable-icon-hover-dot-color;
+          background-color: $fupl-sortable-icon-hover-dot-color;
         }
       }
     }

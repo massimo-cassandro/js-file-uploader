@@ -1,21 +1,23 @@
 .fupl-panel {
-  margin:1rem 0 0;
-  border-top:1px dotted $fupl-panel-border-color;
   padding: .5rem 0 0;
+  margin: 1rem 0 0;
   text-align: center;
+  border-top: 1px dotted $fupl-panel-border-color;
 
   .fupl-button {
     label {
-      margin:0;
+      margin: 0;
       cursor: pointer;
 
       [disabled] & {
-        &, &:hover, &:active, &:focus {
-          border-color: $fupl-disabled-color!important;
-          background-color: transparent!important;
-          cursor: not-allowed;
-          color: $fupl-disabled-color!important;
+        &, &:hover, &:active, &:focus { /* stylelint-disable-line max-nesting-depth */
+          /* stylelint-disable declaration-no-important */
           font-style: italic;
+          color: $fupl-disabled-color !important;
+          cursor: not-allowed;
+          background-color: transparent !important;
+          border-color: $fupl-disabled-color !important;
+          /* stylelint-enable declaration-no-important */
         }
       }
     }
@@ -29,24 +31,24 @@
     }
 
     display: block;
-    margin:.5rem 0 0;
-    font-size:85%;
+    margin: .5rem 0 0;
+    font-size: 85%;
     font-weight: $fupl-font-weight-bold;
 
   }
   .fupl-info-text  {
-    margin-top:.5rem;
-    color: $fupl-info-text-color;
-    font-size:75%;
+    margin-top: .5rem;
+    font-size: 75%;
     font-style: italic;
-    &, & > div {  // optimization info
-      margin-top:.5rem;
+    color: $fupl-info-text-color;
+    &, > div {  // optimization info
+      margin-top: .5rem;
     }
   }
 }
 
 @if $fupl-set-fupl-help-rules {
   .fupl-help-text {
-    font-size:80%;
+    font-size: 80%;
   }
 }

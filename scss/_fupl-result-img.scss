@@ -3,8 +3,8 @@
 
   .fupl-item {
     display: inline-block;
-    max-width:400px;
-    height:auto;
+    max-width: 400px;
+    height: auto;
   }
 
   &.fupl-multiple {
@@ -12,33 +12,33 @@
 
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap:  1.5rem;
+      gap: 1.5rem;
       grid-gap: 1.5rem; // obsolete, mantained for compatibility
 
       .fupl-img-wrapper {
-        background: $fupl-img-background-color;
-        padding:4px;
-        width:100%;
+        width: 100%;
         height: 140px;
+        padding: 4px;
         text-align: center;
+        background: $fupl-img-background-color;
 
-        img {
-          width:auto;
-          max-width:100%;
-          height:auto;
-          max-height:100%;
+        img { /* stylelint-disable-line max-nesting-depth */
+          width: auto;
+          max-width: 100%;
+          height: auto;
+          max-height: 100%;
         }
       }
 
       @include fupl-media-query-min(sm) {
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        .fupl-img-wrapper {
+        .fupl-img-wrapper { /* stylelint-disable-line max-nesting-depth */
           height: 180px;
         }
       }
       @include fupl-media-query-min(md) {
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        .fupl-img-wrapper {
+        .fupl-img-wrapper { /* stylelint-disable-line max-nesting-depth */
           height: 200px;
         }
       }
@@ -50,8 +50,8 @@
       }
 
       .fupl-item {
-        max-width:100%;
-        height:auto;
+        max-width: 100%;
+        height: auto;
       }
     }
   }

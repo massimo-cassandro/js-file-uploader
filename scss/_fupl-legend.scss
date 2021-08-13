@@ -1,6 +1,6 @@
 .fupl-legend { // tag legend
-  margin:0 0 .5rem;
-  font-size:1rem;
+  margin: 0 0 .5rem;
+  font-size: 1rem;
 
   // da gestire all'interno del progetto
   // &.required:not(.disabled) {
@@ -14,8 +14,8 @@
   // }
 
   [disabled] & {
-    color: $fupl-disabled-color;
     font-style: italic;
+    color: $fupl-disabled-color;
   }
 }
 

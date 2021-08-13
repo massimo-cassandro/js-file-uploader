@@ -1,32 +1,33 @@
-$fupl-outline-color: #ddd!default;
-$fupl-outline-color-dragover: #e4d70d!default;
-$fupl-background-color: #fbfbfb!default;
-$fupl-background-color-dragover: #f8f6dc!default;
-$fupl-panel-border-color: #666!default;
-$fupl-items-border-color: #ccc!default;
-$fupl-items-border-radius: 4px!default; // bootstrap: $border-radius
-$fupl-img-background-color: rgba(#000, .05)!default;
-$fupl-loading-background-color: rgba(#fff, .6)!default;
+$fupl-outline-color: #ddd !default;
+$fupl-outline-color-dragover: #e4d70d !default;
+$fupl-background-color: #fbfbfb !default;
+$fupl-background-color-dragover: #f8f6dc !default;
+$fupl-panel-border-color: #666 !default;
+$fupl-items-border-color: #ccc !default;
+$fupl-items-border-radius: 4px !default; // bootstrap: $border-radius
+$fupl-img-background-color: rgba(#000, .05) !default;
+$fupl-loading-background-color: rgba(#fff, .6) !default;
 
-$fupl-sortable-icon-dot-size: 5px!default;
-$fupl-sortable-icon-dot-color: #333!default;
-$fupl-sortable-icon-hover-dot-color: #c00!default;
+$fupl-sortable-icon-dot-size: 5px !default;
+$fupl-sortable-icon-dot-color: #333 !default;
+$fupl-sortable-icon-hover-dot-color: #c00 !default;
 
 // background of an element while dragging
 $fupl-sorting-bg-line-size: 20px;
 $fupl-sorting-bg: #ccc repeating-linear-gradient(
-  45deg, transparent,
+  45deg,
+  transparent,
   transparent $fupl-sorting-bg-line-size,
-  rgba(#fff,.5) $fupl-sorting-bg-line-size,
-  rgba(#fff,.5) ($fupl-sorting-bg-line-size * 2)
-)!default;
+  rgba(#fff, .5) $fupl-sorting-bg-line-size,
+  rgba(#fff, .5) ($fupl-sorting-bg-line-size * 2)
+) !default;
 
-$fupl-disabled-color: #999!default;
-$fupl-info-text-color:#666!default; // bootstrap: $text-muted
-$fupl-font-weight-bold: bold!default; // bootstrap: $font-weight-bold
-$fupl-small-font-size: 80%!default; // bootstrap: $small-font-size
+$fupl-disabled-color: #999 !default;
+$fupl-info-text-color: #666 !default; // bootstrap: $text-muted
+$fupl-font-weight-bold: bold !default; // bootstrap: $font-weight-bold
+$fupl-small-font-size: 80% !default; // bootstrap: $small-font-size
 
-$fupl-set-fupl-help-rules: true!default; // set to false to provide custom rules
+$fupl-set-fupl-help-rules: true !default; // set to false to provide custom rules
 
 $fupl-breakpoints: ( // bootstrap: $grid-breakpoints
   xs: 0,
@@ -34,7 +35,7 @@ $fupl-breakpoints: ( // bootstrap: $grid-breakpoints
   md: 768px,
   lg: 992px,
   xl: 1200px
-)!default;
+) !default;
 
 $fupl-alert-bg: #fff;
 $fupl-alert-color: #000;
@@ -42,3 +43,5 @@ $fupl-alert-border: 1px solid #999;
 $fupl-alert-border-radius: .5rem;
 $fupl-alert-box-shadow: 0 0 20px 4px rgba(#000, .5);
 $fupl-alert-overlay-fallback-bg: rgba(#000, .6); // for browsers that do not support backdrop-filter
+$fupl-alert-overlay-z-index: 10;
+$fupl-alert-header-font-weight: 700;
