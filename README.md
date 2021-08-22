@@ -1,7 +1,7 @@
 # FileUploader
 
 **js-file-uploader: HTML5 + Javascript asyncronous file upload.**  
-*v. 2 - Massimo Cassandro - (c) 2017/2020*
+*v. 3 - Massimo Cassandro - (c) 2017/2021*
 
 [demo](https://massimo-cassandro.github.io/js-file-uploader/demo/)
 
