@@ -246,11 +246,17 @@ The parameters can be overridden according to this cascading sequence:
 
 * Values of `_default_options.js` file are the default ones
 * Parameters assigned in the `FileUploader()` obj argument override the default ones, and are valid for all the FileUploader elements involved
-* Parameters assigned to each FileUploader instance prevail and override the previous ones: in this way it is possible to have different behaviors also on the same page.
+* Parameters assigned to each FileUploader instance, using `data-*` attributes, prevail and override the previous ones: in this way it is possible to have different behaviors also on the same page.
 
 Finally, if an `input [type="file"]` field is present inside the FileUploader element, any `accept`,` required`, `multiple` or` disabled` attributes are taken into account in the configuration .
 
 For example, you can set a FileUploader as *required* either by setting the `data-required="true"` attribute of the FileUploader element, or by using the` required` attribute of the file field.
+
+Data attributes can be set as single items (e.g. `data-disabled="true"`) or as a json object to be assigned to the `data-file-uploader` attribute:
+
+```html
+<div data-file-uploader='{"disabled": true, "multiple": true}'>
+```
 
 >NB: if the `required`,` multiple` or `disabled` parameters are set to `true` in the FileUploader instance, it is not possible to set them to `false` via the input field attributes.
 
@@ -437,6 +443,9 @@ There is a long list of future implementation and fix I've planned, take a look 
 - <https://kryogenix.org/code/browser/custom-drag-image.html>
 
 ## Changelog
+
+### V.3.0.0 (Jul 2021)
+* naming and directories updates
 
 ### V.2.3 (Apr 2021)
 * Added built-in alert interface
