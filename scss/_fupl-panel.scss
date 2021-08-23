@@ -26,7 +26,7 @@
   .fupl-dd-text {
     @include fupl-media-query-min(md) {
       display: inline;
-      margin:0 0 0 .5rem;
+      margin: 0 0 0 .5rem;
       white-space: nowrap;
     }
 
@@ -38,7 +38,7 @@
   }
   .fupl-info-text  {
     margin-top: .5rem;
-    font-size: 75%;
+    font-size: $fupl-small-font-size;
     font-style: italic;
     color: $fupl-info-text-color;
     &, > div {  // optimization info
@@ -49,6 +49,6 @@
 
 @if $fupl-set-fupl-help-rules {
   .fupl-help-text {
-    font-size: 80%;
+    font-size: $fupl-small-font-size;
   }
 }

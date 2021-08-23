@@ -30,11 +30,7 @@ $fupl-small-font-size: 80% !default; // bootstrap: $small-font-size
 $fupl-set-fupl-help-rules: true !default; // set to false to provide custom rules
 
 $fupl-breakpoints: ( // bootstrap: $grid-breakpoints
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px
+  xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px
 ) !default;
 
 $fupl-alert-bg: #fff;
