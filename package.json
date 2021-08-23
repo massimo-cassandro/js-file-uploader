@@ -9,9 +9,9 @@
   "scripts": {
     "sass": "node_modules/.bin/sass ./scss/fileUploader.scss:./dist/fileUploader.css ./demo/css/fileuploader.scss:./demo/css/fileuploader.css --source-map --load-path=node_modules/ --style=compressed --watch",
     "rollup": "npx rollup --config --watch",
-    "pug" : "node_modules/.bin/pug demo/pug --out demo/ --path demo/pug/tpl --pretty --watch",
+    "pug": "node_modules/.bin/pug demo/pug --out demo/ --path demo/pug/tpl --pretty --watch",
     "echo_version": "echo $npm_package_version",
-    "upd_version_var":"node upd_version.js && npx rollup --config"
+    "upd_version_var": "node upd_version.js && npx rollup --config"
   },
   "repository": {
     "type": "git",
@@ -48,6 +48,7 @@
     "eslint": "^7.32.0",
     "js-beautify": "^1.14.0",
     "prismjs": "^1.24.1",
+    "pug": "^3.0.2",
     "pug-cli": "^1.0.0-alpha6",
     "rollup": "^2.56.3",
     "rollup-plugin-sourcemaps": "^0.6.3",
