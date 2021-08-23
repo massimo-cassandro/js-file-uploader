@@ -1,10 +1,10 @@
-import FileUploader from '../../src/file_uploader.js';
+import FileUploader from '../../js/file-uploader.js';
 import check_uncompleted_uploads from '../../src-utilities/check_uncompleted_uploads.js';
 
 // use this if you prefer the all-in-one es6 file:
 // import FileUploader from '/dist/FileUploader.esm.min.js';
 
-import fupl_strings_en from '../../src/i18n/en.js';
+import fupl_strings_en from '../../js/i18n/en.js';
 (() => {
   'use strict';
 

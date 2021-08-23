@@ -44,7 +44,11 @@ export const fupl_utilities = {
     let items = fupl.opts.instance_result_wrapper.querySelectorAll('.fupl-item').length;
     fupl.opts.wrapper.dataset.hasValues = items? 'true' : 'false';
     if(!items) {
-      fupl.opts.instance_result_wrapper.innerHTML = fupl.strs[`no_${fupl.opts._type}_text`];
+      // fupl.opts.instance_result_wrapper.innerHTML = fupl.strs[`no_${fupl.opts._type}_text`];
+      fupl.opts.instance_result_wrapper.innerHTML =
+        fupl.opts._type === 'img'?
+          fupl.opts.template_empty_img.replace(/{{no_img_text}}/g, fupl.strs.no_img_text) :
+          fupl.opts.template_empty_doc.replace(/{{no_doc_text}}/g, fupl.strs.no_doc_text);
     }
   },
 

@@ -1,0 +1,92 @@
+<?php
+require './get_file_properties.php';
+
+$params = htmlspecialchars(json_encode(
+   array(
+     'filetype'        => 'img',
+     'img_min_h'       => 500,
+     'img_min_w'       => 500,
+     'max_filesize'    => 2500,
+     'uploader_legend' => true,
+     'values'          => array(
+       get_file_properties('fezbot2000-1511423-unsplash.jpg')
+     )
+   ), JSON_PRETTY_PRINT
+));
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <title>PHP Server Side sample | FileUploader</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/fileuploader.css">
+    <link rel="stylesheet" href="./demo-assets/demo.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://primominuto.altervista.org/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://primominuto.altervista.org/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://primominuto.altervista.org/favicons/favicon-16x16.png">
+    <link rel="manifest" href="https://primominuto.altervista.org/favicons/site.webmanifest">
+    <link rel="mask-icon" href="https://primominuto.altervista.org/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="https://primominuto.altervista.org/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="msapplication-config" content="https://primominuto.altervista.org/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+  </head>
+  <body>
+    <div class="header">
+      <div class="container py-0"><a href="./">JS-FileUploader v. 2 Demo</a></div>
+    </div>
+    <div class="github-banner"><a href="https://github.com/massimo-cassandro/js-file-uploader" title="Go to repository"><svg width="33" height="33" viewBox="0 0 33 33" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M16.608.455C7.614.455.32 7.748.32 16.745c0 7.197 4.667 13.302 11.14 15.456.815.15 1.112-.353 1.112-.785 0-.386-.014-1.411-.022-2.77-4.531.984-5.487-2.184-5.487-2.184-.741-1.882-1.809-2.383-1.809-2.383-1.479-1.01.112-.99.112-.99 1.635.115 2.495 1.679 2.495 1.679 1.453 2.489 3.813 1.77 4.741 1.353.148-1.052.569-1.77 1.034-2.177-3.617-.411-7.42-1.809-7.42-8.051 0-1.778.635-3.233 1.677-4.371-.168-.412-.727-2.069.16-4.311 0 0 1.367-.438 4.479 1.67a15.602 15.602 0 0 1 4.078-.549 15.62 15.62 0 0 1 4.078.549c3.11-2.108 4.475-1.67 4.475-1.67.889 2.242.33 3.899.163 4.311C26.37 12.66 27 14.115 27 15.893c0 6.258-3.809 7.635-7.437 8.038.584.503 1.105 1.497 1.105 3.017 0 2.177-.02 3.934-.02 4.468 0 .436.294.943 1.12.784 6.468-2.159 11.131-8.26 11.131-15.455 0-8.997-7.294-16.29-16.291-16.29" fill-rule="evenodd" /></svg>
+</a></div>
+    <div class="container">
+      <h1>PHP Server Side sample</h1>
+      <div class="intro">
+        <p>PHP server side sample. Take a look at <code>server_side.php</code> file in this folder.</p>
+        <p>
+          After file upload, look for ajax response in your console (debug must be on),
+          then submit the form to display data sent to the server.
+        </p>
+        <p>
+          Note that the uploader parameters are built using php functions
+          (avoid using single <code>data</code> attributes), and the
+          predefined value array is generated reading file properties directly in the filesystem
+          (see <code>get_file_properties.php</code>).
+          
+          
+        </p><?php if(!empty($_POST)) { ?>
+        <hr class="mt-4">
+        <h2 class="h3">PHP <code>$_POST</code> data</h2>
+        <div class="line-numbers code-box">
+          <pre><code class="language-php"><?php var_export($_POST) ?></code></pre>
+        </div><?php } ?>
+      </div>
+      <div class="demo-wrapper">
+        <form id="form1" action="" method="get" name="form1">
+          <div class="file-uploader2" data-file-uploader="<?php echo $params ?>">
+            <label for="input_file">This is the original input field label</label>
+            <input id="input_file" name="myfile" type="file">
+          </div>
+          <p>
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </p>
+        </form>
+      </div>
+      <p class="back"><a href="./">Back to demo index</a></p>
+      <p class="font-italic">
+        Take a look at the
+        <a href="https://github.com/massimo-cassandro/js-file-uploader#about-the-demo">"About the demo"</a>
+        section in the README file for info about the following code boxes.
+      </p>
+      <div class="demo_code"></div>
+      <p class="back"><a href="./">Back to demo index</a></p>
+    </div>
+    <script src="./demo-assets/prism-min.js" data-manual></script>
+    <script src="./demo-assets/demo-pre-parsing-min.js"></script>
+    <div class="fupl-script">
+      <script src="./php_sample.js" type="module"></script>
+    </div>
+    <script src="./demo-assets/demo-post-parsing-min.js" defer></script>
+  </body>
+</html>

@@ -1,14 +1,17 @@
 {
   "name": "@massimo-cassandro/js-file-uploader",
-  "version": "3.0.2",
+  "version": "3.1.0",
   "description": "HTML5 Async File Uploader ",
   "main": "./js/file-uploader.js",
   "style": "./scss/fileUploader.scss",
   "module": "./dist/FileUploader.esm.js",
   "browser": "./dist/FileUploader.umd.js",
   "scripts": {
-    "start sass": "node_modules/.bin/sass ./scss/fileUploader.scss:./dist/fileUploader.css ./demo/css/fileuploader.scss:./demo/css/fileuploader.css --source-map --load-path=node_modules/ --style=compressed --watch",
-    "start rollup": "npx rollup --config --watch"
+    "sass": "node_modules/.bin/sass ./scss/fileUploader.scss:./dist/fileUploader.css ./demo/css/fileuploader.scss:./demo/css/fileuploader.css --source-map --load-path=node_modules/ --style=compressed --watch",
+    "rollup": "npx rollup --config --watch",
+    "pug" : "node_modules/.bin/pug demo/pug --out demo/ --path demo/pug/tpl --pretty --watch",
+    "echo_version": "echo $npm_package_version",
+    "upd_version_var":"node upd_version.js && npx rollup --config"
   },
   "repository": {
     "type": "git",
@@ -40,23 +43,17 @@
     "scss/*.scss"
   ],
   "devDependencies": {
-    "@massimo-cassandro/m-utilities": "^4.2.8",
-    "@rollup/plugin-node-resolve": "^11.2.0",
-    "eslint": "^7.29.0",
-    "js-beautify": "^1.13.0",
-    "prismjs": "^1.22.0",
-    "rollup": "^2.34.2",
+    "@massimo-cassandro/m-utilities": "^4.2.12",
+    "@rollup/plugin-node-resolve": "^11.2.1",
+    "eslint": "^7.32.0",
+    "js-beautify": "^1.14.0",
+    "prismjs": "^1.24.1",
+    "pug-cli": "^1.0.0-alpha6",
+    "rollup": "^2.56.3",
     "rollup-plugin-sourcemaps": "^0.6.3",
     "rollup-plugin-terser": "^7.0.2",
-    "sass": "^1.32.8",
+    "sass": "^1.38.0",
     "stylelint": "^13.13.1",
-    "stylelint-config-twbs-bootstrap": "^2.2.1"
-  },
-  "optionalDependencies": {
-    "eslint-config-standard": "^16.0.2",
-    "stylelint-config-concentric-order": "^4.0.1",
-    "stylelint-config-standard": "^21.0.0",
-    "stylelint-order": "^4.1.0",
-    "stylelint-scss": "^3.19.0"
+    "stylelint-config-twbs-bootstrap": "^2.2.3"
   }
 }

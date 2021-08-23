@@ -84,7 +84,7 @@ export const default_options = {
       '<div class="fupl-info-text"></div>' +
     '</div>',
 
-  template_empty_img: '<div class="fupl-result-empty text-muted small font-italic">{{no_img_text}}}}</div>',
+  template_empty_img: '<div class="fupl-result-empty text-muted small font-italic">{{no_img_text}}</div>',
   template_empty_doc: '<div class="fupl-result-empty text-muted small font-italic">{{no_doc_text}}</div>',
 
   // template of trigger for removing files

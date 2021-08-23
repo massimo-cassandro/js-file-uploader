@@ -152,7 +152,7 @@ const default_options = {
       '<div class="fupl-info-text"></div>' +
     '</div>',
 
-  template_empty_img: '<div class="fupl-result-empty text-muted small font-italic">{{no_img_text}}}}</div>',
+  template_empty_img: '<div class="fupl-result-empty text-muted small font-italic">{{no_img_text}}</div>',
   template_empty_doc: '<div class="fupl-result-empty text-muted small font-italic">{{no_doc_text}}</div>',
 
   // template of trigger for removing files
@@ -531,7 +531,11 @@ const fupl_utilities = {
     let items = fupl.opts.instance_result_wrapper.querySelectorAll('.fupl-item').length;
     fupl.opts.wrapper.dataset.hasValues = items? 'true' : 'false';
     if(!items) {
-      fupl.opts.instance_result_wrapper.innerHTML = fupl.strs[`no_${fupl.opts._type}_text`];
+      // fupl.opts.instance_result_wrapper.innerHTML = fupl.strs[`no_${fupl.opts._type}_text`];
+      fupl.opts.instance_result_wrapper.innerHTML =
+        fupl.opts._type === 'img'?
+          fupl.opts.template_empty_img.replace(/{{no_img_text}}/g, fupl.strs.no_img_text) :
+          fupl.opts.template_empty_doc.replace(/{{no_doc_text}}/g, fupl.strs.no_doc_text);
     }
   },
 
@@ -1878,21 +1882,20 @@ function createUploader(fupl) {
 
     //debug
     if( fupl.opts.debug ) {
-      /* eslint-disable */
 
-      const sorted_options= Object.keys(fupl.opts).sort()
-        .reduce((result, key) => ( result[key] = fupl.opts[key], result), {} );
+      const parsed_options= Object.keys(fupl.opts).sort()
+        .reduce((result, key) => ( result[key] = JSON.stringify(fupl.opts[key]), result), {} );
 
-      //fupl.opts is exposed as global object for debug purposes
+      //parsed_options is exposed as global object for debug purposes
       if(window.fileUploderOpts === undefined) {
         window.fileUploderOpts = {};
       }
-      window.fileUploderOpts[fupl.opts.varname] = sorted_options;
+      window.fileUploderOpts[fupl.opts.varname] = parsed_options;
 
+      /* eslint-disable */
       console.groupCollapsed(`FileUploader ${fupl.opts._vers} options`);
-        console.log(sorted_options);
+      console.table(parsed_options);
       console.groupEnd();
-
       /* eslint-enable */
     } // end if debug
 
@@ -2084,10 +2087,11 @@ function FileUploader( params ) {
   }
   */
 
-  const version =  '2.3',
-    strs = Object.assign( {}, fupl_strings_it, params.local_strs || {} );
+  const _VERSION = '3.1.0';
 
-  let opts = Object.assign( {_vers: version}, default_options, params.options || {});
+  const strs = Object.assign( {}, fupl_strings_it, params.local_strs || {} );
+
+  let opts = Object.assign( {_vers: _VERSION}, default_options, params.options || {});
 
   // change all Mustache-Like Variables with corresponding strings
   for(let i in opts) {

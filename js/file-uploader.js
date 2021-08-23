@@ -22,10 +22,11 @@ export default function FileUploader( params ) {
   }
   */
 
-  const version =  '2.3',
-    strs = Object.assign( {}, fupl_strings_it, params.local_strs || {} );
+  const _VERSION = '3.1.0';
 
-  let opts = Object.assign( {_vers: version}, default_options, params.options || {});
+  const strs = Object.assign( {}, fupl_strings_it, params.local_strs || {} );
+
+  let opts = Object.assign( {_vers: _VERSION}, default_options, params.options || {});
 
   // change all Mustache-Like Variables with corresponding strings
   for(let i in opts) {

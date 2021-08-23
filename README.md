@@ -408,7 +408,6 @@ For the same reason, both [Bootstrap](https://getbootstrap.com) and [JQuery](htt
 
 All the css and the js files really related to FileUploader are located in <code>demo/css</code> and <code>demo/js</code> folders. 
 
-When needed, scss and js files are compiled or merged using [Codekit](https://codekitapp.com/).
 
 ### Demo pages structure
 
