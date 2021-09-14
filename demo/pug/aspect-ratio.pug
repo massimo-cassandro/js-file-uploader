@@ -3,7 +3,8 @@ block variables
   - title = 'Aspect Ratio check'
 block intro
   p.
-   Try uploading images without a 16/9 aspect ratio
+   Try uploading images without a 16/9 aspect ratio in the first uploader,
+   or not non-square in the second one.
 
 
 block fupl
@@ -11,7 +12,7 @@ block fupl
     data-filetype="img"
     data-max_filesize="5MB"
     data-uploader_legend="true"
-    data-uploader_legend_text="Aspect ratio demo"
+    data-uploader_legend_text="Aspect ratio demo (16:9)"
     data-img_min_w="800"
     data-img_aspect_ratio="16/9"
     data-values= `[{
@@ -22,6 +23,16 @@ block fupl
       "he": 900,
       "size": 222121
     }]`
+  )
+
+  div.file-uploader2(
+    data-filetype="img"
+    data-max_filesize="5MB"
+    data-uploader_legend="true"
+    data-uploader_legend_text="Aspect ratio demo (1:1)"
+    data-img_min_w="800"
+    data-img_min_h="800"
+    data-img_aspect_ratio="1/1"
   )
 
 block js

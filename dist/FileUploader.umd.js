@@ -650,6 +650,7 @@
 
   function create_info_text(fupl) {
 
+
     let info_text = [];
 
     switch (fupl.opts.filetype) {
@@ -717,10 +718,11 @@
             img_size_info.push( fupl.strs.info_text_img_max_height );
           }
 
-          if(fupl.opts.img_aspect_ratio) {
-            img_size_info.push( fupl.strs.info_text_img_aspect_ratio );
-          }
         }
+      }
+
+      if(fupl.opts.img_aspect_ratio !== null) {
+        img_size_info.push( fupl.strs.info_text_img_aspect_ratio );
       }
 
       if(img_size_info.length) {
@@ -2094,7 +2096,7 @@
     }
     */
 
-    const _VERSION = '3.1.2';
+    const _VERSION = '3.1.3';
 
     const strs = Object.assign( {}, fupl_strings_it, params.local_strs || {} );
 
