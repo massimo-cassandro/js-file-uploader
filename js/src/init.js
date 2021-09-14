@@ -111,7 +111,7 @@ export  function fupl_init(fupl) {
     }
 
     // aspect ratio parsing
-    instance_opts.parsed_img_aspect_ratio = null;
+    instance_opts.img_aspect_ratio_parsed = null;
     if(instance_opts.img_aspect_ratio) {
 
       try {
@@ -124,26 +124,27 @@ export  function fupl_init(fupl) {
           }
 
           if( w && h ) {
-            instance_opts.parsed_img_aspect_ratio = +w/+h;
+            instance_opts.img_aspect_ratio_parsed = +w/+h;
+            instance_opts.img_aspect_ratio = `${w}:${h}`; // force colon format
           } else {
-            instance_opts.parsed_img_aspect_ratio = Number(instance_opts.img_aspect_ratio);
+            instance_opts.img_aspect_ratio_parsed = Number(instance_opts.img_aspect_ratio);
           }
 
         } else {
-          instance_opts.parsed_img_aspect_ratio = +instance_opts.img_aspect_ratio;
+          instance_opts.img_aspect_ratio_parsed = +instance_opts.img_aspect_ratio;
         }
 
-        if(instance_opts.parsed_img_aspect_ratio) {
-          instance_opts.parsed_img_aspect_ratio = Math.round((instance_opts.parsed_img_aspect_ratio + Number.EPSILON) * instance_opts.aspect_ratio_accuracy) / instance_opts.aspect_ratio_accuracy;
+        if(instance_opts.img_aspect_ratio_parsed) {
+          instance_opts.img_aspect_ratio_parsed = Math.round((instance_opts.img_aspect_ratio_parsed + Number.EPSILON) * instance_opts.aspect_ratio_accuracy) / instance_opts.aspect_ratio_accuracy;
         }
 
-        if(isNaN(instance_opts.parsed_img_aspect_ratio) || !instance_opts.parsed_img_aspect_ratio) {
+        if(isNaN(instance_opts.img_aspect_ratio_parsed) || !instance_opts.img_aspect_ratio_parsed) {
           throw new Error();
         }
       } catch(e) {
         console.error(`FileUploader: incorrect aspect ratio parameter → ${instance_opts.img_aspect_ratio}`); // eslint-disable-line
         instance_opts.img_aspect_ratio = null;
-        instance_opts.parsed_img_aspect_ratio = null;
+        instance_opts.img_aspect_ratio_parsed = null;
       }
     }
 

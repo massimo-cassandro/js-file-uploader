@@ -311,9 +311,9 @@ export function send_files(filelist, fupl) {
               }
 
               // aspect ratio
-              if(fupl.opts.parsed_img_aspect_ratio) {
+              if(fupl.opts.img_aspect_ratio_parsed) {
                 let img_ratio = Math.round(((image.width / image.height) + Number.EPSILON) * fupl.opts.aspect_ratio_accuracy) / fupl.opts.aspect_ratio_accuracy;
-                if(img_ratio !== fupl.opts.parsed_img_aspect_ratio) {
+                if(img_ratio !== fupl.opts.img_aspect_ratio_parsed) {
                   error_messages.push(
                     fupl.strs.alert_img_ratio_err
                       .replace(/{{aspect_ratio}}/, fupl.opts.img_aspect_ratio)

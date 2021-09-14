@@ -1574,9 +1574,9 @@
                 }
 
                 // aspect ratio
-                if(fupl.opts.parsed_img_aspect_ratio) {
+                if(fupl.opts.img_aspect_ratio_parsed) {
                   let img_ratio = Math.round(((image.width / image.height) + Number.EPSILON) * fupl.opts.aspect_ratio_accuracy) / fupl.opts.aspect_ratio_accuracy;
-                  if(img_ratio !== fupl.opts.parsed_img_aspect_ratio) {
+                  if(img_ratio !== fupl.opts.img_aspect_ratio_parsed) {
                     error_messages.push(
                       fupl.strs.alert_img_ratio_err
                         .replace(/{{aspect_ratio}}/, fupl.opts.img_aspect_ratio)
@@ -2021,7 +2021,7 @@
       }
 
       // aspect ratio parsing
-      instance_opts.parsed_img_aspect_ratio = null;
+      instance_opts.img_aspect_ratio_parsed = null;
       if(instance_opts.img_aspect_ratio) {
 
         try {
@@ -2034,26 +2034,27 @@
             }
 
             if( w && h ) {
-              instance_opts.parsed_img_aspect_ratio = +w/+h;
+              instance_opts.img_aspect_ratio_parsed = +w/+h;
+              instance_opts.img_aspect_ratio = `${w}:${h}`; // force colon format
             } else {
-              instance_opts.parsed_img_aspect_ratio = Number(instance_opts.img_aspect_ratio);
+              instance_opts.img_aspect_ratio_parsed = Number(instance_opts.img_aspect_ratio);
             }
 
           } else {
-            instance_opts.parsed_img_aspect_ratio = +instance_opts.img_aspect_ratio;
+            instance_opts.img_aspect_ratio_parsed = +instance_opts.img_aspect_ratio;
           }
 
-          if(instance_opts.parsed_img_aspect_ratio) {
-            instance_opts.parsed_img_aspect_ratio = Math.round((instance_opts.parsed_img_aspect_ratio + Number.EPSILON) * instance_opts.aspect_ratio_accuracy) / instance_opts.aspect_ratio_accuracy;
+          if(instance_opts.img_aspect_ratio_parsed) {
+            instance_opts.img_aspect_ratio_parsed = Math.round((instance_opts.img_aspect_ratio_parsed + Number.EPSILON) * instance_opts.aspect_ratio_accuracy) / instance_opts.aspect_ratio_accuracy;
           }
 
-          if(isNaN(instance_opts.parsed_img_aspect_ratio) || !instance_opts.parsed_img_aspect_ratio) {
+          if(isNaN(instance_opts.img_aspect_ratio_parsed) || !instance_opts.img_aspect_ratio_parsed) {
             throw new Error();
           }
         } catch(e) {
           console.error(`FileUploader: incorrect aspect ratio parameter → ${instance_opts.img_aspect_ratio}`); // eslint-disable-line
           instance_opts.img_aspect_ratio = null;
-          instance_opts.parsed_img_aspect_ratio = null;
+          instance_opts.img_aspect_ratio_parsed = null;
         }
       }
 
@@ -2093,7 +2094,7 @@
     }
     */
 
-    const _VERSION = '3.1.1';
+    const _VERSION = '3.1.2';
 
     const strs = Object.assign( {}, fupl_strings_it, params.local_strs || {} );
 
