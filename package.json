@@ -7,9 +7,9 @@
   "module": "./dist/FileUploader.esm.js",
   "browser": "./dist/FileUploader.umd.js",
   "scripts": {
-    "sass": "node_modules/.bin/sass ./scss/fileUploader.scss:./dist/fileUploader.css ./demo/css/fileuploader.scss:./demo/css/fileuploader.css --source-map --load-path=node_modules/ --style=compressed --watch",
-    "rollup": "npx rollup --config --watch",
-    "pug": "node_modules/.bin/pug demo/pug --out demo/ --path demo/pug/tpl --pretty --watch",
+    "sass": "npx sass ./scss/fileUploader.scss:./dist/fileUploader.css ./demo/css/fileuploader.scss:./demo/css/fileuploader.css --source-map --load-path=node_modules/ --style=compressed --watch",
+    "rollup": "npx  rollup --config --watch",
+    "pug": "npx pug demo/pug --out demo/ --path demo/pug/tpl --pretty --watch",
     "echo_version": "echo $npm_package_version",
     "upd_version_var": "node upd_version.js && npx rollup --config"
   },
@@ -36,6 +36,27 @@
     "url": "https://github.com/massimo-cassandro/js-file-uploader.git/issues"
   },
   "homepage": "https://github.com/massimo-cassandro/js-file-uploader.git#readme",
+  "browserslist": [
+    "last 2 version",
+    "iOS >= 13",
+    "Safari >= 12",
+    "not ie <= 11",
+    "> 3% in IT"
+  ],
+  "stylelint": {
+    "extends": "@massimo-cassandro/m-utilities/.stylelintrc.js",
+    "ignoreFiles": [
+      "**/*.css"
+    ],
+    "rules": {}
+  },
+   "eslintConfig": {
+    "extends": "./node_modules/@massimo-cassandro/m-utilities/.eslintrc.js",
+    "ignorePatterns": [
+      "dist/**/*.js"
+    ],
+    "rules": {}
+  },
   "files": [
     "dist/**/*.{css,js,map}",
     "js/**/*.{js,map}",
@@ -43,9 +64,8 @@
     "scss/*.scss"
   ],
   "devDependencies": {
-    "@massimo-cassandro/m-utilities": "^4.2.12",
+    "@massimo-cassandro/m-utilities": "^4.17.5",
     "@rollup/plugin-node-resolve": "^11.2.1",
-    "eslint": "^7.32.0",
     "js-beautify": "^1.14.0",
     "prismjs": "^1.24.1",
     "pug": "^3.0.2",
@@ -53,8 +73,6 @@
     "rollup": "^2.56.3",
     "rollup-plugin-sourcemaps": "^0.6.3",
     "rollup-plugin-terser": "^7.0.2",
-    "sass": "^1.38.0",
-    "stylelint": "^13.13.1",
-    "stylelint-config-twbs-bootstrap": "^2.2.3"
+    "sass": "^1.38.0"
   }
 }
