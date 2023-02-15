@@ -1488,8 +1488,9 @@ function send_files(filelist, fupl) {
         };
 
         // filetype check (for drag & drop and browsers that don't support accept)
+
+        let ext = filelist_item.name.split('.').pop().toLowerCase();
         if( fupl.opts.accept.length ) {
-          let ext = filelist_item.name.split('.').pop().toLowerCase();
           if( fupl.opts.accept.indexOf( filelist_item.type ) === -1 &&
             fupl.opts.accept.indexOf( '.' + ext ) === -1) {
 
@@ -1497,6 +1498,19 @@ function send_files(filelist, fupl) {
               .replace(/{{file_name}}/, filelist_item.name );
           }
         } // end filetype check
+
+        // console.log(filelist_item);
+        // console.log(fupl.opts._type);
+        // console.log(fupl_utilities.mimetypes.img);
+
+        // controllo formati immagine ammessi
+        if( fupl.opts._type === 'img' && (fupl_utilities.mimetypes.img.indexOf( filelist_item.type ) === -1 ||
+          fupl_utilities.mimetypes.img.indexOf( '.' + ext ) === -1)
+        ) {
+
+          throw fupl.strs.alert_file_format_error
+            .replace(/{{file_name}}/, filelist_item.name );
+        }
 
         // maxfilesize check
         if( fupl.opts.max_filesize !== null ) {
@@ -2090,7 +2104,7 @@ function FileUploader( params ) {
   }
   */
 
-  const _VERSION = '3.1.3';
+  const _VERSION = '3.1.4';
 
   const strs = Object.assign( {}, fupl_strings_it, params.local_strs || {} );
 

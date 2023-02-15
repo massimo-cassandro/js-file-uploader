@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/js-file-uploader",
-  "version": "3.1.3",
+  "version": "3.1.4",
   "description": "HTML5 Async File Uploader ",
   "main": "./js/file-uploader.js",
   "style": "./scss/fileUploader.scss",
@@ -10,8 +10,8 @@
     "sass": "npx sass ./scss/fileUploader.scss:./dist/fileUploader.css ./demo/css/fileuploader.scss:./demo/css/fileuploader.css --source-map --load-path=node_modules/ --style=compressed --watch",
     "rollup": "npx  rollup --config --watch",
     "pug": "npx pug demo/pug --out demo/ --path demo/pug/tpl --pretty --watch",
-    "echo_version": "echo $npm_package_version",
-    "upd_version_var": "node upd_version.js && npx rollup --config"
+    "upd-version": "node ./node_modules/@massimo-cassandro/dev-utils/scripts/update-version/index.mjs",
+    "local server (esm demo)": "python3 -m http.server"
   },
   "repository": {
     "type": "git",
@@ -50,7 +50,7 @@
     ],
     "rules": {}
   },
-   "eslintConfig": {
+  "eslintConfig": {
     "extends": "./node_modules/@massimo-cassandro/m-utilities/.eslintrc.js",
     "ignorePatterns": [
       "dist/**/*.js"
@@ -64,6 +64,7 @@
     "scss/*.scss"
   ],
   "devDependencies": {
+    "@massimo-cassandro/dev-utils": "^1.8.2",
     "@massimo-cassandro/m-utilities": "^4.17.5",
     "@rollup/plugin-node-resolve": "^11.2.1",
     "js-beautify": "^1.14.0",
