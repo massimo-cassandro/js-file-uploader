@@ -64,7 +64,7 @@
     "scss/*.scss"
   ],
   "devDependencies": {
-    "@massimo-cassandro/dev-utilities": "^1.8.3",
+    "@massimo-cassandro/dev-utilities": "^1.9.5",
     "@massimo-cassandro/m-utilities": "^4.17.5",
     "@rollup/plugin-node-resolve": "^11.2.1",
     "js-beautify": "^1.14.0",
