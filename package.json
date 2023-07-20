@@ -13,6 +13,7 @@
     "upd-version": "npx update-version",
     "upd-version-in-js": "node ./upd_version_in_js.js",
     "upd@m": "npx upd@m",
+    "npm-publish": "npm publish",
     "local server (esm demo)": "python3 -m http.server"
   },
   "repository": {
