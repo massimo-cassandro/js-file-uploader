@@ -2104,7 +2104,7 @@ function FileUploader( params ) {
   }
   */
 
-  const _VERSION = '3.1.5';
+  const _VERSION = '3.1.6';
 
   const strs = Object.assign( {}, fupl_strings_it, params.local_strs || {} );
 

@@ -17,7 +17,7 @@
 
     document.querySelectorAll(options.fupl_selector).forEach(item => {
 
-      item.closest('form').addEventListener('submit', e => {
+      item.closest('form')?.addEventListener('submit', e => {
 
         let failed_req_uploaders = e.target.querySelectorAll(
           '.fupl-wrapper:not([disabled])[data-required="true"][data-has-values="false"]'

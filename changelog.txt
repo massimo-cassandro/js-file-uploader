@@ -7,3 +7,4 @@
 2021-07-01T00:00:00.000Z |      3.0.0 | naming and directories updates
 2023-02-15T17:05:52.406Z |      3.1.4 | Fix check image type
 2023-07-20T10:17:12.303Z |            3.1.5 | upd dependencies
+2023-07-20T14:06:12.062Z |            3.1.6 | fix
