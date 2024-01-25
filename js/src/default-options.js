@@ -406,6 +406,8 @@ export const default_options = {
       - `{{checked}}`     → if `values[...][value_key]` exists and it's different from
                             `0`, `null` or empty string, it is replaced with the `checked` attribute,
                             otherwise, with an empty string
+      - `{{selected}}`    → same of the previous one, it is replaced with the `selected` attribute,
+                            otherwise, with an empty string
       - `{{name}}`        → is replaced with a PHP name string formed by
                                 * the `varname` parameter
                                 * the unique id or rel_id (according to use_rel_id setting) of the element

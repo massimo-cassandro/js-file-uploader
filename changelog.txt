@@ -1,10 +1,11 @@
-2017-03-16T00:00:00.000Z |      1.0.0 | First production releases with basic features
-2019-08-01T00:00:00.000Z |      1.3.0 | Fancybox integration, items sorting, Handling of disabled and required status, Extra fields
-2020-07-01T00:00:00.000Z |      1.4.0 | SVG images support, Mixed SVG + Bitmap images allowed, ability to add an extra custom help text
-2020-09-01T00:00:00.000Z |      1.7.0 | aspect ratio constrain (see specific demo page), Bootstrap moved to dev-dependencies in package json
-2020-10-01T00:00:00.000Z |      2.0.0 | All rewritten as ES6 module, Dropped check and callback for legacy browsers, New demo pages
-2021-04-01T00:00:00.000Z |      2.3.0 | Added built-in alert interface, Dropped custom alert UI support
-2021-07-01T00:00:00.000Z |      3.0.0 | naming and directories updates
-2023-02-15T17:05:52.406Z |      3.1.4 | Fix check image type
+2017-03-16T00:00:00.000Z |            1.0.0 | First production releases with basic features
+2019-08-01T00:00:00.000Z |            1.3.0 | Fancybox integration, items sorting, Handling of disabled and required status, Extra fields
+2020-07-01T00:00:00.000Z |            1.4.0 | SVG images support, Mixed SVG + Bitmap images allowed, ability to add an extra custom help text
+2020-09-01T00:00:00.000Z |            1.7.0 | aspect ratio constrain (see specific demo page), Bootstrap moved to dev-dependencies in package json
+2020-10-01T00:00:00.000Z |            2.0.0 | All rewritten as ES6 module, Dropped check and callback for legacy browsers, New demo pages
+2021-04-01T00:00:00.000Z |            2.3.0 | Added built-in alert interface, Dropped custom alert UI support
+2021-07-01T00:00:00.000Z |            3.0.0 | naming and directories updates
+2023-02-15T17:05:52.406Z |            3.1.4 | Fix check image type
 2023-07-20T10:17:12.303Z |            3.1.5 | upd dependencies
 2023-07-20T14:06:12.062Z |            3.1.6 | fix
+2024-01-25T09:44:05.560Z |            3.2.0 | Added `{{selected}}` placeholder to extra fields
