@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/js-file-uploader",
-  "version": "3.2.1",
+  "version": "3.3.0",
   "description": "HTML5 Async File Uploader ",
   "main": "./js/file-uploader.js",
   "style": "./scss/fileUploader.scss",
@@ -62,7 +62,8 @@
     "dist/**/*.{css,js,map}",
     "js/**/*.{js,map}",
     "js-utilities/*.{js,map}",
-    "scss/*.scss"
+    "scss/*.scss",
+    "twig-utilities/*.twig"
   ],
   "devDependencies": {
     "@massimo-cassandro/dev-utilities": "^1.21.2",

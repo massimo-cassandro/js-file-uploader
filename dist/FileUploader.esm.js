@@ -469,13 +469,13 @@ const default_options = {
 
     * `markup` is a HTML string which contains some Mustache-like placeholder:
       - `{{idx}}`         → unique id of the element
-      - `{{val}}`         → content of value attribute, it corresponds to
+      - `{{val}}`         → content of `value` attribute, it corresponds to
                             `values[...][value_key]` value
       - `{{checked}}`     → if `values[...][value_key]` exists and it's different from
                             `0`, `null` or empty string, it is replaced with the `checked` attribute,
-                            otherwise, with an empty string
+                            otherwise, with a space
       - `{{selected}}`    → same of the previous one, it is replaced with the `selected` attribute,
-                            otherwise, with an empty string
+                            otherwise, with a a space
       - `{{name}}`        → is replaced with a PHP name string formed by
                                 * the `varname` parameter
                                 * the unique id or rel_id (according to use_rel_id setting) of the element
@@ -1081,8 +1081,7 @@ function create_item(item_data, fupl, preregistered = false) {
         extra_fields_wrapper.insertAdjacentHTML('beforeend',
           item.markup.replace(/{{idx}}/g, item_data.id)
             .replace(/{{val}}/g, preregistered && item_data[item.value_key]? item_data[item.value_key] : '')
-            .replace(/{{checked}}/g, preregistered && +item_data[item.value_key]? ' checked ' : '')
-            .replace(/{{selected}}/g, preregistered && +item_data[item.value_key]? ' selected ' : '')
+            .replace(/{{checked}}/g, preregistered && +item_data[item.value_key]? ' checked ' : ' ')
             .replace(/{{name}}/g,
               (preregistered && fupl.opts.registered_extra_field_varname?
                 fupl.opts.registered_extra_field_varname : fupl.opts.varname) +
@@ -1091,6 +1090,11 @@ function create_item(item_data, fupl, preregistered = false) {
               '][' + item.value_key + ']'
             )
         );
+      });
+      // add `selected` attribute to select extra fields
+      extra_fields_wrapper.querySelectorAll('select[data-selected]:not([data-selected=""]').forEach(sel => {
+        const value = sel.dataset.selected;
+        sel.querySelector(`option[value="${value}"]`)?.setAttribute('selected', true);
       });
 
       // stop bubbling when sortable
@@ -2107,7 +2111,7 @@ function FileUploader( params ) {
   }
   */
 
-  const _VERSION = '3.2.0';
+  const _VERSION = '3.3.0';
 
   const strs = Object.assign( {}, fupl_strings_it, params.local_strs || {} );
 
