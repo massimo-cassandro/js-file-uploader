@@ -166,8 +166,8 @@ export function create_item(item_data, fupl, preregistered = false) {
         extra_fields_wrapper.insertAdjacentHTML('beforeend',
           item.markup.replace(/{{idx}}/g, item_data.id)
             .replace(/{{val}}/g, preregistered && item_data[item.value_key]? item_data[item.value_key] : '')
-            .replace(/{{checked}}/g, preregistered && +item_data[item.value_key]? ' checked ' : '')
-            .replace(/{{selected}}/g, preregistered && +item_data[item.value_key]? ' selected ' : '')
+            .replace(/{{checked}}/g, preregistered && +item_data[item.value_key]? ' checked ' : ' ')
+            .replace(/{{selected}}/g, preregistered && +item_data[item.value_key]? ' selected ' : ' ')
             .replace(/{{name}}/g,
               (preregistered && fupl.opts.registered_extra_field_varname?
                 fupl.opts.registered_extra_field_varname : fupl.opts.varname) +

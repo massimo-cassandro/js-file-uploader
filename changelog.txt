@@ -9,3 +9,4 @@
 2023-07-20T10:17:12.303Z |            3.1.5 | upd dependencies
 2023-07-20T14:06:12.062Z |            3.1.6 | fix
 2024-01-25T09:44:05.560Z |            3.2.0 | Added `{{selected}}` placeholder to extra fields
+2024-01-25T10:23:07.731Z |            3.2.1 | fix
