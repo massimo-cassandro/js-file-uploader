@@ -401,7 +401,7 @@ export const default_options = {
 
     * `markup` is a HTML string which contains some Mustache-like placeholder:
       - `{{idx}}`         → unique id of the element
-      - `{{val}}`         → content of value attribute, it corresponds to
+      - `{{val}}`         → content of `value` attribute, it corresponds to
                             `values[...][value_key]` value
       - `{{checked}}`     → if `values[...][value_key]` exists and it's different from
                             `0`, `null` or empty string, it is replaced with the `checked` attribute,
