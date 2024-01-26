@@ -64,7 +64,7 @@ export function send_files(filelist, fupl) {
           wi       : current_item.width,
           he       : current_item.height,
           size     : current_item.file.size,
-          img_type : current_item.file.img_type,
+          // img_type : current_item.file.img_type, // TODO non necessario, controllare
           loading  : true
         }, fupl),
 
@@ -191,7 +191,6 @@ export function send_files(filelist, fupl) {
             this_item.querySelector('.fupl-loading').remove(); // elemento loading
 
             this_item.insertAdjacentHTML('beforeend',
-
               build_hidden_fields(current_item, fupl.opts)
             );
 
@@ -218,31 +217,37 @@ export function send_files(filelist, fupl) {
     [...filelist].forEach(function (filelist_item, idx) {
       try {
 
+        const ext = filelist_item.name.split('.').pop().toLowerCase();
+
         let current_item = {
           id: 'fupl_item_' + Date.now() + '_' + idx, // id unico
           file: filelist_item,
           width: null,
           height: null,
           tmp_file: null,
-          img_type: fupl.opts._type === 'img'?
-            (filelist_item.type === 'image/svg+xml' ? 'svg' : 'bmp') : null
+
+          // TODO i file svg, se con attributo width e height, permettono la rilevazione delle dimensioni, utilizzare?
+
+          // isImg: fupl_utilities.mimetypes['img+svg'].indexOf(filelist_item.type) !== -1 ||
+          //   fupl_utilities.mimetypes['img+svg'].indexOf( '.' + ext ) !== -1,
+
+          isBitmapImg: fupl_utilities.mimetypes.img.indexOf(filelist_item.type) !== -1 ||
+            fupl_utilities.mimetypes.img.indexOf( '.' + ext ) !== -1
+          // img_type: fupl.opts._type === 'img'?
+          //   (filelist_item.type === 'image/svg+xml' ? 'svg' : 'bitmap') : null
         };
 
-        // filetype check (for drag & drop and browsers that don't support accept)
+        // TODO unificare questo controllo e il successivo
 
-        let ext = filelist_item.name.split('.').pop().toLowerCase();
+        // filetype check (for drag & drop and browsers that don't support accept)
         if( fupl.opts.accept.length ) {
           if( fupl.opts.accept.indexOf( filelist_item.type ) === -1 &&
             fupl.opts.accept.indexOf( '.' + ext ) === -1) {
-
+            console.log(filelist_item.type);
             throw fupl.strs.alert_file_format_error
               .replace(/{{file_name}}/, filelist_item.name );
           }
         } // end filetype check
-
-        // console.log(filelist_item);
-        // console.log(fupl.opts._type);
-        // console.log(fupl_utilities.mimetypes.img);
 
         // controllo formati immagine ammessi
         if( fupl.opts._type === 'img' && (fupl_utilities.mimetypes.img.indexOf( filelist_item.type ) === -1 ||
@@ -266,7 +271,9 @@ export function send_files(filelist, fupl) {
         } // end maxfilesize check
 
         // images
-        if( fupl.opts._type === 'img') {
+
+
+        if( current_item.isBitmapImg ) {
           let reader  = new FileReader();
           reader.addEventListener('load', function () {
 
@@ -277,51 +284,50 @@ export function send_files(filelist, fupl) {
               let error_messages = [];
               current_item.width=image.width;
               current_item.height=image.height;
-              if(current_item.img_type === 'bmp') {
-                if( fupl.opts.img_w && image.width !== fupl.opts.img_w ) {
-                  error_messages.push(
-                    fupl.strs.alert_img_exact_width_err
-                      .replace(/{{image_dimension}}/, image.width)
-                      .replace(/{{allowed_dimension}}/, fupl.opts.img_w)
-                  );
 
-                } else if(fupl.opts.img_min_w && image.width < fupl.opts.img_min_w) {
-                  error_messages.push(
-                    fupl.strs.alert_img_min_width_err
-                      .replace(/{{image_dimension}}/, image.width)
-                      .replace(/{{allowed_dimension}}/, fupl.opts.img_min_w)
-                  );
+              if( fupl.opts.img_w && image.width !== fupl.opts.img_w ) {
+                error_messages.push(
+                  fupl.strs.alert_img_exact_width_err
+                    .replace(/{{image_dimension}}/, image.width)
+                    .replace(/{{allowed_dimension}}/, fupl.opts.img_w)
+                );
 
-                } else if(fupl.opts.img_max_w && image.width > fupl.opts.img_max_w) {
-                  error_messages.push(
-                    fupl.strs.alert_img_max_width_err
-                      .replace(/{{image_dimension}}/, image.width)
-                      .replace(/{{allowed_dimension}}/, fupl.opts.img_max_w)
-                  );
-                }
+              } else if(fupl.opts.img_min_w && image.width < fupl.opts.img_min_w) {
+                error_messages.push(
+                  fupl.strs.alert_img_min_width_err
+                    .replace(/{{image_dimension}}/, image.width)
+                    .replace(/{{allowed_dimension}}/, fupl.opts.img_min_w)
+                );
 
-                if (fupl.opts.img_h && image.height !== fupl.opts.img_h) {
-                  error_messages.push(
-                    fupl.strs.alert_img_exact_height_err
-                      .replace(/{{image_dimension}}/, image.height)
-                      .replace(/{{allowed_dimension}}/, fupl.opts.img_h)
-                  );
+              } else if(fupl.opts.img_max_w && image.width > fupl.opts.img_max_w) {
+                error_messages.push(
+                  fupl.strs.alert_img_max_width_err
+                    .replace(/{{image_dimension}}/, image.width)
+                    .replace(/{{allowed_dimension}}/, fupl.opts.img_max_w)
+                );
+              }
 
-                } else if(fupl.opts.img_min_h && image.height < fupl.opts.img_min_h) {
-                  error_messages.push(
-                    fupl.strs.alert_img_min_height_err
-                      .replace(/{{image_dimension}}/, image.height)
-                      .replace(/{{allowed_dimension}}/, fupl.opts.img_min_h)
-                  );
+              if (fupl.opts.img_h && image.height !== fupl.opts.img_h) {
+                error_messages.push(
+                  fupl.strs.alert_img_exact_height_err
+                    .replace(/{{image_dimension}}/, image.height)
+                    .replace(/{{allowed_dimension}}/, fupl.opts.img_h)
+                );
 
-                } else if(fupl.opts.img_max_h && image.height > fupl.opts.img_max_h) {
-                  error_messages.push(
-                    fupl.strs.alert_img_max_height_err
-                      .replace(/{{image_dimension}}/, image.height)
-                      .replace(/{{allowed_dimension}}/, fupl.opts.img_max_h)
-                  );
+              } else if(fupl.opts.img_min_h && image.height < fupl.opts.img_min_h) {
+                error_messages.push(
+                  fupl.strs.alert_img_min_height_err
+                    .replace(/{{image_dimension}}/, image.height)
+                    .replace(/{{allowed_dimension}}/, fupl.opts.img_min_h)
+                );
 
-                }
+              } else if(fupl.opts.img_max_h && image.height > fupl.opts.img_max_h) {
+                error_messages.push(
+                  fupl.strs.alert_img_max_height_err
+                    .replace(/{{image_dimension}}/, image.height)
+                    .replace(/{{allowed_dimension}}/, fupl.opts.img_max_h)
+                );
+
               }
 
               // aspect ratio

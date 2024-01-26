@@ -2,6 +2,8 @@
 Generate hidden fields with values to be sent to server
 Returns the hidden fields html string
 */
+import { fupl_utilities } from './utilities';
+
 export function build_hidden_fields(current_item, fupl_options) {
 
   // normalize ascii chars > 127 (and more)
@@ -79,7 +81,8 @@ export function build_hidden_fields(current_item, fupl_options) {
       'type'      : current_item.file.type
     };
 
-  if(fupl_options._type === 'img') {
+  // if(fupl_options._type === 'img') {
+  if(current_item.isBitmapImg) {
     field_values.width = current_item.width;
     field_values.height = current_item.height;
   }
