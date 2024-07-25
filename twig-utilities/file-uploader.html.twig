@@ -62,7 +62,10 @@
       varname: 'user_file',
       delete_varname: 'elimina_file[]',
       registered_extra_field_varname: 'registered_files',
-      upload_complete_callback: 'function_name',
+
+      init_callback:  null, // 'function_name' senza `Window.` NB: le funzioni vanno caricate prima
+      upload_start_callback: null,
+      upload_complete_callback: null,
 
       uploader_legend: true,
       uploader_legend_text: '__legend__',
