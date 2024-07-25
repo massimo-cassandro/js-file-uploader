@@ -2117,7 +2117,7 @@ function FileUploader( params ) {
   }
   */
 
-  const _VERSION = '3.4.1';
+  const _VERSION = '3.4.2';
 
   const strs = Object.assign( {}, fupl_strings_it, params.local_strs || {} );
 

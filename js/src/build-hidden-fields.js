@@ -2,7 +2,7 @@
 Generate hidden fields with values to be sent to server
 Returns the hidden fields html string
 */
-import { fupl_utilities } from './utilities';
+import { fupl_utilities } from './utilities.js';
 
 export function build_hidden_fields(current_item, fupl_options) {
 

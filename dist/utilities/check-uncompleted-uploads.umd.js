@@ -2,7 +2,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.check_uncompleted_uploads = factory());
-}(this, (function () { 'use strict';
+})(this, (function () { 'use strict';
 
   // check for form submit while file-uploader is loading
 
@@ -30,5 +30,5 @@
 
   return checkUncompletedUploads;
 
-})));
+}));
 //# sourceMappingURL=check-uncompleted-uploads.umd.js.map

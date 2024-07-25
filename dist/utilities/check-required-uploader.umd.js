@@ -2,7 +2,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.check_required_uploader = factory());
-}(this, (function () { 'use strict';
+})(this, (function () { 'use strict';
 
   // check for required file-uploaders
   function checkRequiredUploader (options) {
@@ -38,5 +38,5 @@
 
   return checkRequiredUploader;
 
-})));
+}));
 //# sourceMappingURL=check-required-uploader.umd.js.map

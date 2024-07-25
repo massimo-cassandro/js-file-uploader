@@ -2,7 +2,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.FileUploader = factory());
-}(this, (function () { 'use strict';
+})(this, (function () { 'use strict';
 
   const fupl_strings_it = {
 
@@ -2123,7 +2123,7 @@
     }
     */
 
-    const _VERSION = '3.4.1';
+    const _VERSION = '3.4.2';
 
     const strs = Object.assign( {}, fupl_strings_it, params.local_strs || {} );
 
@@ -2146,5 +2146,5 @@
 
   return FileUploader;
 
-})));
+}));
 //# sourceMappingURL=FileUploader.umd.js.map

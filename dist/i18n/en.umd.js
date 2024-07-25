@@ -1,4 +1,4 @@
-define(function () { 'use strict';
+define((function () { 'use strict';
 
   const fupl_strings_en = {
 
@@ -70,5 +70,5 @@ define(function () { 'use strict';
 
   return fupl_strings_en;
 
-});
+}));
 //# sourceMappingURL=en.umd.js.map

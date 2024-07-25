@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/js-file-uploader",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "description": "HTML5 Async File Uploader ",
   "main": "./js/file-uploader.js",
   "style": "./scss/fileUploader.scss",
@@ -66,7 +66,7 @@
     "twig-utilities/*.twig"
   ],
   "devDependencies": {
-    "@massimo-cassandro/dev-utilities": "^1.21.2",
+    "@massimo-cassandro/dev-utilities": "^1.23.4",
     "@massimo-cassandro/m-utilities": "^5.3.0",
     "@rollup/plugin-node-resolve": "^11.2.1",
     "js-beautify": "^1.14.0",
