@@ -17,7 +17,7 @@
 
     document.querySelectorAll(options.fupl_selector).forEach(item => {
 
-      item.closest('form').addEventListener('submit', e => {
+      item.closest('form')?.addEventListener('submit', e => {
 
         if(e.target.querySelector('.fupl-is-uploading')) {
           e.preventDefault();

@@ -1,0 +1,16 @@
+2017-03-16T00:00:00.000Z |            1.0.0 | First production releases with basic features
+2019-08-01T00:00:00.000Z |            1.3.0 | Fancybox integration, items sorting, Handling of disabled and required status, Extra fields
+2020-07-01T00:00:00.000Z |            1.4.0 | SVG images support, Mixed SVG + Bitmap images allowed, ability to add an extra custom help text
+2020-09-01T00:00:00.000Z |            1.7.0 | aspect ratio constrain (see specific demo page), Bootstrap moved to dev-dependencies in package json
+2020-10-01T00:00:00.000Z |            2.0.0 | All rewritten as ES6 module, Dropped check and callback for legacy browsers, New demo pages
+2021-04-01T00:00:00.000Z |            2.3.0 | Added built-in alert interface, Dropped custom alert UI support
+2021-07-01T00:00:00.000Z |            3.0.0 | naming and directories updates
+2023-02-15T17:05:52.406Z |            3.1.4 | Fix check image type
+2023-07-20T10:17:12.303Z |            3.1.5 | upd dependencies
+2023-07-20T14:06:12.062Z |            3.1.6 | fix
+2024-01-25T09:44:05.560Z |            3.2.0 | Added `{{selected}}` placeholder to extra fields
+2024-01-25T10:23:07.731Z |            3.2.1 | fix
+2024-01-25T16:37:23.157Z |            3.2.2 | Fix select extra fields
+2024-01-25T16:37:55.257Z |            3.3.0 | Added twig include
+2024-01-26T14:03:01.759Z |            3.4.0 | Rilevazione dimensione immagini anche per `filetype=auto`
+2024-03-28T10:42:10.111Z |            3.4.1 | Optimize text upd

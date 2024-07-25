@@ -29,10 +29,8 @@ const fupl_strings_it = {
   info_text_imgs_svg : 'immagini in formato <strong>JPEG</strong>, <strong>PNG</strong>, <strong>GIF</strong>, <strong>WEBP</strong> o <strong>SVG</strong>',
   info_text_imgs_svg_size_info_text: '<strong>Solo per le immagini non SVG:</strong> ',
 
-  info_text_img_optimize_info: 'Ottimizza le tue immagini prima di caricarle. ' +
-    '<a href="https://squoosh.app/" target="_blank" rel="noopener noreferrer">Squoosh</a> è un ottimo (e gratuito) ' +
-    'strumento per farlo.'+
-    '<br>Per l’editing puoi utilizzare <a href="https://www.befunky.com/create/photo-editor/" target="_blank" rel="noopener noreferrer">Befunky</a>',
+  info_text_img_optimize_info: 'Per modificare e comprimere le immagini puoi utilizzare <a href="https://www.iloveimg.com/it" target="_blank" rel="noopener noreferrer">I Love IMG</a>.<br>' +
+    'Puoi ridurre le dimensioni dei documenti PDF con <a href="https://www.ilovepdf.com/it/comprimere_pdf" target="_blank" rel="noopener noreferrer">I Love PDF</a>.',
 
   info_text_svg_optimize_info: 'È consigliabile ottimizzare i file SVG prima del caricamento, ' +
     'ad esempio tramite <a href="https://jakearchibald.github.io/svgomg/" target="_blank" rel="noopener noreferrer">SVGO</a>',

@@ -1,6 +1,6 @@
 {
   "name": "@massimo-cassandro/js-file-uploader",
-  "version": "3.1.3",
+  "version": "3.4.1",
   "description": "HTML5 Async File Uploader ",
   "main": "./js/file-uploader.js",
   "style": "./scss/fileUploader.scss",
@@ -10,8 +10,11 @@
     "sass": "npx sass ./scss/fileUploader.scss:./dist/fileUploader.css ./demo/css/fileuploader.scss:./demo/css/fileuploader.css --source-map --load-path=node_modules/ --style=compressed --watch",
     "rollup": "npx  rollup --config --watch",
     "pug": "npx pug demo/pug --out demo/ --path demo/pug/tpl --pretty --watch",
-    "echo_version": "echo $npm_package_version",
-    "upd_version_var": "node upd_version.js && npx rollup --config"
+    "upd-version": "npx update-version",
+    "upd-version-in-js": "node ./upd_version_in_js.js",
+    "upd@m": "npx upd@m",
+    "npm-publish": "npm publish",
+    "local server (esm demo)": "python3 -m http.server"
   },
   "repository": {
     "type": "git",
@@ -44,27 +47,27 @@
     "> 3% in IT"
   ],
   "stylelint": {
-    "extends": "@massimo-cassandro/m-utilities/.stylelintrc.js",
+    "extends": "@massimo-cassandro/linters-config/stylelintrc.js",
     "ignoreFiles": [
       "**/*.css"
-    ],
-    "rules": {}
+    ]
   },
-   "eslintConfig": {
-    "extends": "./node_modules/@massimo-cassandro/m-utilities/.eslintrc.js",
-    "ignorePatterns": [
-      "dist/**/*.js"
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@massimo-cassandro/linters-config/eslintrc.js"
     ],
-    "rules": {}
+    "ignorePatterns": []
   },
   "files": [
     "dist/**/*.{css,js,map}",
     "js/**/*.{js,map}",
     "js-utilities/*.{js,map}",
-    "scss/*.scss"
+    "scss/*.scss",
+    "twig-utilities/*.twig"
   ],
   "devDependencies": {
-    "@massimo-cassandro/m-utilities": "^4.17.5",
+    "@massimo-cassandro/dev-utilities": "^1.21.2",
+    "@massimo-cassandro/m-utilities": "^5.3.0",
     "@rollup/plugin-node-resolve": "^11.2.1",
     "js-beautify": "^1.14.0",
     "prismjs": "^1.24.1",

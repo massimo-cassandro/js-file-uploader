@@ -401,11 +401,13 @@ export const default_options = {
 
     * `markup` is a HTML string which contains some Mustache-like placeholder:
       - `{{idx}}`         → unique id of the element
-      - `{{val}}`         → content of value attribute, it corresponds to
+      - `{{val}}`         → content of `value` attribute, it corresponds to
                             `values[...][value_key]` value
       - `{{checked}}`     → if `values[...][value_key]` exists and it's different from
                             `0`, `null` or empty string, it is replaced with the `checked` attribute,
-                            otherwise, with an empty string
+                            otherwise, with a space
+      - `{{selected}}`    → same of the previous one, it is replaced with the `selected` attribute,
+                            otherwise, with a a space
       - `{{name}}`        → is replaced with a PHP name string formed by
                                 * the `varname` parameter
                                 * the unique id or rel_id (according to use_rel_id setting) of the element
