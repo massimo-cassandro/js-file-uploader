@@ -15,3 +15,4 @@
 2024-01-26T14:03:01.759Z |            3.4.0 | Rilevazione dimensione immagini anche per `filetype=auto`
 2024-03-28T10:42:10.111Z |            3.4.1 | Optimize text upd
 2024-07-25T12:41:17.761Z |            3.4.2 | Demo fix
+2025-06-03T15:22:21.232Z |            3.4.3 | update

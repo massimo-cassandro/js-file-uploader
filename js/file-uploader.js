@@ -22,7 +22,7 @@ export default function FileUploader( params ) {
   }
   */
 
-  const _VERSION = '3.4.2';
+  const _VERSION = '3.4.3';
 
   const strs = Object.assign( {}, fupl_strings_it, params.local_strs || {} );
 
