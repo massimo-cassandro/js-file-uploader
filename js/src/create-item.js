@@ -87,8 +87,15 @@ export function create_item(item_data, fupl, preregistered = false) {
 
     // url
     let fupl_url = fupl_item_wrapper.querySelector('.fupl-url');
-    if( fupl_url && item_data.url) {
-      fupl_url.href = item_data.url;
+    if( fupl_url) {
+      if(item_data.url) {
+        fupl_url.href = item_data.url;
+      } else {
+        // cambia il tag <a> in <span> se non c'è l'url (al momento del caricamento)
+        let span = document.createElement('span');
+        span.innerHTML = fupl_url.innerHTML;
+        fupl_url.parentNode.replaceChild(span, fupl_url);
+      }
     }
 
     let fupl_item = fupl_item_wrapper.querySelector('.fupl-item');

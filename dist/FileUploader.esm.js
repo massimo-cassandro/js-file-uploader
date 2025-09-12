@@ -472,13 +472,13 @@ const default_options = {
       - `{{checked}}`     → if `values[...][value_key]` exists and it's different from
                             `0`, `null` or empty string, it is replaced with the `checked` attribute,
                             otherwise, with a space
-      - `{{selected}}`    → same of the previous one, it is replaced with the `selected` attribute,
-                            otherwise, with a a space
       - `{{name}}`        → is replaced with a PHP name string formed by
                                 * the `varname` parameter
                                 * the unique id or rel_id (according to use_rel_id setting) of the element
                                 * the `value_key` string
                             Example: `file[fupl_00001][caption]`
+
+      select fields must have a `data-selected="{{val}}"` attribute
 
     Take a look to `extra_fields_demo.html` for a working demo.
   */
@@ -1000,8 +1000,15 @@ function create_item(item_data, fupl, preregistered = false) {
 
     // url
     let fupl_url = fupl_item_wrapper.querySelector('.fupl-url');
-    if( fupl_url && item_data.url) {
-      fupl_url.href = item_data.url;
+    if( fupl_url) {
+      if(item_data.url) {
+        fupl_url.href = item_data.url;
+      } else {
+        // cambia il tag <a> in <span> se non c'è l'url (al momento del caricamento)
+        let span = document.createElement('span');
+        span.innerHTML = fupl_url.innerHTML;
+        fupl_url.parentNode.replaceChild(span, fupl_url);
+      }
     }
 
     let fupl_item = fupl_item_wrapper.querySelector('.fupl-item');
@@ -1080,6 +1087,7 @@ function create_item(item_data, fupl, preregistered = false) {
           item.markup.replace(/{{idx}}/g, item_data.id)
             .replace(/{{val}}/g, preregistered && item_data[item.value_key]? item_data[item.value_key] : '')
             .replace(/{{checked}}/g, preregistered && +item_data[item.value_key]? ' checked ' : ' ')
+            // .replace(/{{selected}}/g, preregistered && +item_data[item.value_key]? ' selected ' : ' ')
             .replace(/{{name}}/g,
               (preregistered && fupl.opts.registered_extra_field_varname?
                 fupl.opts.registered_extra_field_varname : fupl.opts.varname) +
@@ -2117,7 +2125,7 @@ function FileUploader( params ) {
   }
   */
 
-  const _VERSION = '3.4.2';
+  const _VERSION = '3.5.0';
 
   const strs = Object.assign( {}, fupl_strings_it, params.local_strs || {} );
 
