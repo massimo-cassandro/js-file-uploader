@@ -68,14 +68,14 @@
   "devDependencies": {
     "@massimo-cassandro/dev-utilities": "^1.23.4",
     "@massimo-cassandro/m-utilities": "^5.3.0",
-    "@rollup/plugin-node-resolve": "^11.2.1",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^0.4.4",
     "js-beautify": "^1.14.0",
     "prismjs": "^1.29.0",
     "pug": "^3.0.2",
     "pug-cli": "^1.0.0-alpha6",
-    "rollup": "^3.29.5",
+    "rollup": "^4.59.0",
     "rollup-plugin-sourcemaps": "^0.6.3",
-    "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.38.0"
   }
 }
