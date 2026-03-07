@@ -66,13 +66,13 @@
     "twig-utilities/*.twig"
   ],
   "devDependencies": {
-    "@massimo-cassandro/dev-utilities": "^1.23.4",
+    "@massimo-cassandro/dev-utilities": "^1.12.5",
     "@massimo-cassandro/m-utilities": "^5.3.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
-    "@rollup/plugin-terser": "^0.4.4",
-    "js-beautify": "^1.14.0",
-    "prismjs": "^1.29.0",
-    "pug": "^3.0.2",
+    "@rollup/plugin-terser": "^1.0.0",
+    "js-beautify": "^1.15.4",
+    "prismjs": "^1.30.0",
+    "pug": "^3.0.3",
     "pug-cli": "^1.0.0-alpha6",
     "rollup": "^4.59.0",
     "rollup-plugin-sourcemaps": "^0.6.3",
