@@ -17,3 +17,4 @@
 2024-07-25T12:41:17.761Z |            3.4.2 | Demo fix
 2025-06-03T15:22:21.232Z |            3.4.3 | update
 2025-09-12T09:12:42.027Z |            3.5.0 | remove tag a on added docs
+2026-03-11T09:04:51.332Z |            4.0.0 | removing compiled version and rollup
