@@ -19,3 +19,4 @@
 2025-09-12T09:12:42.027Z |            3.5.0 | remove tag a on added docs
 2026-03-11T09:04:51.332Z |            4.0.0 | removing compiled version and rollup
 2026-05-22T07:32:46.814Z |            4.0.2 | packages upd
+2026-07-01T19:52:00.224Z |            4.0.3 | 
