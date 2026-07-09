@@ -397,7 +397,7 @@ export const default_options = {
                     Only pre-registered items will be affected by this setting (since new items
                     never have a `rel_id`).
                     If `use_rel_id` is true but the `rel_id`  item doesn't exist,
-                    the `id`  will be used
+                    the `id` will be used
 
     * `markup` is a HTML string which contains some Mustache-like placeholder:
       - `{{idx}}`         → unique id of the element
