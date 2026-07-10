@@ -21,3 +21,4 @@
 2026-05-22T07:32:46.814Z |            4.0.2 | packages upd
 2026-07-01T19:52:00.224Z |            4.0.3 | 
 2026-07-10T12:43:55.357Z |            4.0.4 | aggiunta dataset alle immagini caricate
+2026-07-10T12:52:59.529Z |            4.0.5 | fix

@@ -91,8 +91,8 @@ export function build_hidden_fields(current_item, fupl_options) {
     const img = fupl_options.element.querySelector('.fupl-img');
     img.dataset.width = current_item.width;
     img.dataset.height = current_item.height;
-    img.dataset.size = current_item.size;
-    img.dataset.type = current_item.type;
+    img.dataset.size = current_item.file.size;
+    img.dataset.type = current_item.file.type;
   }
   for (let _key in field_values) {
     hidden_fields += '<input type="hidden" '+
