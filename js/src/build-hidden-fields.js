@@ -85,6 +85,14 @@ export function build_hidden_fields(current_item, fupl_options) {
   if(current_item.isBitmapImg) {
     field_values.width = current_item.width;
     field_values.height = current_item.height;
+
+    // TODO spostare in posizione più appropriata
+    // aggiunta data-width e height all'immagine per controlli extra
+    const img = fupl_options.element.querySelector('.fupl-img');
+    img.dataset.width = current_item.width;
+    img.dataset.height = current_item.height;
+    img.dataset.size = current_item.size;
+    img.dataset.type = current_item.type;
   }
   for (let _key in field_values) {
     hidden_fields += '<input type="hidden" '+
