@@ -89,10 +89,12 @@ export function build_hidden_fields(current_item, fupl_options) {
     // TODO spostare in posizione più appropriata
     // aggiunta data-width e height all'immagine per controlli extra
     const img = fupl_options.element.querySelector('.fupl-img');
-    img.dataset.width = current_item.width;
-    img.dataset.height = current_item.height;
-    img.dataset.size = current_item.file.size;
-    img.dataset.type = current_item.file.type;
+    if(img) {
+      img.dataset.width = current_item.width;
+      img.dataset.height = current_item.height;
+      img.dataset.size = current_item.file.size;
+      img.dataset.type = current_item.file.type;
+    }
   }
   for (let _key in field_values) {
     hidden_fields += '<input type="hidden" '+
