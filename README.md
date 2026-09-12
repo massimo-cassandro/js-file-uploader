@@ -1,5 +1,7 @@
 # FileUploader
 
+> unmantained. This package will be soon merged into [minimo](https://github.com/massimo-cassandro/minimo)
+
 **js-file-uploader: HTML5 + Javascript asyncronous file upload.**  
 *v. 3 - Massimo Cassandro - (c) 2017/2021*
 
